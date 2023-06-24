@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.ComercializARDataSet" Collapsed="true">
+    <Position X="6.25" Y="1" Width="1.25" />
+    <NestedTypes>
+      <Delegate Name="DAL.ComercializARDataSet.LookupUsuarioRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="DAL.ComercializARDataSet.LookupUsuarioDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.AutenticarUsuarioRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.LookupUsuarioRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.LookupUsuarioRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="DAL.ComercializARDataSet.UsuariosRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="DAL.ComercializARDataSet.UsuariosRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.AutenticarUsuarioRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.AutenticarUsuarioDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="DAL.ComercializARDataSet.AutenticarUsuarioRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="DAL.ComercializARDataSet.UsuariosDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="DAL.ComercializARDataSet.UsuariosRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAQAAAAAwAAAAJABQABwAAAAAgSwBgAAQAAAAEABhA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Program" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.ComercializARDataSetTableAdapters.UsuariosTableAdapter" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.ComercializARDataSetTableAdapters.AutenticarUsuarioTableAdapter" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.ComercializARDataSetTableAdapters.LookupUsuarioTableAdapter" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.ComercializARDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAQAABABAEBAAAAMAAgAAACgAAAAAQAEAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Metodos.ManejaDb">
+    <Position X="10" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>iAIAAAAAAAAggAAAAAQAAAAAAAAABAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Metodos\ManejaDb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
