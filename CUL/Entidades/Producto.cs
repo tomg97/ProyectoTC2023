@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {
     public class Producto {
+		public Producto(string nombreProducto, string marcaProducto, string id, string cantidad, string precio) {
+			this.nombreProducto = nombreProducto;
+			this.marcaProducto = marcaProducto;
+			this.id = id;
+			this.cantidad = Convert.ToInt32(cantidad);
+			this.precio = precio;
+		}
 		private string _nombreProducto;
 
 		public string nombreProducto {

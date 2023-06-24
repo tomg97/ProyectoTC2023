@@ -34,8 +34,8 @@ namespace ProyectoTC2023 {
                 int stockActual = producto.cantidad;
                 int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
                 if(validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
-                    producto.cantidad = cantidadDeseada;
-                    manejaVenta.llenarCarrito(producto);
+                    Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
+                    manejaVenta.llenarCarrito(productoCarrito);
                     dgvCarrito.DataSource = null;
                     dgvCarrito.DataSource = SingletonCarrito.getInstance.getListaProductos("carrito");
                 } else {

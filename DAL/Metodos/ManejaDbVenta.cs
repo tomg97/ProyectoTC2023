@@ -20,13 +20,12 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Producto producto = new Producto() {
-                            nombreProducto = reader["nombreProducto"].ToString(),
-                            marcaProducto = reader["marcaProducto"].ToString(),
-                            id = reader["id"].ToString(),
-                            cantidad = Convert.ToInt32(reader["cantidad"].ToString()),
-                            precio = reader["precio"].ToString()
-                        };
+                        Producto producto = new Producto(
+                            reader["nombreProducto"].ToString(), 
+                            reader["marcaProducto"].ToString(), 
+                            reader["id"].ToString(), 
+                            reader["cantidad"].ToString(), 
+                            reader["precio"].ToString());
                         listaProductos.Add(producto);
                     }
                     reader.Close();
