@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmiArchivo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLogin = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,15 +39,9 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.carritoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.despacharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiArchivo = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +61,29 @@
             this.menuStrip1.Size = new System.Drawing.Size(1464, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmiArchivo
+            // 
+            this.tsmiArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLogin,
+            this.salirToolStripMenuItem});
+            this.tsmiArchivo.Name = "tsmiArchivo";
+            this.tsmiArchivo.Size = new System.Drawing.Size(60, 20);
+            this.tsmiArchivo.Text = "Archivo";
+            // 
+            // tsmiLogin
+            // 
+            this.tsmiLogin.Name = "tsmiLogin";
+            this.tsmiLogin.Size = new System.Drawing.Size(104, 22);
+            this.tsmiLogin.Text = "Login";
+            this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
             // 
@@ -145,31 +165,10 @@
             // 
             // ventasToolStripMenuItem
             // 
-            this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.carritoToolStripMenuItem,
-            this.facturarToolStripMenuItem,
-            this.despacharToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
-            // 
-            // carritoToolStripMenuItem
-            // 
-            this.carritoToolStripMenuItem.Name = "carritoToolStripMenuItem";
-            this.carritoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.carritoToolStripMenuItem.Text = "Carrito";
-            // 
-            // facturarToolStripMenuItem
-            // 
-            this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.facturarToolStripMenuItem.Text = "Facturar";
-            // 
-            // despacharToolStripMenuItem
-            // 
-            this.despacharToolStripMenuItem.Name = "despacharToolStripMenuItem";
-            this.despacharToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.despacharToolStripMenuItem.Text = "Despachar";
+            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -188,29 +187,6 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // tsmiArchivo
-            // 
-            this.tsmiArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiLogin,
-            this.salirToolStripMenuItem});
-            this.tsmiArchivo.Name = "tsmiArchivo";
-            this.tsmiArchivo.Size = new System.Drawing.Size(60, 20);
-            this.tsmiArchivo.Text = "Archivo";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // tsmiLogin
-            // 
-            this.tsmiLogin.Name = "tsmiLogin";
-            this.tsmiLogin.Size = new System.Drawing.Size(180, 22);
-            this.tsmiLogin.Text = "Login";
-            this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
             // 
             // FormMain
             // 
@@ -247,9 +223,6 @@
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem carritoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem despacharToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiArchivo;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiLogin;
