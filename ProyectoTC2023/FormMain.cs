@@ -39,5 +39,11 @@ namespace ProyectoTC2023 {
             this.Close();
             
         }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmVentas frmVentas = new FrmVentas();
+            frmVentas.MdiParent = this;
+            frmVentas.Show();
+        }
     }
 }
