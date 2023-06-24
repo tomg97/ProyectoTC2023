@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Metodos\Encriptador.cs" />
+    <Compile Include="Metodos\ManejaVenta.cs" />
     <Compile Include="Metodos\ResultadosDb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +81,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{53aaf044-349c-4bb9-aa09-20fce8d20a47}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Project>{B1170576-0E05-4B50-8F8B-ACC05FE02F56}</Project>
+      <Name>Servicios</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

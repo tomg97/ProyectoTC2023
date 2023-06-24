@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Metodos;
 
 namespace BLL.Metodos {
     public class ResultadosDb {
@@ -13,7 +14,7 @@ namespace BLL.Metodos {
         Encriptador encriptador = new Encriptador();
         public string loginProcedimiento(Usuario usuario) {
             try {
-                usuario.pass = encriptador.encriptar(usuario.pass);
+                usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
                 string mensaje;
                 int resultado = manejaDb.authUsuario(usuario);
                 switch (resultado) {
@@ -57,7 +58,7 @@ namespace BLL.Metodos {
             return mensaje;
         }
         public string crearUsuario(Usuario usuario) {
-            usuario.pass = encriptador.encriptar(usuario.pass);
+            usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
             return manejaDb.crearUsuario(usuario);
         }
         public string modificarNombreUsuario(string usuViejo, string usuNuevo) {
@@ -79,8 +80,8 @@ namespace BLL.Metodos {
             manejaDb.desbloquearUsuario(usuario);
         }
         public string cambioContraseña(string passActual, string passNueva) {
-            passNueva = encriptador.encriptar(passNueva);
-            passActual = encriptador.encriptar(passActual);
+            passNueva = encriptador.encriptarIrreversible(passNueva);
+            passActual = encriptador.encriptarIrreversible(passActual);
 
             if(manejaDb.cambioContraseña(passActual, passNueva) == 1) {
                 return "Cambio Exitoso";

@@ -5,16 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace BLL.Metodos {
+namespace Servicios.Metodos {
     public class Encriptador {
-        public string encriptar(string pass) {
+        public string encriptarIrreversible(string pass) {
 
             byte[] data = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(pass));
             StringBuilder builder = new StringBuilder();
-            for(int i = 0; i < data.Length; i++) {
+            for (int i = 0; i < data.Length; i++) {
                 builder.Append(data[i].ToString("x2"));
             }
             return builder.ToString();
+        }
+        public string encriptarReversible(string monto) {
+            byte[] bytes = Encoding.UTF8.GetBytes(monto);
+            return Convert.ToBase64String(bytes);
         }
     }
 }

@@ -33,9 +33,14 @@
             this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetProductos = new ProyectoTC2023.DataSetProductos();
             this.productoTableAdapter = new ProyectoTC2023.DataSetProductosTableAdapters.ProductoTableAdapter();
+            this.txtCantidadVentas = new System.Windows.Forms.TextBox();
+            this.btnSelectVentas = new System.Windows.Forms.Button();
+            this.lblCantidadVentas = new System.Windows.Forms.Label();
+            this.dgvCarrito = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvExistencias
@@ -98,11 +103,49 @@
             // 
             this.productoTableAdapter.ClearBeforeFill = true;
             // 
+            // txtCantidadVentas
+            // 
+            this.txtCantidadVentas.Location = new System.Drawing.Point(564, 142);
+            this.txtCantidadVentas.Name = "txtCantidadVentas";
+            this.txtCantidadVentas.Size = new System.Drawing.Size(137, 20);
+            this.txtCantidadVentas.TabIndex = 1;
+            // 
+            // btnSelectVentas
+            // 
+            this.btnSelectVentas.Location = new System.Drawing.Point(707, 140);
+            this.btnSelectVentas.Name = "btnSelectVentas";
+            this.btnSelectVentas.Size = new System.Drawing.Size(89, 23);
+            this.btnSelectVentas.TabIndex = 2;
+            this.btnSelectVentas.Text = "Seleccionar";
+            this.btnSelectVentas.UseVisualStyleBackColor = true;
+            this.btnSelectVentas.Click += new System.EventHandler(this.btnSelectVentas_Click);
+            // 
+            // lblCantidadVentas
+            // 
+            this.lblCantidadVentas.AutoSize = true;
+            this.lblCantidadVentas.Location = new System.Drawing.Point(561, 126);
+            this.lblCantidadVentas.Name = "lblCantidadVentas";
+            this.lblCantidadVentas.Size = new System.Drawing.Size(52, 13);
+            this.lblCantidadVentas.TabIndex = 3;
+            this.lblCantidadVentas.Text = "Cantidad:";
+            // 
+            // dgvCarrito
+            // 
+            this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarrito.Location = new System.Drawing.Point(12, 196);
+            this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.Size = new System.Drawing.Size(546, 150);
+            this.dgvCarrito.TabIndex = 4;
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvCarrito);
+            this.Controls.Add(this.lblCantidadVentas);
+            this.Controls.Add(this.btnSelectVentas);
+            this.Controls.Add(this.txtCantidadVentas);
             this.Controls.Add(this.dgvExistencias);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
@@ -110,7 +153,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistencias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,5 +170,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn marcaProductoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox txtCantidadVentas;
+        private System.Windows.Forms.Button btnSelectVentas;
+        private System.Windows.Forms.Label lblCantidadVentas;
+        private System.Windows.Forms.DataGridView dgvCarrito;
     }
 }
