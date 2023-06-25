@@ -14,10 +14,17 @@ namespace CUL.Entidades {
 		public Venta(string id, List<Producto> productosVendidos, Cliente cliente, string fecha) {
 			this.id = id;
 			this.productosVendidos = JsonConvert.SerializeObject(productosVendidos);
-			this.cliente = cliente;
+			this.idCliente = cliente.id;
 			this.fecha = fecha;
 			facturada = false;
 			calcularMontoYEncriptar(productosVendidos);
+		}
+		public Venta(string id, string productosVendidos, string idCliente, string fecha) {
+			this.id = id;
+			this.productosVendidos = productosVendidos;
+            this.idCliente = idCliente;
+			this.fecha = fecha;
+			facturada = true;
 		}
 
 		private string _id;
@@ -32,11 +39,11 @@ namespace CUL.Entidades {
 			get { return _productosVendidos; }
 			set { _productosVendidos = value; }
 		}
-		private Cliente _cliente;
+		private string _idCliente;
 
-		public Cliente cliente {
-			get { return _cliente; }
-			set { _cliente = value; }
+		public string idCliente {
+			get { return _idCliente; }
+			set { _idCliente = value; }
 		}
 		private string _fecha;
 

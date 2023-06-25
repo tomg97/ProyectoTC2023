@@ -89,6 +89,7 @@ namespace ProyectoTC2023 {
             if(validar.validarNoNuloNoVacio(numertoTarjeta, mesYAño, CCV)) {
                 if(manejaVenta.commitCarrito(clienteVacio) == "éxito") {
                     MessageBox.Show("La transacción fue exitosa y será guardada");
+                    Close();
                 }
             } else if (!validar.validarNoNuloNoVacio(numertoTarjeta)) {
                 MessageBox.Show("Se debe ingresar un número de tarjeta.");

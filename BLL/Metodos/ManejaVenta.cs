@@ -51,5 +51,11 @@ namespace BLL.Metodos {
             decimal subtotal = getSubtotalCarrito();
             return subtotal / Convert.ToDecimal(cuotas);
         }
+        public List<Venta> getVentasNoFacturadas() {
+            return manejaDbVenta.getVentasNoFacturadas();
+        }
+        public void facturarVenta(Venta venta) {
+            manejaDbVenta.facturarVenta(venta);
+        }
     }
 }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />
     <Compile Include="Entidades\SingletonSesion.cs" />

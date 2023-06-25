@@ -51,7 +51,9 @@ namespace ProyectoTC2023 {
         }
 
         private void tmiFacturar_Click(object sender, EventArgs e) {
-
+            FrmFacturas frmFacturas = new FrmFacturas();
+            frmFacturas.MdiParent = this;
+            frmFacturas.Show();
         }
     }
 }
