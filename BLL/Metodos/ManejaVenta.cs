@@ -30,5 +30,25 @@ namespace BLL.Metodos {
         public void vaciarCarrito() {
             SingletonCarrito.getInstance.vaciarCarrito();
         }
+        public string commitCarrito(Cliente cliente) {
+            string mensaje;
+            Guid uuid = Guid.NewGuid();
+            List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
+            Venta venta = new Venta(uuid.ToString(), carrito, cliente, DateTime.Now.ToString());
+            mensaje = manejaDbVenta.actualizarStock(carrito);
+            return mensaje;
+        }
+        public decimal getSubtotalCarrito() {
+            List<Producto> carrito = devolverCarrito();
+            decimal subtotal = 0;
+            foreach (Producto producto in carrito) {
+                subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
+            }            
+            return subtotal;
+        }
+        public decimal getSubtotalCuotas(string cuotas) {
+            decimal subtotal = getSubtotalCarrito();
+            return subtotal / Convert.ToDecimal(cuotas);
+        }
     }
 }

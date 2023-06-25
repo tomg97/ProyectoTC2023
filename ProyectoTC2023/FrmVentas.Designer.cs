@@ -39,8 +39,11 @@
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
             this.grpStockVentas = new System.Windows.Forms.GroupBox();
             this.grpCarrito = new System.Windows.Forms.GroupBox();
-            this.btnRemoverCarrito = new System.Windows.Forms.Button();
+            this.txtClienteVenta = new System.Windows.Forms.TextBox();
             this.btnVaciar = new System.Windows.Forms.Button();
+            this.btnRemoverCarrito = new System.Windows.Forms.Button();
+            this.lblAsignarCliente = new System.Windows.Forms.Label();
+            this.btnAsignarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetProductos)).BeginInit();
@@ -159,26 +162,27 @@
             // 
             // grpCarrito
             // 
+            this.grpCarrito.Controls.Add(this.btnAsignarCliente);
+            this.grpCarrito.Controls.Add(this.lblAsignarCliente);
+            this.grpCarrito.Controls.Add(this.txtClienteVenta);
             this.grpCarrito.Controls.Add(this.btnVaciar);
             this.grpCarrito.Controls.Add(this.btnRemoverCarrito);
             this.grpCarrito.Controls.Add(this.dgvCarrito);
             this.grpCarrito.Location = new System.Drawing.Point(-1, 237);
             this.grpCarrito.Name = "grpCarrito";
-            this.grpCarrito.Size = new System.Drawing.Size(796, 297);
+            this.grpCarrito.Size = new System.Drawing.Size(796, 187);
             this.grpCarrito.TabIndex = 6;
             this.grpCarrito.TabStop = false;
             this.grpCarrito.Text = "Carrito";
             this.grpCarrito.UseWaitCursor = true;
             // 
-            // btnRemoverCarrito
+            // txtClienteVenta
             // 
-            this.btnRemoverCarrito.Location = new System.Drawing.Point(558, 19);
-            this.btnRemoverCarrito.Name = "btnRemoverCarrito";
-            this.btnRemoverCarrito.Size = new System.Drawing.Size(116, 23);
-            this.btnRemoverCarrito.TabIndex = 4;
-            this.btnRemoverCarrito.Text = "Remover Selección";
-            this.btnRemoverCarrito.UseVisualStyleBackColor = true;
-            this.btnRemoverCarrito.Click += new System.EventHandler(this.btnRemoverCarrito_Click);
+            this.txtClienteVenta.Location = new System.Drawing.Point(558, 149);
+            this.txtClienteVenta.Name = "txtClienteVenta";
+            this.txtClienteVenta.Size = new System.Drawing.Size(152, 20);
+            this.txtClienteVenta.TabIndex = 6;
+            this.txtClienteVenta.UseWaitCursor = true;
             // 
             // btnVaciar
             // 
@@ -188,13 +192,44 @@
             this.btnVaciar.TabIndex = 5;
             this.btnVaciar.Text = "Vaciar";
             this.btnVaciar.UseVisualStyleBackColor = true;
+            this.btnVaciar.UseWaitCursor = true;
             this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
+            // 
+            // btnRemoverCarrito
+            // 
+            this.btnRemoverCarrito.Location = new System.Drawing.Point(558, 19);
+            this.btnRemoverCarrito.Name = "btnRemoverCarrito";
+            this.btnRemoverCarrito.Size = new System.Drawing.Size(116, 23);
+            this.btnRemoverCarrito.TabIndex = 4;
+            this.btnRemoverCarrito.Text = "Remover Selección";
+            this.btnRemoverCarrito.UseVisualStyleBackColor = true;
+            this.btnRemoverCarrito.UseWaitCursor = true;
+            this.btnRemoverCarrito.Click += new System.EventHandler(this.btnRemoverCarrito_Click);
+            // 
+            // lblAsignarCliente
+            // 
+            this.lblAsignarCliente.AutoSize = true;
+            this.lblAsignarCliente.Location = new System.Drawing.Point(555, 133);
+            this.lblAsignarCliente.Name = "lblAsignarCliente";
+            this.lblAsignarCliente.Size = new System.Drawing.Size(157, 13);
+            this.lblAsignarCliente.TabIndex = 7;
+            this.lblAsignarCliente.Text = "Asignar DNI de cliente a carrito:";
+            // 
+            // btnAsignarCliente
+            // 
+            this.btnAsignarCliente.Location = new System.Drawing.Point(716, 147);
+            this.btnAsignarCliente.Name = "btnAsignarCliente";
+            this.btnAsignarCliente.Size = new System.Drawing.Size(74, 23);
+            this.btnAsignarCliente.TabIndex = 8;
+            this.btnAsignarCliente.Text = "Datos Pago";
+            this.btnAsignarCliente.UseVisualStyleBackColor = true;
+            this.btnAsignarCliente.Click += new System.EventHandler(this.btnAsignarCliente_Click);
             // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 604);
+            this.ClientSize = new System.Drawing.Size(806, 435);
             this.Controls.Add(this.grpCarrito);
             this.Controls.Add(this.grpStockVentas);
             this.Name = "FrmVentas";
@@ -207,6 +242,7 @@
             this.grpStockVentas.ResumeLayout(false);
             this.grpStockVentas.PerformLayout();
             this.grpCarrito.ResumeLayout(false);
+            this.grpCarrito.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +266,8 @@
         private System.Windows.Forms.GroupBox grpCarrito;
         private System.Windows.Forms.Button btnVaciar;
         private System.Windows.Forms.Button btnRemoverCarrito;
+        private System.Windows.Forms.TextBox txtClienteVenta;
+        private System.Windows.Forms.Button btnAsignarCliente;
+        private System.Windows.Forms.Label lblAsignarCliente;
     }
 }

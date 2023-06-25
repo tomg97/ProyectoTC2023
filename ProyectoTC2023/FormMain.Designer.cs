@@ -42,6 +42,8 @@
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiSeleccionYCarrito = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiFacturar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,6 +167,9 @@
             // 
             // ventasToolStripMenuItem
             // 
+            this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmiSeleccionYCarrito,
+            this.tmiFacturar});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -187,6 +192,20 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // tmiSeleccionYCarrito
+            // 
+            this.tmiSeleccionYCarrito.Name = "tmiSeleccionYCarrito";
+            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(180, 22);
+            this.tmiSeleccionYCarrito.Text = "Seleccion Y Carrito";
+            this.tmiSeleccionYCarrito.Click += new System.EventHandler(this.tmiSeleccionYCarrito_Click);
+            // 
+            // tmiFacturar
+            // 
+            this.tmiFacturar.Name = "tmiFacturar";
+            this.tmiFacturar.Size = new System.Drawing.Size(180, 22);
+            this.tmiFacturar.Text = "Facturar";
+            this.tmiFacturar.Click += new System.EventHandler(this.tmiFacturar_Click);
             // 
             // FormMain
             // 
@@ -226,6 +245,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiArchivo;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiLogin;
+        private System.Windows.Forms.ToolStripMenuItem tmiSeleccionYCarrito;
+        private System.Windows.Forms.ToolStripMenuItem tmiFacturar;
     }
 }
 

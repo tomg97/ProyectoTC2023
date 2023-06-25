@@ -41,9 +41,17 @@ namespace ProyectoTC2023 {
         }
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e) {
+            
+        }
+
+        private void tmiSeleccionYCarrito_Click(object sender, EventArgs e) {
             FrmVentas frmVentas = new FrmVentas();
             frmVentas.MdiParent = this;
             frmVentas.Show();
+        }
+
+        private void tmiFacturar_Click(object sender, EventArgs e) {
+
         }
     }
 }
