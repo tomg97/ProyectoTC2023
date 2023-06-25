@@ -41,7 +41,7 @@
             this.lblCuotas = new System.Windows.Forms.Label();
             this.txtMesTarjeta = new System.Windows.Forms.TextBox();
             this.lblTipoTarjeta = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCCV = new System.Windows.Forms.TextBox();
             this.lblCCV = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCuotas = new System.Windows.Forms.TextBox();
@@ -176,7 +176,7 @@
             this.gbDatosPago.Controls.Add(this.lblCuotas);
             this.gbDatosPago.Controls.Add(this.txtMesTarjeta);
             this.gbDatosPago.Controls.Add(this.lblTipoTarjeta);
-            this.gbDatosPago.Controls.Add(this.textBox3);
+            this.gbDatosPago.Controls.Add(this.txtCCV);
             this.gbDatosPago.Controls.Add(this.lblCCV);
             this.gbDatosPago.Controls.Add(this.label4);
             this.gbDatosPago.Controls.Add(this.txtCuotas);
@@ -220,6 +220,7 @@
             this.txtMesTarjeta.Name = "txtMesTarjeta";
             this.txtMesTarjeta.Size = new System.Drawing.Size(42, 20);
             this.txtMesTarjeta.TabIndex = 1;
+            this.txtMesTarjeta.TextChanged += new System.EventHandler(this.validarTxtMes);
             // 
             // lblTipoTarjeta
             // 
@@ -230,12 +231,12 @@
             this.lblTipoTarjeta.TabIndex = 8;
             this.lblTipoTarjeta.Text = "Tipo";
             // 
-            // textBox3
+            // txtCCV
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(42, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtCCV.Location = new System.Drawing.Point(6, 127);
+            this.txtCCV.Name = "txtCCV";
+            this.txtCCV.Size = new System.Drawing.Size(42, 20);
+            this.txtCCV.TabIndex = 2;
             // 
             // lblCCV
             // 
@@ -352,7 +353,7 @@
         private System.Windows.Forms.Label lblCuotas;
         private System.Windows.Forms.TextBox txtMesTarjeta;
         private System.Windows.Forms.Label lblTipoTarjeta;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCCV;
         private System.Windows.Forms.Label lblCCV;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCuotas;

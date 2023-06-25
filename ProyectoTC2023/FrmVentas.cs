@@ -77,6 +77,10 @@ namespace ProyectoTC2023 {
             FrmClientes frmClientes = new FrmClientes(proposito);
             frmClientes.Show();
         }
+        private void mostrarFrmClientes(Cliente cliente) {
+            FrmClientes frmClientes = new FrmClientes(cliente);
+            frmClientes.Show();
+        }
 
         private void btnAsignarCliente_Click(object sender, EventArgs e) {
             string idCliente = txtClienteVenta.Text;
@@ -85,11 +89,15 @@ namespace ProyectoTC2023 {
                 string mensajeVuelta = manejaCliente.lookupCliente(idCliente);
                 if (mensajeVuelta == "Cliente encontrado") {
                     MessageBox.Show(mensajeVuelta + ", se procederá a introducir los datos de pago.");
-                    mostrarFrmClientes("Datos Pago");
+                    mostrarFrmClientes(new Cliente(idCliente));
                 } else {
                     MessageBox.Show("No se ha encontrado el cliente. Se procederá a la pantalla de alta de cliente.");
-                    mostrarFrmClientes("Registro Cliente");
+                    mostrarFrmClientes(idCliente);
                 }
+            } else if(!validarCampos.validarNoNuloNoVacio(idCliente)) {
+                MessageBox.Show("Se debe introducir un número de cliente");
+            } else if (!validarCampos.validarMayor0(dgvCarrito.Rows.Count)) {
+                MessageBox.Show("No hay productos en el carrito.");
             }
         }
     }

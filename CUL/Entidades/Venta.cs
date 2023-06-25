@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CUL.Entidades {
     public class Venta {
@@ -12,11 +13,18 @@ namespace CUL.Entidades {
 		}
 		public Venta(string id, List<Producto> productosVendidos, Cliente cliente, string fecha) {
 			this.id = id;
-			this.productosVendidos = productosVendidos;
-			this.cliente = cliente;
+			this.productosVendidos = JsonConvert.SerializeObject(productosVendidos);
+			this.idCliente = cliente.id;
 			this.fecha = fecha;
 			facturada = false;
-			calcularMontoYEncriptar();
+			calcularMontoYEncriptar(productosVendidos);
+		}
+		public Venta(string id, string productosVendidos, string idCliente, string fecha) {
+			this.id = id;
+			this.productosVendidos = productosVendidos;
+            this.idCliente = idCliente;
+			this.fecha = fecha;
+			facturada = true;
 		}
 
 		private string _id;
@@ -25,17 +33,17 @@ namespace CUL.Entidades {
 			get { return _id; }
 			set { _id = value; }
 		}
-		private List<Producto> _productosVendidos;
+		private string _productosVendidos;
 
-		public List<Producto> productosVendidos {
+		public string productosVendidos {
 			get { return _productosVendidos; }
 			set { _productosVendidos = value; }
 		}
-		private Cliente _cliente;
+		private string _idCliente;
 
-		public Cliente cliente {
-			get { return _cliente; }
-			set { _cliente = value; }
+		public string idCliente {
+			get { return _idCliente; }
+			set { _idCliente = value; }
 		}
 		private string _fecha;
 
@@ -51,9 +59,13 @@ namespace CUL.Entidades {
 		}
 		private bool facturada;
 		
-		public void calcularMontoYEncriptar() {
+		public void calcularMontoYEncriptar(List<Producto> productosVendidos) {
 			Encriptador encriptador = new Encriptador();
-			string montoNoEncriptado = productosVendidos.Sum(producto => Convert.ToInt32(producto.precio)).ToString();
+            decimal subtotal = 0;
+            foreach (Producto producto in productosVendidos) {
+                subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
+            }
+			string montoNoEncriptado = subtotal.ToString();
 			monto = encriptador.encriptarReversible(montoNoEncriptado);
 		}
 	}
