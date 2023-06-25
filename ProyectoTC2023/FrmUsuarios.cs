@@ -17,7 +17,7 @@ namespace ProyectoTC2023 {
             InitializeComponent();
         }
         ValidarCampos validar = new ValidarCampos();
-        ResultadosDb resultadosDb = new ResultadosDb();
+        ManejaUsuarios resultadosDb = new ManejaUsuarios();
 
         private void btnCambiar_Click(object sender, EventArgs e) {
             string passActual = txtPassActual.Text;

@@ -18,8 +18,10 @@ namespace Servicios.Metodos {
         public bool validarListaNoNulaNoVacia<T>(List<T> listaAChequear) {
             return listaAChequear != null && listaAChequear.Count > 0;
         }
-        public bool validarMayor0(int valor) {
-            return valor > 0;
+        public bool validarMayor0(params int[] valores) {
+            foreach (int valor in valores) {
+                return valor > 0;
+            }
         }
         public bool validarSoloNumero(string valor) {
             return Regex.IsMatch(valor, @"^[0-9]+$");

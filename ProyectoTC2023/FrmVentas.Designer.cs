@@ -37,10 +37,16 @@
             this.btnSelectVentas = new System.Windows.Forms.Button();
             this.lblCantidadVentas = new System.Windows.Forms.Label();
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
+            this.grpStockVentas = new System.Windows.Forms.GroupBox();
+            this.grpCarrito = new System.Windows.Forms.GroupBox();
+            this.btnRemoverCarrito = new System.Windows.Forms.Button();
+            this.btnVaciar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
+            this.grpStockVentas.SuspendLayout();
+            this.grpCarrito.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvExistencias
@@ -54,7 +60,7 @@
             this.cantidadDataGridViewTextBoxColumn,
             this.precioDataGridViewTextBoxColumn});
             this.dgvExistencias.DataSource = this.productoBindingSource;
-            this.dgvExistencias.Location = new System.Drawing.Point(12, 12);
+            this.dgvExistencias.Location = new System.Drawing.Point(6, 19);
             this.dgvExistencias.Name = "dgvExistencias";
             this.dgvExistencias.Size = new System.Drawing.Size(546, 150);
             this.dgvExistencias.TabIndex = 0;
@@ -105,14 +111,14 @@
             // 
             // txtCantidadVentas
             // 
-            this.txtCantidadVentas.Location = new System.Drawing.Point(564, 142);
+            this.txtCantidadVentas.Location = new System.Drawing.Point(558, 149);
             this.txtCantidadVentas.Name = "txtCantidadVentas";
             this.txtCantidadVentas.Size = new System.Drawing.Size(137, 20);
             this.txtCantidadVentas.TabIndex = 1;
             // 
             // btnSelectVentas
             // 
-            this.btnSelectVentas.Location = new System.Drawing.Point(707, 140);
+            this.btnSelectVentas.Location = new System.Drawing.Point(701, 147);
             this.btnSelectVentas.Name = "btnSelectVentas";
             this.btnSelectVentas.Size = new System.Drawing.Size(89, 23);
             this.btnSelectVentas.TabIndex = 2;
@@ -123,7 +129,7 @@
             // lblCantidadVentas
             // 
             this.lblCantidadVentas.AutoSize = true;
-            this.lblCantidadVentas.Location = new System.Drawing.Point(561, 126);
+            this.lblCantidadVentas.Location = new System.Drawing.Point(555, 133);
             this.lblCantidadVentas.Name = "lblCantidadVentas";
             this.lblCantidadVentas.Size = new System.Drawing.Size(52, 13);
             this.lblCantidadVentas.TabIndex = 3;
@@ -132,21 +138,64 @@
             // dgvCarrito
             // 
             this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarrito.Location = new System.Drawing.Point(12, 196);
+            this.dgvCarrito.Location = new System.Drawing.Point(6, 19);
             this.dgvCarrito.Name = "dgvCarrito";
             this.dgvCarrito.Size = new System.Drawing.Size(546, 150);
             this.dgvCarrito.TabIndex = 4;
+            this.dgvCarrito.UseWaitCursor = true;
+            // 
+            // grpStockVentas
+            // 
+            this.grpStockVentas.Controls.Add(this.dgvExistencias);
+            this.grpStockVentas.Controls.Add(this.txtCantidadVentas);
+            this.grpStockVentas.Controls.Add(this.lblCantidadVentas);
+            this.grpStockVentas.Controls.Add(this.btnSelectVentas);
+            this.grpStockVentas.Location = new System.Drawing.Point(-1, 2);
+            this.grpStockVentas.Name = "grpStockVentas";
+            this.grpStockVentas.Size = new System.Drawing.Size(796, 229);
+            this.grpStockVentas.TabIndex = 5;
+            this.grpStockVentas.TabStop = false;
+            this.grpStockVentas.Text = "Existencias";
+            // 
+            // grpCarrito
+            // 
+            this.grpCarrito.Controls.Add(this.btnVaciar);
+            this.grpCarrito.Controls.Add(this.btnRemoverCarrito);
+            this.grpCarrito.Controls.Add(this.dgvCarrito);
+            this.grpCarrito.Location = new System.Drawing.Point(-1, 237);
+            this.grpCarrito.Name = "grpCarrito";
+            this.grpCarrito.Size = new System.Drawing.Size(796, 297);
+            this.grpCarrito.TabIndex = 6;
+            this.grpCarrito.TabStop = false;
+            this.grpCarrito.Text = "Carrito";
+            this.grpCarrito.UseWaitCursor = true;
+            // 
+            // btnRemoverCarrito
+            // 
+            this.btnRemoverCarrito.Location = new System.Drawing.Point(558, 19);
+            this.btnRemoverCarrito.Name = "btnRemoverCarrito";
+            this.btnRemoverCarrito.Size = new System.Drawing.Size(116, 23);
+            this.btnRemoverCarrito.TabIndex = 4;
+            this.btnRemoverCarrito.Text = "Remover Selección";
+            this.btnRemoverCarrito.UseVisualStyleBackColor = true;
+            this.btnRemoverCarrito.Click += new System.EventHandler(this.btnRemoverCarrito_Click);
+            // 
+            // btnVaciar
+            // 
+            this.btnVaciar.Location = new System.Drawing.Point(558, 58);
+            this.btnVaciar.Name = "btnVaciar";
+            this.btnVaciar.Size = new System.Drawing.Size(116, 23);
+            this.btnVaciar.TabIndex = 5;
+            this.btnVaciar.Text = "Vaciar";
+            this.btnVaciar.UseVisualStyleBackColor = true;
             // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvCarrito);
-            this.Controls.Add(this.lblCantidadVentas);
-            this.Controls.Add(this.btnSelectVentas);
-            this.Controls.Add(this.txtCantidadVentas);
-            this.Controls.Add(this.dgvExistencias);
+            this.ClientSize = new System.Drawing.Size(939, 604);
+            this.Controls.Add(this.grpCarrito);
+            this.Controls.Add(this.grpStockVentas);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
             this.Load += new System.EventHandler(this.FrmVentas_Load);
@@ -154,8 +203,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
+            this.grpStockVentas.ResumeLayout(false);
+            this.grpStockVentas.PerformLayout();
+            this.grpCarrito.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -174,5 +225,9 @@
         private System.Windows.Forms.Button btnSelectVentas;
         private System.Windows.Forms.Label lblCantidadVentas;
         private System.Windows.Forms.DataGridView dgvCarrito;
+        private System.Windows.Forms.GroupBox grpStockVentas;
+        private System.Windows.Forms.GroupBox grpCarrito;
+        private System.Windows.Forms.Button btnVaciar;
+        private System.Windows.Forms.Button btnRemoverCarrito;
     }
 }

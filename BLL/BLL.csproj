@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metodos\ManejaCliente.cs" />
     <Compile Include="Metodos\ManejaVenta.cs" />
-    <Compile Include="Metodos\ResultadosDb.cs" />
+    <Compile Include="Metodos\ManejaUsuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
