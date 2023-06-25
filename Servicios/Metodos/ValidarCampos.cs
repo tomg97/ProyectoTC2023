@@ -27,5 +27,8 @@ namespace Servicios.Metodos {
         public bool validarSoloTexto(string valor) {
             return Regex.IsMatch(valor, @"^[A-Za-z]+$");
         }
+        public bool validarCuotas(string valor) {
+            return Regex.IsMatch(valor, @"^(1|3|6|9|12)$");
+        }
     }
 }

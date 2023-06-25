@@ -48,16 +48,21 @@ namespace ProyectoTC2023 {
         }
 
         private void btnRemoverCarrito_Click(object sender, EventArgs e) {
-            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarMayor0(dgvCarrito.SelectedRows.Count)){
-                DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
-                Producto producto = (Producto)selectedRow.DataBoundItem;
-                manejaVenta.removerDelCarrito(producto);
-                setDataGridViewCarrito();
+            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count)){
+                try {
+                    DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
+                    Producto producto = (Producto)selectedRow.DataBoundItem;
+                    manejaVenta.removerDelCarrito(producto);
+                    setDataGridViewCarrito();
+                } catch (ArgumentOutOfRangeException ex) {
+                    MessageBox.Show("Se debe seleccionar una fila de la lista");
+                }
             }
+            MessageBox.Show("No hay elementos en el carrito.");
         }
         private void setDataGridViewCarrito() {
             dgvCarrito.DataSource = null;
-            dgvCarrito.DataSource = SingletonCarrito.getInstance.getCarrito();
+            dgvCarrito.DataSource = manejaVenta.devolverCarrito();
         }
         private void setDataGridViewExistencias() {
             dgvExistencias.DataSource = null;
@@ -67,6 +72,25 @@ namespace ProyectoTC2023 {
         private void btnVaciar_Click(object sender, EventArgs e) {
             manejaVenta.vaciarCarrito();
             setDataGridViewCarrito();
+        }
+        private void mostrarFrmClientes(string proposito) {
+            FrmClientes frmClientes = new FrmClientes(proposito);
+            frmClientes.Show();
+        }
+
+        private void btnAsignarCliente_Click(object sender, EventArgs e) {
+            string idCliente = txtClienteVenta.Text;
+            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarNoNuloNoVacio(idCliente)) {
+                ManejaCliente manejaCliente = new ManejaCliente();
+                string mensajeVuelta = manejaCliente.lookupCliente(idCliente);
+                if (mensajeVuelta == "Cliente encontrado") {
+                    MessageBox.Show(mensajeVuelta + ", se procederá a introducir los datos de pago.");
+                    mostrarFrmClientes("Datos Pago");
+                } else {
+                    MessageBox.Show("No se ha encontrado el cliente. Se procederá a la pantalla de alta de cliente.");
+                    mostrarFrmClientes("Registro Cliente");
+                }
+            }
         }
     }
 }

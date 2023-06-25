@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace CUL.Entidades {
     public class Cliente {
 		public Cliente() { }
+		public Cliente(string id) {
+			this.id = id;
+		}
 		public Cliente(string id, string nombre, string apellido, string domicilio, string telefono) {
 			setIdCliente(id);
 			this.nombre = nombre;

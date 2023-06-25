@@ -42,7 +42,7 @@
             this.comboBox1.Location = new System.Drawing.Point(311, 26);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 14;
+            this.comboBox1.TabIndex = 7;
             // 
             // lblLang
             // 
@@ -50,7 +50,7 @@
             this.lblLang.Location = new System.Drawing.Point(308, 9);
             this.lblLang.Name = "lblLang";
             this.lblLang.Size = new System.Drawing.Size(38, 13);
-            this.lblLang.TabIndex = 13;
+            this.lblLang.TabIndex = 8;
             this.lblLang.Text = "Idioma";
             // 
             // lblPass
@@ -59,7 +59,7 @@
             this.lblPass.Location = new System.Drawing.Point(15, 88);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(61, 13);
-            this.lblPass.TabIndex = 12;
+            this.lblPass.TabIndex = 5;
             this.lblPass.Text = "Contraseña";
             // 
             // lblUsu
@@ -68,7 +68,7 @@
             this.lblUsu.Location = new System.Drawing.Point(12, 9);
             this.lblUsu.Name = "lblUsu";
             this.lblUsu.Size = new System.Drawing.Size(98, 13);
-            this.lblUsu.TabIndex = 11;
+            this.lblUsu.TabIndex = 4;
             this.lblUsu.Text = "Nombre de Usuario";
             // 
             // txtPass
@@ -76,21 +76,21 @@
             this.txtPass.Location = new System.Drawing.Point(15, 104);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(170, 20);
-            this.txtPass.TabIndex = 10;
+            this.txtPass.TabIndex = 2;
             // 
             // txtUsu
             // 
             this.txtUsu.Location = new System.Drawing.Point(15, 25);
             this.txtUsu.Name = "txtUsu";
             this.txtUsu.Size = new System.Drawing.Size(170, 20);
-            this.txtUsu.TabIndex = 9;
+            this.txtUsu.TabIndex = 1;
             // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(191, 76);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(112, 48);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -100,7 +100,7 @@
             this.btnSinSesion.Location = new System.Drawing.Point(311, 76);
             this.btnSinSesion.Name = "btnSinSesion";
             this.btnSinSesion.Size = new System.Drawing.Size(112, 48);
-            this.btnSinSesion.TabIndex = 15;
+            this.btnSinSesion.TabIndex = 6;
             this.btnSinSesion.Text = "Continuar sin sesión";
             this.btnSinSesion.UseVisualStyleBackColor = true;
             this.btnSinSesion.Click += new System.EventHandler(this.btnSinSesion_Click);

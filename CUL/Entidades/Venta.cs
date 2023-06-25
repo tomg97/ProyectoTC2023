@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {
     public class Venta {
+		public Venta() {
+
+		}
+		public Venta(string id, List<Producto> productosVendidos, Cliente cliente, string fecha) {
+			this.id = id;
+			this.productosVendidos = productosVendidos;
+			this.cliente = cliente;
+			this.fecha = fecha;
+			facturada = false;
+			calcularMontoYEncriptar();
+		}
+
 		private string _id;
 
 		public string id {
@@ -37,11 +49,12 @@ namespace CUL.Entidades {
 			get { return _monto; }
 			set { _monto = value; }
 		}
+		private bool facturada;
+		
 		public void calcularMontoYEncriptar() {
 			Encriptador encriptador = new Encriptador();
 			string montoNoEncriptado = productosVendidos.Sum(producto => Convert.ToInt32(producto.precio)).ToString();
 			monto = encriptador.encriptarReversible(montoNoEncriptado);
 		}
-
 	}
 }

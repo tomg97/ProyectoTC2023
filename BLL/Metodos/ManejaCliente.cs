@@ -1,5 +1,6 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,15 @@ namespace BLL.Metodos {
             return manejaDbClientes.crearCliente(cliente);
         }
         public string lookupCliente(string id) {
+            Encriptador encriptador = new Encriptador();
             string mensaje;
-            int resultado = manejaDbClientes.lookupCliente(id);
+            int resultado = manejaDbClientes.lookupCliente(encriptador.encriptarReversible(id));
             switch (resultado) {
                 case 1:
-                    mensaje = "Cliente Encontrado";
+                    mensaje = "Cliente encontrado";
                     break;
                 case 0:
-                    mensaje = "Cliente No Encontrado";
+                    mensaje = "Cliente no encontrado";
                     break;
                 default:
                     mensaje = "Desconocido";
