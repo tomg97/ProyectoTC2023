@@ -145,7 +145,6 @@
             this.dgvCarrito.Name = "dgvCarrito";
             this.dgvCarrito.Size = new System.Drawing.Size(546, 150);
             this.dgvCarrito.TabIndex = 4;
-            this.dgvCarrito.UseWaitCursor = true;
             // 
             // grpStockVentas
             // 
@@ -174,7 +173,6 @@
             this.grpCarrito.TabIndex = 6;
             this.grpCarrito.TabStop = false;
             this.grpCarrito.Text = "Carrito";
-            this.grpCarrito.UseWaitCursor = true;
             // 
             // txtClienteVenta
             // 
@@ -182,7 +180,6 @@
             this.txtClienteVenta.Name = "txtClienteVenta";
             this.txtClienteVenta.Size = new System.Drawing.Size(152, 20);
             this.txtClienteVenta.TabIndex = 6;
-            this.txtClienteVenta.UseWaitCursor = true;
             // 
             // btnVaciar
             // 
@@ -192,7 +189,6 @@
             this.btnVaciar.TabIndex = 5;
             this.btnVaciar.Text = "Vaciar";
             this.btnVaciar.UseVisualStyleBackColor = true;
-            this.btnVaciar.UseWaitCursor = true;
             this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
             // 
             // btnRemoverCarrito
@@ -203,7 +199,6 @@
             this.btnRemoverCarrito.TabIndex = 4;
             this.btnRemoverCarrito.Text = "Remover Selección";
             this.btnRemoverCarrito.UseVisualStyleBackColor = true;
-            this.btnRemoverCarrito.UseWaitCursor = true;
             this.btnRemoverCarrito.Click += new System.EventHandler(this.btnRemoverCarrito_Click);
             // 
             // lblAsignarCliente

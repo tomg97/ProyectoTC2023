@@ -44,6 +44,7 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiSeleccionYCarrito = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiFacturar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiDespachar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,7 +170,8 @@
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tmiSeleccionYCarrito,
-            this.tmiFacturar});
+            this.tmiFacturar,
+            this.tmiDespachar});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -206,6 +208,12 @@
             this.tmiFacturar.Size = new System.Drawing.Size(180, 22);
             this.tmiFacturar.Text = "Facturar";
             this.tmiFacturar.Click += new System.EventHandler(this.tmiFacturar_Click);
+            // 
+            // tmiDespachar
+            // 
+            this.tmiDespachar.Name = "tmiDespachar";
+            this.tmiDespachar.Size = new System.Drawing.Size(180, 22);
+            this.tmiDespachar.Text = "Despachar";
             // 
             // FormMain
             // 
@@ -247,6 +255,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiLogin;
         private System.Windows.Forms.ToolStripMenuItem tmiSeleccionYCarrito;
         private System.Windows.Forms.ToolStripMenuItem tmiFacturar;
+        private System.Windows.Forms.ToolStripMenuItem tmiDespachar;
     }
 }
 

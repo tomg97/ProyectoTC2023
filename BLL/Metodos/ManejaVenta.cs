@@ -36,6 +36,7 @@ namespace BLL.Metodos {
             List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
             Venta venta = new Venta(uuid.ToString(), carrito, cliente, DateTime.Now.ToString());
             mensaje = manejaDbVenta.actualizarStock(carrito);
+            manejaDbVenta.crearVentaNoFacturada(venta);
             return mensaje;
         }
         public decimal getSubtotalCarrito() {

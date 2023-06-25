@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CUL.Entidades {
     public class Venta {
@@ -12,11 +13,11 @@ namespace CUL.Entidades {
 		}
 		public Venta(string id, List<Producto> productosVendidos, Cliente cliente, string fecha) {
 			this.id = id;
-			this.productosVendidos = productosVendidos;
+			this.productosVendidos = JsonConvert.SerializeObject(productosVendidos);
 			this.cliente = cliente;
 			this.fecha = fecha;
 			facturada = false;
-			calcularMontoYEncriptar();
+			calcularMontoYEncriptar(productosVendidos);
 		}
 
 		private string _id;
@@ -25,9 +26,9 @@ namespace CUL.Entidades {
 			get { return _id; }
 			set { _id = value; }
 		}
-		private List<Producto> _productosVendidos;
+		private string _productosVendidos;
 
-		public List<Producto> productosVendidos {
+		public string productosVendidos {
 			get { return _productosVendidos; }
 			set { _productosVendidos = value; }
 		}
@@ -51,9 +52,13 @@ namespace CUL.Entidades {
 		}
 		private bool facturada;
 		
-		public void calcularMontoYEncriptar() {
+		public void calcularMontoYEncriptar(List<Producto> productosVendidos) {
 			Encriptador encriptador = new Encriptador();
-			string montoNoEncriptado = productosVendidos.Sum(producto => Convert.ToInt32(producto.precio)).ToString();
+            decimal subtotal = 0;
+            foreach (Producto producto in productosVendidos) {
+                subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
+            }
+			string montoNoEncriptado = subtotal.ToString();
 			monto = encriptador.encriptarReversible(montoNoEncriptado);
 		}
 	}
