@@ -24,7 +24,7 @@ namespace ProyectoTC2023 {
             string pass = txtPass.Text;
             if (validarCampos.validarNoNuloNoVacio(nomUsu, pass)) {
                 Usuario usuario = new Usuario() { nomUsu = nomUsu, pass = pass };
-                ResultadosDb stepAuth = new ResultadosDb();
+                ManejaUsuarios stepAuth = new ManejaUsuarios();
                 string message = stepAuth.loginProcedimiento(usuario);
                 MessageBox.Show(message);
                 if(message == "Exito") {

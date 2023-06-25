@@ -9,8 +9,8 @@ using DAL.Metodos;
 using Servicios.Metodos;
 
 namespace BLL.Metodos {
-    public class ResultadosDb {
-        ManejaDb manejaDb = new ManejaDb();
+    public class ManejaUsuarios {
+        ManejaDbUsuarios manejaDb = new ManejaDbUsuarios();
         Encriptador encriptador = new Encriptador();
         public string loginProcedimiento(Usuario usuario) {
             try {

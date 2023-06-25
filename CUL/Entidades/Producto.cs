@@ -13,6 +13,7 @@ namespace CUL.Entidades {
 			this.cantidad = Convert.ToInt32(cantidad);
 			this.precio = precio;
 		}
+		public Producto() { }
 		private string _nombreProducto;
 
 		public string nombreProducto {

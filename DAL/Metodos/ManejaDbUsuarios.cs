@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using CUL.Entidades;
 
 namespace DAL.Metodos {
-    public class ManejaDb {
+    public class ManejaDbUsuarios {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
         public int authUsuario(Usuario usuario) {
             int resultado = -1;

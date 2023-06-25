@@ -27,7 +27,7 @@ namespace ProyectoTC2023 {
                 cmbUsusBloq.DisplayMember = "nomUsu";
             }
         }
-        ResultadosDb resultadosDb = new ResultadosDb();
+        ManejaUsuarios resultadosDb = new ManejaUsuarios();
         ValidarCampos validar = new ValidarCampos();
 
         private void btnVerif_Click(object sender, EventArgs e) {

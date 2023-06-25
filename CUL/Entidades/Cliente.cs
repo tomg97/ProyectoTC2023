@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios.Metodos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {
     public class Cliente {
+		public Cliente() { }
+		public Cliente(string id, string nombre, string apellido, string domicilio, string telefono) {
+			setIdCliente(id);
+			this.nombre = nombre;
+			this.apellido = apellido;
+			setDomicilioCliente(domicilio);
+            setTelefonoCliente(telefono);
+        }
 		private string _id;
 
 		public string id {
@@ -36,6 +45,17 @@ namespace CUL.Entidades {
 			get { return _telefono; }
 			set { _telefono = value; }
 		}
-
+		public void setIdCliente(string idAEncriptar) {
+			Encriptador encriptador = new Encriptador();
+			id = encriptador.encriptarReversible(idAEncriptar);
+		}
+		public void setDomicilioCliente(string domicilioAEncriptar) {
+			Encriptador encriptador = new Encriptador();
+			domicilio = encriptador.encriptarReversible(domicilioAEncriptar);
+		}
+		public void setTelefonoCliente(string telefonoAEncriptar) {
+			Encriptador encriptador = new Encriptador();
+			telefono = encriptador.encriptarReversible(telefonoAEncriptar);
+		}
 	}
 }

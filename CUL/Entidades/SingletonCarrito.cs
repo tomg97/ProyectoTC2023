@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios.Metodos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace CUL.Entidades {
     public sealed class SingletonCarrito {
         private static SingletonCarrito instance = null;
         private static readonly object lockObject = new object();
-        private List<Producto> listaProductosSeleccionados;
+        private List<Producto> carrito;
         private List<Producto> listaProductosEnStock;
         private SingletonCarrito() {
 
@@ -26,22 +27,29 @@ namespace CUL.Entidades {
             }
         }
         public void agregarProducto(Producto producto) {
-            if (listaProductosSeleccionados == null) {
-                listaProductosSeleccionados = new List<Producto>();
+            ValidarCampos validar = new ValidarCampos();
+            if (!validar.validarListaNoNulaNoVacia(carrito)) {
+                carrito = new List<Producto>();
             }
-            listaProductosSeleccionados.Add(producto);
+            carrito.Add(producto);
         }
-        public void vaciarLista() {
-            listaProductosSeleccionados = null;
+        public void vaciarCarrito() {
+            carrito = null;
         }
         public void cargarListaStock(List<Producto> productos) {
             listaProductosEnStock = productos;
         }
-        public List<Producto> getListaProductos(string seleccion) {
-            if(seleccion == "carrito") {
-                return listaProductosSeleccionados;
-            }
+        public List<Producto> getCarrito() {
+            return carrito;
+        }
+        public List<Producto> getExistencias() {
             return listaProductosEnStock;
+        }
+        public void removerDeCarrito(Producto productoARemover) {
+            ValidarCampos validar = new ValidarCampos();
+            if (validar.validarListaNoNulaNoVacia(carrito)) {
+                carrito.Remove(productoARemover);
+            }
         }
     }
 }
