@@ -188,6 +188,7 @@
             this.btnVaciar.TabIndex = 5;
             this.btnVaciar.Text = "Vaciar";
             this.btnVaciar.UseVisualStyleBackColor = true;
+            this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
             // 
             // FrmVentas
             // 

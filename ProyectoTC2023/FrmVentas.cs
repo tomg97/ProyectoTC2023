@@ -20,36 +20,53 @@ namespace ProyectoTC2023 {
         }
 
         private void FrmVentas_Load(object sender, EventArgs e) {
-            dgvExistencias.DataSource = null;
-            dgvExistencias.DataSource = manejaVenta.getListaProductosEnStock();
-
+            setDataGridViewExistencias();
         }
 
         private void btnSelectVentas_Click(object sender, EventArgs e) {
             if (validarCampos.validarMayor0(dgvExistencias.Rows.Count)
                && validarCampos.validarNoNuloNoVacio(txtCantidadVentas.Text)
                && validarCampos.validarSoloNumero(txtCantidadVentas.Text)) {
-                DataGridViewRow selectedRow = dgvExistencias.SelectedRows[0];
-                Producto producto = (Producto)selectedRow.DataBoundItem;
-                int stockActual = producto.cantidad;
-                int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
-                if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
-                    Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
-                    manejaVenta.llenarCarrito(productoCarrito);
-                    dgvCarrito.DataSource = null;
-                    dgvCarrito.DataSource = SingletonCarrito.getInstance.getListaProductos("carrito");
-                } else {
-                    MessageBox.Show("La cantidad deseada es inválida. Debe ser mayor a 0 y menor al stock actual (" + stockActual + ").");
+                try {
+                    DataGridViewRow selectedRow = dgvExistencias.SelectedRows[0];
+                    Producto producto = (Producto)selectedRow.DataBoundItem;
+                    int stockActual = producto.cantidad;
+                    int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
+                    if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
+                        Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
+                        manejaVenta.llenarCarrito(productoCarrito);
+                        setDataGridViewCarrito();
+                    } else {
+                        MessageBox.Show("La cantidad deseada es inválida. Debe ser mayor a 0 y menor al stock actual (" + stockActual + ").");
+                    }
+                } catch (ArgumentOutOfRangeException ex) {
+                    MessageBox.Show("Se debe seleccionar una fila de la lista");
                 }
-            } else if(!validarCampos.validarMayor0(dgvExistencias.SelectedRows.Count)){
-                MessageBox.Show("Se debe seleccionar una fila de la lista");
             } else {
                 MessageBox.Show("La cantidad deseada es inválida. Sólo números.");
             }
         }
 
         private void btnRemoverCarrito_Click(object sender, EventArgs e) {
-            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarMayor0()
+            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarMayor0(dgvCarrito.SelectedRows.Count)){
+                DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
+                Producto producto = (Producto)selectedRow.DataBoundItem;
+                manejaVenta.removerDelCarrito(producto);
+                setDataGridViewCarrito();
+            }
+        }
+        private void setDataGridViewCarrito() {
+            dgvCarrito.DataSource = null;
+            dgvCarrito.DataSource = SingletonCarrito.getInstance.getCarrito();
+        }
+        private void setDataGridViewExistencias() {
+            dgvExistencias.DataSource = null;
+            dgvExistencias.DataSource = manejaVenta.getListaProductosEnStock();
+        }
+
+        private void btnVaciar_Click(object sender, EventArgs e) {
+            manejaVenta.vaciarCarrito();
+            setDataGridViewCarrito();
         }
     }
 }
