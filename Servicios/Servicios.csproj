@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Metodos\Encriptador.cs" />
+    <Compile Include="Metodos\Guuido.cs" />
+    <Compile Include="Metodos\Jsonifier.cs" />
     <Compile Include="Metodos\ValidarCampos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

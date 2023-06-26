@@ -65,6 +65,7 @@
             this.dgvExistencias.DataSource = this.productoBindingSource;
             this.dgvExistencias.Location = new System.Drawing.Point(6, 19);
             this.dgvExistencias.Name = "dgvExistencias";
+            this.dgvExistencias.ReadOnly = true;
             this.dgvExistencias.Size = new System.Drawing.Size(546, 150);
             this.dgvExistencias.TabIndex = 0;
             // 
@@ -143,6 +144,7 @@
             this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarrito.Location = new System.Drawing.Point(6, 19);
             this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.ReadOnly = true;
             this.dgvCarrito.Size = new System.Drawing.Size(546, 150);
             this.dgvCarrito.TabIndex = 4;
             // 
