@@ -99,9 +99,9 @@ namespace ProyectoTC2023 {
                 MessageBox.Show("El CCV es inválido. Deben ser sólo 3 números.");
             }
         }
-        private void validarTxtMes(object sender, EventArgs e) {
-            if(txtMesTarjeta.Text.Length < 2) {
-                MessageBox.Show("Se deben ingresar solo dos dígitos para el mes.");
+        private void validarTxtFecha(object sender, EventArgs e) {
+            if(txtMesTarjeta.Text.Length > 2 || txtAñoTarjeta.Text.Length > 2) {
+                MessageBox.Show("Se deben ingresar solo dos dígitos para el mes/año.");
                 txtMesTarjeta.Clear();
             }
         }

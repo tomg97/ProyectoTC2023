@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {
     public class Factura {
+		[JsonProperty("_id")]
 		private string _id;
+        [JsonProperty("_ventaAsociada")]
+        private Venta _ventaAsociada;
 
-		public string id {
-			get { return _id; }
-			set { _id = value; }
+		public Factura() { }
+		public Factura(Venta venta) {
+			_id = venta.id;
+			_ventaAsociada = venta;
 		}
-		private Venta _ventaAsociada;
-
-		public Venta ventaAsociada {
-			get { return _ventaAsociada; }
-			set { _ventaAsociada = value; }
-		}
-
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
+using Newtonsoft.Json;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 namespace BLL.Metodos {
     public class ManejaVenta {
         ManejaDbVenta manejaDbVenta = new ManejaDbVenta();
+        Guuido guidGenerator = new Guuido();
         public void llenarCarrito(Producto producto) {
             SingletonCarrito.getInstance.agregarProducto(producto);
         }
@@ -32,9 +35,8 @@ namespace BLL.Metodos {
         }
         public string commitCarrito(Cliente cliente) {
             string mensaje;
-            Guid uuid = Guid.NewGuid();
             List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
-            Venta venta = new Venta(uuid.ToString(), carrito, cliente, DateTime.Now.ToString());
+            Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());
             mensaje = manejaDbVenta.actualizarStock(carrito);
             manejaDbVenta.crearVentaNoFacturada(venta);
             return mensaje;
@@ -55,6 +57,8 @@ namespace BLL.Metodos {
             return manejaDbVenta.getVentasNoFacturadas();
         }
         public void facturarVenta(Venta venta) {
+            Factura factura = new Factura(venta);
+            Jsonifier.guardarAJsonConLocación(factura, "Factura-" + venta.id);
             manejaDbVenta.facturarVenta(venta);
         }
     }

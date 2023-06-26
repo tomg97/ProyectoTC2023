@@ -220,7 +220,7 @@
             this.txtMesTarjeta.Name = "txtMesTarjeta";
             this.txtMesTarjeta.Size = new System.Drawing.Size(42, 20);
             this.txtMesTarjeta.TabIndex = 1;
-            this.txtMesTarjeta.TextChanged += new System.EventHandler(this.validarTxtMes);
+            this.txtMesTarjeta.TextChanged += new System.EventHandler(this.validarTxtFecha);
             // 
             // lblTipoTarjeta
             // 
