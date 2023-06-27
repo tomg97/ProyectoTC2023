@@ -48,7 +48,7 @@ namespace Servicios.Metodos {
                     JToken token = JToken.Parse(payload);
                     poblarTree(root, token);
                     treeView.ExpandAll();
-                } catch (JsonReaderException ex) {
+                } catch (JsonReaderException) {
                     mensajeria.mostrarMensaje("Formato de JSON invalido.");
                 }
             } else {
