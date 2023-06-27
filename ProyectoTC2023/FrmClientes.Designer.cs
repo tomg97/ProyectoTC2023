@@ -36,6 +36,10 @@
             this.btnRegistrarCliente = new System.Windows.Forms.Button();
             this.gbRegistroCliente = new System.Windows.Forms.GroupBox();
             this.gbDatosPago = new System.Windows.Forms.GroupBox();
+            this.lblSubtotalCuotas = new System.Windows.Forms.Label();
+            this.lblSubtotalVenta = new System.Windows.Forms.Label();
+            this.cbTipoTarjeta = new System.Windows.Forms.ComboBox();
+            this.txtAñoTarjeta = new System.Windows.Forms.TextBox();
             this.btnVenta = new System.Windows.Forms.Button();
             this.txtNumeroTarjeta = new System.Windows.Forms.TextBox();
             this.lblCuotas = new System.Windows.Forms.Label();
@@ -46,10 +50,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCuotas = new System.Windows.Forms.TextBox();
             this.lblNumTarjeta = new System.Windows.Forms.Label();
-            this.txtAñoTarjeta = new System.Windows.Forms.TextBox();
-            this.cbTipoTarjeta = new System.Windows.Forms.ComboBox();
-            this.lblSubtotalVenta = new System.Windows.Forms.Label();
-            this.lblSubtotalCuotas = new System.Windows.Forms.Label();
             this.gbRegistroCliente.SuspendLayout();
             this.gbDatosPago.SuspendLayout();
             this.SuspendLayout();
@@ -59,35 +59,35 @@
             this.txtIdCliente.Location = new System.Drawing.Point(6, 33);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtIdCliente.TabIndex = 0;
+            this.txtIdCliente.TabIndex = 7;
             // 
             // txtNombreCliente
             // 
             this.txtNombreCliente.Location = new System.Drawing.Point(6, 79);
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtNombreCliente.TabIndex = 1;
+            this.txtNombreCliente.TabIndex = 8;
             // 
             // txtApellidoCliente
             // 
             this.txtApellidoCliente.Location = new System.Drawing.Point(6, 127);
             this.txtApellidoCliente.Name = "txtApellidoCliente";
             this.txtApellidoCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtApellidoCliente.TabIndex = 2;
+            this.txtApellidoCliente.TabIndex = 9;
             // 
             // txtDomicilioCliente
             // 
             this.txtDomicilioCliente.Location = new System.Drawing.Point(6, 171);
             this.txtDomicilioCliente.Name = "txtDomicilioCliente";
             this.txtDomicilioCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtDomicilioCliente.TabIndex = 3;
+            this.txtDomicilioCliente.TabIndex = 10;
             // 
             // txtTelefonoCliente
             // 
             this.txtTelefonoCliente.Location = new System.Drawing.Point(6, 220);
             this.txtTelefonoCliente.Name = "txtTelefonoCliente";
             this.txtTelefonoCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtTelefonoCliente.TabIndex = 4;
+            this.txtTelefonoCliente.TabIndex = 11;
             // 
             // lblIdCliente
             // 
@@ -139,7 +139,7 @@
             this.btnRegistrarCliente.Location = new System.Drawing.Point(6, 261);
             this.btnRegistrarCliente.Name = "btnRegistrarCliente";
             this.btnRegistrarCliente.Size = new System.Drawing.Size(100, 23);
-            this.btnRegistrarCliente.TabIndex = 10;
+            this.btnRegistrarCliente.TabIndex = 12;
             this.btnRegistrarCliente.Text = "Registro";
             this.btnRegistrarCliente.UseVisualStyleBackColor = true;
             this.btnRegistrarCliente.Click += new System.EventHandler(this.btnRegistrarCliente_Click);
@@ -188,12 +188,51 @@
             this.gbDatosPago.TabStop = false;
             this.gbDatosPago.Text = "Ingresar Datos Pago";
             // 
+            // lblSubtotalCuotas
+            // 
+            this.lblSubtotalCuotas.AutoSize = true;
+            this.lblSubtotalCuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotalCuotas.Location = new System.Drawing.Point(1, 233);
+            this.lblSubtotalCuotas.Name = "lblSubtotalCuotas";
+            this.lblSubtotalCuotas.Size = new System.Drawing.Size(134, 25);
+            this.lblSubtotalCuotas.TabIndex = 14;
+            this.lblSubtotalCuotas.Text = "Cada cuota: ";
+            // 
+            // lblSubtotalVenta
+            // 
+            this.lblSubtotalVenta.AutoSize = true;
+            this.lblSubtotalVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotalVenta.Location = new System.Drawing.Point(1, 192);
+            this.lblSubtotalVenta.Name = "lblSubtotalVenta";
+            this.lblSubtotalVenta.Size = new System.Drawing.Size(97, 25);
+            this.lblSubtotalVenta.TabIndex = 13;
+            this.lblSubtotalVenta.Text = "Subtotal:";
+            // 
+            // cbTipoTarjeta
+            // 
+            this.cbTipoTarjeta.FormattingEnabled = true;
+            this.cbTipoTarjeta.Items.AddRange(new object[] {
+            "Débito",
+            "Crédito"});
+            this.cbTipoTarjeta.Location = new System.Drawing.Point(6, 170);
+            this.cbTipoTarjeta.Name = "cbTipoTarjeta";
+            this.cbTipoTarjeta.Size = new System.Drawing.Size(110, 21);
+            this.cbTipoTarjeta.TabIndex = 4;
+            this.cbTipoTarjeta.SelectedIndexChanged += new System.EventHandler(this.eventoDropDownTarjeta);
+            // 
+            // txtAñoTarjeta
+            // 
+            this.txtAñoTarjeta.Location = new System.Drawing.Point(74, 79);
+            this.txtAñoTarjeta.Name = "txtAñoTarjeta";
+            this.txtAñoTarjeta.Size = new System.Drawing.Size(42, 20);
+            this.txtAñoTarjeta.TabIndex = 2;
+            // 
             // btnVenta
             // 
             this.btnVenta.Location = new System.Drawing.Point(6, 261);
             this.btnVenta.Name = "btnVenta";
             this.btnVenta.Size = new System.Drawing.Size(100, 23);
-            this.btnVenta.TabIndex = 10;
+            this.btnVenta.TabIndex = 6;
             this.btnVenta.Text = "Venta";
             this.btnVenta.UseVisualStyleBackColor = true;
             this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
@@ -236,7 +275,7 @@
             this.txtCCV.Location = new System.Drawing.Point(6, 127);
             this.txtCCV.Name = "txtCCV";
             this.txtCCV.Size = new System.Drawing.Size(42, 20);
-            this.txtCCV.TabIndex = 2;
+            this.txtCCV.TabIndex = 3;
             // 
             // lblCCV
             // 
@@ -261,7 +300,7 @@
             this.txtCuotas.Location = new System.Drawing.Point(125, 171);
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(134, 20);
-            this.txtCuotas.TabIndex = 4;
+            this.txtCuotas.TabIndex = 5;
             this.txtCuotas.TextChanged += new System.EventHandler(this.validacionTxtBoxCuotas);
             // 
             // lblNumTarjeta
@@ -272,45 +311,6 @@
             this.lblNumTarjeta.Size = new System.Drawing.Size(80, 13);
             this.lblNumTarjeta.TabIndex = 5;
             this.lblNumTarjeta.Text = "Número Tarjeta";
-            // 
-            // txtAñoTarjeta
-            // 
-            this.txtAñoTarjeta.Location = new System.Drawing.Point(74, 79);
-            this.txtAñoTarjeta.Name = "txtAñoTarjeta";
-            this.txtAñoTarjeta.Size = new System.Drawing.Size(42, 20);
-            this.txtAñoTarjeta.TabIndex = 11;
-            // 
-            // cbTipoTarjeta
-            // 
-            this.cbTipoTarjeta.FormattingEnabled = true;
-            this.cbTipoTarjeta.Items.AddRange(new object[] {
-            "Débito",
-            "Crédito"});
-            this.cbTipoTarjeta.Location = new System.Drawing.Point(6, 170);
-            this.cbTipoTarjeta.Name = "cbTipoTarjeta";
-            this.cbTipoTarjeta.Size = new System.Drawing.Size(110, 21);
-            this.cbTipoTarjeta.TabIndex = 12;
-            this.cbTipoTarjeta.SelectedIndexChanged += new System.EventHandler(this.eventoDropDownTarjeta);
-            // 
-            // lblSubtotalVenta
-            // 
-            this.lblSubtotalVenta.AutoSize = true;
-            this.lblSubtotalVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotalVenta.Location = new System.Drawing.Point(1, 192);
-            this.lblSubtotalVenta.Name = "lblSubtotalVenta";
-            this.lblSubtotalVenta.Size = new System.Drawing.Size(97, 25);
-            this.lblSubtotalVenta.TabIndex = 13;
-            this.lblSubtotalVenta.Text = "Subtotal:";
-            // 
-            // lblSubtotalCuotas
-            // 
-            this.lblSubtotalCuotas.AutoSize = true;
-            this.lblSubtotalCuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotalCuotas.Location = new System.Drawing.Point(1, 233);
-            this.lblSubtotalCuotas.Name = "lblSubtotalCuotas";
-            this.lblSubtotalCuotas.Size = new System.Drawing.Size(134, 25);
-            this.lblSubtotalCuotas.TabIndex = 14;
-            this.lblSubtotalCuotas.Text = "Cada cuota: ";
             // 
             // FrmClientes
             // 
