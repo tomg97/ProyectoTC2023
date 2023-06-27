@@ -14,6 +14,7 @@ using System.Windows.Forms;
 namespace ProyectoTC2023 {
     public partial class FrmFacturas : Form {
         ManejaVenta manejaVenta = new ManejaVenta();
+        Mensajeria mensajeria = new Mensajeria();
         public FrmFacturas() {
             InitializeComponent();
             resetDgvView();
@@ -29,17 +30,21 @@ namespace ProyectoTC2023 {
 
         private void btnFacturar_Click(object sender, EventArgs e) {
             ValidarCampos validar = new ValidarCampos();
-            if (validar.validarMayor0(dgvVentasNoF.Rows.Count)) {
-                try {
-                    DataGridViewRow selectedRow = dgvVentasNoF.SelectedRows[0];
-                    Venta ventaAFacturar = (Venta)selectedRow.DataBoundItem;
-                    manejaVenta.facturarVenta(ventaAFacturar);
-                    MessageBox.Show("Se ha generado una factura con id: " + ventaAFacturar.id);
-                    Close();
-                } catch (ArgumentOutOfRangeException ex) {
-                    MessageBox.Show("Se debe seleccionar una fila de la lista");
+            if (SingletonSesion.getInstance.estaLogged) {
+                if (validar.validarMayor0(dgvVentasNoF.Rows.Count)) {
+                    try {
+                        DataGridViewRow selectedRow = dgvVentasNoF.SelectedRows[0];
+                        Venta ventaAFacturar = (Venta)selectedRow.DataBoundItem;
+                        manejaVenta.facturarVenta(ventaAFacturar);
+                        mensajeria.mostrarMensaje("Se ha generado una factura con id: " + ventaAFacturar.id);
+                        Close();
+                    } catch (ArgumentOutOfRangeException ex) {
+                        mensajeria.mostrarMensaje("Se debe seleccionar una fila de la lista");
+                    }
                 }
-            }
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+            }            
         }
     }
 }

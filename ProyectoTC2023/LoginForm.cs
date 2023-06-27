@@ -17,6 +17,7 @@ namespace ProyectoTC2023 {
         public LoginForm() {
             InitializeComponent();
         }
+        Mensajeria mensajeria = new Mensajeria();
 
         private void btnLogin_Click(object sender, EventArgs e) {
             ValidarCampos validarCampos = new ValidarCampos();
@@ -26,14 +27,14 @@ namespace ProyectoTC2023 {
                 Usuario usuario = new Usuario() { nomUsu = nomUsu, pass = pass };
                 ManejaUsuarios stepAuth = new ManejaUsuarios();
                 string message = stepAuth.loginProcedimiento(usuario);
-                MessageBox.Show(message);
+                mensajeria.mostrarMensaje(message);
                 if(message == "Exito") {
                     FormMain formMain = new FormMain();
                     formMain.Show();
                     this.Hide();
                 }
             } else {
-                MessageBox.Show("Se debe proporcionar nomre de usuario y/o contraseña");
+                mensajeria.mostrarMensaje("Se debe proporcionar nomre de usuario y/o contraseña");
             }
         }
 

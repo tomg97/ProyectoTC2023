@@ -55,5 +55,15 @@ namespace ProyectoTC2023 {
             frmFacturas.MdiParent = this;
             frmFacturas.Show();
         }
+
+        private void tmiDespachar_Click(object sender, EventArgs e) {
+            FrmDespacho frmDespacho = new FrmDespacho();
+            frmDespacho.MdiParent = this;
+            frmDespacho.Show();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e) {
+
+        }
     }
 }

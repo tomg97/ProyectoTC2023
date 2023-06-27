@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL.Metodos;
+using CUL.Entidades;
+using Servicios.Metodos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +10,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoTC2023 {
     public partial class FrmDespacho : Form {
+        ManejaVenta manejaVenta = new ManejaVenta();
+        Mensajeria mensajeria = new Mensajeria();
+        string pathArchivo;
         public FrmDespacho() {
             InitializeComponent();
+        }
+
+        private void btnDespachar_Click(object sender, EventArgs e) {
+            if (SingletonSesion.getInstance.estaLogged) {
+                ValidarCampos validarCampos = new ValidarCampos();
+                string idCliente = txtIdCliente.Text;
+                string idFactura = txtIdFactura.Text;
+                if (validarCampos.validarNoNuloNoVacio(idFactura, idCliente)) {
+                    manejaVenta.despacharFactura(idFactura, idCliente, pathArchivo);
+                    mensajeria.mostrarMensaje("Se ha despachado la factura: " + idFactura + ". Podrá ser visualizada en la carpeta Facturas despachadas.");
+                } else {
+                    mensajeria.mostrarMensaje("Se debe proporcionar id cliente y de factura para despachar.");
+                }
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+            }            
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e) {
+            if (SingletonSesion.getInstance.estaLogged) {
+                manejaVenta.devolverFacturaYCargarTreeView(trvFactura);
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+            }            
+        }
+        private void trvJson_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Control && e.KeyCode == Keys.C) {
+                TreeNode selectedNode = trvFactura.SelectedNode;
+
+                if (selectedNode != null) {
+                    string selectedValue = selectedNode.Text; // or selectedNode.Tag.ToString() if you set a custom value
+
+                    // Perform copy operation with the selected value
+                    Clipboard.SetText(selectedValue);
+                }
+            }
         }
     }
 }

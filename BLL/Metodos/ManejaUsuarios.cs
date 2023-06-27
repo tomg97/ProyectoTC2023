@@ -12,6 +12,7 @@ namespace BLL.Metodos {
     public class ManejaUsuarios {
         ManejaDbUsuarios manejaDb = new ManejaDbUsuarios();
         Encriptador encriptador = new Encriptador();
+        Mensajeria mensajeria = new Mensajeria();
         public string loginProcedimiento(Usuario usuario) {
             try {
                 usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
@@ -37,7 +38,7 @@ namespace BLL.Metodos {
                 }
                 return mensaje;
             } catch (InvalidOperationException ex) {
-                MessageBox.Show(ex.Message);
+                mensajeria.mostrarMensaje(ex.Message);
                 return "Sesion iniciada";
             }
         }

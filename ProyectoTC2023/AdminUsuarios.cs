@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Servicios.Metodos.Mensajeria;
 
 namespace ProyectoTC2023 {
     public partial class AdminUsuarios : Form {
@@ -29,6 +30,7 @@ namespace ProyectoTC2023 {
         }
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
         ValidarCampos validar = new ValidarCampos();
+        Mensajeria mensajeria = new Mensajeria();
 
         private void btnVerif_Click(object sender, EventArgs e) {
             if (SingletonSesion.getInstance.estaLogged) {
@@ -49,12 +51,12 @@ namespace ProyectoTC2023 {
                         btnEnterABM.Text = "Crear";
                         grpbxCMUsu.Text = "Crear Usuario";
                     } else {
-                        MessageBox.Show("Error inesperado");
+                        mensajeria.mostrarMensaje("Error inesperado");
                         txtABMUsu.Clear();
                     }
                 }
             } else {
-                MessageBox.Show("No se detecta sesión iniciada");
+                mensajeria.mostrarErrorNoLogged();
             }
         }
 
@@ -71,11 +73,11 @@ namespace ProyectoTC2023 {
                        btnEnterABM.Visible = false;
                        lblABMPUsu.Visible = false;
                        grpbxCMUsu.Text = "Crear/Modificar Usuario";
-                       MessageBox.Show(resultadosDb.crearUsuario(usuario));
+                       mensajeria.mostrarMensaje(resultadosDb.crearUsuario(usuario));
                     } else {
                         string mensaje = resultadosDb.modificarNombreUsuario(primerTxtBox, segundoTxtBox);
                         if(mensaje == "Exito") {
-                            MessageBox.Show("Usuario " + primerTxtBox + " modificado");
+                            mensajeria.mostrarMensaje("Usuario " + primerTxtBox + " modificado");
                             txtABMUsu.Clear();
                             txtABMPUsu.Clear();
                             txtABMPUsu.Visible = false;
@@ -83,16 +85,16 @@ namespace ProyectoTC2023 {
                             lblABMPUsu.Visible = false;
                             grpbxCMUsu.Text = "Crear/Modificar Usuario";
                         } else if (mensaje == "Usuario Existente") {
-                            MessageBox.Show("Usuario " + segundoTxtBox + " ya existe. Utilice uno distinto.");
+                            mensajeria.mostrarMensaje("Usuario " + segundoTxtBox + " ya existe. Utilice uno distinto.");
                             txtABMPUsu.Clear();
                         }
                     }
                 } else {
-                MessageBox.Show("Se debe proporcionar una contraseña para poder crear al usuario");
+                    mensajeria.mostrarMensaje("Se debe proporcionar una contraseña para poder crear al usuario");
                 }
             } else {
-                MessageBox.Show("No se detecta un usuario loggeado. Se debe ingresar al sistema");
-            }           
+                mensajeria.mostrarErrorNoLogged();
+            }
         }
 
         private void btnDesbloquear_Click(object sender, EventArgs e) {
@@ -101,10 +103,10 @@ namespace ProyectoTC2023 {
                     Usuario usuarioADesbloquear = (Usuario)cmbUsusBloq.SelectedItem;
                     resultadosDb.desbloquearUsuario(usuarioADesbloquear.nomUsu);
                     cmbUsusBloq.SelectedIndex = -1;
-                    MessageBox.Show("El usuario " + usuarioADesbloquear.nomUsu + " ha sido desbloqueado.");
+                    mensajeria.mostrarMensaje("El usuario " + usuarioADesbloquear.nomUsu + " ha sido desbloqueado.");
                 }
             } else {
-                MessageBox.Show("No se detecta un usuario loggeado. Se debe ingresar al sistema");
+                mensajeria.mostrarErrorNoLogged();
             }
         }
     }

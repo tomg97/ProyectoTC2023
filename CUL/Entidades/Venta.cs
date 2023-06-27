@@ -22,12 +22,16 @@ namespace CUL.Entidades {
 		public Venta(string id, string productosVendidos, string idCliente, string fecha) {
 			this.id = id;
 			this.productosVendidos = productosVendidos;
+			_listaProductosVendidos = JsonConvert.DeserializeObject<List<Producto>>(productosVendidos);
             this.idCliente = idCliente;
 			this.fecha = fecha;
 			facturada = true;
 		}
+		[JsonProperty(PropertyName = "_listaProductosVendidos")]
+		private List<Producto> _listaProductosVendidos;
 
-		private string _id;
+
+        private string _id;
 
 		public string id {
 			get { return _id; }
