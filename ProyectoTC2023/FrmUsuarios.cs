@@ -18,6 +18,7 @@ namespace ProyectoTC2023 {
         }
         ValidarCampos validar = new ValidarCampos();
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
+        Mensajeria mensajeria = new Mensajeria();
 
         private void btnCambiar_Click(object sender, EventArgs e) {
             string passActual = txtPassActual.Text;
@@ -26,19 +27,21 @@ namespace ProyectoTC2023 {
             if (SingletonSesion.getInstance.estaLogged) {
                 if (validar.validarNoNuloNoVacio(passActual, passNueva)) {
                     mensaje = resultadosDb.cambioContraseña(passActual, passNueva);
-                    MessageBox.Show(mensaje);
+                    mensajeria.mostrarMensaje(mensaje);
                     if(mensaje == "Contraseña Equivocada") {
                         txtPassNueva.Clear();
                         txtPassActual.Clear();
                     }
                 }
+            } else {
+                mensajeria.mostrarErrorNoLogged();
             }
         }
 
         private void btnLogout_Click(object sender, EventArgs e) {
             if (SingletonSesion.getInstance.estaLogged) {
                 SingletonSesion.getInstance.logOut();
-                MessageBox.Show("Logout exitoso");
+                mensajeria.mostrarMensaje("Logout exitoso");
                 Close();
             }
         }

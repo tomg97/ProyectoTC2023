@@ -15,6 +15,7 @@ namespace ProyectoTC2023 {
     public partial class FrmVentas : Form {
         ManejaVenta manejaVenta = new ManejaVenta();
         ValidarCampos validarCampos = new ValidarCampos();
+        Mensajeria mensajeria = new Mensajeria();
         public FrmVentas() {
             InitializeComponent();
         }
@@ -24,41 +25,52 @@ namespace ProyectoTC2023 {
         }
 
         private void btnSelectVentas_Click(object sender, EventArgs e) {
-            if (validarCampos.validarMayor0(dgvExistencias.Rows.Count)
+            if (SingletonSesion.getInstance.estaLogged) {
+                if (validarCampos.validarMayor0(dgvExistencias.Rows.Count)
                && validarCampos.validarNoNuloNoVacio(txtCantidadVentas.Text)
                && validarCampos.validarSoloNumero(txtCantidadVentas.Text)) {
-                try {
-                    DataGridViewRow selectedRow = dgvExistencias.SelectedRows[0];
-                    Producto producto = (Producto)selectedRow.DataBoundItem;
-                    int stockActual = producto.cantidad;
-                    int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
-                    if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
-                        Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
-                        manejaVenta.llenarCarrito(productoCarrito);
-                        setDataGridViewCarrito();
-                    } else {
-                        MessageBox.Show("La cantidad deseada es inválida. Debe ser mayor a 0 y menor al stock actual (" + stockActual + ").");
+                    try {
+                        DataGridViewRow selectedRow = dgvExistencias.SelectedRows[0];
+                        Producto producto = (Producto)selectedRow.DataBoundItem;
+                        int stockActual = producto.cantidad;
+                        int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
+                        if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
+                            Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
+                            manejaVenta.llenarCarrito(productoCarrito);
+                            setDataGridViewCarrito();
+                            txtCantidadVentas.Clear();
+                        } else {
+                            mensajeria.mostrarMensaje("La cantidad deseada es inválida. Debe ser mayor a 0 y menor al stock actual (" + stockActual + ").");
+                            txtCantidadVentas.Clear();
+                        }
+                    } catch (ArgumentOutOfRangeException ex) {
+                        mensajeria.mostrarMensaje("Se debe seleccionar una fila de la lista");
                     }
-                } catch (ArgumentOutOfRangeException ex) {
-                    MessageBox.Show("Se debe seleccionar una fila de la lista");
+                } else {
+                    mensajeria.mostrarMensaje("La cantidad deseada es inválida. Sólo números.");
                 }
             } else {
-                MessageBox.Show("La cantidad deseada es inválida. Sólo números.");
-            }
+                txtCantidadVentas.Clear();
+                mensajeria.mostrarErrorNoLogged();
+            }            
         }
 
         private void btnRemoverCarrito_Click(object sender, EventArgs e) {
-            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count)){
-                try {
-                    DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
-                    Producto producto = (Producto)selectedRow.DataBoundItem;
-                    manejaVenta.removerDelCarrito(producto);
-                    setDataGridViewCarrito();
-                } catch (ArgumentOutOfRangeException ex) {
-                    MessageBox.Show("Se debe seleccionar una fila de la lista");
+            if (SingletonSesion.getInstance.estaLogged) {
+                if (validarCampos.validarMayor0(dgvCarrito.Rows.Count)) {
+                    try {
+                        DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
+                        Producto producto = (Producto)selectedRow.DataBoundItem;
+                        manejaVenta.removerDelCarrito(producto);
+                        setDataGridViewCarrito();
+                    } catch (ArgumentOutOfRangeException ex) {
+                        mensajeria.mostrarMensaje("Se debe seleccionar una fila de la lista");
+                    }
                 }
-            }
-            MessageBox.Show("No hay elementos en el carrito.");
+                mensajeria.mostrarMensaje("No hay elementos en el carrito.");
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+            }            
         }
         private void setDataGridViewCarrito() {
             dgvCarrito.DataSource = null;
@@ -70,8 +82,12 @@ namespace ProyectoTC2023 {
         }
 
         private void btnVaciar_Click(object sender, EventArgs e) {
-            manejaVenta.vaciarCarrito();
-            setDataGridViewCarrito();
+            if (SingletonSesion.getInstance.estaLogged) {
+                manejaVenta.vaciarCarrito();
+                setDataGridViewCarrito();
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+            }            
         }
         private void mostrarFrmClientes(string proposito) {
             FrmClientes frmClientes = new FrmClientes(proposito);
@@ -84,20 +100,28 @@ namespace ProyectoTC2023 {
 
         private void btnAsignarCliente_Click(object sender, EventArgs e) {
             string idCliente = txtClienteVenta.Text;
-            if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarNoNuloNoVacio(idCliente)) {
-                ManejaCliente manejaCliente = new ManejaCliente();
-                string mensajeVuelta = manejaCliente.lookupCliente(idCliente);
-                if (mensajeVuelta == "Cliente encontrado") {
-                    MessageBox.Show(mensajeVuelta + ", se procederá a introducir los datos de pago.");
-                    mostrarFrmClientes(new Cliente(idCliente));
-                } else {
-                    MessageBox.Show("No se ha encontrado el cliente. Se procederá a la pantalla de alta de cliente.");
-                    mostrarFrmClientes(idCliente);
+            if (SingletonSesion.getInstance.estaLogged) {
+                if (validarCampos.validarMayor0(dgvCarrito.Rows.Count) && validarCampos.validarNoNuloNoVacio(idCliente)) {
+                    ManejaCliente manejaCliente = new ManejaCliente();
+                    string mensajeVuelta = manejaCliente.lookupCliente(idCliente);
+                    if (mensajeVuelta == "Cliente encontrado") {
+                        mensajeria.mostrarMensaje(mensajeVuelta + ", se procederá a introducir los datos de pago.");
+                        mostrarFrmClientes(new Cliente(idCliente));
+                        setDataGridViewExistencias();
+                        setDataGridViewCarrito();
+                        txtClienteVenta.Clear();
+                    } else {
+                        mensajeria.mostrarMensaje("No se ha encontrado el cliente. Se procederá a la pantalla de alta de cliente.");
+                        mostrarFrmClientes(idCliente);
+                    }
+                } else if (!validarCampos.validarNoNuloNoVacio(idCliente)) {
+                    mensajeria.mostrarMensaje("Se debe introducir un número de cliente");
+                } else if (!validarCampos.validarMayor0(dgvCarrito.Rows.Count)) {
+                    mensajeria.mostrarMensaje("No hay productos en el carrito.");
                 }
-            } else if(!validarCampos.validarNoNuloNoVacio(idCliente)) {
-                MessageBox.Show("Se debe introducir un número de cliente");
-            } else if (!validarCampos.validarMayor0(dgvCarrito.Rows.Count)) {
-                MessageBox.Show("No hay productos en el carrito.");
+            } else {
+                mensajeria.mostrarErrorNoLogged();
+                txtClienteVenta.Clear();
             }
         }
     }

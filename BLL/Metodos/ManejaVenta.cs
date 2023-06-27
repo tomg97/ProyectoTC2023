@@ -7,11 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL.Metodos {
     public class ManejaVenta {
         ManejaDbVenta manejaDbVenta = new ManejaDbVenta();
         Guuido guidGenerator = new Guuido();
+        Jsonifier jsonificador = new Jsonifier();
+
         public void llenarCarrito(Producto producto) {
             SingletonCarrito.getInstance.agregarProducto(producto);
         }
@@ -26,9 +29,6 @@ namespace BLL.Metodos {
         }
         public List<Producto> devolverCarrito() {
             return SingletonCarrito.getInstance.getCarrito();
-        }
-        public List<Producto> devolverStock() {
-            return SingletonCarrito.getInstance.getExistencias();
         }
         public void vaciarCarrito() {
             SingletonCarrito.getInstance.vaciarCarrito();
@@ -58,8 +58,16 @@ namespace BLL.Metodos {
         }
         public void facturarVenta(Venta venta) {
             Factura factura = new Factura(venta);
-            Jsonifier.guardarAJsonConLocación(factura, "Factura-" + venta.id);
+            jsonificador.guardarAJsonConLocación(factura, "Factura-" + venta.id);
             manejaDbVenta.facturarVenta(venta);
+        }
+        public void devolverFacturaYCargarTreeView(TreeView control) {
+            Factura factura = jsonificador.cargarFacturaYRellenarTreeView<Factura>(control);
+        }
+        public void despacharFactura(params string[] datos) {
+            string rutaArchivo = SingletonRutaArchivo.getInstance.getRutaArchivo();
+            manejaDbVenta.despacharFactura(datos);
+            jsonificador.moverArchivoDone(rutaArchivo, "Facturas despachadas");
         }
     }
 }

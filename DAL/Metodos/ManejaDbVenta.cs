@@ -108,6 +108,22 @@ namespace DAL.Metodos {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
                     sqlCommand.Parameters.AddWithValue("@id", venta.id);
                     sqlCommand.Parameters.AddWithValue("@jsonVenta", JsonConvert.SerializeObject(venta));
+                    sqlCommand.Parameters.AddWithValue("@idCliente", venta.idCliente);
+
+                    connection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+        public void despacharFactura(params string[] datos) {
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand sqlCommand = new SqlCommand("DespachoFactura", connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@id", datos[0]);
+                    sqlCommand.Parameters.AddWithValue("@idCliente", datos[1]);
 
                     connection.Open();
                     sqlCommand.ExecuteNonQuery();

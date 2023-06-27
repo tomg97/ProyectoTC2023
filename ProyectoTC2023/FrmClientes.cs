@@ -93,7 +93,7 @@ namespace ProyectoTC2023 {
                 }
             } else if (!validar.validarNoNuloNoVacio(numertoTarjeta)) {
                 MessageBox.Show("Se debe ingresar un número de tarjeta.");
-            } else if (!validar.validarNoNuloNoVacio(mesYAño) || !validar.validarSoloMes(mes) || !validar.validarFechaNoVencida(mesYAño)) {
+            } else if (!validar.validarNoNuloNoVacio(mesYAño) || !validar.validarSoloMes(mes) || validar.validarFechaNoVencida(mesYAño)) {
                 MessageBox.Show("Se debe ingresar un mes y año válidos.");
             } else if (!validar.validarNoNuloNoVacio(CCV) || !validar.validarCCV(CCV)) {
                 MessageBox.Show("El CCV es inválido. Deben ser sólo 3 números.");
