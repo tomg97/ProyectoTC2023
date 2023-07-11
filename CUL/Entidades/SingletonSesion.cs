@@ -36,5 +36,28 @@ namespace CUL.Entidades {
         public Usuario getUsuarioActual() {
             return usuarioSesion;
         }
+        public bool tienePermiso(TipoPermiso tipoPermiso) {
+            bool existe = false;
+            foreach (var item in usuarioSesion.permisos) {
+                if (item.tipoPermiso.Equals(tipoPermiso))
+                    return true;
+                else {
+                    existe = estaEnRol(item, tipoPermiso, existe);
+                    if (existe) return true;
+                }
+            }
+            return existe;
+        }
+        bool estaEnRol(Componente c, TipoPermiso tipoPermiso, bool existe) {
+            if (c.tipoPermiso.Equals(tipoPermiso))
+                existe = true;
+            else {
+                foreach (var item in c.hijos) {
+                    existe = estaEnRol(item, tipoPermiso, existe);
+                    if (existe) return true;
+                }
+            }
+            return existe;
+        }
     }
 }

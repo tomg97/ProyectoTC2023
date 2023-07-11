@@ -1,37 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CUL.Entidades.SingletonSesion">
-    <Position X="2.5" Y="2" Width="1.5" />
+  <Class Name="CUL.Entidades.SingletonSesion" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAgQAAAAAIAAAABAAEQAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAAQAAIAAAAAAAgQAAAAAIAAAABAAEQIAgAAAAAAAAA=</HashCode>
       <FileName>Entidades\SingletonSesion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CUL.Entidades.Usuario">
-    <Position X="5.25" Y="2" Width="1.5" />
+  <Class Name="CUL.Entidades.Usuario" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAEAAAAAAAAAACAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAABAAAAAAAAEAAAAAAAAAACAAAAAIAAAAgAAAAA=</HashCode>
       <FileName>Entidades\Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CUL.Program" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CUL.Properties.Resources" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="CUL.Properties.Settings" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="7" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
+  <Class Name="CUL.Entidades.Cliente" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAQQAASAAADAAAAAAAgAAAAEAAAAAAIAAgI=</HashCode>
+      <FileName>Entidades\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Componente">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAAAAAAACAAABAAAABIAAAAAAAAAAAAAIAAgE=</HashCode>
+      <FileName>Entidades\Componente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Factura" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQEAAAAAAAAAAAABAAAAAAAAAAAAEAAAAgAAAAAA=</HashCode>
+      <FileName>Entidades\Factura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Familia">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAAAAAEAAAAE=</HashCode>
+      <FileName>Entidades\Familia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Permiso">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entidades\Permiso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Producto" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAgAAAABAAAAAAgAAGAAAAAAAAgAAA0A=</HashCode>
+      <FileName>Entidades\Producto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.SingletonCarrito" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAABAAAAAAAAEQEAAAAIAAAABAAEQAAAAAASAAAAA=</HashCode>
+      <FileName>Entidades\SingletonCarrito.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUL.Entidades.Venta" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAYQAACAAAEhAAIEAAAAAAAAEAAAAgAAAAgA=</HashCode>
+      <FileName>Entidades\Venta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CUL.Entidades.TipoPermiso" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBAACAQCIAACAAAAAIAAAAAAAEQCQAIAAAAAgAAAA=</HashCode>
+      <FileName>Entidades\TipoPermiso.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

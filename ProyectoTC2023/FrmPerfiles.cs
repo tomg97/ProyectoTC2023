@@ -29,7 +29,7 @@ namespace ProyectoTC2023 {
         }
         void mostrarFamilia(bool init) {
             if (seleccion == null) return;
-            IList<Componente> flia = null;
+            List<Componente> flia = null;
             if (init) {
                 //traigo los hijos de la base
                 flia = manejaPermisos.GetAll("=" + seleccion.id);

@@ -124,9 +124,9 @@ namespace DAL.Metodos {
                         select sp.idPerfilPadre, sp.idPerfilHijo from PermisoPermiso sp 
                         inner join recursivo r on r.idPerfilHijo= sp.idPerfilPadre
                         )
-                        select r.idPerfilPadre,r.idPerfilHijo,p.id,p.nombre, p.permiso
+                        select r.idPerfilPadre,r.idPerfilHijo,p.idPermiso,p.nombre, p.permiso
                         from recursivo r 
-                        inner join permiso p on r.idPerfilHijo = p.id";
+                        inner join Permisos p on r.idPerfilHijo = p.idPermiso";
 
                     cmd.CommandText = sql;
 
@@ -138,7 +138,7 @@ namespace DAL.Metodos {
                             id_padre = Convert.ToInt32(reader["idPerfilPadre"]);
                         }
 
-                        var id = Convert.ToInt32(reader["id"]);
+                        var id = Convert.ToInt32(reader["idPermiso"]);
                         var nombre = reader["nombre"].ToString();
 
                         var permiso = string.Empty;
