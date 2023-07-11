@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Metodos\ManejaCliente.cs" />
+    <Compile Include="Metodos\ManejaPermisos.cs" />
     <Compile Include="Metodos\ManejaVenta.cs" />
     <Compile Include="Metodos\ManejaUsuarios.cs" />
     <Compile Include="Program.cs" />

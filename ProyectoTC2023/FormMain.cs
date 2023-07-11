@@ -65,5 +65,11 @@ namespace ProyectoTC2023 {
         private void FormMain_Load(object sender, EventArgs e) {
 
         }
+
+        private void perfilesToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmPerfiles frmPerfiles = new FrmPerfiles();
+            frmPerfiles.MdiParent = this;
+            frmPerfiles.Show();
+        }
     }
 }

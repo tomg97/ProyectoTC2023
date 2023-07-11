@@ -144,6 +144,45 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
+        public List<Usuario> traerTodosUsuarios() {
+            List<Usuario> usuarios = new List<Usuario>();
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("TraerTodosUsuarios", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        Usuario usuario = new Usuario() {
+                            nomUsu = reader["nomUsu"].ToString()
+                        };
+                        usuarios.Add(usuario);
+                    }
+                    reader.Close();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            return usuarios;
+        }
+        public void guardarPermisos(Usuario usuario) {
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("GuardarPerfilPaso1", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                    command.ExecuteNonQuery();
+                    foreach (var item in usuario.permisos) {
+                        command = new SqlCommand("GuardarPerfilPaso2", connection);
+                        command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                        command.Parameters.AddWithValue("@idPermiso", item.id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
     }
 }
 
