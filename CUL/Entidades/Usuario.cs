@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace CUL.Entidades {
     public class Usuario {
 		private string _nomUsu;
+		public Usuario() {
+			_permisos = new List<Componente>();
+		}
 
 		public string nomUsu {
 			get { return _nomUsu; }
@@ -17,6 +20,12 @@ namespace CUL.Entidades {
 		public string pass {
 			get { return _pass; }
 			set { _pass = value; }
+		}
+		private List<Componente> _permisos;
+
+		public List<Componente> permisos {
+			get { return _permisos; }
+			set { _permisos = value; }
 		}
 
 	}

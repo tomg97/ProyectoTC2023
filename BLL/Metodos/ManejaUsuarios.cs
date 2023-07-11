@@ -11,6 +11,7 @@ using Servicios.Metodos;
 namespace BLL.Metodos {
     public class ManejaUsuarios {
         ManejaDbUsuarios manejaDb = new ManejaDbUsuarios();
+        ManejaPermisos manejaPerfil = new ManejaPermisos();
         Encriptador encriptador = new Encriptador();
         Mensajeria mensajeria = new Mensajeria();
         public string loginProcedimiento(Usuario usuario) {
@@ -89,6 +90,12 @@ namespace BLL.Metodos {
             } else {
                 return "Contraseña Equivocada";
             }
+        }
+        public List<Usuario> traerTodosUsuarios() {
+            return manejaDb.traerTodosUsuarios();
+        }
+        public void GuardarPermisos(Usuario u) {
+            //manejaDb.GuardarPermisos(u);
         }
     }
 }

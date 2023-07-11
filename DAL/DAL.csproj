@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ComercializARDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Metodos\ManejaDbPerfil.cs" />
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />
     <Compile Include="Metodos\ManejaDbVenta.cs" />
