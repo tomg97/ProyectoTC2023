@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -12,12 +15,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmVentas : Form {
+    public partial class FrmVentas : Form, IObserver {
         ManejaVenta manejaVenta = new ManejaVenta();
         ValidarCampos validarCampos = new ValidarCampos();
         Mensajeria mensajeria = new Mensajeria();
         public FrmVentas() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
         }
 
         private void FrmVentas_Load(object sender, EventArgs e) {
@@ -123,6 +127,21 @@ namespace ProyectoTC2023 {
                 mensajeria.mostrarErrorNoLogged();
                 txtClienteVenta.Clear();
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            grpStockVentas.Text = Lang.grpStockVentas;
+            lblCantidadVentas.Text = Lang.lblCantidadVentas;
+            btnSelectVentas.Text = Lang.btnSelectVentas;
+            grpCarrito.Text = Lang.grpCarrito;
+            btnRemoverCarrito.Text = Lang.btnRemoverCarrito;
+            btnVaciar.Text = Lang.btnVaciar;
+            lblAsignarCliente.Text = Lang.lblAsignarCliente;
+            btnAsignarCliente.Text = Lang.btnAsignarCliente;
         }
     }
 }

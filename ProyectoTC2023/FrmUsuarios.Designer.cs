@@ -23,10 +23,10 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbCambiarClave = new System.Windows.Forms.GroupBox();
             this.btnCambiar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblClaveNueva = new System.Windows.Forms.Label();
+            this.lblClaveActual = new System.Windows.Forms.Label();
             this.txtPassNueva = new System.Windows.Forms.TextBox();
             this.txtPassActual = new System.Windows.Forms.TextBox();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -43,24 +43,24 @@
             this.btnConfigurar = new System.Windows.Forms.Button();
             this.cbUsuarios = new System.Windows.Forms.ComboBox();
             this.lblCbUsuarios = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.gbCambiarClave.SuspendLayout();
             this.grpbLogout.SuspendLayout();
             this.grpPatentes.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbCambiarClave
             // 
-            this.groupBox1.Controls.Add(this.btnCambiar);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtPassNueva);
-            this.groupBox1.Controls.Add(this.txtPassActual);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(302, 136);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cambiar Clave";
+            this.gbCambiarClave.Controls.Add(this.btnCambiar);
+            this.gbCambiarClave.Controls.Add(this.lblClaveNueva);
+            this.gbCambiarClave.Controls.Add(this.lblClaveActual);
+            this.gbCambiarClave.Controls.Add(this.txtPassNueva);
+            this.gbCambiarClave.Controls.Add(this.txtPassActual);
+            this.gbCambiarClave.Location = new System.Drawing.Point(12, 12);
+            this.gbCambiarClave.Name = "gbCambiarClave";
+            this.gbCambiarClave.Size = new System.Drawing.Size(302, 136);
+            this.gbCambiarClave.TabIndex = 0;
+            this.gbCambiarClave.TabStop = false;
+            this.gbCambiarClave.Text = "Cambiar Clave";
             // 
             // btnCambiar
             // 
@@ -72,23 +72,23 @@
             this.btnCambiar.UseVisualStyleBackColor = true;
             this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
             // 
-            // label2
+            // lblClaveNueva
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Clave nueva:";
+            this.lblClaveNueva.AutoSize = true;
+            this.lblClaveNueva.Location = new System.Drawing.Point(6, 81);
+            this.lblClaveNueva.Name = "lblClaveNueva";
+            this.lblClaveNueva.Size = new System.Drawing.Size(70, 13);
+            this.lblClaveNueva.TabIndex = 3;
+            this.lblClaveNueva.Text = "Clave nueva:";
             // 
-            // label1
+            // lblClaveActual
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Clave actual:";
+            this.lblClaveActual.AutoSize = true;
+            this.lblClaveActual.Location = new System.Drawing.Point(6, 27);
+            this.lblClaveActual.Name = "lblClaveActual";
+            this.lblClaveActual.Size = new System.Drawing.Size(69, 13);
+            this.lblClaveActual.TabIndex = 2;
+            this.lblClaveActual.Text = "Clave actual:";
             // 
             // txtPassNueva
             // 
@@ -127,6 +127,7 @@
             // 
             // btnGuardarFamilia
             // 
+            this.btnGuardarFamilia.AccessibleDescription = "";
             this.btnGuardarFamilia.Location = new System.Drawing.Point(133, 195);
             this.btnGuardarFamilia.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarFamilia.Name = "btnGuardarFamilia";
@@ -266,12 +267,12 @@
             this.Controls.Add(this.tvPerfil);
             this.Controls.Add(this.grpPatentes);
             this.Controls.Add(this.grpbLogout);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbCambiarClave);
             this.Name = "FrmUsuarios";
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.FrmUsuarios_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbCambiarClave.ResumeLayout(false);
+            this.gbCambiarClave.PerformLayout();
             this.grpbLogout.ResumeLayout(false);
             this.grpPatentes.ResumeLayout(false);
             this.grpPatentes.PerformLayout();
@@ -281,10 +282,10 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbCambiarClave;
         private System.Windows.Forms.Button btnCambiar;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblClaveNueva;
+        private System.Windows.Forms.Label lblClaveActual;
         private System.Windows.Forms.TextBox txtPassNueva;
         private System.Windows.Forms.TextBox txtPassActual;
         private System.Windows.Forms.Button btnLogout;

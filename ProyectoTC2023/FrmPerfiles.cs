@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +14,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmPerfiles : Form {
+    public partial class FrmPerfiles : Form, IObserver {
         ManejaPermisos manejaPermisos = new ManejaPermisos();
         Familia seleccion;
         public FrmPerfiles() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
         }
         private void llenarPatentesFamilias() {
             cbPatentes.DataSource = manejaPermisos.GetAllPatentes();
@@ -114,6 +118,25 @@ namespace ProyectoTC2023 {
             } catch (Exception) {
                 MessageBox.Show("Error al guardar la familia");
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            gbPatentes.Text = Lang.gbPatentes;
+            lblTodasPatentes.Text = Lang.lblTodasPatentes;
+            btnAgregarPatente.Text = Lang.btnAgregarPatente;
+            gbFamilias.Text = Lang.gbFamilias;
+            lblFamilias.Text = Lang.lblFamilias;
+            btnConfigurar.Text = Lang.btnConfigurar;
+            btnAgregarFamilia.Text = Lang.btnAgregarFamilia;
+            gbNuevaFamilia.Text = Lang.gbNuevaFamilia;
+            lblNombre.Text = Lang.lblNombre;
+            btnGuardarNuevaF.Text = Lang.btnGuardarNuevaF;
+            btnGuardarFamilia2.Text = Lang.btnGuardarFamilia2;
+            gbConfigFamilia.Text = Lang.gbConfigFamilia;
         }
     }
 }

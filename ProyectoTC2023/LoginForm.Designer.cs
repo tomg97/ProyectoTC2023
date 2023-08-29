@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbIdioma = new System.Windows.Forms.ComboBox();
             this.lblLang = new System.Windows.Forms.Label();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUsu = new System.Windows.Forms.Label();
@@ -31,23 +31,25 @@
             this.txtUsu = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSinSesion = new System.Windows.Forms.Button();
+            this.btnAplicarIdioma = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbIdioma
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbIdioma.FormattingEnabled = true;
+            this.cbIdioma.Items.AddRange(new object[] {
             "Español",
             "Inglés"});
-            this.comboBox1.Location = new System.Drawing.Point(311, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cbIdioma.Location = new System.Drawing.Point(191, 25);
+            this.cbIdioma.Name = "cbIdioma";
+            this.cbIdioma.Size = new System.Drawing.Size(121, 21);
+            this.cbIdioma.TabIndex = 7;
+            this.cbIdioma.SelectedIndexChanged += new System.EventHandler(this.cbIdioma_SelectedIndexChanged);
             // 
             // lblLang
             // 
             this.lblLang.AutoSize = true;
-            this.lblLang.Location = new System.Drawing.Point(308, 9);
+            this.lblLang.Location = new System.Drawing.Point(188, 9);
             this.lblLang.Name = "lblLang";
             this.lblLang.Size = new System.Drawing.Size(38, 13);
             this.lblLang.TabIndex = 8;
@@ -105,13 +107,24 @@
             this.btnSinSesion.UseVisualStyleBackColor = true;
             this.btnSinSesion.Click += new System.EventHandler(this.btnSinSesion_Click);
             // 
+            // btnAplicarIdioma
+            // 
+            this.btnAplicarIdioma.Location = new System.Drawing.Point(318, 25);
+            this.btnAplicarIdioma.Name = "btnAplicarIdioma";
+            this.btnAplicarIdioma.Size = new System.Drawing.Size(105, 21);
+            this.btnAplicarIdioma.TabIndex = 9;
+            this.btnAplicarIdioma.Text = "Aplicar";
+            this.btnAplicarIdioma.UseVisualStyleBackColor = true;
+            this.btnAplicarIdioma.Click += new System.EventHandler(this.btnAplicarIdioma_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 150);
+            this.Controls.Add(this.btnAplicarIdioma);
             this.Controls.Add(this.btnSinSesion);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbIdioma);
             this.Controls.Add(this.lblLang);
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblUsu);
@@ -119,7 +132,7 @@
             this.Controls.Add(this.txtUsu);
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = " ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,7 +140,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbIdioma;
         private System.Windows.Forms.Label lblLang;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblUsu;
@@ -135,5 +148,6 @@
         private System.Windows.Forms.TextBox txtUsu;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSinSesion;
+        private System.Windows.Forms.Button btnAplicarIdioma;
     }
 }

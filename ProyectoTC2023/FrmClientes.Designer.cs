@@ -47,7 +47,7 @@
             this.lblTipoTarjeta = new System.Windows.Forms.Label();
             this.txtCCV = new System.Windows.Forms.TextBox();
             this.lblCCV = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblMesYAñoVenc = new System.Windows.Forms.Label();
             this.txtCuotas = new System.Windows.Forms.TextBox();
             this.lblNumTarjeta = new System.Windows.Forms.Label();
             this.gbRegistroCliente.SuspendLayout();
@@ -178,7 +178,7 @@
             this.gbDatosPago.Controls.Add(this.lblTipoTarjeta);
             this.gbDatosPago.Controls.Add(this.txtCCV);
             this.gbDatosPago.Controls.Add(this.lblCCV);
-            this.gbDatosPago.Controls.Add(this.label4);
+            this.gbDatosPago.Controls.Add(this.lblMesYAñoVenc);
             this.gbDatosPago.Controls.Add(this.txtCuotas);
             this.gbDatosPago.Controls.Add(this.lblNumTarjeta);
             this.gbDatosPago.Location = new System.Drawing.Point(130, 12);
@@ -286,14 +286,14 @@
             this.lblCCV.TabIndex = 7;
             this.lblCCV.Text = "CCV";
             // 
-            // label4
+            // lblMesYAñoVenc
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Mes Y Año expiración";
+            this.lblMesYAñoVenc.AutoSize = true;
+            this.lblMesYAñoVenc.Location = new System.Drawing.Point(3, 63);
+            this.lblMesYAñoVenc.Name = "lblMesYAñoVenc";
+            this.lblMesYAñoVenc.Size = new System.Drawing.Size(110, 13);
+            this.lblMesYAñoVenc.TabIndex = 6;
+            this.lblMesYAñoVenc.Text = "Mes Y Año expiración";
             // 
             // txtCuotas
             // 
@@ -355,7 +355,7 @@
         private System.Windows.Forms.Label lblTipoTarjeta;
         private System.Windows.Forms.TextBox txtCCV;
         private System.Windows.Forms.Label lblCCV;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMesYAñoVenc;
         private System.Windows.Forms.TextBox txtCuotas;
         private System.Windows.Forms.Label lblNumTarjeta;
         private System.Windows.Forms.Label lblSubtotalCuotas;

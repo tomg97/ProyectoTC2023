@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.gbConfigFamilia = new System.Windows.Forms.GroupBox();
-            this.btnGuardarFamilia = new System.Windows.Forms.Button();
             this.tvConfigFamilia = new System.Windows.Forms.TreeView();
+            this.btnGuardarFamilia2 = new System.Windows.Forms.Button();
             this.gbFamilias = new System.Windows.Forms.GroupBox();
             this.btnConfigurar = new System.Windows.Forms.Button();
             this.btnAgregarFamilia = new System.Windows.Forms.Button();
@@ -35,14 +35,14 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.cbFamilias = new System.Windows.Forms.ComboBox();
             this.lblFamilias = new System.Windows.Forms.Label();
-            this.grpPatentes = new System.Windows.Forms.GroupBox();
+            this.gbPatentes = new System.Windows.Forms.GroupBox();
             this.btnAgregarPatente = new System.Windows.Forms.Button();
             this.cbPatentes = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTodasPatentes = new System.Windows.Forms.Label();
             this.gbConfigFamilia.SuspendLayout();
             this.gbFamilias.SuspendLayout();
             this.gbNuevaFamilia.SuspendLayout();
-            this.grpPatentes.SuspendLayout();
+            this.gbPatentes.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbConfigFamilia
@@ -57,17 +57,6 @@
             this.gbConfigFamilia.TabStop = false;
             this.gbConfigFamilia.Text = "Configurar Familia";
             // 
-            // btnGuardarFamilia
-            // 
-            this.btnGuardarFamilia.Location = new System.Drawing.Point(155, 328);
-            this.btnGuardarFamilia.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardarFamilia.Name = "btnGuardarFamilia";
-            this.btnGuardarFamilia.Size = new System.Drawing.Size(110, 36);
-            this.btnGuardarFamilia.TabIndex = 1;
-            this.btnGuardarFamilia.Text = "Guardar familia";
-            this.btnGuardarFamilia.UseVisualStyleBackColor = true;
-            this.btnGuardarFamilia.Click += new System.EventHandler(this.btnGuardarFamilia_Click);
-            // 
             // tvConfigFamilia
             // 
             this.tvConfigFamilia.Location = new System.Drawing.Point(4, 17);
@@ -75,6 +64,17 @@
             this.tvConfigFamilia.Name = "tvConfigFamilia";
             this.tvConfigFamilia.Size = new System.Drawing.Size(512, 433);
             this.tvConfigFamilia.TabIndex = 0;
+            // 
+            // btnGuardarFamilia2
+            // 
+            this.btnGuardarFamilia2.Location = new System.Drawing.Point(155, 328);
+            this.btnGuardarFamilia2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarFamilia2.Name = "btnGuardarFamilia2";
+            this.btnGuardarFamilia2.Size = new System.Drawing.Size(110, 36);
+            this.btnGuardarFamilia2.TabIndex = 1;
+            this.btnGuardarFamilia2.Text = "Guardar familia";
+            this.btnGuardarFamilia2.UseVisualStyleBackColor = true;
+            this.btnGuardarFamilia2.Click += new System.EventHandler(this.btnGuardarFamilia_Click);
             // 
             // gbFamilias
             // 
@@ -177,19 +177,19 @@
             this.lblFamilias.TabIndex = 7;
             this.lblFamilias.Text = "Todas las familias";
             // 
-            // grpPatentes
+            // gbPatentes
             // 
-            this.grpPatentes.Controls.Add(this.btnAgregarPatente);
-            this.grpPatentes.Controls.Add(this.cbPatentes);
-            this.grpPatentes.Controls.Add(this.label2);
-            this.grpPatentes.Location = new System.Drawing.Point(7, 8);
-            this.grpPatentes.Margin = new System.Windows.Forms.Padding(2);
-            this.grpPatentes.Name = "grpPatentes";
-            this.grpPatentes.Padding = new System.Windows.Forms.Padding(2);
-            this.grpPatentes.Size = new System.Drawing.Size(256, 108);
-            this.grpPatentes.TabIndex = 7;
-            this.grpPatentes.TabStop = false;
-            this.grpPatentes.Text = "Patentes";
+            this.gbPatentes.Controls.Add(this.btnAgregarPatente);
+            this.gbPatentes.Controls.Add(this.cbPatentes);
+            this.gbPatentes.Controls.Add(this.lblTodasPatentes);
+            this.gbPatentes.Location = new System.Drawing.Point(7, 8);
+            this.gbPatentes.Margin = new System.Windows.Forms.Padding(2);
+            this.gbPatentes.Name = "gbPatentes";
+            this.gbPatentes.Padding = new System.Windows.Forms.Padding(2);
+            this.gbPatentes.Size = new System.Drawing.Size(256, 108);
+            this.gbPatentes.TabIndex = 7;
+            this.gbPatentes.TabStop = false;
+            this.gbPatentes.Text = "Patentes";
             // 
             // btnAgregarPatente
             // 
@@ -212,25 +212,25 @@
             this.cbPatentes.Size = new System.Drawing.Size(234, 21);
             this.cbPatentes.TabIndex = 6;
             // 
-            // label2
+            // lblTodasPatentes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 23);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Todas las patentes";
+            this.lblTodasPatentes.AutoSize = true;
+            this.lblTodasPatentes.Location = new System.Drawing.Point(9, 23);
+            this.lblTodasPatentes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTodasPatentes.Name = "lblTodasPatentes";
+            this.lblTodasPatentes.Size = new System.Drawing.Size(97, 13);
+            this.lblTodasPatentes.TabIndex = 5;
+            this.lblTodasPatentes.Text = "Todas las patentes";
             // 
             // FrmPerfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 468);
-            this.Controls.Add(this.btnGuardarFamilia);
+            this.Controls.Add(this.btnGuardarFamilia2);
             this.Controls.Add(this.gbConfigFamilia);
             this.Controls.Add(this.gbFamilias);
-            this.Controls.Add(this.grpPatentes);
+            this.Controls.Add(this.gbPatentes);
             this.Name = "FrmPerfiles";
             this.Text = "FrmPerfiles";
             this.Load += new System.EventHandler(this.FrmPerfiles_Load);
@@ -239,8 +239,8 @@
             this.gbFamilias.PerformLayout();
             this.gbNuevaFamilia.ResumeLayout(false);
             this.gbNuevaFamilia.PerformLayout();
-            this.grpPatentes.ResumeLayout(false);
-            this.grpPatentes.PerformLayout();
+            this.gbPatentes.ResumeLayout(false);
+            this.gbPatentes.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -248,7 +248,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbConfigFamilia;
-        private System.Windows.Forms.Button btnGuardarFamilia;
+        private System.Windows.Forms.Button btnGuardarFamilia2;
         private System.Windows.Forms.TreeView tvConfigFamilia;
         private System.Windows.Forms.GroupBox gbFamilias;
         private System.Windows.Forms.Button btnConfigurar;
@@ -259,9 +259,9 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.ComboBox cbFamilias;
         private System.Windows.Forms.Label lblFamilias;
-        private System.Windows.Forms.GroupBox grpPatentes;
+        private System.Windows.Forms.GroupBox gbPatentes;
         private System.Windows.Forms.Button btnAgregarPatente;
         private System.Windows.Forms.ComboBox cbPatentes;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTodasPatentes;
     }
 }

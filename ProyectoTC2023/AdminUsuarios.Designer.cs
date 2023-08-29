@@ -30,11 +30,11 @@
             this.lblABMNUsu = new System.Windows.Forms.Label();
             this.txtABMUsu = new System.Windows.Forms.TextBox();
             this.btnVerif = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbDesbloquearUsuarios = new System.Windows.Forms.GroupBox();
             this.btnDesbloquear = new System.Windows.Forms.Button();
             this.cmbUsusBloq = new System.Windows.Forms.ComboBox();
             this.grpbxCMUsu.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbDesbloquearUsuarios.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpbxCMUsu
@@ -104,16 +104,16 @@
             this.btnVerif.UseVisualStyleBackColor = true;
             this.btnVerif.Click += new System.EventHandler(this.btnVerif_Click);
             // 
-            // groupBox2
+            // gbDesbloquearUsuarios
             // 
-            this.groupBox2.Controls.Add(this.btnDesbloquear);
-            this.groupBox2.Controls.Add(this.cmbUsusBloq);
-            this.groupBox2.Location = new System.Drawing.Point(12, 131);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(240, 78);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Desbloquear Usuarios";
+            this.gbDesbloquearUsuarios.Controls.Add(this.btnDesbloquear);
+            this.gbDesbloquearUsuarios.Controls.Add(this.cmbUsusBloq);
+            this.gbDesbloquearUsuarios.Location = new System.Drawing.Point(12, 131);
+            this.gbDesbloquearUsuarios.Name = "gbDesbloquearUsuarios";
+            this.gbDesbloquearUsuarios.Size = new System.Drawing.Size(240, 78);
+            this.gbDesbloquearUsuarios.TabIndex = 1;
+            this.gbDesbloquearUsuarios.TabStop = false;
+            this.gbDesbloquearUsuarios.Text = "Desbloquear Usuarios";
             // 
             // btnDesbloquear
             // 
@@ -138,14 +138,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(266, 225);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbDesbloquearUsuarios);
             this.Controls.Add(this.grpbxCMUsu);
             this.Name = "AdminUsuarios";
             this.Text = "Admin Usuarios";
             this.Load += new System.EventHandler(this.AdminUsuarios_Load);
             this.grpbxCMUsu.ResumeLayout(false);
             this.grpbxCMUsu.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.gbDesbloquearUsuarios.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -159,7 +159,7 @@
         private System.Windows.Forms.TextBox txtABMPUsu;
         private System.Windows.Forms.Button btnEnterABM;
         private System.Windows.Forms.Label lblABMNUsu;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbDesbloquearUsuarios;
         private System.Windows.Forms.Button btnDesbloquear;
         private System.Windows.Forms.ComboBox cmbUsusBloq;
     }

@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -13,12 +16,13 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoTC2023 {
-    public partial class FrmDespacho : Form {
+    public partial class FrmDespacho : Form, IObserver {
         ManejaVenta manejaVenta = new ManejaVenta();
         Mensajeria mensajeria = new Mensajeria();
         string pathArchivo;
         public FrmDespacho() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
         }
 
         private void btnDespachar_Click(object sender, EventArgs e) {
@@ -55,6 +59,24 @@ namespace ProyectoTC2023 {
                     Clipboard.SetText(selectedValue);
                 }
             }
+        }
+
+        private void FrmDespacho_Load(object sender, EventArgs e) {
+
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            gbIdFacturas.Text = Lang.gbIdFacturas;
+            lblIdFactura.Text = Lang.lblIdFactura;
+            lblDniFactura.Text = Lang.lblDniFactura;
+            btnDespachar.Text = Lang.btnDespachar;
+            gbSeleccionFactura.Text = Lang.gbSeleccionFactura;
+            btnSelect.Text = Lang.btnSelect;
+            gbVisualizador.Text = Lang.gbVisualizador;
         }
     }
 }

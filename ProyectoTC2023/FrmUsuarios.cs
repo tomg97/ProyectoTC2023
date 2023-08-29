@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -12,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmUsuarios : Form {
+    public partial class FrmUsuarios : Form, IObserver {
         ValidarCampos validar = new ValidarCampos();
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
         Mensajeria mensajeria = new Mensajeria();
@@ -21,6 +24,7 @@ namespace ProyectoTC2023 {
         Usuario temp;
         public FrmUsuarios() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
             cbUsuarios.DataSource = resultadosDb.traerTodosUsuarios();
             cbUsuarios.DisplayMember = "nomUsu";
             cbFamilias.DataSource = manejaPerfil.GetAllFamilias();
@@ -149,6 +153,25 @@ namespace ProyectoTC2023 {
             } catch (Exception) {
                 MessageBox.Show("Error al guardar el usuario");
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            gbCambiarClave.Text = Lang.gbCambiarClave;
+            lblClaveActual.Text = Lang.lblClaveActual;
+            lblClaveNueva.Text = Lang.lblClaveNueva;
+            btnCambiar.Text = Lang.btnCambiar;
+            grpPatentes.Text = Lang.grpPatentes;
+            lblCbUsuarios.Text = Lang.lblCbUsuarios;
+            btnConfigurar.Text = Lang.btnConfigurar;
+            lblAddPatente.Text = Lang.lblAddPatente;
+            btnAddPatente.Text = Lang.btnAddPatente;
+            lblAddFamilia.Text = Lang.lblAddFamilia;
+            btnAgregarFamilia.Text = Lang.btnAgregarFamilia;
+            btnGuardarFamilia.Text = Lang.btnGuardarFamilia;
         }
     }
 }
