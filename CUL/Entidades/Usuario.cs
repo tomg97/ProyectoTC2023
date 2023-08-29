@@ -27,6 +27,12 @@ namespace CUL.Entidades {
 			get { return _permisos; }
 			set { _permisos = value; }
 		}
+		private string _idioma;
+
+		public string idioma {
+			get { return _idioma; }
+			set { _idioma = value; }
+		}
 
 	}
 }

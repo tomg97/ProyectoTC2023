@@ -10,14 +10,18 @@ using BLL.Metodos;
 using System.Windows.Forms;
 using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Interfaces;
+using CUL.Métodos;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
-    public partial class FormMain : Form {
+    public partial class FormMain : Form, IObserver {
         public FormMain() {
             InitializeComponent();
             ManejaPermisos maneja = new ManejaPermisos();
             maneja.FillUserComponents(SingletonSesion.getInstance.getUsuarioActual());
             validarPermisos();
+            LenguajeActual.Attach(this);
         }
         void validarPermisos() {
             if (SingletonSesion.getInstance.estaLogged) {
@@ -91,6 +95,26 @@ namespace ProyectoTC2023 {
             FrmPerfiles frmPerfiles = new FrmPerfiles();
             frmPerfiles.MdiParent = this;
             frmPerfiles.Show();
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            usuariosToolStripMenuItem.Text = Lang.usuariosToolStripMenuItem;
+            bitacoraToolStripMenuItem.Text = Lang.bitacoraToolStripMenuItem;
+            idiomasToolStripMenuItem.Text = Lang.idiomasToolStripMenuItem;
+            perfilesToolStripMenuItem.Text = Lang.perfilesToolStripMenuItem;
+            comprasToolStripMenuItem.Text = Lang.comprasToolStripMenuItem;
+            productosToolStripMenuItem.Text = Lang.productosToolStripMenuItem;
+            proveedoresToolStripMenuItem.Text = Lang.proveedoresToolStripMenuItem;
+            clientesToolStripMenuItem.Text = Lang.clientesToolStripMenuItem;
+            reportesToolStripMenuItem.Text = Lang.reportesToolStripMenuItem;
+            usuarioToolStripMenuItem.Text = Lang.usuarioToolStripMenuItem;
+            tmiFacturar.Text = Lang.tmiFacturar;
+            tmiSeleccionYCarrito.Text = Lang.tmiSeleccionYCarrito;
+            tmiDespachar.Text = Lang.tmiDespachar;
         }
     }
 }

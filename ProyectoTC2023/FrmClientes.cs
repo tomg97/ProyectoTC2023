@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -12,17 +15,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmClientes : Form {
+    public partial class FrmClientes : Form, IObserver {
         ManejaVenta manejaVenta = new ManejaVenta();
         ManejaCliente manejaCliente = new ManejaCliente();
         ValidarCampos validar = new ValidarCampos();
         Cliente clienteVacio = new Cliente();
         public FrmClientes(Cliente cliente) {
             InitializeComponent();
+            LenguajeActual.Attach(this);
             gbRegistroCliente.Visible = false;
             lblCuotas.Visible = false;
             txtCuotas.Visible = false;
-            lblSubtotalVenta.Text = "Subtotal: $" + manejaVenta.getSubtotalCarrito();
             clienteVacio = cliente;
         }
         public FrmClientes(string idClienteACrear) {
@@ -63,7 +66,7 @@ namespace ProyectoTC2023 {
         private void validacionTxtBoxCuotas(object sender, EventArgs e) {
             string cuotas = txtCuotas.Text;
             if (validar.validarSoloNumero(cuotas) && validar.validarMayor0(Convert.ToInt32(cuotas)) && validar.validarCuotas(cuotas)) {
-                lblSubtotalCuotas.Text = "Cada cuota: $" + manejaVenta.getSubtotalCuotas(cuotas);
+                updateCuotas(cuotas);
             } else if (!validar.validarNoNuloNoVacio(cuotas)) {
                 resetSubtotalCuotas();
                 txtCuotas.Clear();
@@ -104,6 +107,35 @@ namespace ProyectoTC2023 {
                 MessageBox.Show("Se deben ingresar solo dos dígitos para el mes/año.");
                 txtMesTarjeta.Clear();
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            gbRegistroCliente.Text = Lang.gbRegistroCliente;
+            lblIdCliente.Text = Lang.lblIdCliente;
+            lblNombreCliente.Text = Lang.lblNombreCliente;
+            lblApellidoCliente.Text = Lang.lblApellidoCliente;
+            lblDomicilioCliente.Text = Lang.lblDomicilioCliente;
+            lblTelefonoCliente.Text = Lang.lblTelefonoCliente;
+            btnRegistrarCliente.Text = Lang.btnRegistrarCliente;
+            gbDatosPago.Text = Lang.gbDatosPago;
+            lblNumTarjeta.Text = Lang.lblNumTarjeta;
+            lblMesYAñoVenc.Text = Lang.lblMesYAñoVenc;
+            lblTipoTarjeta.Text = Lang.lblTipoTarjeta;
+            lblCuotas.Text = Lang.lblCuotas;
+            lblSubtotalCuotas.Text = Lang.lblSubtotalCuotas;
+            lblSubtotalVenta.Text = Lang.lblSubtotalVenta + " $" + manejaVenta.getSubtotalCarrito();
+            btnVenta.Text = Lang.btnVenta;
+        }
+        private void updateCuotas(string cuotas) {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            lblSubtotalCuotas.Text = Lang.lblSubtotalCuotas + " $" + manejaVenta.getSubtotalCuotas(cuotas);
         }
     }
 }

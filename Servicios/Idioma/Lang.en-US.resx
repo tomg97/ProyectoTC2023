@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="adminToolStripMenuItem" xml:space="preserve">
+  <value>Admin</value>
+</data>
+<data name="ayudaToolStripMenuItem" xml:space="preserve">
+  <value>Help</value>
+</data>
+<data name="bitacoraToolStripMenuItem" xml:space="preserve">
+  <value>Log</value>
+</data>
+<data name="btnAddPatente" xml:space="preserve">
+  <value>Add &gt;&gt;</value>
+</data>
+<data name="btnAgregarFamilia" xml:space="preserve">
+  <value>Add &gt;&gt;</value>
+</data>
+<data name="btnAgregarPatente" xml:space="preserve">
+  <value>Add &gt;&gt;</value>
+</data>
+<data name="btnAplicarIdioma" xml:space="preserve">
+  <value>Apply</value>
+</data>
+<data name="btnAsignarCliente" xml:space="preserve">
+  <value>Assign Payment Data</value>
+</data>
+<data name="btnCambiar" xml:space="preserve">
+  <value>Change Password</value>
+</data>
+<data name="btnConfigurar" xml:space="preserve">
+  <value>Configure</value>
+</data>
+<data name="btnDesbloquear" xml:space="preserve">
+  <value>Unlock</value>
+</data>
+<data name="btnDespachar" xml:space="preserve">
+  <value>Dispatch</value>
+</data>
+<data name="btnEnterABM" xml:space="preserve">
+  <value>Edit</value>
+</data>
+<data name="btnEnterABM2" xml:space="preserve">
+  <value>Create</value>
+</data>
+<data name="btnFacturar" xml:space="preserve">
+  <value>Invoice</value>
+</data>
+<data name="btnGuardarFamilia" xml:space="preserve">
+  <value>Save Changes</value>
+</data>
+<data name="btnGuardarFamilia2" xml:space="preserve">
+  <value>Save Family</value>
+</data>
+<data name="btnGuardarNuevaF" xml:space="preserve">
+  <value>Save</value>
+</data>
+<data name="btnRegistrarCliente" xml:space="preserve">
+  <value>Register</value>
+</data>
+<data name="btnRemoverCarrito" xml:space="preserve">
+  <value>Remove Selection</value>
+</data>
+<data name="btnSelect" xml:space="preserve">
+  <value>Select</value>
+</data>
+<data name="btnSelectVentas" xml:space="preserve">
+  <value>Select</value>
+</data>
+<data name="btnSinSesion" xml:space="preserve">
+  <value>Continue without Session</value>
+</data>
+<data name="btnVaciar" xml:space="preserve">
+  <value>Empty</value>
+</data>
+<data name="btnVenta" xml:space="preserve">
+  <value>Sale</value>
+</data>
+<data name="btnVerif" xml:space="preserve">
+  <value>Verify</value>
+</data>
+<data name="clientesToolStripMenuItem" xml:space="preserve">
+  <value>Clients</value>
+</data>
+<data name="comprasToolStripMenuItem" xml:space="preserve">
+  <value>Purchases</value>
+</data>
+<data name="Español" xml:space="preserve">
+  <value>Spanish</value>
+</data>
+<data name="gbCambiarClave" xml:space="preserve">
+  <value>Change Password</value>
+</data>
+<data name="gbDatosPago" xml:space="preserve">
+  <value>Enter Payment Data</value>
+</data>
+<data name="gbDesbloquearUsuarios" xml:space="preserve">
+  <value>Unlock Users</value>
+</data>
+<data name="gbFamilias" xml:space="preserve">
+  <value>Families</value>
+</data>
+<data name="gbIdFacturas" xml:space="preserve">
+  <value>Invoice Identifier</value>
+</data>
+<data name="gbNuevaFamilia" xml:space="preserve">
+  <value>New</value>
+</data>
+<data name="gbPatentes" xml:space="preserve">
+  <value>Patents</value>
+</data>
+<data name="gbRegistroCliente" xml:space="preserve">
+  <value>Register Client</value>
+</data>
+<data name="gbSeleccionFactura" xml:space="preserve">
+  <value>Invoice Selector</value>
+</data>
+<data name="gbVentasNoF" xml:space="preserve">
+  <value>Uninvoiced Sales</value>
+</data>
+<data name="grpbxCMUsu" xml:space="preserve">
+  <value>Create/Modify User</value>
+</data>
+<data name="grpCarrito" xml:space="preserve">
+  <value>Cart</value>
+</data>
+<data name="grpPatentes" xml:space="preserve">
+  <value>Users</value>
+</data>
+<data name="grpStockVentas" xml:space="preserve">
+  <value>Stock</value>
+</data>
+<data name="idiomasToolStripMenuItem" xml:space="preserve">
+  <value>Languages</value>
+</data>
+<data name="Inglés" xml:space="preserve">
+  <value>English</value>
+</data>
+<data name="lblABMNUsu" xml:space="preserve">
+  <value>Username:</value>
+</data>
+<data name="lblABMPUsu" xml:space="preserve">
+  <value>Password:</value>
+</data>
+<data name="lblAddFamilia" xml:space="preserve">
+  <value>Add Families</value>
+</data>
+<data name="lblAddPatente" xml:space="preserve">
+  <value>Add Patents</value>
+</data>
+<data name="lblApellidoCliente" xml:space="preserve">
+  <value>Last Name</value>
+</data>
+<data name="lblAsignarCliente" xml:space="preserve">
+  <value>Assign Customer DNI to Cart:</value>
+</data>
+<data name="lblCantidadVentas" xml:space="preserve">
+  <value>Quantity:</value>
+</data>
+<data name="lblCbUsuarios" xml:space="preserve">
+  <value>All Users</value>
+</data>
+<data name="lblClaveActual" xml:space="preserve">
+  <value>Current Password:</value>
+</data>
+<data name="lblClaveNueva" xml:space="preserve">
+  <value>New Password:</value>
+</data>
+<data name="lblCuotas" xml:space="preserve">
+  <value>Installments</value>
+</data>
+<data name="lblDniFactura" xml:space="preserve">
+  <value>Customer DNI</value>
+</data>
+<data name="lblDomicilioCliente" xml:space="preserve">
+  <value>Address</value>
+</data>
+<data name="lblFamilias" xml:space="preserve">
+  <value>All Families</value>
+</data>
+<data name="lblIdCliente" xml:space="preserve">
+  <value>DNI</value>
+</data>
+<data name="lblIdFactura" xml:space="preserve">
+  <value>Invoice ID</value>
+</data>
+<data name="lblLang" xml:space="preserve">
+  <value>Language</value>
+</data>
+<data name="lblMesYAñoVenc" xml:space="preserve">
+  <value>Month and Year of Expiry</value>
+</data>
+<data name="lblNombreCliente" xml:space="preserve">
+  <value>First Name</value>
+</data>
+<data name="lblNumTarjeta" xml:space="preserve">
+  <value>Card Number</value>
+</data>
+<data name="lblPass" xml:space="preserve">
+  <value>Password</value>
+</data>
+<data name="lblSubtotalCuotas" xml:space="preserve">
+  <value>Each Installment: </value>
+</data>
+<data name="lblSubtotalVenta" xml:space="preserve">
+  <value>Subtotal: </value>
+</data>
+<data name="lblTelefonoCliente" xml:space="preserve">
+  <value>Phone</value>
+</data>
+<data name="lblTipoTarjeta" xml:space="preserve">
+  <value>Type</value>
+</data>
+<data name="lblTodasPatentes" xml:space="preserve">
+  <value>All Patents</value>
+</data>
+<data name="lblUsu" xml:space="preserve">
+  <value>Username</value>
+</data>
+<data name="maestrosToolStripMenuItem" xml:space="preserve">
+  <value>Masters</value>
+</data>
+<data name="perfilesToolStripMenuItem" xml:space="preserve">
+  <value>Profiles</value>
+</data>
+<data name="productosToolStripMenuItem" xml:space="preserve">
+  <value>Products</value>
+</data>
+<data name="proveedoresToolStripMenuItem" xml:space="preserve">
+  <value>Suppliers</value>
+</data>
+<data name="reportesToolStripMenuItem" xml:space="preserve">
+  <value>Reports</value>
+</data>
+<data name="salirToolStripMenuItem" xml:space="preserve">
+  <value>Exit</value>
+</data>
+<data name="tmiDespachar" xml:space="preserve">
+  <value>Dispatch</value>
+</data>
+<data name="tmiFacturar" xml:space="preserve">
+  <value>Invoice</value>
+</data>
+<data name="tmiSeleccionYCarrito" xml:space="preserve">
+  <value>Select and Cart</value>
+</data>
+<data name="tsmiArchivo" xml:space="preserve">
+  <value>File</value>
+</data>
+<data name="usuariosToolStripMenuItem" xml:space="preserve">
+  <value>Users</value>
+</data>
+<data name="usuarioToolStripMenuItem" xml:space="preserve">
+  <value>User</value>
+</data>
+<data name="ventasToolStripMenuItem" xml:space="preserve">
+  <value>Sales</value>
+</data>
+</root>

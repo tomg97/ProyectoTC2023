@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -10,12 +13,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Servicios.Metodos.Mensajeria;
 
 namespace ProyectoTC2023 {
-    public partial class AdminUsuarios : Form {
+    public partial class AdminUsuarios : Form, IObserver {
         public AdminUsuarios() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
         }
         private void AdminUsuarios_Load(object sender, EventArgs e) {
             txtABMPUsu.Visible = false;
@@ -108,6 +111,20 @@ namespace ProyectoTC2023 {
             } else {
                 mensajeria.mostrarErrorNoLogged();
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            grpbxCMUsu.Text = Lang.grpbxCMUsu;
+            lblABMNUsu.Text = Lang.lblABMNUsu;
+            btnVerif.Text = Lang.btnVerif;
+            lblABMPUsu.Text = Lang.lblABMPUsu;
+            btnEnterABM.Text = Lang.btnEnterABM;
+            gbDesbloquearUsuarios.Text = Lang.gbDesbloquearUsuarios;
+            btnDesbloquear.Text = Lang.btnDesbloquear;
         }
     }
 }

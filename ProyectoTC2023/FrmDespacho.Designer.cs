@@ -29,13 +29,13 @@
             this.lblIdFactura = new System.Windows.Forms.Label();
             this.txtIdFactura = new System.Windows.Forms.TextBox();
             this.btnDespachar = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSelect = new System.Windows.Forms.Button();
+            this.gbVisualizador = new System.Windows.Forms.GroupBox();
             this.trvFactura = new System.Windows.Forms.TreeView();
+            this.gbSeleccionFactura = new System.Windows.Forms.GroupBox();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.gbIdFacturas.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbVisualizador.SuspendLayout();
+            this.gbSeleccionFactura.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbIdFacturas
@@ -94,25 +94,33 @@
             this.btnDespachar.UseVisualStyleBackColor = true;
             this.btnDespachar.Click += new System.EventHandler(this.btnDespachar_Click);
             // 
-            // groupBox1
+            // gbVisualizador
             // 
-            this.groupBox1.Controls.Add(this.trvFactura);
-            this.groupBox1.Location = new System.Drawing.Point(151, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(643, 426);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Visualizador facturas";
+            this.gbVisualizador.Controls.Add(this.trvFactura);
+            this.gbVisualizador.Location = new System.Drawing.Point(151, 12);
+            this.gbVisualizador.Name = "gbVisualizador";
+            this.gbVisualizador.Size = new System.Drawing.Size(643, 426);
+            this.gbVisualizador.TabIndex = 1;
+            this.gbVisualizador.TabStop = false;
+            this.gbVisualizador.Text = "Visualizador facturas";
             // 
-            // groupBox2
+            // trvFactura
             // 
-            this.groupBox2.Controls.Add(this.btnSelect);
-            this.groupBox2.Location = new System.Drawing.Point(12, 155);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(133, 76);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Seleccionador Facturas";
+            this.trvFactura.Location = new System.Drawing.Point(6, 19);
+            this.trvFactura.Name = "trvFactura";
+            this.trvFactura.Size = new System.Drawing.Size(631, 401);
+            this.trvFactura.TabIndex = 0;
+            this.trvFactura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trvJson_KeyDown);
+            // 
+            // gbSeleccionFactura
+            // 
+            this.gbSeleccionFactura.Controls.Add(this.btnSelect);
+            this.gbSeleccionFactura.Location = new System.Drawing.Point(12, 155);
+            this.gbSeleccionFactura.Name = "gbSeleccionFactura";
+            this.gbSeleccionFactura.Size = new System.Drawing.Size(133, 76);
+            this.gbSeleccionFactura.TabIndex = 2;
+            this.gbSeleccionFactura.TabStop = false;
+            this.gbSeleccionFactura.Text = "Seleccionador Facturas";
             // 
             // btnSelect
             // 
@@ -125,28 +133,21 @@
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // trvFactura
-            // 
-            this.trvFactura.Location = new System.Drawing.Point(6, 19);
-            this.trvFactura.Name = "trvFactura";
-            this.trvFactura.Size = new System.Drawing.Size(631, 401);
-            this.trvFactura.TabIndex = 0;
-            this.trvFactura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trvJson_KeyDown);
-            // 
             // FrmDespacho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbSeleccionFactura);
+            this.Controls.Add(this.gbVisualizador);
             this.Controls.Add(this.gbIdFacturas);
             this.Name = "FrmDespacho";
             this.Text = "FrmDespacho";
+            this.Load += new System.EventHandler(this.FrmDespacho_Load);
             this.gbIdFacturas.ResumeLayout(false);
             this.gbIdFacturas.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.gbVisualizador.ResumeLayout(false);
+            this.gbSeleccionFactura.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -159,8 +160,8 @@
         private System.Windows.Forms.Label lblIdFactura;
         private System.Windows.Forms.TextBox txtIdFactura;
         private System.Windows.Forms.Button btnDespachar;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbVisualizador;
+        private System.Windows.Forms.GroupBox gbSeleccionFactura;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.TreeView trvFactura;
     }

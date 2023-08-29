@@ -9,6 +9,7 @@ namespace CUL.Entidades {
         private static SingletonSesion instance = null;
         private static readonly object lockObject = new object();
         public bool estaLogged = false;
+        private static string _codigoIdioma = "es-AR";
         private Usuario usuarioSesion;
         private SingletonSesion() {
 
@@ -58,6 +59,20 @@ namespace CUL.Entidades {
                 }
             }
             return existe;
+        }
+        public static void idiomaActual(string codigoIdioma) {
+            if(getInstance.usuarioSesion != null) {
+                getInstance.usuarioSesion.idioma = codigoIdioma; 
+            } else {
+                _codigoIdioma = codigoIdioma;
+            }
+        }
+        public string getIdiomaActual() {
+            if (getInstance.usuarioSesion != null) {
+                return getInstance.usuarioSesion.idioma;
+            } else {
+                return _codigoIdioma;
+            }
         }
     }
 }

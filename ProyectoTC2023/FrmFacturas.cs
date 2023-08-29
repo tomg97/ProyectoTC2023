@@ -1,5 +1,8 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -12,12 +15,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmFacturas : Form {
+    public partial class FrmFacturas : Form, IObserver {
         ManejaVenta manejaVenta = new ManejaVenta();
         Mensajeria mensajeria = new Mensajeria();
         public FrmFacturas() {
             InitializeComponent();
             resetDgvView();
+            LenguajeActual.Attach(this);
         }
 
         private void FrmFacturas_Load(object sender, EventArgs e) {
@@ -45,6 +49,15 @@ namespace ProyectoTC2023 {
             } else {
                 mensajeria.mostrarErrorNoLogged();
             }            
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            gbVentasNoF.Text = Lang.gbVentasNoF;
+            btnFacturar.Text = Lang.btnFacturar;
         }
     }
 }
