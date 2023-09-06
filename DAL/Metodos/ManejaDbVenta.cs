@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbVenta {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public List<Producto> getProductosEnStock() {
             List<Producto> listaProductos = new List<Producto>();
             try {
@@ -40,14 +42,12 @@ namespace DAL.Metodos {
             string mensaje = "0";
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand sqlCommand = new SqlCommand("RemoverDeStock", connection);
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    SqlCommand sqlCommand = new SqlCommand();
 
                     connection.Open();
                     foreach (Producto producto in productos) {
                         sqlCommand.Parameters.Clear();
-                        sqlCommand.Parameters.AddWithValue("@Id", producto.id);
-                        sqlCommand.Parameters.AddWithValue("@Cantidad", producto.cantidad);
+                        sqlCommand = storedProcedureHelper.rellenarYDevolverSPUpsert(producto, connection, "RemoverDeStock");
                         sqlCommand.ExecuteNonQuery();
                     }
                     mensaje = "éxito";
@@ -61,13 +61,14 @@ namespace DAL.Metodos {
         public void crearVentaNoFacturada(Venta venta) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand sqlCommand = new SqlCommand("CrearVenta", connection);
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    SqlCommand sqlCommand = storedProcedureHelper.rellenarYDevolverSPUpsert(venta, connection, "CrearVenta");
+                    
+                    SqlParameter sqlParameterProductos = sqlCommand.Parameters["@productosVendidos"];
+                    sqlCommand.Parameters.Remove(sqlParameterProductos);
                     sqlCommand.Parameters.AddWithValue("@productosVendidos", venta.productosVendidos.ToString());
-                    sqlCommand.Parameters.AddWithValue("@id", venta.id);
-                    sqlCommand.Parameters.AddWithValue("@monto", venta.monto);
-                    sqlCommand.Parameters.AddWithValue("@fecha", venta.fecha);
-                    sqlCommand.Parameters.AddWithValue("@cliente", venta.idCliente);
+
+                    SqlParameter sqlParameterFacturada = sqlCommand.Parameters["@facturada"];
+                    sqlCommand.Parameters.Remove(sqlParameterProductos);
                     sqlCommand.Parameters.AddWithValue("@facturada", 0);
 
                     connection.Open();

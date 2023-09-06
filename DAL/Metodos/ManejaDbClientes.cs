@@ -6,21 +6,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbClientes {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private StoredProcedureHelper storedProcedureHelper;
         public string crearCliente(Cliente cliente) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("CrearCliente", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Id", cliente.id);
-                    command.Parameters.AddWithValue("@Nombre", cliente.nombre);
-                    command.Parameters.AddWithValue("@Apellido", cliente.apellido);
-                    command.Parameters.AddWithValue("@Domicilio", cliente.domicilio);
-                    command.Parameters.AddWithValue("@Telefono", cliente.telefono);
-
+                    SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(cliente, connection, "CrearCliente");
                     connection.Open();
                     command.ExecuteNonQuery();
                     return "Cliente ha sido creado.";

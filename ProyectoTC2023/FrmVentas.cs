@@ -22,6 +22,7 @@ namespace ProyectoTC2023 {
         public FrmVentas() {
             InitializeComponent();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
 
         private void FrmVentas_Load(object sender, EventArgs e) {

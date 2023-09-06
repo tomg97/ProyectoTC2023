@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ComercializARDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Metodos\ManejaDbBitacora.cs" />
     <Compile Include="Metodos\ManejaDbPerfil.cs" />
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />
@@ -99,6 +100,10 @@
     <ProjectReference Include="..\CUL\CUL.csproj">
       <Project>{d421a581-dc0f-41d4-84de-889cde3b143a}</Project>
       <Name>CUL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Project>{b1170576-0e05-4b50-8f8b-acc05fe02f56}</Project>
+      <Name>Servicios</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -94,8 +94,8 @@ namespace BLL.Metodos {
         public List<Usuario> traerTodosUsuarios() {
             return manejaDb.traerTodosUsuarios();
         }
-        public void GuardarPermisos(Usuario u) {
-            //manejaDb.GuardarPermisos(u);
+        public void guardarPermisos(Usuario u) {
+            manejaDb.guardarPermisos(u);
         }
     }
 }

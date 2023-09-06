@@ -16,6 +16,7 @@ namespace CUL.Métodos {
             get { return _lenguajeActual; }
             set {
                 _lenguajeActual = value;
+                SingletonSesion.idiomaActual(value); 
                 NotifyObservers();
             }
         }

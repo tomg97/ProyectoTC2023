@@ -12,19 +12,19 @@ namespace CUL.Entidades {
 
 		}
 		public Venta(string id, List<Producto> productosVendidos, Cliente cliente, string fecha) {
-			this.id = id;
-			this.productosVendidos = JsonConvert.SerializeObject(productosVendidos);
-			this.idCliente = cliente.id;
-			this.fecha = fecha;
+			_id = id;
+			_productosVendidos = JsonConvert.SerializeObject(productosVendidos);
+			_idCliente = cliente.id;
+			_fecha = fecha;
 			facturada = false;
 			calcularMontoYEncriptar(productosVendidos);
 		}
 		public Venta(string id, string productosVendidos, string idCliente, string fecha) {
-			this.id = id;
-			this.productosVendidos = productosVendidos;
+			_id = id;
+			_productosVendidos = productosVendidos;
 			_listaProductosVendidos = JsonConvert.DeserializeObject<List<Producto>>(productosVendidos);
-            this.idCliente = idCliente;
-			this.fecha = fecha;
+            _idCliente = idCliente;
+			_fecha = fecha;
 			facturada = true;
 		}
 		[JsonProperty(PropertyName = "_listaProductosVendidos")]
@@ -70,7 +70,7 @@ namespace CUL.Entidades {
                 subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
             }
 			string montoNoEncriptado = subtotal.ToString();
-			monto = encriptador.encriptarReversible(montoNoEncriptado);
+			_monto = encriptador.encriptarReversible(montoNoEncriptado);
 		}
 	}
 }

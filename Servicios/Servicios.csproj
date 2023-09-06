@@ -65,6 +65,7 @@
     <Compile Include="Metodos\Jsonifier.cs" />
     <Compile Include="Metodos\Mensajeria.cs" />
     <Compile Include="Metodos\SingletonRutaArchivo.cs" />
+    <Compile Include="Metodos\StoredProcedureHelper.cs" />
     <Compile Include="Metodos\ValidarCampos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

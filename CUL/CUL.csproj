@@ -53,6 +53,7 @@
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Componente.cs" />
     <Compile Include="Entidades\Familia.cs" />
+    <Compile Include="Entidades\Mensaje.cs" />
     <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />

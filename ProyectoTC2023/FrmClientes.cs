@@ -27,6 +27,7 @@ namespace ProyectoTC2023 {
             lblCuotas.Visible = false;
             txtCuotas.Visible = false;
             clienteVacio = cliente;
+            actualizarIdioma();
         }
         public FrmClientes(string idClienteACrear) {
             InitializeComponent();

@@ -19,6 +19,7 @@ namespace ProyectoTC2023 {
         public AdminUsuarios() {
             InitializeComponent();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
         private void AdminUsuarios_Load(object sender, EventArgs e) {
             txtABMPUsu.Visible = false;

@@ -20,6 +20,7 @@ namespace ProyectoTC2023 {
         public FrmPerfiles() {
             InitializeComponent();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
         private void llenarPatentesFamilias() {
             cbPatentes.DataSource = manejaPermisos.GetAllPatentes();
