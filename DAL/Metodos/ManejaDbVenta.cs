@@ -23,12 +23,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Producto producto = new Producto(
-                            reader["nombreProducto"].ToString(),
-                            reader["marcaProducto"].ToString(),
-                            reader["id"].ToString(),
-                            reader["cantidad"].ToString(),
-                            reader["precio"].ToString());
+                        Producto producto = storedProcedureHelper.crearObjetoDeDataReader<Producto>(reader);
                         listaProductos.Add(producto);
                     }
                     reader.Close();
@@ -88,11 +83,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
                     while (reader.Read()) {
-                        Venta venta = new Venta(
-                            reader["id"].ToString(),
-                            reader["productosVendidos"].ToString(),
-                            reader["clienteId"].ToString(),
-                            reader["fecha"].ToString());
+                        Venta venta = storedProcedureHelper.crearObjetoDeDataReader<Venta>(reader);
                         ventas.Add(venta);
                     }
                     reader.Close();

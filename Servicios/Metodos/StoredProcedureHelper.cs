@@ -33,5 +33,17 @@ namespace Servicios.Metodos {
             }
             return dictionary;
         }
+        public T crearObjetoDeDataReader<T>(SqlDataReader reader) where T : new() {
+            T obj = new T();
+            for(int i = 0; i < reader.FieldCount; i++) {
+                string fieldName = reader.GetName(i);
+                PropertyInfo propertyInfo = typeof(T).GetProperty(fieldName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                if (propertyInfo != null && !reader.IsDBNull(i)) {
+                    object value = reader.GetValue(i);
+                    propertyInfo.SetValue(obj, value is DBNull ?  null : value);
+                }
+            }
+            return obj;
+        }
     }
 }

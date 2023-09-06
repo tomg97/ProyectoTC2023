@@ -94,9 +94,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Usuario usuario = new Usuario() {
-                            nomUsu = reader["nomUsu"].ToString()
-                        };
+                        Usuario usuario = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
                         usuariosBloqueados.Add(usuario);
                     }
                     reader.Close();
@@ -150,9 +148,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Usuario usuario = new Usuario() {
-                            nomUsu = reader["nomUsu"].ToString()
-                        };
+                        Usuario usuario = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
                         usuarios.Add(usuario);
                     }
                     reader.Close();

@@ -6,10 +6,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbBitacora {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
 
         public List<Mensaje> lookupMensajesBitacora(Dictionary<string, string> parametros) {
             List<Mensaje> resultado = new List<Mensaje>();
@@ -25,11 +27,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Mensaje mensaje = new Mensaje(reader["id"].ToString(),
-                            reader["contenido"].ToString(),
-                            DateTime.Parse(reader["fecha"].ToString()),
-                            reader["usuario"].ToString(),
-                            reader["tipo"].ToString());
+                        Mensaje mensaje = storedProcedureHelper.crearObjetoDeDataReader<Mensaje>(reader);
                         resultado.Add(mensaje);
                     }
                     reader.Close();
@@ -43,14 +41,8 @@ namespace DAL.Metodos {
         public void crearEntradaBitacora(Mensaje mensaje) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("CrearUsuario", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@id", mensaje.id);
-                    command.Parameters.AddWithValue("@contenido", mensaje.contenido);
-                    command.Parameters.AddWithValue("@fecha", mensaje.fecha);
-                    command.Parameters.AddWithValue("@usuario", mensaje.usuario);
-                    command.Parameters.AddWithValue("@tipo", mensaje.tipo);
-                     
+                    SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(mensaje, connection, "CrearUsuario");
+                    
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
