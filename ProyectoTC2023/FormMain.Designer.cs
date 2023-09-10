@@ -131,6 +131,7 @@
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
             this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
+            this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
             // maestrosToolStripMenuItem
             // 
@@ -145,19 +146,19 @@
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.productosToolStripMenuItem.Text = "Productos";
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             // 
             // usuarioToolStripMenuItem
@@ -181,21 +182,21 @@
             // tmiSeleccionYCarrito
             // 
             this.tmiSeleccionYCarrito.Name = "tmiSeleccionYCarrito";
-            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(180, 22);
+            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(173, 22);
             this.tmiSeleccionYCarrito.Text = "Seleccion Y Carrito";
             this.tmiSeleccionYCarrito.Click += new System.EventHandler(this.tmiSeleccionYCarrito_Click);
             // 
             // tmiFacturar
             // 
             this.tmiFacturar.Name = "tmiFacturar";
-            this.tmiFacturar.Size = new System.Drawing.Size(180, 22);
+            this.tmiFacturar.Size = new System.Drawing.Size(173, 22);
             this.tmiFacturar.Text = "Facturar";
             this.tmiFacturar.Click += new System.EventHandler(this.tmiFacturar_Click);
             // 
             // tmiDespachar
             // 
             this.tmiDespachar.Name = "tmiDespachar";
-            this.tmiDespachar.Size = new System.Drawing.Size(180, 22);
+            this.tmiDespachar.Size = new System.Drawing.Size(173, 22);
             this.tmiDespachar.Text = "Despachar";
             this.tmiDespachar.Click += new System.EventHandler(this.tmiDespachar_Click);
             // 

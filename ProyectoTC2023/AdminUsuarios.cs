@@ -65,6 +65,7 @@ namespace ProyectoTC2023 {
         }
 
         private void btnEnterABM_Click(object sender, EventArgs e) {
+            // TODO: rework para añadir un email para los usuarios. es necesario para completar la bitácora
             string primerTxtBox = txtABMUsu.Text;
             string segundoTxtBox = txtABMPUsu.Text;
             if (SingletonSesion.getInstance.estaLogged) {

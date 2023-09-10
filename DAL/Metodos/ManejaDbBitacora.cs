@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Servicios.Metodos;
+using System.Collections;
 
 namespace DAL.Metodos {
     public class ManejaDbBitacora {
@@ -19,11 +20,9 @@ namespace DAL.Metodos {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand command = new SqlCommand("lookupMensajesBitacora", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@usuario", parametros["usuario"]);
-                    command.Parameters.AddWithValue("@tipo", parametros["tipo"]);
-                    command.Parameters.AddWithValue("@FromDate", parametros["fechaDesde"]);
-                    command.Parameters.AddWithValue("@ToDate", parametros["fechaHasta"]);
-
+                    foreach (KeyValuePair<string, string> entry in parametros) {
+                        command.Parameters.AddWithValue(entry.Key, entry.Value);
+                    }
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {

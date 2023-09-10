@@ -51,5 +51,12 @@ namespace CUL.Entidades {
 			_usuario = usuario;
 			_tipo = tipo;
 		}
+		private Tabla _tabla;
+
+		public Tabla tabla {
+			get { return _tabla; }
+			set { _tabla = value; }
+		}
+
 	}
 }

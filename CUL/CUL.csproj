@@ -58,6 +58,7 @@
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />
     <Compile Include="Entidades\SingletonSesion.cs" />
+    <Compile Include="Entidades\Tabla.cs" />
     <Compile Include="Entidades\TipoPermiso.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Venta.cs" />

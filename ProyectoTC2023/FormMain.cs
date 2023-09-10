@@ -121,5 +121,9 @@ namespace ProyectoTC2023 {
             ventasToolStripMenuItem.Text = Lang.ventasToolStripMenuItem;
             maestrosToolStripMenuItem.Text = Lang.maestrosToolStripMenuItem;
         }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
     }
 }
