@@ -23,7 +23,6 @@ namespace CUL.Entidades {
 
 		public DateTime fecha {
 			get { return _fecha; }
-			set { _fecha = value; }
 		}
 		private string _usuario;
 
@@ -38,24 +37,49 @@ namespace CUL.Entidades {
 			set { _tipo = value; }
 		}
 		public Mensaje() { }
-		public Mensaje(string id, string contenido, DateTime fecha, string usuario, string tipo) {
-			_id = id;
-			_contenido = contenido;
-			_fecha = fecha;
-			_usuario = usuario;
-			_tipo = tipo;
-		}
-		public Mensaje(string id, string contenido, string usuario, string tipo) {
+		public Mensaje(string id, string contenido, string usuario, Tabla tabla, Object cambioDe, Object cambioA, int criticidad) {
 			_id = id;
 			_contenido = contenido;
 			_usuario = usuario;
-			_tipo = tipo;
+			_fecha = DateTime.Now;
+			_tabla = tabla;
+			_cambioDe = cambioDe;
+			_cambioA = cambioA;
+			_tipo = "Cambios";
+			_criticidad = criticidad;
 		}
+		public Mensaje(string id, string contenido, string usuario, Tabla tabla, int criticidad) {
+			_id = id;
+			_contenido = contenido;
+			_usuario = usuario;
+			_fecha = DateTime.Now;
+			_tabla = tabla;
+			_tipo = "Eventos";
+            _criticidad = criticidad;
+        }
 		private Tabla _tabla;
 
 		public Tabla tabla {
 			get { return _tabla; }
 			set { _tabla = value; }
+		}
+		private Object _cambioDe;
+
+		public Object cambioDe {
+			get { return _cambioDe; }
+			set { _cambioDe = value; }
+		}
+		private Object _cambioA;
+
+		public Object MyProperty {
+			get { return _cambioA; }
+			set { _cambioA = value; }
+		}
+		private int _criticidad;
+
+		public int criticidad {
+			get { return _criticidad; }
+			set { _criticidad = value; }
 		}
 
 	}
