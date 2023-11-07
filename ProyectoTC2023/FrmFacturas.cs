@@ -22,6 +22,7 @@ namespace ProyectoTC2023 {
             InitializeComponent();
             resetDgvView();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
 
         private void FrmFacturas_Load(object sender, EventArgs e) {

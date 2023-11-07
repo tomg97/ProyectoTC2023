@@ -53,10 +53,12 @@
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Componente.cs" />
     <Compile Include="Entidades\Familia.cs" />
+    <Compile Include="Entidades\Mensaje.cs" />
     <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />
     <Compile Include="Entidades\SingletonSesion.cs" />
+    <Compile Include="Entidades\Tabla.cs" />
     <Compile Include="Entidades\TipoPermiso.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Venta.cs" />

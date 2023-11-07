@@ -31,6 +31,7 @@ namespace ProyectoTC2023 {
             cbFamilias.DisplayMember = "nombre";
             cbPatentes.DataSource = manejaPerfil.GetAllPatentes();
             cbPatentes.DisplayMember = "nombre";
+            actualizarIdioma();
         }
         void llenarTreeView(TreeNode padre, Componente c) {
             TreeNode hijo = new TreeNode(c.nombre);
@@ -148,7 +149,7 @@ namespace ProyectoTC2023 {
 
         private void btnGuardarFamilia_Click(object sender, EventArgs e) {
             try {
-                resultadosDb.GuardarPermisos(temp);
+                resultadosDb.guardarPermisos(temp);
                 MessageBox.Show("Usuario guardado correctamente");
             } catch (Exception) {
                 MessageBox.Show("Error al guardar el usuario");

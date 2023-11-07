@@ -23,6 +23,7 @@ namespace ProyectoTC2023 {
         public FrmDespacho() {
             InitializeComponent();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
 
         private void btnDespachar_Click(object sender, EventArgs e) {

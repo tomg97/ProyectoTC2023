@@ -22,6 +22,7 @@ namespace ProyectoTC2023 {
             maneja.FillUserComponents(SingletonSesion.getInstance.getUsuarioActual());
             validarPermisos();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
         void validarPermisos() {
             if (SingletonSesion.getInstance.estaLogged) {
@@ -115,6 +116,14 @@ namespace ProyectoTC2023 {
             tmiFacturar.Text = Lang.tmiFacturar;
             tmiSeleccionYCarrito.Text = Lang.tmiSeleccionYCarrito;
             tmiDespachar.Text = Lang.tmiDespachar;
+            tsmiArchivo.Text = Lang.tsmiArchivo;
+            ayudaToolStripMenuItem.Text = Lang.ayudaToolStripMenuItem;
+            ventasToolStripMenuItem.Text = Lang.ventasToolStripMenuItem;
+            maestrosToolStripMenuItem.Text = Lang.maestrosToolStripMenuItem;
+        }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }

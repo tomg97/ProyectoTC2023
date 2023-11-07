@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metodos\BitacoraBLL.cs" />
+    <Compile Include="Metodos\Guiido.cs" />
     <Compile Include="Metodos\ManejaCliente.cs" />
     <Compile Include="Metodos\ManejaPermisos.cs" />
     <Compile Include="Metodos\ManejaVenta.cs" />

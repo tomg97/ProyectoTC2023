@@ -19,6 +19,7 @@ namespace ProyectoTC2023 {
         public AdminUsuarios() {
             InitializeComponent();
             LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
         private void AdminUsuarios_Load(object sender, EventArgs e) {
             txtABMPUsu.Visible = false;
@@ -64,6 +65,7 @@ namespace ProyectoTC2023 {
         }
 
         private void btnEnterABM_Click(object sender, EventArgs e) {
+            // TODO: rework para añadir un email para los usuarios. es necesario para completar la bitácora
             string primerTxtBox = txtABMUsu.Text;
             string segundoTxtBox = txtABMPUsu.Text;
             if (SingletonSesion.getInstance.estaLogged) {

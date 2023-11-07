@@ -52,12 +52,13 @@ namespace ProyectoTC2023 {
             
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
 
-            cbIdioma.Items[0] = Lang.Español;
-            cbIdioma.Items[1] = Lang.Inglés;
+            //cbIdioma.Items[0] = Lang.Español;
+            //cbIdioma.Items[1] = Lang.Inglés;
 
             lblUsu.Text = Lang.lblUsu;
             lblLang.Text = Lang.lblLang;
             lblPass.Text = Lang.lblPass;
+            btnAplicarIdioma.Text = Lang.btnAplicarIdioma;
 
             btnSinSesion.Text = Lang.btnSinSesion;
         }
@@ -73,9 +74,6 @@ namespace ProyectoTC2023 {
                 default:
                     break;
             }
-            SingletonSesion.idiomaActual(LenguajeActual.lenguajeActual);
-            //UsuarioBLL usuarioBLL = new UsuarioBLL();
-            //usuarioBLL.Actualizar(miUsuario);
         }
         public Idiomas miIdioma = new Idiomas();
 

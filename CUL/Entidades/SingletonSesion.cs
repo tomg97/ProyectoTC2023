@@ -69,6 +69,10 @@ namespace CUL.Entidades {
         }
         public string getIdiomaActual() {
             if (getInstance.usuarioSesion != null) {
+                if (getInstance.usuarioSesion.idioma != null)
+                    return getInstance.usuarioSesion.idioma;
+                else
+                    getInstance.usuarioSesion.idioma = _codigoIdioma;
                 return getInstance.usuarioSesion.idioma;
             } else {
                 return _codigoIdioma;

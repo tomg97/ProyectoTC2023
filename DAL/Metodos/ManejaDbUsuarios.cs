@@ -6,20 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CUL.Entidades;
+using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbUsuarios {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public int authUsuario(Usuario usuario) {
             int resultado = -1;
 
             if (!SingletonSesion.getInstance.estaLogged) {
                 try {
                     using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                        SqlCommand command = new SqlCommand("AutenticarUsuario", connection);
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
-                        command.Parameters.AddWithValue("@pass", usuario.pass);
+                        SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(usuario, connection, "AutenticarUsuario");
                         command.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         connection.Open();
@@ -55,10 +54,7 @@ namespace DAL.Metodos {
         public string crearUsuario(Usuario usuario) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("CrearUsuario", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
-                    command.Parameters.AddWithValue("@pass", usuario.pass);
+                    SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(usuario, connection, "CrearUsuario");
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -73,6 +69,7 @@ namespace DAL.Metodos {
             int resultado = -1;
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
+
                     SqlCommand command = new SqlCommand("ModificarNombreUsuario", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@usuNuevo", usuNuevo);
@@ -97,9 +94,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Usuario usuario = new Usuario() {
-                            nomUsu = reader["nomUsu"].ToString()
-                        };
+                        Usuario usuario = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
                         usuariosBloqueados.Add(usuario);
                     }
                     reader.Close();
@@ -153,9 +148,7 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Usuario usuario = new Usuario() {
-                            nomUsu = reader["nomUsu"].ToString()
-                        };
+                        Usuario usuario = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
                         usuarios.Add(usuario);
                     }
                     reader.Close();
