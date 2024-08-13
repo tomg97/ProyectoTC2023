@@ -37,7 +37,7 @@ namespace BLL.Metodos {
             string mensaje;
             List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
             Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());
-            mensaje = manejaDbVenta.actualizarStock(carrito);
+            mensaje = manejaDbVenta.actualizarStock(carrito, SingletonSesion.getInstance.getUsuarioActual().nomUsu);
             manejaDbVenta.crearVentaNoFacturada(venta);
             return mensaje;
         }
