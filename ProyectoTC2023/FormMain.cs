@@ -125,5 +125,11 @@ namespace ProyectoTC2023 {
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e) {
 
         }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmReportes frm = new FrmReportes();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

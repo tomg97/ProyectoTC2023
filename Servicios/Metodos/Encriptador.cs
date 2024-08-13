@@ -20,5 +20,9 @@ namespace Servicios.Metodos {
             byte[] bytes = Encoding.UTF8.GetBytes(monto);
             return Convert.ToBase64String(bytes);
         }
+        public string desencriptarReversible(string monto) {
+            byte[] data = Convert.FromBase64String((monto));
+            return Encoding.UTF8.GetString(data);
+        }
     }
 }

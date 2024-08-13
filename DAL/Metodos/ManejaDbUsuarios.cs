@@ -18,7 +18,10 @@ namespace DAL.Metodos {
             if (!SingletonSesion.getInstance.estaLogged) {
                 try {
                     using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                        SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(usuario, connection, "AutenticarUsuario");
+                        SqlCommand command = new SqlCommand("AutenticarUsuario", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                        command.Parameters.AddWithValue("@pass", usuario.pass);
                         command.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                         connection.Open();
@@ -54,7 +57,10 @@ namespace DAL.Metodos {
         public string crearUsuario(Usuario usuario) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(usuario, connection, "CrearUsuario");
+                    SqlCommand command = new SqlCommand("CrearUsuario", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                    command.Parameters.AddWithValue("@pass", usuario.pass);
 
                     connection.Open();
                     command.ExecuteNonQuery();

@@ -23,7 +23,12 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
-                        Producto producto = storedProcedureHelper.crearObjetoDeDataReader<Producto>(reader);
+                        Producto producto = new Producto(
+                            reader["nombreProducto"].ToString(),
+                            reader["marcaProducto"].ToString(),
+                            reader["id"].ToString(),
+                            reader["cantidad"].ToString(),
+                            reader["precio"].ToString());
                         listaProductos.Add(producto);
                     }
                     reader.Close();
@@ -33,7 +38,7 @@ namespace DAL.Metodos {
             }
             return listaProductos;
         }
-        public string actualizarStock(List<Producto> productos) {
+        public string actualizarStock(List<Producto> productos, string nomUsu) {
             string mensaje = "0";
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
@@ -42,7 +47,9 @@ namespace DAL.Metodos {
                     connection.Open();
                     foreach (Producto producto in productos) {
                         sqlCommand.Parameters.Clear();
-                        sqlCommand = storedProcedureHelper.rellenarYDevolverSPUpsert(producto, connection, "RemoverDeStock");
+                        sqlCommand.Parameters.AddWithValue("@Id", producto.id);
+                        sqlCommand.Parameters.AddWithValue("@Cantidad", producto.cantidad);
+                        sqlCommand.Parameters.AddWithValue("@Usuario", nomUsu);
                         sqlCommand.ExecuteNonQuery();
                     }
                     mensaje = "éxito";
@@ -56,14 +63,13 @@ namespace DAL.Metodos {
         public void crearVentaNoFacturada(Venta venta) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand sqlCommand = storedProcedureHelper.rellenarYDevolverSPUpsert(venta, connection, "CrearVenta");
-                    
-                    SqlParameter sqlParameterProductos = sqlCommand.Parameters["@productosVendidos"];
-                    sqlCommand.Parameters.Remove(sqlParameterProductos);
+                    SqlCommand sqlCommand = new SqlCommand("CrearVenta", connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
                     sqlCommand.Parameters.AddWithValue("@productosVendidos", venta.productosVendidos.ToString());
-
-                    SqlParameter sqlParameterFacturada = sqlCommand.Parameters["@facturada"];
-                    sqlCommand.Parameters.Remove(sqlParameterProductos);
+                    sqlCommand.Parameters.AddWithValue("@id", venta.id);
+                    sqlCommand.Parameters.AddWithValue("@monto", venta.monto);
+                    sqlCommand.Parameters.AddWithValue("@fecha", venta.fecha);
+                    sqlCommand.Parameters.AddWithValue("@cliente", venta.idCliente);
                     sqlCommand.Parameters.AddWithValue("@facturada", 0);
 
                     connection.Open();
@@ -83,7 +89,11 @@ namespace DAL.Metodos {
                     connection.Open();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
                     while (reader.Read()) {
-                        Venta venta = storedProcedureHelper.crearObjetoDeDataReader<Venta>(reader);
+                        Venta venta = new Venta(
+                            reader["id"].ToString(),
+                            reader["productosVendidos"].ToString(),
+                            reader["clienteId"].ToString(),
+                            reader["fecha"].ToString());
                         ventas.Add(venta);
                     }
                     reader.Close();
