@@ -8,9 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL.Metodos;
 
 namespace ProyectoTC2023 {
     public partial class FrmBR : Form {
+        ManejaBR manejaBR = new ManejaBR();
+        Mensajeria mensajeria = new Mensajeria();
         public FrmBR() {
             InitializeComponent();
         }
@@ -21,7 +24,7 @@ namespace ProyectoTC2023 {
                 string filePath = saveFileDialog.FileName;
                 string resultado = manejaBR.realizarBackup(filePath);
                 if (resultado == "Backup exitoso.") {
-                    mensajeria.mostrarMensaje(resultado + "Guardado en la ubicación " + filePath);
+                    mensajeria.mostrarMensaje(resultado + " Guardado en la ubicación " + filePath);
                 } else {
                     mensajeria.mostrarMensaje(resultado);
                 }
@@ -34,7 +37,7 @@ namespace ProyectoTC2023 {
                 string filePath = openFileDialog.FileName;
                 string resultado = manejaBR.realizarRestore(filePath);
                 if (resultado == "Restore exitoso.") {
-                    mensajeria.mostrarMensaje(resultado + "Importado de la ubicación " + filePath);
+                    mensajeria.mostrarMensaje(resultado + " Importado de la ubicación " + filePath);
                 } else {
                     mensajeria.mostrarMensaje(resultado);
                 }
