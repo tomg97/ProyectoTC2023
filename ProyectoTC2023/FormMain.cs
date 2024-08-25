@@ -42,11 +42,14 @@ namespace ProyectoTC2023 {
                 tmiDespachar.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_despachar);
             }
         }
+        void invocarForm(Form form) {
+            form.MdiParent = this;
+            form.Show();
+        }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e) {
             AdminUsuarios adminUsuarios = new AdminUsuarios();
-            adminUsuarios.MdiParent = this;
-            adminUsuarios.Show();
+            invocarForm(adminUsuarios);
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -55,8 +58,7 @@ namespace ProyectoTC2023 {
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e) {
             FrmUsuarios frmUsuarios = new FrmUsuarios();
-            frmUsuarios.MdiParent = this;
-            frmUsuarios.Show();
+            invocarForm(frmUsuarios);
         }
 
         private void tsmiLogin_Click(object sender, EventArgs e) {
@@ -72,20 +74,17 @@ namespace ProyectoTC2023 {
 
         private void tmiSeleccionYCarrito_Click(object sender, EventArgs e) {
             FrmVentas frmVentas = new FrmVentas();
-            frmVentas.MdiParent = this;
-            frmVentas.Show();
+            invocarForm(frmVentas);
         }
 
         private void tmiFacturar_Click(object sender, EventArgs e) {
             FrmFacturas frmFacturas = new FrmFacturas();
-            frmFacturas.MdiParent = this;
-            frmFacturas.Show();
+            invocarForm(frmFacturas);
         }
 
         private void tmiDespachar_Click(object sender, EventArgs e) {
-            FrmDespacho frmDespacho = new FrmDespacho();
-            frmDespacho.MdiParent = this;
-            frmDespacho.Show();
+            FrmDespacho frmDespacho = new FrmDespacho(); 
+            invocarForm(frmDespacho);
         }
 
         private void FormMain_Load(object sender, EventArgs e) {
@@ -94,8 +93,7 @@ namespace ProyectoTC2023 {
 
         private void perfilesToolStripMenuItem_Click(object sender, EventArgs e) {
             FrmPerfiles frmPerfiles = new FrmPerfiles();
-            frmPerfiles.MdiParent = this;
-            frmPerfiles.Show();
+            invocarForm(frmPerfiles);
         }
 
         public void actualizarIdioma() {
@@ -128,8 +126,12 @@ namespace ProyectoTC2023 {
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e) {
             FrmReportes frm = new FrmReportes();
-            frm.MdiParent = this;
-            frm.Show();
+            invocarForm(frm);
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmBR frm = new FrmBR();
+            invocarForm(frm);
         }
     }
 }
