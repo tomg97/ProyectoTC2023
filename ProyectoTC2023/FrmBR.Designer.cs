@@ -15,7 +15,7 @@
             }
             base.Dispose(disposing);
         }
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.FolderBrowserDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
 
         #region Windows Form Designer generated code
@@ -29,7 +29,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 

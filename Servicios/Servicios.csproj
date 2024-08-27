@@ -60,6 +60,7 @@
       <DependentUpon>Lang.en-US.resx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IObserver.cs" />
+    <Compile Include="Metodos\BackupRestore.cs" />
     <Compile Include="Metodos\Encriptador.cs" />
     <Compile Include="Metodos\Guuido.cs" />
     <Compile Include="Metodos\Jsonifier.cs" />

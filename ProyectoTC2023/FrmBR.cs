@@ -9,19 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL.Metodos;
+using System.IO;
 
 namespace ProyectoTC2023 {
     public partial class FrmBR : Form {
         ManejaBR manejaBR = new ManejaBR();
         Mensajeria mensajeria = new Mensajeria();
+        BackupRestore backupRestore = new BackupRestore();
         public FrmBR() {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            saveFileDialog.Filter = "Backup Files (*.bak)|*.bak";
             if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-                string filePath = saveFileDialog.FileName;
+                string filePath = backupRestore.Backup(saveFileDialog.SelectedPath);
                 string resultado = manejaBR.realizarBackup(filePath);
                 if (resultado == "Backup exitoso.") {
                     mensajeria.mostrarMensaje(resultado + " Guardado en la ubicación " + filePath);
@@ -34,7 +35,7 @@ namespace ProyectoTC2023 {
         private void btnRestore_Click(object sender, EventArgs e) {
             openFileDialog.Filter = "Backup Files (*.bak)|*.bak";
             if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                string filePath = openFileDialog.FileName;
+                string filePath = backupRestore.Restore(openFileDialog.FileName);
                 string resultado = manejaBR.realizarRestore(filePath);
                 if (resultado == "Restore exitoso.") {
                     mensajeria.mostrarMensaje(resultado + " Importado de la ubicación " + filePath);
