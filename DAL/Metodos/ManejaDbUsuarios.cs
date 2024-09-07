@@ -61,7 +61,9 @@ namespace DAL.Metodos {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
                     command.Parameters.AddWithValue("@pass", usuario.pass);
-
+                    command.Parameters.AddWithValue("@nombre", usuario.nombre);
+                    command.Parameters.AddWithValue("@apellido", usuario.apellido);
+                    command.Parameters.AddWithValue("@email", usuario.email);
                     connection.Open();
                     command.ExecuteNonQuery();
                     return "Usuario ha sido creado.";
@@ -170,9 +172,11 @@ namespace DAL.Metodos {
                     SqlCommand command = new SqlCommand("GuardarPerfilPaso1", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                    connection.Open();
                     command.ExecuteNonQuery();
                     foreach (var item in usuario.permisos) {
                         command = new SqlCommand("GuardarPerfilPaso2", connection);
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
                         command.Parameters.AddWithValue("@idPermiso", item.id);
                         command.ExecuteNonQuery();
