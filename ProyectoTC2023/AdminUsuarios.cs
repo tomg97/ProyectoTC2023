@@ -64,7 +64,7 @@ namespace ProyectoTC2023 {
             string apellido = tbxApellido.Text;
             string email = tbxEmail.Text;
             string contraseña = txtCreaContraseña.Text;
-            string nomUsuCompuesto = crearNomUsu(nombre, apellido);
+            string nomUsuCompuesto = crearNomUsuCompuesto(nombre, apellido);
             if (SingletonSesion.getInstance.estaLogged) {
                 if (validar.validarNoNuloNoVacio(nombre,apellido,email,contraseña)) {
                        Usuario usuario = new Usuario() 
@@ -80,8 +80,8 @@ namespace ProyectoTC2023 {
             }
         }
 
-        private string crearNomUsu(string nombre, string apellido) {
-            string porcionApellido = apellido.Length >= 5 ? apellido.Substring(0, 5) : apellido;
+        private string crearNomUsuCompuesto(string nombre, string apellido) {
+            string porcionApellido = apellido.Length >= 4 ? apellido.Substring(0, 4) : apellido;
             string porcionNombre = nombre.Substring(0, 1);
             Random random = new Random();
             string numero = random.Next(0, 1000).ToString("D3");

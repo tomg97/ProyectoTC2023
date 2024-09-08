@@ -235,7 +235,7 @@
     <value>Ventas no facturadas</value>
   </data>
   <data name="grpbxCMUsu" xml:space="preserve">
-    <value>Crear/Modificar Usuario</value>
+    <value>Crear</value>
   </data>
   <data name="grpCarrito" xml:space="preserve">
     <value>Carrito</value>

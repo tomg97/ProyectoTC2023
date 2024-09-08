@@ -23,6 +23,7 @@ namespace CUL.Entidades {
 
 		public DateTime fecha {
 			get { return _fecha; }
+			set { _fecha = fecha; }
 		}
 		private string _usuario;
 
@@ -30,54 +31,24 @@ namespace CUL.Entidades {
 			get { return _usuario; }
 			set { _usuario = value; }
 		}
-		private string _tipo;
-
-		public string tipo {
-			get { return _tipo; }
-			set { _tipo = value; }
-		}
 		public Mensaje() { }
-		public Mensaje(string id, string contenido, string usuario, Tabla tabla, Object cambioDe, Object cambioA, int criticidad) {
+		public Mensaje(string id, string contenido, string usuario, Modulo tabla, Criticidad criticidad) {
 			_id = id;
 			_contenido = contenido;
 			_usuario = usuario;
 			_fecha = DateTime.Now;
-			_tabla = tabla;
-			_cambioDe = cambioDe;
-			_cambioA = cambioA;
-			_tipo = "Cambios";
-			_criticidad = criticidad;
-		}
-		public Mensaje(string id, string contenido, string usuario, Tabla tabla, int criticidad) {
-			_id = id;
-			_contenido = contenido;
-			_usuario = usuario;
-			_fecha = DateTime.Now;
-			_tabla = tabla;
-			_tipo = "Eventos";
+			_modulo = tabla;
             _criticidad = criticidad;
         }
-		private Tabla _tabla;
+		private Modulo _modulo;
 
-		public Tabla tabla {
-			get { return _tabla; }
-			set { _tabla = value; }
+		public Modulo modulo {
+			get { return _modulo; }
+			set { _modulo = value; }
 		}
-		private Object _cambioDe;
+		private Criticidad _criticidad;
 
-		public Object cambioDe {
-			get { return _cambioDe; }
-			set { _cambioDe = value; }
-		}
-		private Object _cambioA;
-
-		public Object MyProperty {
-			get { return _cambioA; }
-			set { _cambioA = value; }
-		}
-		private int _criticidad;
-
-		public int criticidad {
+		public Criticidad criticidad {
 			get { return _criticidad; }
 			set { _criticidad = value; }
 		}

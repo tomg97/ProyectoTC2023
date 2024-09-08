@@ -11,7 +11,7 @@ namespace BLL.Metodos {
     public class BitacoraBLL {
         public BitacoraBLL() { }
         ManejaDbBitacora manejaDbBitacora = new ManejaDbBitacora();
-        public void persistirMensaje(string contenido, Tabla tabla, int criticidad) {
+        public void persistirMensaje(string contenido, Modulo tabla, Criticidad criticidad) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
@@ -25,7 +25,7 @@ namespace BLL.Metodos {
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
-        public void persistirMensaje(string contenido, Tabla tabla, int criticidad, Object cambioDe, Object cambioA) {
+        public void persistirMensaje(string contenido, Modulo tabla, int criticidad, Object cambioDe, Object cambioA) {
             Guuido guuido = new Guuido();
             Mensaje mensaje = new Mensaje(guuido.getUuidString(), contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, cambioDe, cambioA, criticidad);
             manejaDbBitacora.crearEntradaBitacora(mensaje);
@@ -33,6 +33,11 @@ namespace BLL.Metodos {
         public List<Mensaje> lookupBitacoraParametros(Dictionary<string, string> dic) {
             List<Mensaje> list = new List<Mensaje>();
             list = manejaDbBitacora.lookupMensajesBitacora(dic);
+            return list;
+        }
+        public List<Mensaje> traerTodaBitacoraEventos() {
+            List<Mensaje> list = new List<Mensaje>();
+            list = manejaDbBitacora.traerTodaBitacoraEventos();
             return list;
         }
     }

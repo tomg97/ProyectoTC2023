@@ -1,4 +1,5 @@
 ﻿using BLL.Metodos;
+using CUL.Entidades;
 using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
@@ -15,6 +16,7 @@ namespace ProyectoTC2023 {
     public partial class FrmBitacora : Form, IObserver {
         BitacoraBLL manejaBitacora = new BitacoraBLL();
         Mensajeria mensajeria = new Mensajeria();
+        ManejaUsuarios resultadosDb = new ManejaUsuarios();
         public FrmBitacora() {
             InitializeComponent();
             settearSegunTipo(false);
@@ -26,7 +28,7 @@ namespace ProyectoTC2023 {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("@usuario", cbNomUsuBit.Text);
             parameters.Add("@tipo", cbTipoBit.Text);
-            parameters.Add("@tabla", cbTablaBit.Text);
+            parameters.Add("@modulo", cbModuloBit.Text);
             parameters.Add("@criticidad", cbCriticidadBit.Text);
             parameters.Add("@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd HH:mm:ss"));
             parameters.Add("@ToDate", dtpHasta.Value.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -44,12 +46,26 @@ namespace ProyectoTC2023 {
                 mensajeria.mostrarMensaje("Se debe seleccionar un tipo de bitácora");
         }
         private void settearSegunTipo(Boolean variable) {
-            cbTablaBit.Visible = variable;
+            cbModuloBit.Visible = variable;
             btnRollback.Visible = variable;
         }
 
         public void actualizarIdioma() {
             
+        }
+
+        private void FrmBitacora_Load(object sender, EventArgs e) {
+            cbNomUsuBit.DataSource = resultadosDb.traerTodosUsuarios();
+            cbNomUsuBit.DisplayMember = "nomUsu";
+            Array enums = Enum.GetValues(typeof(Modulo));
+            foreach (Modulo modulo in enums) {
+                cbModuloBit.Items.Add(modulo.ToString());
+            }
+            cbNomUsuBit.SelectedIndex = 0;
+            Array enumsCrit = Enum.GetValues(typeof(Criticidad));
+            foreach (Criticidad criticidad in enumsCrit) {
+                cbCriticidadBit.Items.Add(criticidad.ToString());
+            }
         }
     }
 }

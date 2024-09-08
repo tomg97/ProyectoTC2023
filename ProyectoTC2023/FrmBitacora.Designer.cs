@@ -30,7 +30,7 @@
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.lblTipoBit = new System.Windows.Forms.Label();
-            this.cbTablaBit = new System.Windows.Forms.ComboBox();
+            this.cbModuloBit = new System.Windows.Forms.ComboBox();
             this.lblNomUsuBit = new System.Windows.Forms.Label();
             this.lblTablaBit = new System.Windows.Forms.Label();
             this.lblCriticidadBit = new System.Windows.Forms.Label();
@@ -104,19 +104,19 @@
             this.lblTipoBit.TabIndex = 7;
             this.lblTipoBit.Text = "Tipo de bitácora";
             // 
-            // cbTablaBit
+            // cbModuloBit
             // 
-            this.cbTablaBit.FormattingEnabled = true;
-            this.cbTablaBit.Items.AddRange(new object[] {
+            this.cbModuloBit.FormattingEnabled = true;
+            this.cbModuloBit.Items.AddRange(new object[] {
             "Cliente",
             "Factura",
             "Producto",
             "Usuarios",
             "Venta"});
-            this.cbTablaBit.Location = new System.Drawing.Point(139, 80);
-            this.cbTablaBit.Name = "cbTablaBit";
-            this.cbTablaBit.Size = new System.Drawing.Size(121, 21);
-            this.cbTablaBit.TabIndex = 3;
+            this.cbModuloBit.Location = new System.Drawing.Point(139, 80);
+            this.cbModuloBit.Name = "cbModuloBit";
+            this.cbModuloBit.Size = new System.Drawing.Size(121, 21);
+            this.cbModuloBit.TabIndex = 3;
             // 
             // lblNomUsuBit
             // 
@@ -132,9 +132,9 @@
             this.lblTablaBit.AutoSize = true;
             this.lblTablaBit.Location = new System.Drawing.Point(136, 64);
             this.lblTablaBit.Name = "lblTablaBit";
-            this.lblTablaBit.Size = new System.Drawing.Size(79, 13);
+            this.lblTablaBit.Size = new System.Drawing.Size(42, 13);
             this.lblTablaBit.TabIndex = 9;
-            this.lblTablaBit.Text = "Tabla afectada";
+            this.lblTablaBit.Text = "Modulo";
             // 
             // lblCriticidadBit
             // 
@@ -208,13 +208,14 @@
             this.Controls.Add(this.lblTipoBit);
             this.Controls.Add(this.dtpDesde);
             this.Controls.Add(this.dtpHasta);
-            this.Controls.Add(this.cbTablaBit);
+            this.Controls.Add(this.cbModuloBit);
             this.Controls.Add(this.cbCriticidadBit);
             this.Controls.Add(this.cbNomUsuBit);
             this.Controls.Add(this.cbTipoBit);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmBitacora";
             this.Text = "FrmBitacora";
+            this.Load += new System.EventHandler(this.FrmBitacora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,7 +231,7 @@
         private System.Windows.Forms.DateTimePicker dtpHasta;
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.Label lblTipoBit;
-        private System.Windows.Forms.ComboBox cbTablaBit;
+        private System.Windows.Forms.ComboBox cbModuloBit;
         private System.Windows.Forms.Label lblNomUsuBit;
         private System.Windows.Forms.Label lblTablaBit;
         private System.Windows.Forms.Label lblCriticidadBit;
