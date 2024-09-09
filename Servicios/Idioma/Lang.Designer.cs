@@ -331,6 +331,15 @@ namespace Servicios.Idioma {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configurar Familia.
+        /// </summary>
+        public static string gbConfigFamilia {
+            get {
+                return ResourceManager.GetString("gbConfigFamilia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingresar Datos Pago.
         /// </summary>
         public static string gbDatosPago {
@@ -408,6 +417,15 @@ namespace Servicios.Idioma {
         public static string gbVentasNoF {
             get {
                 return ResourceManager.GetString("gbVentasNoF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizador facturas.
+        /// </summary>
+        public static string gbVisualizador {
+            get {
+                return ResourceManager.GetString("gbVisualizador", resourceCulture);
             }
         }
         
@@ -624,6 +642,15 @@ namespace Servicios.Idioma {
         public static string lblMesYAñoVenc {
             get {
                 return ResourceManager.GetString("lblMesYAñoVenc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string lblNombre {
+            get {
+                return ResourceManager.GetString("lblNombre", resourceCulture);
             }
         }
         

@@ -23,7 +23,7 @@ namespace CUL.Entidades {
 
 		public DateTime fecha {
 			get { return _fecha; }
-			set { _fecha = fecha; }
+			set { _fecha = value; }
 		}
 		private string _usuario;
 
@@ -32,8 +32,7 @@ namespace CUL.Entidades {
 			set { _usuario = value; }
 		}
 		public Mensaje() { }
-		public Mensaje(string id, string contenido, string usuario, Modulo tabla, Criticidad criticidad) {
-			_id = id;
+		public Mensaje(string contenido, string usuario, Modulo tabla, Criticidad criticidad) {
 			_contenido = contenido;
 			_usuario = usuario;
 			_fecha = DateTime.Now;

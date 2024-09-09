@@ -54,6 +54,27 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
+        public Usuario devolverUsuarioNomUsu(string nomUsu) {
+            // int resultado = -1;
+            Usuario resultado = new Usuario();
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Usuarios WHERE nomUsu = @nomUsu", connection);
+                    
+                    command.Parameters.AddWithValue("@nomUsu", nomUsu);
+                    
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        resultado = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
+                    }
+                    reader.Close();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            return resultado;
+        }
         public string crearUsuario(Usuario usuario) {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {

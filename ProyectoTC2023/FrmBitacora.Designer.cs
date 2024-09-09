@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBitacora = new System.Windows.Forms.DataGridView();
             this.cbTipoBit = new System.Windows.Forms.ComboBox();
             this.cbNomUsuBit = new System.Windows.Forms.ComboBox();
             this.cbCriticidadBit = new System.Windows.Forms.ComboBox();
@@ -39,16 +39,22 @@
             this.btnRollback = new System.Windows.Forms.Button();
             this.btnLookBit = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblNombreBit = new System.Windows.Forms.Label();
+            this.lblApellidoBit = new System.Windows.Forms.Label();
+            this.txtNombreBit = new System.Windows.Forms.TextBox();
+            this.txtApellidoBit = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvBitacora
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 117);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(787, 321);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBitacora.Location = new System.Drawing.Point(12, 117);
+            this.dgvBitacora.Name = "dgvBitacora";
+            this.dgvBitacora.Size = new System.Drawing.Size(787, 321);
+            this.dgvBitacora.TabIndex = 0;
+            this.dgvBitacora.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBitacora_CellClick);
+            this.dgvBitacora.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBitacora_CellContentClick);
             // 
             // cbTipoBit
             // 
@@ -192,11 +198,47 @@
             this.btnAplicar.UseVisualStyleBackColor = true;
             this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
+            // lblNombreBit
+            // 
+            this.lblNombreBit.AutoSize = true;
+            this.lblNombreBit.Location = new System.Drawing.Point(802, 117);
+            this.lblNombreBit.Name = "lblNombreBit";
+            this.lblNombreBit.Size = new System.Drawing.Size(44, 13);
+            this.lblNombreBit.TabIndex = 16;
+            this.lblNombreBit.Text = "Nombre";
+            // 
+            // lblApellidoBit
+            // 
+            this.lblApellidoBit.AutoSize = true;
+            this.lblApellidoBit.Location = new System.Drawing.Point(801, 180);
+            this.lblApellidoBit.Name = "lblApellidoBit";
+            this.lblApellidoBit.Size = new System.Drawing.Size(44, 13);
+            this.lblApellidoBit.TabIndex = 17;
+            this.lblApellidoBit.Text = "Apellido";
+            // 
+            // txtNombreBit
+            // 
+            this.txtNombreBit.Location = new System.Drawing.Point(805, 133);
+            this.txtNombreBit.Name = "txtNombreBit";
+            this.txtNombreBit.Size = new System.Drawing.Size(188, 20);
+            this.txtNombreBit.TabIndex = 18;
+            // 
+            // txtApellidoBit
+            // 
+            this.txtApellidoBit.Location = new System.Drawing.Point(804, 196);
+            this.txtApellidoBit.Name = "txtApellidoBit";
+            this.txtApellidoBit.Size = new System.Drawing.Size(188, 20);
+            this.txtApellidoBit.TabIndex = 19;
+            // 
             // FrmBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 450);
+            this.ClientSize = new System.Drawing.Size(1001, 450);
+            this.Controls.Add(this.txtApellidoBit);
+            this.Controls.Add(this.txtNombreBit);
+            this.Controls.Add(this.lblApellidoBit);
+            this.Controls.Add(this.lblNombreBit);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.btnLookBit);
             this.Controls.Add(this.btnRollback);
@@ -212,11 +254,11 @@
             this.Controls.Add(this.cbCriticidadBit);
             this.Controls.Add(this.cbNomUsuBit);
             this.Controls.Add(this.cbTipoBit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvBitacora);
             this.Name = "FrmBitacora";
             this.Text = "FrmBitacora";
             this.Load += new System.EventHandler(this.FrmBitacora_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,7 +266,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvBitacora;
         private System.Windows.Forms.ComboBox cbTipoBit;
         private System.Windows.Forms.ComboBox cbNomUsuBit;
         private System.Windows.Forms.ComboBox cbCriticidadBit;
@@ -240,5 +282,9 @@
         private System.Windows.Forms.Button btnRollback;
         private System.Windows.Forms.Button btnLookBit;
         private System.Windows.Forms.Button btnAplicar;
+        private System.Windows.Forms.Label lblNombreBit;
+        private System.Windows.Forms.Label lblApellidoBit;
+        private System.Windows.Forms.TextBox txtNombreBit;
+        private System.Windows.Forms.TextBox txtApellidoBit;
     }
 }

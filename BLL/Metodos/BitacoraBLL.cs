@@ -3,6 +3,7 @@ using DAL.Metodos;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,24 +22,50 @@ namespace BLL.Metodos {
             Guuido guuido = new Guuido();
 
             if (SingletonSesion.getInstance.getUsuarioActual() != null) {
-                Mensaje mensaje = new Mensaje(guuido.getUuidString(), contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, criticidad);
+                Mensaje mensaje = new Mensaje(contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, criticidad);
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
-        public void persistirMensaje(string contenido, Modulo tabla, int criticidad, Object cambioDe, Object cambioA) {
+        /*public void persistirMensaje(string contenido, Modulo tabla, int criticidad, Object cambioDe, Object cambioA) {
             Guuido guuido = new Guuido();
             Mensaje mensaje = new Mensaje(guuido.getUuidString(), contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, cambioDe, cambioA, criticidad);
             manejaDbBitacora.crearEntradaBitacora(mensaje);
+        }*/
+        public DataTable lookupBitacoraParametros(Dictionary<string, string> dic) {
+            List<Mensaje> list = manejaDbBitacora.lookupMensajesBitacora(dic);
+            DataTable dataTable = cargarDataTableBitEventos(list);
+            return dataTable;
         }
-        public List<Mensaje> lookupBitacoraParametros(Dictionary<string, string> dic) {
-            List<Mensaje> list = new List<Mensaje>();
-            list = manejaDbBitacora.lookupMensajesBitacora(dic);
-            return list;
+
+        private static DataTable cargarDataTableBitEventos(List<Mensaje> list) {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Nombre de Usuario", typeof(string));
+            dataTable.Columns.Add("Contenido", typeof(string));
+            dataTable.Columns.Add("Modulo", typeof(Modulo));
+            dataTable.Columns.Add("Criticidad", typeof(Criticidad));            
+            dataTable.Columns.Add("Fecha", typeof(DateTime));
+        
+            foreach (var log in list) {
+                DataRow row = dataTable.NewRow();
+                row["Nombre de Usuario"] = log.usuario;
+                row["Contenido"] = log.contenido;
+                row["Modulo"] = log.modulo;
+                row["Criticidad"] = log.criticidad;
+                row["Fecha"] = log.fecha;
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
         }
-        public List<Mensaje> traerTodaBitacoraEventos() {
-            List<Mensaje> list = new List<Mensaje>();
-            list = manejaDbBitacora.traerTodaBitacoraEventos();
-            return list;
+
+        public DataTable traerTodaBitacoraEventos() {
+            List<Mensaje> list = manejaDbBitacora.traerTodaBitacoraEventos();
+            DataTable dataTable = cargarDataTableBitEventos(list);
+            return dataTable;
+        }
+
+        public Usuario lookupUsuario(string username) {
+            ManejaDbUsuarios manejaDbUsuarios = new ManejaDbUsuarios();
+            return manejaDbUsuarios.devolverUsuarioNomUsu(username);
         }
     }
 }

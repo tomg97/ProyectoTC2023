@@ -11,7 +11,7 @@ using Servicios.Metodos;
 namespace BLL.Metodos {
     public class ManejaUsuarios {
         ManejaDbUsuarios manejaDb = new ManejaDbUsuarios();
-        //BitacoraBLL bitacora = new BitacoraBLL();
+        BitacoraBLL bitacora = new BitacoraBLL();
         ManejaPermisos manejaPerfil = new ManejaPermisos();
         Encriptador encriptador = new Encriptador();
         Mensajeria mensajeria = new Mensajeria();
