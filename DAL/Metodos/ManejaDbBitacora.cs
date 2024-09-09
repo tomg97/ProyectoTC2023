@@ -49,7 +49,6 @@ namespace DAL.Metodos {
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
-            resultado.Sort((m1, m2) => m2.fecha.CompareTo(m1.fecha));
             return resultado;
         }
         public void crearEntradaBitacora(Mensaje mensaje) {
