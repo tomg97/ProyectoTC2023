@@ -59,7 +59,7 @@ namespace DAL.Metodos {
                     command.Parameters.AddWithValue("@fecha", mensaje.fecha);
                     command.Parameters.AddWithValue("@usuario", mensaje.usuario);
                     command.Parameters.AddWithValue("@criticidad", mensaje.criticidad);
-                    command.Parameters.AddWithValue("@modulo", mensaje.modulo);
+                    command.Parameters.AddWithValue("@modulo", mensaje.modulo.ToString());
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -78,7 +78,7 @@ namespace DAL.Metodos {
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read()) {
                     Mensaje mensaje = new Mensaje {
-                        id = reader.GetString(reader.GetOrdinal("id")),
+                        id = reader.GetInt32(reader.GetOrdinal("id")).ToString(),
                         contenido = reader.GetString(reader.GetOrdinal("contenido")),
                         usuario = reader.GetString(reader.GetOrdinal("usuario")),
                         fecha = reader.GetDateTime(reader.GetOrdinal("fecha")),

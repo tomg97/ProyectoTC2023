@@ -12,17 +12,27 @@ namespace BLL.Metodos {
     public class BitacoraBLL {
         public BitacoraBLL() { }
         ManejaDbBitacora manejaDbBitacora = new ManejaDbBitacora();
-        public void persistirMensaje(string contenido, Modulo tabla, Criticidad criticidad) {
+        public void persistirMensajeLogged(string contenido, Modulo tabla, Criticidad criticidad) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
             // ver si se puede extraer el nombre de la clase. si no un string y fue (para el campo tabla)
             // sobrecargar para poder usar el mismo nombre de método, pero que uno reciba el cambio de y a 
             // criticidad puede depender de la bll que lo mande, fijo
-            Guuido guuido = new Guuido();
-
             if (SingletonSesion.getInstance.getUsuarioActual() != null) {
                 Mensaje mensaje = new Mensaje(contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, criticidad);
+                manejaDbBitacora.crearEntradaBitacora(mensaje);
+            }            
+        }
+        public void persistirMensajeNoLogged(string contenido, Modulo tabla, Criticidad criticidad, string nomUsu) {
+            // TODO: reworkear. no necesitas un mensaje.
+            // necesitás una string para el contenido del mensaje,
+            // enum del tipo
+            // ver si se puede extraer el nombre de la clase. si no un string y fue (para el campo tabla)
+            // sobrecargar para poder usar el mismo nombre de método, pero que uno reciba el cambio de y a 
+            // criticidad puede depender de la bll que lo mande, fijo
+            if (SingletonSesion.getInstance.getUsuarioActual() != null) {
+                Mensaje mensaje = new Mensaje(contenido, nomUsu, tabla, criticidad);
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
@@ -50,7 +60,7 @@ namespace BLL.Metodos {
                 row["Nombre de Usuario"] = log.usuario;
                 row["Contenido"] = log.contenido;
                 row["Modulo"] = log.modulo;
-                row["Criticidad"] = log.criticidad;
+                row["Criticidad"] = log.criticidad.ToString();
                 row["Fecha"] = log.fecha;
                 dataTable.Rows.Add(row);
             }

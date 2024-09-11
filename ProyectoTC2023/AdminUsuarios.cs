@@ -64,9 +64,9 @@ namespace ProyectoTC2023 {
             string apellido = tbxApellido.Text;
             string email = tbxEmail.Text;
             string contraseña = txtCreaContraseña.Text;
-            string nomUsuCompuesto = crearNomUsuCompuesto(nombre, apellido);
             if (SingletonSesion.getInstance.estaLogged) {
                 if (validar.validarNoNuloNoVacio(nombre,apellido,email,contraseña)) {
+                       string nomUsuCompuesto = crearNomUsuCompuesto(nombre, apellido);
                        Usuario usuario = new Usuario() 
                        { nomUsu = nomUsuCompuesto, pass = contraseña, apellido = apellido, email = email, nombre = nombre };
                        tbxNombre.Clear();

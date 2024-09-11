@@ -12,6 +12,10 @@ namespace CUL.Entidades {
         Ventas,
         Compras,
         Reportes,
-        Ayuda
+        Ayuda,
+        BackupRestore,
+        Clientes,
+        Login,
+        AdminUsuarios
     }
 }
