@@ -13,18 +13,14 @@ namespace DAL.Metodos {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
         private StoredProcedureHelper storedProcedureHelper;
         public string crearCliente(Cliente cliente) {
-            try {
+            
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand command = storedProcedureHelper.rellenarYDevolverSPUpsert(cliente, connection, "CrearCliente");
                     connection.Open();
                     command.ExecuteNonQuery();
                     return "Cliente ha sido creado.";
                 }
-            } catch (Exception ex) {
-                Console.WriteLine("An error occurred: " + ex.Message);
-                return "Error";
             }
-        }
         public int lookupCliente(string id) {
             int resultado = -1;
             try {

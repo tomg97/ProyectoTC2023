@@ -207,6 +207,9 @@
   <data name="gbCambiarClave" xml:space="preserve">
     <value>Cambiar Clave</value>
   </data>
+  <data name="gbConfigFamilia" xml:space="preserve">
+    <value>Configurar Familia</value>
+  </data>
   <data name="gbDatosPago" xml:space="preserve">
     <value>Ingresar Datos Pago</value>
   </data>
@@ -234,8 +237,11 @@
   <data name="gbVentasNoF" xml:space="preserve">
     <value>Ventas no facturadas</value>
   </data>
+  <data name="gbVisualizador" xml:space="preserve">
+    <value>Visualizador facturas</value>
+  </data>
   <data name="grpbxCMUsu" xml:space="preserve">
-    <value>Crear/Modificar Usuario</value>
+    <value>Crear</value>
   </data>
   <data name="grpCarrito" xml:space="preserve">
     <value>Carrito</value>
@@ -305,6 +311,9 @@
   </data>
   <data name="lblMesYAñoVenc" xml:space="preserve">
     <value>Mes Y Año expiración</value>
+  </data>
+  <data name="lblNombre" xml:space="preserve">
+    <value>Nombre</value>
   </data>
   <data name="lblNombreCliente" xml:space="preserve">
     <value>Nombre</value>
