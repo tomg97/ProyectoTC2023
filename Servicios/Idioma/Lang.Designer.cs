@@ -430,7 +430,7 @@ namespace Servicios.Idioma {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Crear/Modificar Usuario.
+        ///   Looks up a localized string similar to Crear.
         /// </summary>
         public static string grpbxCMUsu {
             get {

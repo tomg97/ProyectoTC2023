@@ -121,7 +121,8 @@ namespace ProyectoTC2023 {
         }
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            FrmBitacora frmBitacora = new FrmBitacora();
+            invocarForm(frmBitacora);
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e) {

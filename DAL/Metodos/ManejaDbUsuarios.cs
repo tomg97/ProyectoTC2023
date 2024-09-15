@@ -15,25 +15,17 @@ namespace DAL.Metodos {
         public int authUsuario(Usuario usuario) {
             int resultado = -1;
 
-            if (!SingletonSesion.getInstance.estaLogged) {
-                try {
-                    using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                        SqlCommand command = new SqlCommand("AutenticarUsuario", connection);
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
-                        command.Parameters.AddWithValue("@pass", usuario.pass);
-                        command.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("AutenticarUsuario", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                    command.Parameters.AddWithValue("@pass", usuario.pass);
+                    command.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        resultado = Convert.ToInt32(command.Parameters["@Result"].Value);
-                    }
-                } catch (Exception ex) {
-                    Console.WriteLine("An error occurred: " + ex.Message);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    resultado = Convert.ToInt32(command.Parameters["@Result"].Value);
                 }
-            } else {
-                throw new InvalidOperationException("Sesión ya iniciada");
-            }
             return resultado;
         }
         public int lookupUsuario(string nomUsu) {
@@ -54,26 +46,43 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
-        public string crearUsuario(Usuario usuario) {
+        public Usuario devolverUsuarioNomUsu(string nomUsu) {
+            // int resultado = -1;
+            Usuario resultado = new Usuario();
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Usuarios WHERE nomUsu = @nomUsu", connection);
+                    
+                    command.Parameters.AddWithValue("@nomUsu", nomUsu);
+                    
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        resultado = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
+                    }
+                    reader.Close();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            return resultado;
+        }
+        public string crearUsuario(Usuario usuario) {
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand command = new SqlCommand("CrearUsuario", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
                     command.Parameters.AddWithValue("@pass", usuario.pass);
-
+                    command.Parameters.AddWithValue("@nombre", usuario.nombre);
+                    command.Parameters.AddWithValue("@apellido", usuario.apellido);
+                    command.Parameters.AddWithValue("@email", usuario.email);
                     connection.Open();
                     command.ExecuteNonQuery();
-                    return "Usuario ha sido creado.";
-                }
-            } catch (Exception ex) {
-                Console.WriteLine("An error occurred: " + ex.Message);
-                return "Error";
             }
+            return "Usuario ha sido creado.";
         }
         public int modificarNombreUsuario(string usuNuevo, string usuViejo) {
             int resultado = -1;
-            try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
 
                     SqlCommand command = new SqlCommand("ModificarNombreUsuario", connection);
@@ -86,9 +95,6 @@ namespace DAL.Metodos {
                     command.ExecuteNonQuery();
                     resultado = Convert.ToInt32(command.Parameters["@Result"].Value);
                 }
-            } catch (Exception ex) {
-                Console.WriteLine("An error occurred: " + ex.Message);
-            }
             return resultado;
         }
         public List<Usuario> getUsuariosBloqueados() {
@@ -170,9 +176,11 @@ namespace DAL.Metodos {
                     SqlCommand command = new SqlCommand("GuardarPerfilPaso1", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
+                    connection.Open();
                     command.ExecuteNonQuery();
                     foreach (var item in usuario.permisos) {
                         command = new SqlCommand("GuardarPerfilPaso2", connection);
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@nomUsu", usuario.nomUsu);
                         command.Parameters.AddWithValue("@idPermiso", item.id);
                         command.ExecuteNonQuery();

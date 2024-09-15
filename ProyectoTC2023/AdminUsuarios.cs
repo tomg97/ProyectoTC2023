@@ -22,8 +22,8 @@ namespace ProyectoTC2023 {
             actualizarIdioma();
         }
         private void AdminUsuarios_Load(object sender, EventArgs e) {
-            txtABMPUsu.Visible = false;
-            btnEnterABM.Visible = false;
+            tbxModPass.Visible = false;
+            btnModUsu.Visible = false;
             lblABMPUsu.Visible = false;
             cmbUsusBloq.SelectedIndex = -1;
             List<Usuario> usuariosBloqueados = resultadosDb.getUsuariosBloqueados();
@@ -38,26 +38,20 @@ namespace ProyectoTC2023 {
 
         private void btnVerif_Click(object sender, EventArgs e) {
             if (SingletonSesion.getInstance.estaLogged) {
-                string nomUsu = txtABMUsu.Text;
+                string nomUsu = tbxModUsu.Text;
                 if (validar.validarNoNuloNoVacio(nomUsu)) {
                     if (resultadosDb.lookupUsuario(nomUsu) == "Usuario Encontrado") {
-                        txtABMPUsu.Visible = true;
-                        btnEnterABM.Visible = true;
+                        btnModUsu.Visible = true;
+                        tbxModPass.Visible = true;
                         lblABMPUsu.Visible = true;
-                        lblABMPUsu.Text = "Modificar Nombre Usuario:";
-                        btnEnterABM.Text = "Modificar";
-                        grpbxCMUsu.Text = "Modificar Usuario";
                     } else if (resultadosDb.lookupUsuario(nomUsu) == "Usuario No Encontrado") {
-                        txtABMPUsu.Visible = true;
-                        btnEnterABM.Visible = true;
-                        lblABMPUsu.Visible = true;
-                        lblABMPUsu.Text = "Contraseña:";
-                        btnEnterABM.Text = "Crear";
-                        grpbxCMUsu.Text = "Crear Usuario";
+                        mensajeria.mostrarMensaje("El nombre de usuario no existe.");
                     } else {
                         mensajeria.mostrarMensaje("Error inesperado");
-                        txtABMUsu.Clear();
+                        tbxNombre.Clear();
                     }
+                } else {
+                    mensajeria.mostrarMensaje("Nombre de Usuario vacío. Reingresar");
                 }
             } else {
                 mensajeria.mostrarErrorNoLogged();
@@ -66,40 +60,32 @@ namespace ProyectoTC2023 {
 
         private void btnEnterABM_Click(object sender, EventArgs e) {
             // TODO: rework para añadir un email para los usuarios. es necesario para completar la bitácora
-            string primerTxtBox = txtABMUsu.Text;
-            string segundoTxtBox = txtABMPUsu.Text;
+            string nombre = tbxNombre.Text;
+            string apellido = tbxApellido.Text;
+            string email = tbxEmail.Text;
+            string contraseña = txtCreaContraseña.Text;
             if (SingletonSesion.getInstance.estaLogged) {
-                if (validar.validarNoNuloNoVacio(segundoTxtBox)) {
-                    if (btnEnterABM.Text == "Crear") {
-                       Usuario usuario = new Usuario() { nomUsu = primerTxtBox, pass = segundoTxtBox };
-                       txtABMUsu.Clear();
-                       txtABMPUsu.Clear();
-                       txtABMPUsu.Visible = false;
-                       btnEnterABM.Visible = false;
-                       lblABMPUsu.Visible = false;
-                       grpbxCMUsu.Text = "Crear/Modificar Usuario";
-                       mensajeria.mostrarMensaje(resultadosDb.crearUsuario(usuario));
-                    } else {
-                        string mensaje = resultadosDb.modificarNombreUsuario(primerTxtBox, segundoTxtBox);
-                        if(mensaje == "Exito") {
-                            mensajeria.mostrarMensaje("Usuario " + primerTxtBox + " modificado");
-                            txtABMUsu.Clear();
-                            txtABMPUsu.Clear();
-                            txtABMPUsu.Visible = false;
-                            btnEnterABM.Visible = false;
-                            lblABMPUsu.Visible = false;
-                            grpbxCMUsu.Text = "Crear/Modificar Usuario";
-                        } else if (mensaje == "Usuario Existente") {
-                            mensajeria.mostrarMensaje("Usuario " + segundoTxtBox + " ya existe. Utilice uno distinto.");
-                            txtABMPUsu.Clear();
-                        }
-                    }
+                if (validar.validarNoNuloNoVacio(nombre,apellido,email,contraseña)) {
+                       string nomUsuCompuesto = crearNomUsuCompuesto(nombre, apellido);
+                       Usuario usuario = new Usuario() 
+                       { nomUsu = nomUsuCompuesto, pass = contraseña, apellido = apellido, email = email, nombre = nombre };
+                       tbxNombre.Clear();
+                       txtCreaContraseña.Clear();
+                       mensajeria.mostrarMensaje(resultadosDb.crearUsuario(usuario) + " El nombre de usuario es: " + nomUsuCompuesto + ".");
                 } else {
-                    mensajeria.mostrarMensaje("Se debe proporcionar una contraseña para poder crear al usuario");
+                    mensajeria.mostrarMensaje("Uno o más campos están vacíos. Por favor, complete.");
                 }
             } else {
                 mensajeria.mostrarErrorNoLogged();
             }
+        }
+
+        private string crearNomUsuCompuesto(string nombre, string apellido) {
+            string porcionApellido = apellido.Length >= 4 ? apellido.Substring(0, 4) : apellido;
+            string porcionNombre = nombre.Substring(0, 1);
+            Random random = new Random();
+            string numero = random.Next(0, 1000).ToString("D3");
+            return porcionApellido + porcionNombre + numero;
         }
 
         private void btnDesbloquear_Click(object sender, EventArgs e) {
@@ -123,10 +109,27 @@ namespace ProyectoTC2023 {
             grpbxCMUsu.Text = Lang.grpbxCMUsu;
             lblABMNUsu.Text = Lang.lblABMNUsu;
             btnVerif.Text = Lang.btnVerif;
-            lblABMPUsu.Text = Lang.lblABMPUsu;
+            lblCrearPass.Text = Lang.lblABMPUsu;
             btnEnterABM.Text = Lang.btnEnterABM;
             gbDesbloquearUsuarios.Text = Lang.gbDesbloquearUsuarios;
             btnDesbloquear.Text = Lang.btnDesbloquear;
+        }
+
+        private void btnModUsu_Click(object sender, EventArgs e) {
+            string nombre = tbxModUsu.Text;
+            string contraseña = tbxModPass.Text;
+            string mensaje = resultadosDb.modificarNombreUsuario(nombre, contraseña);
+            if (mensaje == "Exito") {
+                mensajeria.mostrarMensaje("Usuario " + nombre + " modificado");
+                tbxModUsu.Clear();
+                tbxModPass.Clear();
+                tbxModPass.Visible = false;
+                btnModUsu.Visible = false;
+                lblABMPUsu.Visible = false;
+            } else if (mensaje == "Usuario Existente") {
+                mensajeria.mostrarMensaje("Usuario " + nombre + " ya existe. Utilice uno distinto.");
+                txtCreaContraseña.Clear();
+            }
         }
     }
 }

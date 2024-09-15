@@ -10,8 +10,17 @@ using System.Threading.Tasks;
 namespace BLL.Metodos {
     public class ManejaCliente {
         ManejaDbClientes manejaDbClientes = new ManejaDbClientes();
+        BitacoraBLL bitacora = new BitacoraBLL();
         public string crearCliente(Cliente cliente) {
-            return manejaDbClientes.crearCliente(cliente);
+            string resultado;
+            try {
+                resultado = manejaDbClientes.crearCliente(cliente);
+                bitacora.persistirMensajeLogged("Cliente creado. Id de cliente: " + cliente.id, Modulo.Clientes, Criticidad.Dos);                
+            } catch (Exception e) {
+                resultado = "Error al crear cliente. " + e.ToString();
+                bitacora.persistirMensajeLogged("Creacion de cliente fallida. Motivo: " + e.ToString(), Modulo.Clientes, Criticidad.Dos);
+            }
+            return resultado;
         }
         public string lookupCliente(string id) {
             Encriptador encriptador = new Encriptador();
@@ -20,12 +29,15 @@ namespace BLL.Metodos {
             switch (resultado) {
                 case 1:
                     mensaje = "Cliente encontrado";
+                    bitacora.persistirMensajeLogged(mensaje + ". Con Id: " + id, Modulo.Clientes, Criticidad.Cuatro);
                     break;
                 case 0:
                     mensaje = "Cliente no encontrado";
+                    bitacora.persistirMensajeLogged(mensaje + ". Con Id: " + id, Modulo.Clientes, Criticidad.Cuatro);
                     break;
                 default:
                     mensaje = "Desconocido";
+                    bitacora.persistirMensajeLogged("Error desconocido en lookup de cliente. Id de cliente: " + id, Modulo.Clientes, Criticidad.Dos);
                     break;
             }
             return mensaje;
