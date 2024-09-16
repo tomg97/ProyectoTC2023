@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="Metodos\ManejaDbBitacora.cs" />
     <Compile Include="Metodos\ManejaDbBR.cs" />
+    <Compile Include="Metodos\ManejaDbMaestro.cs" />
     <Compile Include="Metodos\ManejaDbPerfil.cs" />
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />

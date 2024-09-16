@@ -134,5 +134,25 @@ namespace ProyectoTC2023 {
             FrmBR frm = new FrmBR();
             invocarForm(frm);
         }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmMaestro frm = new FrmMaestro("Producto");
+            invocarForm(frm);
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmMaestro frm = new FrmMaestro("Cliente");
+            invocarForm(frm);
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e) {
+            FrmMaestro frm = new FrmMaestro("Proveedor");
+            invocarForm(frm);
+        }
+
+        private void tsmUsuMaestro_Click(object sender, EventArgs e) {
+            FrmMaestro frm = new FrmMaestro("Usuarios");
+            invocarForm(frm);
+        }
     }
 }

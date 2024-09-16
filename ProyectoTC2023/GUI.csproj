@@ -57,6 +57,7 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -132,6 +133,12 @@
     <Compile Include="FrmFacturas.Designer.cs">
       <DependentUpon>FrmFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMaestro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaestro.Designer.cs">
+      <DependentUpon>FrmMaestro.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPerfiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturas.resx">
       <DependentUpon>FrmFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaestro.resx">
+      <DependentUpon>FrmMaestro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfiles.resx">
       <DependentUpon>FrmPerfiles.cs</DependentUpon>

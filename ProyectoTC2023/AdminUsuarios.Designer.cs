@@ -43,6 +43,10 @@
             this.btnModUsu = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxModUsu = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.grpbxCMUsu.SuspendLayout();
             this.gbDesbloquearUsuarios.SuspendLayout();
             this.gbModUsu.SuspendLayout();
@@ -50,6 +54,10 @@
             // 
             // grpbxCMUsu
             // 
+            this.grpbxCMUsu.Controls.Add(this.lblDni);
+            this.grpbxCMUsu.Controls.Add(this.txtDni);
+            this.grpbxCMUsu.Controls.Add(this.lblTelefono);
+            this.grpbxCMUsu.Controls.Add(this.txtTelefono);
             this.grpbxCMUsu.Controls.Add(this.label3);
             this.grpbxCMUsu.Controls.Add(this.tbxEmail);
             this.grpbxCMUsu.Controls.Add(this.label1);
@@ -61,10 +69,11 @@
             this.grpbxCMUsu.Controls.Add(this.tbxNombre);
             this.grpbxCMUsu.Location = new System.Drawing.Point(12, 12);
             this.grpbxCMUsu.Name = "grpbxCMUsu";
-            this.grpbxCMUsu.Size = new System.Drawing.Size(240, 212);
+            this.grpbxCMUsu.Size = new System.Drawing.Size(240, 299);
             this.grpbxCMUsu.TabIndex = 0;
             this.grpbxCMUsu.TabStop = false;
             this.grpbxCMUsu.Text = "Crear Usuario";
+            this.grpbxCMUsu.Enter += new System.EventHandler(this.grpbxCMUsu_Enter);
             // 
             // label3
             // 
@@ -101,7 +110,7 @@
             // lblCrearPass
             // 
             this.lblCrearPass.AutoSize = true;
-            this.lblCrearPass.Location = new System.Drawing.Point(7, 158);
+            this.lblCrearPass.Location = new System.Drawing.Point(7, 252);
             this.lblCrearPass.Name = "lblCrearPass";
             this.lblCrearPass.Size = new System.Drawing.Size(64, 13);
             this.lblCrearPass.TabIndex = 5;
@@ -109,14 +118,14 @@
             // 
             // txtCreaContraseña
             // 
-            this.txtCreaContraseña.Location = new System.Drawing.Point(7, 178);
+            this.txtCreaContraseña.Location = new System.Drawing.Point(7, 272);
             this.txtCreaContraseña.Name = "txtCreaContraseña";
             this.txtCreaContraseña.Size = new System.Drawing.Size(139, 20);
             this.txtCreaContraseña.TabIndex = 4;
             // 
             // btnEnterABM
             // 
-            this.btnEnterABM.Location = new System.Drawing.Point(152, 176);
+            this.btnEnterABM.Location = new System.Drawing.Point(152, 270);
             this.btnEnterABM.Name = "btnEnterABM";
             this.btnEnterABM.Size = new System.Drawing.Size(75, 23);
             this.btnEnterABM.TabIndex = 3;
@@ -154,7 +163,7 @@
             // 
             this.gbDesbloquearUsuarios.Controls.Add(this.btnDesbloquear);
             this.gbDesbloquearUsuarios.Controls.Add(this.cmbUsusBloq);
-            this.gbDesbloquearUsuarios.Location = new System.Drawing.Point(258, 138);
+            this.gbDesbloquearUsuarios.Location = new System.Drawing.Point(258, 225);
             this.gbDesbloquearUsuarios.Name = "gbDesbloquearUsuarios";
             this.gbDesbloquearUsuarios.Size = new System.Drawing.Size(240, 86);
             this.gbDesbloquearUsuarios.TabIndex = 1;
@@ -236,11 +245,45 @@
             this.tbxModUsu.Size = new System.Drawing.Size(139, 20);
             this.tbxModUsu.TabIndex = 1;
             // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Location = new System.Drawing.Point(7, 152);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefono.TabIndex = 11;
+            this.lblTelefono.Text = "Teléfono:";
+            this.lblTelefono.Click += new System.EventHandler(this.lblTelefono_Click);
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(7, 172);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(220, 20);
+            this.txtTelefono.TabIndex = 10;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Location = new System.Drawing.Point(7, 199);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(29, 13);
+            this.lblDni.TabIndex = 13;
+            this.lblDni.Text = "DNI:";
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(7, 219);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(220, 20);
+            this.txtDni.TabIndex = 12;
+            // 
             // AdminUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 236);
+            this.ClientSize = new System.Drawing.Size(514, 326);
             this.Controls.Add(this.gbModUsu);
             this.Controls.Add(this.gbDesbloquearUsuarios);
             this.Controls.Add(this.grpbxCMUsu);
@@ -278,5 +321,9 @@
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxApellido;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label lblDni;
+        private System.Windows.Forms.TextBox txtDni;
     }
 }

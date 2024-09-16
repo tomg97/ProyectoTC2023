@@ -39,5 +39,19 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
+        public List<Cliente> traerTodosClientes() {
+            List<Cliente> list = new List<Cliente>();
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                SqlCommand command = new SqlCommand("SELECT * FROM Cliente", connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                connection.Open();
+                while (reader.Read()) {
+                    list.Add(storedProcedureHelper.crearObjetoDeDataReader<Cliente>(reader));
+                }
+                reader.Close();
+                return list;
+            }
+        }
     }
 }

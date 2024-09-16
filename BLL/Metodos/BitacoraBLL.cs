@@ -43,8 +43,21 @@ namespace BLL.Metodos {
         }*/
         public DataTable lookupBitacoraParametros(Dictionary<string, string> dic) {
             List<Mensaje> list = manejaDbBitacora.lookupMensajesBitacora(dic);
+            persistirMensajeLogged("Se realizó una búsqueda con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
+        }
+        private static string armarMensajeDiccionario(Dictionary<string, string> dic) {
+            StringBuilder sb = new StringBuilder();
+            foreach (var kvp in dic) {
+                if (!string.IsNullOrEmpty(kvp.Value)) {
+                    sb.Append($"\"{kvp.Key}\": \"{kvp.Value}\", ");
+                }
+            }
+            if (sb.Length > 0) {
+                sb.Length -= 2;
+            }
+            return sb.ToString();
         }
 
         private static DataTable cargarDataTableBitEventos(List<Mensaje> list) {
@@ -60,7 +73,7 @@ namespace BLL.Metodos {
                 row["Nombre de Usuario"] = log.usuario;
                 row["Contenido"] = log.contenido;
                 row["Modulo"] = log.modulo;
-                row["Criticidad"] = log.criticidad.ToString();
+                row["Criticidad"] = log.criticidad;
                 row["Fecha"] = log.fecha;
                 dataTable.Rows.Add(row);
             }

@@ -220,6 +220,7 @@
             // 
             this.txtNombreBit.Location = new System.Drawing.Point(805, 133);
             this.txtNombreBit.Name = "txtNombreBit";
+            this.txtNombreBit.ReadOnly = true;
             this.txtNombreBit.Size = new System.Drawing.Size(188, 20);
             this.txtNombreBit.TabIndex = 18;
             // 
@@ -227,6 +228,7 @@
             // 
             this.txtApellidoBit.Location = new System.Drawing.Point(804, 196);
             this.txtApellidoBit.Name = "txtApellidoBit";
+            this.txtApellidoBit.ReadOnly = true;
             this.txtApellidoBit.Size = new System.Drawing.Size(188, 20);
             this.txtApellidoBit.TabIndex = 19;
             // 

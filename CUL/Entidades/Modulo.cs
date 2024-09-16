@@ -16,6 +16,7 @@ namespace CUL.Entidades {
         BackupRestore,
         Clientes,
         Login,
-        AdminUsuarios
+        AdminUsuarios,
+        Bitacora
     }
 }
