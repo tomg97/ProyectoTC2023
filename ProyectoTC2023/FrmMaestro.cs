@@ -253,32 +253,32 @@ namespace ProyectoTC2023 {
             switch (tipo) {
                 case "Producto":
                     Producto productoN = new Producto {
-                        nombreProducto = String.IsNullOrEmpty(txtNomProdN.Text) ? productoOgg.nombreProducto : txtNomProdN.Text,
-                        marcaProducto = String.IsNullOrEmpty(txtMarProdN.Text) ? productoOgg.marcaProducto : txtMarProdN.Text,
-                        cantidad = String.IsNullOrEmpty(txtCantN.Text) ? productoOgg.cantidad : Int32.Parse(txtCantN.Text),
-                        precio = String.IsNullOrEmpty(txtPrecioN.Text) ? productoOgg.precio : txtPrecioN.Text,
-                        id = String.IsNullOrEmpty(txtIdN.Text) ? productoOgg.id : txtIdN.Text
+                        nombreProducto = devolverStringOriginalIfNullOrEmpty(productoOgg.nombreProducto, txtNomProdN.Text),
+                        marcaProducto = devolverStringOriginalIfNullOrEmpty(productoOgg.marcaProducto, txtMarProdN.Text),
+                        cantidad = Int32.Parse(devolverStringOriginalIfNullOrEmpty(productoOgg.cantidad.ToString(), txtCantN.Text)),
+                        precio = devolverStringOriginalIfNullOrEmpty(productoOgg.precio, txtPrecioN.Text),
+                        id = devolverStringOriginalIfNullOrEmpty(productoOgg.id, txtIdN.Text)
                     };
                     manejaMaestro.modificaProducto(productoN, productoOgg.id);
                     break;
                 case "Usuarios":
                     Usuario usuarioN = new Usuario {
-                        nomUsu = String.IsNullOrEmpty(txtNomUsuN.Text) ? usuarioOgg.nomUsu : txtNomUsuN.Text,
-                        nombre = String.IsNullOrEmpty(txtNombUsuN.Text) ? usuarioOgg.nombre : txtNombUsuN.Text,
-                        apellido = String.IsNullOrEmpty(txtApeUsuN.Text) ? usuarioOgg.apellido : txtApeUsuN.Text,
-                        dni = String.IsNullOrEmpty(txtDniN.Text) ? usuarioOgg.dni : txtDniN.Text,
-                        email = String.IsNullOrEmpty(txtEmailN.Text) ? usuarioOgg.email : txtEmailN.Text,
-                        telefono = String.IsNullOrEmpty(txtTelefonoN.Text) ? usuarioOgg.telefono : txtTelefonoN.Text
+                        nomUsu = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nomUsu, txtNomUsuN.Text),
+                        nombre = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nombre, txtNombUsuN.Text),
+                        apellido = devolverStringOriginalIfNullOrEmpty(usuarioOgg.apellido, txtApeUsuN.Text),
+                        dni = devolverStringOriginalIfNullOrEmpty(usuarioOgg.dni, txtDniN.Text),
+                        email = devolverStringOriginalIfNullOrEmpty(usuarioOgg.email, txtEmailN.Text),
+                        telefono = devolverStringOriginalIfNullOrEmpty(usuarioOgg.telefono, txtTelefonoN.Text)
                     };
                     manejaMaestro.modificaUsuario(usuarioN, usuarioOgg.nomUsu);
                     break;
                 case "Cliente":
                     Cliente clienteN = new Cliente {
-                        nombre = String.IsNullOrEmpty(txtNomCN.Text) ? clienteOgg.nombre : txtNomCN.Text,
-                        apellido = String.IsNullOrEmpty(txtApeCN.Text) ? clienteOgg.apellido : txtApeCN.Text,
-                        domicilio = String.IsNullOrEmpty(txtDomCN.Text) ? clienteOgg.domicilio : txtDomCN.Text,
-                        telefono = String.IsNullOrEmpty(txtTelCN.Text) ? clienteOgg.telefono : txtTelCN.Text,
-                        id = String.IsNullOrEmpty(txtIdCN.Text) ? clienteOgg.id : txtIdCN.Text
+                        nombre = devolverStringOriginalIfNullOrEmpty(clienteOgg.nombre, txtNomCN.Text),
+                        apellido = devolverStringOriginalIfNullOrEmpty(clienteOgg.apellido, txtApeCN.Text),
+                        domicilio = devolverStringOriginalIfNullOrEmpty(clienteOgg.domicilio, txtDomCN.Text),
+                        telefono = devolverStringOriginalIfNullOrEmpty(clienteOgg.telefono, txtTelCN.Text),
+                        id = devolverStringOriginalIfNullOrEmpty(clienteOgg.id, txtIdCN.Text)
                     };
                     manejaMaestro.modificaCliente(clienteN, clienteOgg.id);
                     break;
@@ -286,6 +286,10 @@ namespace ProyectoTC2023 {
             limpiarTextBoxes();
             limpiarOggs();
             resettearBotones();
+        }
+
+        private string devolverStringOriginalIfNullOrEmpty(string original, string nuevo) {
+            return String.IsNullOrEmpty(nuevo) ? original : nuevo;
         }
 
         private void limpiarOggs() {
