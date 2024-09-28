@@ -42,5 +42,9 @@ namespace BLL.Metodos {
             }
             return mensaje;
         }
+        public List<Cliente> lookupTodosClientes() {
+            List<Cliente> clientes = manejaDbClientes.traerTodosClientes();
+            return clientes;
+        }
     }
 }

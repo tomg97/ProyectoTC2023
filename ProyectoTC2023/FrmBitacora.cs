@@ -19,6 +19,19 @@ namespace ProyectoTC2023 {
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
         public FrmBitacora() {
             InitializeComponent();
+            dtpDesde.ValueChanged += DtpDesde_ValueChanged;
+            dtpHasta.ValueChanged += DtpHasta_ValueChanged;
+
+            dtpDesde.MaxDate = dtpHasta.Value;
+            dtpHasta.MinDate = dtpDesde.Value;
+        }
+
+        private void DtpHasta_ValueChanged(object sender, EventArgs e) {
+            dtpDesde.MaxDate = dtpHasta.Value;
+        }
+
+        private void DtpDesde_ValueChanged(object sender, EventArgs e) {
+            dtpHasta.MinDate = dtpDesde.Value;            
         }
 
         private void btnLookBit_Click(object sender, EventArgs e) {
@@ -95,6 +108,8 @@ namespace ProyectoTC2023 {
 
                 // Fetch and display the name and surname
                 mostrarDetallesUsuario(username);
+            } else if (e.RowIndex >= 0 && dgvBitacora.Columns[e.ColumnIndex].Name == "Contenido") {
+                mensajeria.mostrarMensaje(dgvBitacora.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
             }
         }
 

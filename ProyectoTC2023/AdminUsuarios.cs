@@ -64,11 +64,13 @@ namespace ProyectoTC2023 {
             string apellido = tbxApellido.Text;
             string email = tbxEmail.Text;
             string contraseña = txtCreaContraseña.Text;
+            string dni = txtDni.Text;
+            string telefono = txtTelefono.Text;
             if (SingletonSesion.getInstance.estaLogged) {
                 if (validar.validarNoNuloNoVacio(nombre,apellido,email,contraseña)) {
                        string nomUsuCompuesto = crearNomUsuCompuesto(nombre, apellido);
                        Usuario usuario = new Usuario() 
-                       { nomUsu = nomUsuCompuesto, pass = contraseña, apellido = apellido, email = email, nombre = nombre };
+                       { nomUsu = nomUsuCompuesto, pass = contraseña, apellido = apellido, email = email, nombre = nombre, dni = dni, telefono = telefono };
                        tbxNombre.Clear();
                        txtCreaContraseña.Clear();
                        mensajeria.mostrarMensaje(resultadosDb.crearUsuario(usuario) + " El nombre de usuario es: " + nomUsuCompuesto + ".");
@@ -130,6 +132,18 @@ namespace ProyectoTC2023 {
                 mensajeria.mostrarMensaje("Usuario " + nombre + " ya existe. Utilice uno distinto.");
                 txtCreaContraseña.Clear();
             }
+        }
+
+        private void grpbxCMUsu_Enter(object sender, EventArgs e) {
+
+        }
+
+        private void lblTelefono_Click(object sender, EventArgs e) {
+
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

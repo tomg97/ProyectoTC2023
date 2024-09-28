@@ -44,5 +44,17 @@ namespace CUL.Entidades {
 			get { return _email; }
 			set { _email = value; }
 		}
+		private string _telefono;
+
+		public string telefono {
+			get { return _telefono; }
+			set { _telefono = value; }
+		}
+		private string _dni;
+
+		public string dni {
+			get { return _dni; }
+			set { _dni = value; }
+		}
 	}
 }

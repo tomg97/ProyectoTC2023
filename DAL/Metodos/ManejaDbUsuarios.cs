@@ -76,6 +76,8 @@ namespace DAL.Metodos {
                     command.Parameters.AddWithValue("@nombre", usuario.nombre);
                     command.Parameters.AddWithValue("@apellido", usuario.apellido);
                     command.Parameters.AddWithValue("@email", usuario.email);
+                    command.Parameters.AddWithValue("@telefono", usuario.telefono);
+                    command.Parameters.AddWithValue("@dni", usuario.dni);
                     connection.Open();
                     command.ExecuteNonQuery();
             }
