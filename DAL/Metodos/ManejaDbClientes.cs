@@ -11,7 +11,7 @@ using Servicios.Metodos;
 namespace DAL.Metodos {
     public class ManejaDbClientes {
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
-        private StoredProcedureHelper storedProcedureHelper;
+        private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public string crearCliente(Cliente cliente) {
             
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
@@ -43,9 +43,9 @@ namespace DAL.Metodos {
             List<Cliente> list = new List<Cliente>();
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
                 SqlCommand command = new SqlCommand("SELECT * FROM Cliente", connection);
-                SqlDataReader reader = command.ExecuteReader();
-
                 connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();                
                 while (reader.Read()) {
                     list.Add(storedProcedureHelper.crearObjetoDeDataReader<Cliente>(reader));
                 }

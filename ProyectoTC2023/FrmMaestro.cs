@@ -12,12 +12,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ProyectoTC2023.DataSetProductos;
 using Microsoft.VisualBasic;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace ProyectoTC2023 {
     public partial class FrmMaestro : Form {
         ManejaMaestro manejaMaestro;
         DataTable dt = new DataTable();
         Mensajeria mensajeria = new Mensajeria();
+        SerializadorXML serializadorXML = new SerializadorXML();
         string tipo;
 
         Usuario usuarioOgg;
@@ -43,6 +46,8 @@ namespace ProyectoTC2023 {
                     break;
                 case "Cliente":
                     grpCliente.Visible = true;
+                    btnSerialize.Visible = true;
+                    btnDeserialize.Visible = true;
                     break;
                 case "Proveedor":
                     break;
@@ -72,43 +77,25 @@ namespace ProyectoTC2023 {
             btnModMaestro.Visible = false;
             btnElimMaestro.Visible = false;
             btnAddMaestro.Visible = false;
+            btnSerialize.Visible = false;
+            btnDeserialize.Visible = false;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
             DataRow dataRow = dt.Rows[dt.Rows.Count - 1];
             switch (tipo) {
                 case "Producto":
-                    Producto producto = new Producto {
-
-                        nombreProducto = dataRow["Nombre Producto"].ToString(),
-                        marcaProducto = dataRow["Marca Producto"].ToString(),
-                        cantidad = Int32.Parse(dataRow["Cantidad"].ToString()),
-                        precio = dataRow["Precio"].ToString(),
-                        id = dataRow["Id"].ToString()
-                    };
+                    Producto producto = crearProducto(dataRow);
                     manejaMaestro.guardarProductoNuevo(producto);
                     break;
                 case "Usuarios":
-                    Usuario usuario = new Usuario {
-                        nomUsu = dataRow["Nombre Usuario"].ToString(),
-                        nombre = dataRow["Nombre"].ToString(),
-                        apellido = dataRow["Apellido"].ToString(),
-                        dni = dataRow["DNI"].ToString(),
-                        email = dataRow["Email"].ToString(),
-                        telefono = dataRow["Teléfono"].ToString()
-                    };
+                    Usuario usuario = crearUsuario(dataRow);
                     string input = Interaction.InputBox("Contraseña?", "Ingrese Contraseña", "1234");
                     usuario.pass = input;
                     manejaMaestro.guardarUsuario(usuario);
                     break;
                 case "Cliente":
-                    Cliente cliente = new Cliente {
-                        nombre = dataRow["Nombre"].ToString(),
-                        apellido = dataRow["Apellido"].ToString(),
-                        domicilio = dataRow["Domicilio"].ToString(),
-                        telefono = dataRow["Teléfono"].ToString(),
-                        id = dataRow["Id"].ToString()
-                    };
+                    Cliente cliente = crearCliente(dataRow);
                     manejaMaestro.crearCliente(cliente);
                     break;
                 case "Proveedor":
@@ -118,6 +105,38 @@ namespace ProyectoTC2023 {
             resettearBotones();
         }
 
+        private static Cliente crearCliente(DataRow dataRow) {
+            return new Cliente {
+                nombre = dataRow["Nombre"].ToString(),
+                apellido = dataRow["Apellido"].ToString(),
+                domicilio = dataRow["Domicilio"].ToString(),
+                telefono = dataRow["Teléfono"].ToString(),
+                id = dataRow["Id"].ToString()
+            };
+        }
+
+        private static Usuario crearUsuario(DataRow dataRow) {
+            return new Usuario {
+                nomUsu = dataRow["Nombre Usuario"].ToString(),
+                nombre = dataRow["Nombre"].ToString(),
+                apellido = dataRow["Apellido"].ToString(),
+                dni = dataRow["DNI"].ToString(),
+                email = dataRow["Email"].ToString(),
+                telefono = dataRow["Teléfono"].ToString()
+            };
+        }
+
+        private static Producto crearProducto(DataRow dataRow) {
+            return new Producto {
+
+                nombreProducto = dataRow["Nombre Producto"].ToString(),
+                marcaProducto = dataRow["Marca Producto"].ToString(),
+                cantidad = Int32.Parse(dataRow["Cantidad"].ToString()),
+                precio = dataRow["Precio"].ToString(),
+                id = dataRow["Id"].ToString()
+            };
+        }
+
         private void btnModMaestro_Click(object sender, EventArgs e) {
             if (dgvMaestro.SelectedRows.Count == 1) {
                 btnAppMaestro.Visible = true;
@@ -125,56 +144,20 @@ namespace ProyectoTC2023 {
                 btnModMaestro.Visible = false;
                 btnElimMaestro.Visible = false;
                 btnAddMaestro.Visible = false;
-                DataGridViewRow dataRow = dgvMaestro.SelectedRows[0];
-            switch (tipo) {
+                DataRow dataRow = ((DataRowView)dgvMaestro.SelectedRows[0].DataBoundItem).Row;
+                switch (tipo) {
                     case "Producto":
-                        Producto productoOg = new Producto {
-                            nombreProducto = dataRow.Cells["Nombre Producto"].Value.ToString(),
-                            marcaProducto = dataRow.Cells["Marca Producto"].Value.ToString(),
-                            cantidad = Int32.Parse(dataRow.Cells["Cantidad"].Value.ToString()),
-                            precio = dataRow.Cells["Precio"].Value.ToString(),
-                            id = dataRow.Cells["Id"].Value.ToString()
-                        };
-                        productoOgg = productoOg;
-                        txtNomProd.Text = productoOg.nombreProducto;
-                        txtMarProd.Text = productoOg.marcaProducto;
-                        txtCant.Text = productoOg.cantidad.ToString();
-                        txtPrecio.Text = productoOg.precio;
-                        txtId.Text = productoOg.id;
+                        Producto productoOg = crearProducto(dataRow);
+                        cargarProducto(productoOg);
                         break;
                     case "Usuarios":
-                        Usuario usuarioOg = new Usuario {
-                            nomUsu = dataRow.Cells["Nombre Usuario"].Value.ToString(),
-                            nombre = dataRow.Cells["Nombre"].Value.ToString(),
-                            apellido = dataRow.Cells["Apellido"].Value.ToString(),
-                            dni = dataRow.Cells["DNI"].Value.ToString(),
-                            email = dataRow.Cells["Email"].Value.ToString(),
-                            telefono = dataRow.Cells["Teléfono"].Value.ToString()
-                        };
-                        usuarioOgg = usuarioOg;
-                        txtNomUsu.Text = usuarioOg.nomUsu;
-                        txtNombUsu.Text = usuarioOg.nombre;
-                        txtApeUsu.Text = usuarioOg.apellido;
-                        txtDni.Text = usuarioOg.dni;
-                        txtTelefono.Text = usuarioOg.telefono;
-                        txtEmail.Text = usuarioOg.email;
+                        Usuario usuarioOg = crearUsuario(dataRow);
+                        cargarUsuario(usuarioOg);
 
                         break;
                     case "Cliente":
-                        Cliente clienteOg = new Cliente {
-                            nombre = dataRow.Cells["Nombre"].Value.ToString(),
-                            apellido = dataRow.Cells["Apellido"].Value.ToString(),
-                            domicilio = dataRow.Cells["Domicilio"].Value.ToString(),
-                            telefono = dataRow.Cells["Teléfono"].Value.ToString(),
-                            id = dataRow.Cells["Id"].Value.ToString()
-                        };
-                        clienteOgg = clienteOg;
-                        txtNomC.Text = clienteOg.nombre;
-                        txtApeC.Text = clienteOg.apellido;
-                        txtDomC.Text = clienteOg.domicilio;
-                        txtTelC.Text = clienteOg.telefono;
-                        txtIdC.Text = clienteOg.id;
-
+                        Cliente clienteOg = crearCliente(dataRow);
+                        cargarCliente(clienteOg);
                         break;
                     case "Proveedor":
                         break;
@@ -182,10 +165,43 @@ namespace ProyectoTC2023 {
                 limpiarTextBoxes();
             }            
         }
+
+        private void cargarCliente(Cliente clienteOg) {
+            clienteOgg = clienteOg;
+            txtNomC.Text = clienteOg.nombre;
+            txtApeC.Text = clienteOg.apellido;
+            txtDomC.Text = clienteOg.domicilio;
+            txtTelC.Text = clienteOg.telefono;
+            txtIdC.Text = clienteOg.id;
+        }
+
+        private void cargarUsuario(Usuario usuarioOg) {
+            usuarioOgg = usuarioOg;
+            txtNomUsu.Text = usuarioOg.nomUsu;
+            txtNombUsu.Text = usuarioOg.nombre;
+            txtApeUsu.Text = usuarioOg.apellido;
+            txtDni.Text = usuarioOg.dni;
+            txtTelefono.Text = usuarioOg.telefono;
+            txtEmail.Text = usuarioOg.email;
+        }
+
+        private void cargarProducto(Producto productoOg) {
+            productoOgg = productoOg;
+            txtNomProd.Text = productoOg.nombreProducto;
+            txtMarProd.Text = productoOg.marcaProducto;
+            txtCant.Text = productoOg.cantidad.ToString();
+            txtPrecio.Text = productoOg.precio;
+            txtId.Text = productoOg.id;
+        }
+
         private void limpiarTextBoxes() {
             foreach (Control control in grpEditMaestro.Controls) {
-                if(control is TextBox text) {
-                    text.Clear();
+                if(control is GroupBox groupBox) {
+                    foreach (Control control2 in groupBox.Controls) {
+                        if (control2 is TextBox text) {
+                            text.Clear();
+                        }
+                    }
                 }
             }
         }
@@ -296,6 +312,58 @@ namespace ProyectoTC2023 {
             clienteOgg = null;
             productoOgg = null;
             usuarioOgg = null;
+        }
+
+        private void btnSerialize_Click(object sender, EventArgs e) {
+            // Create an object based on the "tipo" value
+            if (dgvMaestro.SelectedRows.Count == 1) {
+                DataRow dataRow = ((DataRowView)dgvMaestro.SelectedRows[0].DataBoundItem).Row;
+                switch (tipo) {
+                    case "Producto":
+                        Producto producto = crearProducto(dataRow);
+                        serializadorXML.serializarObjetoConXML(producto);
+                        break;
+                    case "Usuarios":
+                        Usuario usuario = crearUsuario(dataRow);
+                        serializadorXML.serializarObjetoConXML(usuario);
+                        break;
+                    case "Cliente":
+                        Cliente cliente = crearCliente(dataRow);
+                        serializadorXML.serializarObjetoConXML(cliente);
+                        break;
+                    case "Proveedor":
+                        // Create a Proveedor object
+                        break;
+                }
+            } else {
+                mensajeria.mostrarMensaje("Debe seleccionar una fila para serializar.");
+            }
+        }
+
+        private void btnDeserialize_Click(object sender, EventArgs e) {
+            switch (tipo) {
+                case "Producto":
+                    Producto producto = serializadorXML.deserializarObjetoDesdeXML<Producto>();
+                    cargarProducto(producto);
+                    break;
+                case "Usuarios":
+                    Usuario usuario = serializadorXML.deserializarObjetoDesdeXML<Usuario>();
+                    cargarUsuario(usuario);
+                    break;
+                case "Cliente":
+                    Cliente cliente = serializadorXML.deserializarObjetoDesdeXML<Cliente>();
+                    cargarCliente(cliente);
+                    break;
+                case "Proveedor":
+                    // Create a Proveedor object
+                    break;
+            }
+            btnLimpiar.Visible = true;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e) {
+            limpiarTextBoxes();
+            btnLimpiar.Visible = false;
         }
     }
 }

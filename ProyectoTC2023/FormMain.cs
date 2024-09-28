@@ -88,7 +88,11 @@ namespace ProyectoTC2023 {
         }
 
         private void FormMain_Load(object sender, EventArgs e) {
-
+            foreach (Control control in this.Controls) {
+                if (control is MdiClient mdiClient) {
+                    mdiClient.BackColor = Color.LightBlue; // Set your desired color here
+                }
+            }
         }
 
         private void perfilesToolStripMenuItem_Click(object sender, EventArgs e) {

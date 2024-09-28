@@ -89,14 +89,15 @@ namespace BLL.Metodos {
             dataTable.Columns.Add("Domicilio", typeof(string));
             dataTable.Columns.Add("Teléfono", typeof(string));
             dataTable.Columns.Add("Id", typeof(string));
+            Encriptador encriptador = new Encriptador();
 
             foreach (var cliente in list) {
                 DataRow row = dataTable.NewRow();
                 row["Nombre"] = cliente.nombre;
                 row["Apellido"] = cliente.apellido;
-                row["Domicilio"] = cliente.domicilio;
-                row["Teléfono"] = cliente.telefono;
-                row["Id"] = cliente.id;
+                row["Domicilio"] = encriptador.desencriptarReversible(cliente.domicilio);
+                row["Teléfono"] = encriptador.desencriptarReversible(cliente.telefono);
+                row["Id"] = encriptador.desencriptarReversible(cliente.id);
                 dataTable.Rows.Add(row);
             }
             return dataTable;
