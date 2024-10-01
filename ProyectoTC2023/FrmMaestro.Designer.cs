@@ -31,41 +31,6 @@
             this.btnModMaestro = new System.Windows.Forms.Button();
             this.btnSalirMaestro = new System.Windows.Forms.Button();
             this.grpEditMaestro = new System.Windows.Forms.GroupBox();
-            this.lblNomProd = new System.Windows.Forms.Label();
-            this.lblMarProd = new System.Windows.Forms.Label();
-            this.lblCant = new System.Windows.Forms.Label();
-            this.lblPrecio = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtNomProd = new System.Windows.Forms.TextBox();
-            this.txtMarProd = new System.Windows.Forms.TextBox();
-            this.txtCant = new System.Windows.Forms.TextBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.txtNomProdN = new System.Windows.Forms.TextBox();
-            this.txtMarProdN = new System.Windows.Forms.TextBox();
-            this.txtCantN = new System.Windows.Forms.TextBox();
-            this.txtIdN = new System.Windows.Forms.TextBox();
-            this.txtPrecioN = new System.Windows.Forms.TextBox();
-            this.txtDniN = new System.Windows.Forms.TextBox();
-            this.txtEmailN = new System.Windows.Forms.TextBox();
-            this.txtApeUsuN = new System.Windows.Forms.TextBox();
-            this.txtNombUsuN = new System.Windows.Forms.TextBox();
-            this.txtNomUsuN = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.txtApeUsu = new System.Windows.Forms.TextBox();
-            this.txtNombUsu = new System.Windows.Forms.TextBox();
-            this.txtNomUsu = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblDni = new System.Windows.Forms.Label();
-            this.lblApeUsu = new System.Windows.Forms.Label();
-            this.lblNombUsu = new System.Windows.Forms.Label();
-            this.lblNomUsu = new System.Windows.Forms.Label();
-            this.txtTelefonoN = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.grpProducto = new System.Windows.Forms.GroupBox();
-            this.grpUsuario = new System.Windows.Forms.GroupBox();
             this.grpCliente = new System.Windows.Forms.GroupBox();
             this.lblNomC = new System.Windows.Forms.Label();
             this.lblApeC = new System.Windows.Forms.Label();
@@ -82,12 +47,50 @@
             this.txtDomCN = new System.Windows.Forms.TextBox();
             this.txtIdCN = new System.Windows.Forms.TextBox();
             this.txtTelCN = new System.Windows.Forms.TextBox();
+            this.grpUsuario = new System.Windows.Forms.GroupBox();
+            this.lblNomUsu = new System.Windows.Forms.Label();
+            this.lblNombUsu = new System.Windows.Forms.Label();
+            this.txtTelefonoN = new System.Windows.Forms.TextBox();
+            this.lblApeUsu = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtDniN = new System.Windows.Forms.TextBox();
+            this.txtNomUsu = new System.Windows.Forms.TextBox();
+            this.txtEmailN = new System.Windows.Forms.TextBox();
+            this.txtNombUsu = new System.Windows.Forms.TextBox();
+            this.txtApeUsuN = new System.Windows.Forms.TextBox();
+            this.txtApeUsu = new System.Windows.Forms.TextBox();
+            this.txtNombUsuN = new System.Windows.Forms.TextBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.txtNomUsuN = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.grpProducto = new System.Windows.Forms.GroupBox();
+            this.lblNomProd = new System.Windows.Forms.Label();
+            this.lblMarProd = new System.Windows.Forms.Label();
+            this.lblCant = new System.Windows.Forms.Label();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.txtNomProd = new System.Windows.Forms.TextBox();
+            this.txtMarProd = new System.Windows.Forms.TextBox();
+            this.txtCant = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtNomProdN = new System.Windows.Forms.TextBox();
+            this.txtMarProdN = new System.Windows.Forms.TextBox();
+            this.txtCantN = new System.Windows.Forms.TextBox();
+            this.txtIdN = new System.Windows.Forms.TextBox();
+            this.txtPrecioN = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnSerialize = new System.Windows.Forms.Button();
+            this.btnDeserialize = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestro)).BeginInit();
             this.grpEditMaestro.SuspendLayout();
-            this.grpProducto.SuspendLayout();
-            this.grpUsuario.SuspendLayout();
             this.grpCliente.SuspendLayout();
+            this.grpUsuario.SuspendLayout();
+            this.grpProducto.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMaestro
@@ -132,7 +135,7 @@
             // 
             // btnElimMaestro
             // 
-            this.btnElimMaestro.Location = new System.Drawing.Point(1074, 310);
+            this.btnElimMaestro.Location = new System.Drawing.Point(1074, 99);
             this.btnElimMaestro.Name = "btnElimMaestro";
             this.btnElimMaestro.Size = new System.Drawing.Size(75, 23);
             this.btnElimMaestro.TabIndex = 18;
@@ -142,7 +145,7 @@
             // 
             // btnModMaestro
             // 
-            this.btnModMaestro.Location = new System.Drawing.Point(1074, 161);
+            this.btnModMaestro.Location = new System.Drawing.Point(1074, 70);
             this.btnModMaestro.Name = "btnModMaestro";
             this.btnModMaestro.Size = new System.Drawing.Size(75, 23);
             this.btnModMaestro.TabIndex = 19;
@@ -171,323 +174,6 @@
             this.grpEditMaestro.TabIndex = 21;
             this.grpEditMaestro.TabStop = false;
             this.grpEditMaestro.Text = "Editar";
-            // 
-            // lblNomProd
-            // 
-            this.lblNomProd.AutoSize = true;
-            this.lblNomProd.Location = new System.Drawing.Point(6, 18);
-            this.lblNomProd.Name = "lblNomProd";
-            this.lblNomProd.Size = new System.Drawing.Size(96, 13);
-            this.lblNomProd.TabIndex = 0;
-            this.lblNomProd.Text = "Nombre Producto: ";
-            // 
-            // lblMarProd
-            // 
-            this.lblMarProd.AutoSize = true;
-            this.lblMarProd.Location = new System.Drawing.Point(6, 76);
-            this.lblMarProd.Name = "lblMarProd";
-            this.lblMarProd.Size = new System.Drawing.Size(89, 13);
-            this.lblMarProd.TabIndex = 1;
-            this.lblMarProd.Text = "Marca Producto: ";
-            // 
-            // lblCant
-            // 
-            this.lblCant.AutoSize = true;
-            this.lblCant.Location = new System.Drawing.Point(6, 130);
-            this.lblCant.Name = "lblCant";
-            this.lblCant.Size = new System.Drawing.Size(55, 13);
-            this.lblCant.TabIndex = 2;
-            this.lblCant.Text = "Cantidad: ";
-            // 
-            // lblPrecio
-            // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(6, 177);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(43, 13);
-            this.lblPrecio.TabIndex = 3;
-            this.lblPrecio.Text = "Precio: ";
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(6, 230);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(19, 13);
-            this.lblId.TabIndex = 4;
-            this.lblId.Text = "Id:";
-            // 
-            // txtNomProd
-            // 
-            this.txtNomProd.Location = new System.Drawing.Point(9, 34);
-            this.txtNomProd.Name = "txtNomProd";
-            this.txtNomProd.ReadOnly = true;
-            this.txtNomProd.Size = new System.Drawing.Size(100, 20);
-            this.txtNomProd.TabIndex = 5;
-            // 
-            // txtMarProd
-            // 
-            this.txtMarProd.Location = new System.Drawing.Point(9, 92);
-            this.txtMarProd.Name = "txtMarProd";
-            this.txtMarProd.ReadOnly = true;
-            this.txtMarProd.Size = new System.Drawing.Size(100, 20);
-            this.txtMarProd.TabIndex = 6;
-            // 
-            // txtCant
-            // 
-            this.txtCant.Location = new System.Drawing.Point(9, 146);
-            this.txtCant.Name = "txtCant";
-            this.txtCant.ReadOnly = true;
-            this.txtCant.Size = new System.Drawing.Size(100, 20);
-            this.txtCant.TabIndex = 7;
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(9, 193);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.ReadOnly = true;
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecio.TabIndex = 8;
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(9, 246);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 9;
-            // 
-            // txtNomProdN
-            // 
-            this.txtNomProdN.Location = new System.Drawing.Point(115, 34);
-            this.txtNomProdN.Name = "txtNomProdN";
-            this.txtNomProdN.Size = new System.Drawing.Size(100, 20);
-            this.txtNomProdN.TabIndex = 10;
-            // 
-            // txtMarProdN
-            // 
-            this.txtMarProdN.Location = new System.Drawing.Point(115, 92);
-            this.txtMarProdN.Name = "txtMarProdN";
-            this.txtMarProdN.Size = new System.Drawing.Size(100, 20);
-            this.txtMarProdN.TabIndex = 11;
-            // 
-            // txtCantN
-            // 
-            this.txtCantN.Location = new System.Drawing.Point(115, 146);
-            this.txtCantN.Name = "txtCantN";
-            this.txtCantN.Size = new System.Drawing.Size(100, 20);
-            this.txtCantN.TabIndex = 12;
-            // 
-            // txtIdN
-            // 
-            this.txtIdN.Location = new System.Drawing.Point(115, 246);
-            this.txtIdN.Name = "txtIdN";
-            this.txtIdN.Size = new System.Drawing.Size(100, 20);
-            this.txtIdN.TabIndex = 13;
-            // 
-            // txtPrecioN
-            // 
-            this.txtPrecioN.Location = new System.Drawing.Point(115, 193);
-            this.txtPrecioN.Name = "txtPrecioN";
-            this.txtPrecioN.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecioN.TabIndex = 14;
-            // 
-            // txtDniN
-            // 
-            this.txtDniN.Location = new System.Drawing.Point(115, 160);
-            this.txtDniN.Name = "txtDniN";
-            this.txtDniN.Size = new System.Drawing.Size(100, 20);
-            this.txtDniN.TabIndex = 30;
-            // 
-            // txtEmailN
-            // 
-            this.txtEmailN.Location = new System.Drawing.Point(117, 207);
-            this.txtEmailN.Name = "txtEmailN";
-            this.txtEmailN.Size = new System.Drawing.Size(100, 20);
-            this.txtEmailN.TabIndex = 29;
-            // 
-            // txtApeUsuN
-            // 
-            this.txtApeUsuN.Location = new System.Drawing.Point(116, 120);
-            this.txtApeUsuN.Name = "txtApeUsuN";
-            this.txtApeUsuN.Size = new System.Drawing.Size(100, 20);
-            this.txtApeUsuN.TabIndex = 28;
-            // 
-            // txtNombUsuN
-            // 
-            this.txtNombUsuN.Location = new System.Drawing.Point(115, 74);
-            this.txtNombUsuN.Name = "txtNombUsuN";
-            this.txtNombUsuN.Size = new System.Drawing.Size(100, 20);
-            this.txtNombUsuN.TabIndex = 27;
-            // 
-            // txtNomUsuN
-            // 
-            this.txtNomUsuN.Location = new System.Drawing.Point(115, 32);
-            this.txtNomUsuN.Name = "txtNomUsuN";
-            this.txtNomUsuN.Size = new System.Drawing.Size(100, 20);
-            this.txtNomUsuN.TabIndex = 26;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(10, 207);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 25;
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(9, 160);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.ReadOnly = true;
-            this.txtDni.Size = new System.Drawing.Size(100, 20);
-            this.txtDni.TabIndex = 24;
-            // 
-            // txtApeUsu
-            // 
-            this.txtApeUsu.Location = new System.Drawing.Point(10, 120);
-            this.txtApeUsu.Name = "txtApeUsu";
-            this.txtApeUsu.ReadOnly = true;
-            this.txtApeUsu.Size = new System.Drawing.Size(100, 20);
-            this.txtApeUsu.TabIndex = 23;
-            // 
-            // txtNombUsu
-            // 
-            this.txtNombUsu.Location = new System.Drawing.Point(9, 74);
-            this.txtNombUsu.Name = "txtNombUsu";
-            this.txtNombUsu.ReadOnly = true;
-            this.txtNombUsu.Size = new System.Drawing.Size(100, 20);
-            this.txtNombUsu.TabIndex = 22;
-            // 
-            // txtNomUsu
-            // 
-            this.txtNomUsu.Location = new System.Drawing.Point(9, 32);
-            this.txtNomUsu.Name = "txtNomUsu";
-            this.txtNomUsu.ReadOnly = true;
-            this.txtNomUsu.Size = new System.Drawing.Size(100, 20);
-            this.txtNomUsu.TabIndex = 21;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(7, 191);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
-            this.lblEmail.TabIndex = 20;
-            this.lblEmail.Text = "Email:";
-            // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(6, 144);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(29, 13);
-            this.lblDni.TabIndex = 19;
-            this.lblDni.Text = "DNI:";
-            // 
-            // lblApeUsu
-            // 
-            this.lblApeUsu.AutoSize = true;
-            this.lblApeUsu.Location = new System.Drawing.Point(7, 104);
-            this.lblApeUsu.Name = "lblApeUsu";
-            this.lblApeUsu.Size = new System.Drawing.Size(47, 13);
-            this.lblApeUsu.TabIndex = 18;
-            this.lblApeUsu.Text = "Apellido:";
-            // 
-            // lblNombUsu
-            // 
-            this.lblNombUsu.AutoSize = true;
-            this.lblNombUsu.Location = new System.Drawing.Point(6, 58);
-            this.lblNombUsu.Name = "lblNombUsu";
-            this.lblNombUsu.Size = new System.Drawing.Size(47, 13);
-            this.lblNombUsu.TabIndex = 17;
-            this.lblNombUsu.Text = "Nombre:";
-            // 
-            // lblNomUsu
-            // 
-            this.lblNomUsu.AutoSize = true;
-            this.lblNomUsu.Location = new System.Drawing.Point(6, 16);
-            this.lblNomUsu.Name = "lblNomUsu";
-            this.lblNomUsu.Size = new System.Drawing.Size(89, 13);
-            this.lblNomUsu.TabIndex = 16;
-            this.lblNomUsu.Text = "Nombre Usuario: ";
-            // 
-            // txtTelefonoN
-            // 
-            this.txtTelefonoN.Location = new System.Drawing.Point(117, 260);
-            this.txtTelefonoN.Name = "txtTelefonoN";
-            this.txtTelefonoN.Size = new System.Drawing.Size(100, 20);
-            this.txtTelefonoN.TabIndex = 66;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(10, 260);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.ReadOnly = true;
-            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
-            this.txtTelefono.TabIndex = 65;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(7, 244);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
-            this.lblTelefono.TabIndex = 64;
-            this.lblTelefono.Text = "Telefono:";
-            // 
-            // grpProducto
-            // 
-            this.grpProducto.Controls.Add(this.lblNomProd);
-            this.grpProducto.Controls.Add(this.lblMarProd);
-            this.grpProducto.Controls.Add(this.lblCant);
-            this.grpProducto.Controls.Add(this.lblPrecio);
-            this.grpProducto.Controls.Add(this.lblId);
-            this.grpProducto.Controls.Add(this.txtNomProd);
-            this.grpProducto.Controls.Add(this.txtMarProd);
-            this.grpProducto.Controls.Add(this.txtCant);
-            this.grpProducto.Controls.Add(this.txtPrecio);
-            this.grpProducto.Controls.Add(this.txtId);
-            this.grpProducto.Controls.Add(this.txtNomProdN);
-            this.grpProducto.Controls.Add(this.txtMarProdN);
-            this.grpProducto.Controls.Add(this.txtCantN);
-            this.grpProducto.Controls.Add(this.txtIdN);
-            this.grpProducto.Controls.Add(this.txtPrecioN);
-            this.grpProducto.Location = new System.Drawing.Point(6, 16);
-            this.grpProducto.Name = "grpProducto";
-            this.grpProducto.Size = new System.Drawing.Size(222, 281);
-            this.grpProducto.TabIndex = 67;
-            this.grpProducto.TabStop = false;
-            this.grpProducto.Text = "Producto";
-            this.grpProducto.Visible = false;
-            // 
-            // grpUsuario
-            // 
-            this.grpUsuario.Controls.Add(this.lblNomUsu);
-            this.grpUsuario.Controls.Add(this.lblNombUsu);
-            this.grpUsuario.Controls.Add(this.txtTelefonoN);
-            this.grpUsuario.Controls.Add(this.lblApeUsu);
-            this.grpUsuario.Controls.Add(this.txtTelefono);
-            this.grpUsuario.Controls.Add(this.lblDni);
-            this.grpUsuario.Controls.Add(this.lblTelefono);
-            this.grpUsuario.Controls.Add(this.lblEmail);
-            this.grpUsuario.Controls.Add(this.txtDniN);
-            this.grpUsuario.Controls.Add(this.txtNomUsu);
-            this.grpUsuario.Controls.Add(this.txtEmailN);
-            this.grpUsuario.Controls.Add(this.txtNombUsu);
-            this.grpUsuario.Controls.Add(this.txtApeUsuN);
-            this.grpUsuario.Controls.Add(this.txtApeUsu);
-            this.grpUsuario.Controls.Add(this.txtNombUsuN);
-            this.grpUsuario.Controls.Add(this.txtDni);
-            this.grpUsuario.Controls.Add(this.txtNomUsuN);
-            this.grpUsuario.Controls.Add(this.txtEmail);
-            this.grpUsuario.Location = new System.Drawing.Point(234, 19);
-            this.grpUsuario.Name = "grpUsuario";
-            this.grpUsuario.Size = new System.Drawing.Size(223, 292);
-            this.grpUsuario.TabIndex = 68;
-            this.grpUsuario.TabStop = false;
-            this.grpUsuario.Text = "Usuario";
-            this.grpUsuario.Visible = false;
             // 
             // grpCliente
             // 
@@ -635,6 +321,323 @@
             this.txtTelCN.Size = new System.Drawing.Size(100, 20);
             this.txtTelCN.TabIndex = 14;
             // 
+            // grpUsuario
+            // 
+            this.grpUsuario.Controls.Add(this.lblNomUsu);
+            this.grpUsuario.Controls.Add(this.lblNombUsu);
+            this.grpUsuario.Controls.Add(this.txtTelefonoN);
+            this.grpUsuario.Controls.Add(this.lblApeUsu);
+            this.grpUsuario.Controls.Add(this.txtTelefono);
+            this.grpUsuario.Controls.Add(this.lblDni);
+            this.grpUsuario.Controls.Add(this.lblTelefono);
+            this.grpUsuario.Controls.Add(this.lblEmail);
+            this.grpUsuario.Controls.Add(this.txtDniN);
+            this.grpUsuario.Controls.Add(this.txtNomUsu);
+            this.grpUsuario.Controls.Add(this.txtEmailN);
+            this.grpUsuario.Controls.Add(this.txtNombUsu);
+            this.grpUsuario.Controls.Add(this.txtApeUsuN);
+            this.grpUsuario.Controls.Add(this.txtApeUsu);
+            this.grpUsuario.Controls.Add(this.txtNombUsuN);
+            this.grpUsuario.Controls.Add(this.txtDni);
+            this.grpUsuario.Controls.Add(this.txtNomUsuN);
+            this.grpUsuario.Controls.Add(this.txtEmail);
+            this.grpUsuario.Location = new System.Drawing.Point(234, 19);
+            this.grpUsuario.Name = "grpUsuario";
+            this.grpUsuario.Size = new System.Drawing.Size(223, 292);
+            this.grpUsuario.TabIndex = 68;
+            this.grpUsuario.TabStop = false;
+            this.grpUsuario.Text = "Usuario";
+            this.grpUsuario.Visible = false;
+            // 
+            // lblNomUsu
+            // 
+            this.lblNomUsu.AutoSize = true;
+            this.lblNomUsu.Location = new System.Drawing.Point(6, 16);
+            this.lblNomUsu.Name = "lblNomUsu";
+            this.lblNomUsu.Size = new System.Drawing.Size(89, 13);
+            this.lblNomUsu.TabIndex = 16;
+            this.lblNomUsu.Text = "Nombre Usuario: ";
+            // 
+            // lblNombUsu
+            // 
+            this.lblNombUsu.AutoSize = true;
+            this.lblNombUsu.Location = new System.Drawing.Point(6, 58);
+            this.lblNombUsu.Name = "lblNombUsu";
+            this.lblNombUsu.Size = new System.Drawing.Size(47, 13);
+            this.lblNombUsu.TabIndex = 17;
+            this.lblNombUsu.Text = "Nombre:";
+            // 
+            // txtTelefonoN
+            // 
+            this.txtTelefonoN.Location = new System.Drawing.Point(117, 260);
+            this.txtTelefonoN.Name = "txtTelefonoN";
+            this.txtTelefonoN.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefonoN.TabIndex = 66;
+            // 
+            // lblApeUsu
+            // 
+            this.lblApeUsu.AutoSize = true;
+            this.lblApeUsu.Location = new System.Drawing.Point(7, 104);
+            this.lblApeUsu.Name = "lblApeUsu";
+            this.lblApeUsu.Size = new System.Drawing.Size(47, 13);
+            this.lblApeUsu.TabIndex = 18;
+            this.lblApeUsu.Text = "Apellido:";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(10, 260);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
+            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.TabIndex = 65;
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Location = new System.Drawing.Point(6, 144);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(29, 13);
+            this.lblDni.TabIndex = 19;
+            this.lblDni.Text = "DNI:";
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Location = new System.Drawing.Point(7, 244);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefono.TabIndex = 64;
+            this.lblTelefono.Text = "Telefono:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(7, 191);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.TabIndex = 20;
+            this.lblEmail.Text = "Email:";
+            // 
+            // txtDniN
+            // 
+            this.txtDniN.Location = new System.Drawing.Point(115, 160);
+            this.txtDniN.Name = "txtDniN";
+            this.txtDniN.Size = new System.Drawing.Size(100, 20);
+            this.txtDniN.TabIndex = 30;
+            // 
+            // txtNomUsu
+            // 
+            this.txtNomUsu.Location = new System.Drawing.Point(9, 32);
+            this.txtNomUsu.Name = "txtNomUsu";
+            this.txtNomUsu.ReadOnly = true;
+            this.txtNomUsu.Size = new System.Drawing.Size(100, 20);
+            this.txtNomUsu.TabIndex = 21;
+            // 
+            // txtEmailN
+            // 
+            this.txtEmailN.Location = new System.Drawing.Point(117, 207);
+            this.txtEmailN.Name = "txtEmailN";
+            this.txtEmailN.Size = new System.Drawing.Size(100, 20);
+            this.txtEmailN.TabIndex = 29;
+            // 
+            // txtNombUsu
+            // 
+            this.txtNombUsu.Location = new System.Drawing.Point(9, 74);
+            this.txtNombUsu.Name = "txtNombUsu";
+            this.txtNombUsu.ReadOnly = true;
+            this.txtNombUsu.Size = new System.Drawing.Size(100, 20);
+            this.txtNombUsu.TabIndex = 22;
+            // 
+            // txtApeUsuN
+            // 
+            this.txtApeUsuN.Location = new System.Drawing.Point(116, 120);
+            this.txtApeUsuN.Name = "txtApeUsuN";
+            this.txtApeUsuN.Size = new System.Drawing.Size(100, 20);
+            this.txtApeUsuN.TabIndex = 28;
+            // 
+            // txtApeUsu
+            // 
+            this.txtApeUsu.Location = new System.Drawing.Point(10, 120);
+            this.txtApeUsu.Name = "txtApeUsu";
+            this.txtApeUsu.ReadOnly = true;
+            this.txtApeUsu.Size = new System.Drawing.Size(100, 20);
+            this.txtApeUsu.TabIndex = 23;
+            // 
+            // txtNombUsuN
+            // 
+            this.txtNombUsuN.Location = new System.Drawing.Point(115, 74);
+            this.txtNombUsuN.Name = "txtNombUsuN";
+            this.txtNombUsuN.Size = new System.Drawing.Size(100, 20);
+            this.txtNombUsuN.TabIndex = 27;
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(9, 160);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.ReadOnly = true;
+            this.txtDni.Size = new System.Drawing.Size(100, 20);
+            this.txtDni.TabIndex = 24;
+            // 
+            // txtNomUsuN
+            // 
+            this.txtNomUsuN.Location = new System.Drawing.Point(115, 32);
+            this.txtNomUsuN.Name = "txtNomUsuN";
+            this.txtNomUsuN.Size = new System.Drawing.Size(100, 20);
+            this.txtNomUsuN.TabIndex = 26;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(10, 207);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 25;
+            // 
+            // grpProducto
+            // 
+            this.grpProducto.Controls.Add(this.lblNomProd);
+            this.grpProducto.Controls.Add(this.lblMarProd);
+            this.grpProducto.Controls.Add(this.lblCant);
+            this.grpProducto.Controls.Add(this.lblPrecio);
+            this.grpProducto.Controls.Add(this.lblId);
+            this.grpProducto.Controls.Add(this.txtNomProd);
+            this.grpProducto.Controls.Add(this.txtMarProd);
+            this.grpProducto.Controls.Add(this.txtCant);
+            this.grpProducto.Controls.Add(this.txtPrecio);
+            this.grpProducto.Controls.Add(this.txtId);
+            this.grpProducto.Controls.Add(this.txtNomProdN);
+            this.grpProducto.Controls.Add(this.txtMarProdN);
+            this.grpProducto.Controls.Add(this.txtCantN);
+            this.grpProducto.Controls.Add(this.txtIdN);
+            this.grpProducto.Controls.Add(this.txtPrecioN);
+            this.grpProducto.Location = new System.Drawing.Point(6, 16);
+            this.grpProducto.Name = "grpProducto";
+            this.grpProducto.Size = new System.Drawing.Size(222, 281);
+            this.grpProducto.TabIndex = 67;
+            this.grpProducto.TabStop = false;
+            this.grpProducto.Text = "Producto";
+            this.grpProducto.Visible = false;
+            // 
+            // lblNomProd
+            // 
+            this.lblNomProd.AutoSize = true;
+            this.lblNomProd.Location = new System.Drawing.Point(6, 18);
+            this.lblNomProd.Name = "lblNomProd";
+            this.lblNomProd.Size = new System.Drawing.Size(96, 13);
+            this.lblNomProd.TabIndex = 0;
+            this.lblNomProd.Text = "Nombre Producto: ";
+            // 
+            // lblMarProd
+            // 
+            this.lblMarProd.AutoSize = true;
+            this.lblMarProd.Location = new System.Drawing.Point(6, 76);
+            this.lblMarProd.Name = "lblMarProd";
+            this.lblMarProd.Size = new System.Drawing.Size(89, 13);
+            this.lblMarProd.TabIndex = 1;
+            this.lblMarProd.Text = "Marca Producto: ";
+            // 
+            // lblCant
+            // 
+            this.lblCant.AutoSize = true;
+            this.lblCant.Location = new System.Drawing.Point(6, 130);
+            this.lblCant.Name = "lblCant";
+            this.lblCant.Size = new System.Drawing.Size(55, 13);
+            this.lblCant.TabIndex = 2;
+            this.lblCant.Text = "Cantidad: ";
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(6, 177);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(43, 13);
+            this.lblPrecio.TabIndex = 3;
+            this.lblPrecio.Text = "Precio: ";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(6, 230);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(19, 13);
+            this.lblId.TabIndex = 4;
+            this.lblId.Text = "Id:";
+            // 
+            // txtNomProd
+            // 
+            this.txtNomProd.Location = new System.Drawing.Point(9, 34);
+            this.txtNomProd.Name = "txtNomProd";
+            this.txtNomProd.ReadOnly = true;
+            this.txtNomProd.Size = new System.Drawing.Size(100, 20);
+            this.txtNomProd.TabIndex = 5;
+            // 
+            // txtMarProd
+            // 
+            this.txtMarProd.Location = new System.Drawing.Point(9, 92);
+            this.txtMarProd.Name = "txtMarProd";
+            this.txtMarProd.ReadOnly = true;
+            this.txtMarProd.Size = new System.Drawing.Size(100, 20);
+            this.txtMarProd.TabIndex = 6;
+            // 
+            // txtCant
+            // 
+            this.txtCant.Location = new System.Drawing.Point(9, 146);
+            this.txtCant.Name = "txtCant";
+            this.txtCant.ReadOnly = true;
+            this.txtCant.Size = new System.Drawing.Size(100, 20);
+            this.txtCant.TabIndex = 7;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(9, 193);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.ReadOnly = true;
+            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.TabIndex = 8;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(9, 246);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 9;
+            // 
+            // txtNomProdN
+            // 
+            this.txtNomProdN.Location = new System.Drawing.Point(115, 34);
+            this.txtNomProdN.Name = "txtNomProdN";
+            this.txtNomProdN.Size = new System.Drawing.Size(100, 20);
+            this.txtNomProdN.TabIndex = 10;
+            // 
+            // txtMarProdN
+            // 
+            this.txtMarProdN.Location = new System.Drawing.Point(115, 92);
+            this.txtMarProdN.Name = "txtMarProdN";
+            this.txtMarProdN.Size = new System.Drawing.Size(100, 20);
+            this.txtMarProdN.TabIndex = 11;
+            // 
+            // txtCantN
+            // 
+            this.txtCantN.Location = new System.Drawing.Point(115, 146);
+            this.txtCantN.Name = "txtCantN";
+            this.txtCantN.Size = new System.Drawing.Size(100, 20);
+            this.txtCantN.TabIndex = 12;
+            // 
+            // txtIdN
+            // 
+            this.txtIdN.Location = new System.Drawing.Point(115, 246);
+            this.txtIdN.Name = "txtIdN";
+            this.txtIdN.Size = new System.Drawing.Size(100, 20);
+            this.txtIdN.TabIndex = 13;
+            // 
+            // txtPrecioN
+            // 
+            this.txtPrecioN.Location = new System.Drawing.Point(115, 193);
+            this.txtPrecioN.Name = "txtPrecioN";
+            this.txtPrecioN.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioN.TabIndex = 14;
+            // 
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(1074, 41);
@@ -646,11 +649,47 @@
             this.btnConfirm.Visible = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // btnSerialize
+            // 
+            this.btnSerialize.Location = new System.Drawing.Point(1074, 250);
+            this.btnSerialize.Name = "btnSerialize";
+            this.btnSerialize.Size = new System.Drawing.Size(75, 23);
+            this.btnSerialize.TabIndex = 23;
+            this.btnSerialize.Text = "Serializar";
+            this.btnSerialize.UseVisualStyleBackColor = true;
+            this.btnSerialize.Visible = false;
+            this.btnSerialize.Click += new System.EventHandler(this.btnSerialize_Click);
+            // 
+            // btnDeserialize
+            // 
+            this.btnDeserialize.Location = new System.Drawing.Point(1074, 280);
+            this.btnDeserialize.Name = "btnDeserialize";
+            this.btnDeserialize.Size = new System.Drawing.Size(75, 23);
+            this.btnDeserialize.TabIndex = 24;
+            this.btnDeserialize.Text = "Desserializar";
+            this.btnDeserialize.UseVisualStyleBackColor = true;
+            this.btnDeserialize.Visible = false;
+            this.btnDeserialize.Click += new System.EventHandler(this.btnDeserialize_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(1074, 310);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 25;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Visible = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // FrmMaestro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 665);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnDeserialize);
+            this.Controls.Add(this.btnSerialize);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.grpEditMaestro);
             this.Controls.Add(this.btnSalirMaestro);
@@ -665,12 +704,12 @@
             this.Load += new System.EventHandler(this.FrmMaestro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestro)).EndInit();
             this.grpEditMaestro.ResumeLayout(false);
-            this.grpProducto.ResumeLayout(false);
-            this.grpProducto.PerformLayout();
-            this.grpUsuario.ResumeLayout(false);
-            this.grpUsuario.PerformLayout();
             this.grpCliente.ResumeLayout(false);
             this.grpCliente.PerformLayout();
+            this.grpUsuario.ResumeLayout(false);
+            this.grpUsuario.PerformLayout();
+            this.grpProducto.ResumeLayout(false);
+            this.grpProducto.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -737,5 +776,8 @@
         private System.Windows.Forms.GroupBox grpUsuario;
         private System.Windows.Forms.GroupBox grpProducto;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnSerialize;
+        private System.Windows.Forms.Button btnDeserialize;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

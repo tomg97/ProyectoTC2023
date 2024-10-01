@@ -44,6 +44,12 @@ namespace BLL.Metodos {
         }
         public List<Cliente> lookupTodosClientes() {
             List<Cliente> clientes = manejaDbClientes.traerTodosClientes();
+            Encriptador encriptador = new Encriptador();
+            foreach (Cliente cliente in clientes) {
+                cliente.id = encriptador.desencriptarReversible(cliente.id);
+                cliente.domicilio = encriptador.desencriptarReversible(cliente.domicilio);
+                cliente.telefono = encriptador.desencriptarReversible(cliente.telefono);
+            }
             return clientes;
         }
     }
