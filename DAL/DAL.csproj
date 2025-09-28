@@ -61,6 +61,7 @@
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />
     <Compile Include="Metodos\ManejaDbVenta.cs" />
+    <Compile Include="Metodos\ManejaDVDb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

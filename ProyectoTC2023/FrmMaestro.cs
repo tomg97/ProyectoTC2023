@@ -162,7 +162,7 @@ namespace ProyectoTC2023 {
                     case "Proveedor":
                         break;
                 }
-                limpiarTextBoxes();
+                //limpiarTextBoxes();
             }            
         }
 
@@ -302,6 +302,7 @@ namespace ProyectoTC2023 {
             limpiarTextBoxes();
             limpiarOggs();
             resettearBotones();
+            settearSegunTipo();
         }
 
         private string devolverStringOriginalIfNullOrEmpty(string original, string nuevo) {

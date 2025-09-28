@@ -117,4 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblNomUsuBit" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="lblMBit" xml:space="preserve">
+    <value>Módulo</value>
+  </data>
+  <data name="lblCABit" xml:space="preserve">
+    <value>Criticidad</value>
+  </data>
+  <data name="lblFechaDesdeBit" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="lblFechaHastaBit" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="btnRollback" xml:space="preserve">
+    <value>Rollback</value>
+  </data>
+  <data name="btnImprimir" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="btnLimpiar" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="btnLookBit" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="lblNombreBit" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblApellidoBit" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
 </root>

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUL", "CUL\CUL.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{B1170576-0E05-4B50-8F8B-ACC05FE02F56}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ComercializAR Installer", "ComercializAR Installer\ComercializAR Installer.vdproj", "{BFB50092-D40E-442A-93AD-3FB78B4BDBCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInstaller", "DBInstaller\DBInstaller.csproj", "{682A9DE4-449E-47A1-BF63-E4F48F27046F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,12 @@ Global
 		{B1170576-0E05-4B50-8F8B-ACC05FE02F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1170576-0E05-4B50-8F8B-ACC05FE02F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1170576-0E05-4B50-8F8B-ACC05FE02F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB50092-D40E-442A-93AD-3FB78B4BDBCF}.Debug|Any CPU.ActiveCfg = Debug
+		{BFB50092-D40E-442A-93AD-3FB78B4BDBCF}.Release|Any CPU.ActiveCfg = Release
+		{682A9DE4-449E-47A1-BF63-E4F48F27046F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682A9DE4-449E-47A1-BF63-E4F48F27046F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682A9DE4-449E-47A1-BF63-E4F48F27046F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682A9DE4-449E-47A1-BF63-E4F48F27046F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

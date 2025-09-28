@@ -20,7 +20,7 @@ namespace BLL.Metodos {
             // sobrecargar para poder usar el mismo nombre de método, pero que uno reciba el cambio de y a 
             // criticidad puede depender de la bll que lo mande, fijo
             if (SingletonSesion.getInstance.getUsuarioActual() != null) {
-                Mensaje mensaje = new Mensaje(contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, criticidad);
+                MensajeEvento mensaje = new MensajeEvento(contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, criticidad);
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
@@ -32,7 +32,7 @@ namespace BLL.Metodos {
             // sobrecargar para poder usar el mismo nombre de método, pero que uno reciba el cambio de y a 
             // criticidad puede depender de la bll que lo mande, fijo
             if (SingletonSesion.getInstance.getUsuarioActual() != null) {
-                Mensaje mensaje = new Mensaje(contenido, nomUsu, tabla, criticidad);
+                MensajeEvento mensaje = new MensajeEvento(contenido, nomUsu, tabla, criticidad);
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
@@ -41,10 +41,16 @@ namespace BLL.Metodos {
             Mensaje mensaje = new Mensaje(guuido.getUuidString(), contenido, SingletonSesion.getInstance.getUsuarioActual().nomUsu, tabla, cambioDe, cambioA, criticidad);
             manejaDbBitacora.crearEntradaBitacora(mensaje);
         }*/
-        public DataTable lookupBitacoraParametros(Dictionary<string, string> dic) {
-            List<Mensaje> list = manejaDbBitacora.lookupMensajesBitacora(dic);
-            persistirMensajeLogged("Se realizó una búsqueda con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
+        public DataTable lookupBitacoraEventosParametros(Dictionary<string, string> dic) {
+            List<MensajeEvento> list = manejaDbBitacora.lookupMensajesBitacoraEventos(dic);
+            persistirMensajeLogged("Se realizó una búsqueda de eventos con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitEventos(list);
+            return dataTable;
+        }
+        public DataTable lookupBitacoraCambiosParametros(Dictionary<string, string> dic) {
+            List<MensajeCambio> list = manejaDbBitacora.lookupMensajesBitacoraCambios(dic);
+            persistirMensajeLogged("Se realizó una búsqueda de cambios con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
+            DataTable dataTable = cargarDataTableBitCambio(list);
             return dataTable;
         }
         private static string armarMensajeDiccionario(Dictionary<string, string> dic) {
@@ -60,35 +66,80 @@ namespace BLL.Metodos {
             return sb.ToString();
         }
 
-        private static DataTable cargarDataTableBitEventos(List<Mensaje> list) {
+        private static DataTable cargarDataTableBitEventos(List<MensajeEvento> list) {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            string username = codigoIdioma == "es-AR" ? "Nombre de Usuario" : "Username";
+            string contents = codigoIdioma == "es-AR" ? "Contenido" : "Contents";
+            string module = codigoIdioma == "es-AR" ? "Módulo" : "Module";
+            string severity = codigoIdioma == "es-AR" ? "Criticidad" : "Severity";
+            string date = codigoIdioma == "es-AR" ? "Fecha" : "Date";
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Nombre de Usuario", typeof(string));
-            dataTable.Columns.Add("Contenido", typeof(string));
-            dataTable.Columns.Add("Modulo", typeof(Modulo));
-            dataTable.Columns.Add("Criticidad", typeof(Criticidad));            
-            dataTable.Columns.Add("Fecha", typeof(DateTime));
+            dataTable.Columns.Add(username, typeof(string));
+            dataTable.Columns.Add(contents, typeof(string));
+            dataTable.Columns.Add(module, typeof(Modulo));
+            dataTable.Columns.Add(severity, typeof(Criticidad));            
+            dataTable.Columns.Add(date, typeof(DateTime));
         
             foreach (var log in list) {
                 DataRow row = dataTable.NewRow();
-                row["Nombre de Usuario"] = log.usuario;
-                row["Contenido"] = log.contenido;
-                row["Modulo"] = log.modulo;
-                row["Criticidad"] = log.criticidad;
+                row[username] = log.usuario;
+                row[contents] = log.contenido;
+                row[module] = log.modulo;
+                row[severity] = log.criticidad;
+                row[date] = log.fecha;
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+        }
+        private static DataTable cargarDataTableBitCambio(List<MensajeCambio> list) {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Id Operacion", typeof(string));
+            dataTable.Columns.Add("Id Producto", typeof(string));
+            dataTable.Columns.Add("Marca Producto", typeof(MarcaProducto));
+            dataTable.Columns.Add("Nombre Producto", typeof(string));
+            dataTable.Columns.Add("Precio", typeof(string));
+            dataTable.Columns.Add("Cantidad", typeof(string));
+            dataTable.Columns.Add("Fecha", typeof(DateTime));
+            dataTable.Columns.Add("Usuario", typeof(string));
+            dataTable.Columns.Add("Activo", typeof(bool));
+            dataTable.Columns.Add("Tipo Operacion", typeof(MensajeCambio.TipoOperacion));
+
+            foreach (var log in list) {
+                DataRow row = dataTable.NewRow();
+                row["Id Operacion"] = log.idOperacion;
+                row["Id Producto"] = log.idProducto;
+                row["Marca Producto"] = log.marcaProducto;
+                row["Nombre Producto"] = log.nombreProducto;
+                row["Precio"] = log.precio;
+                row["Cantidad"] = log.cantidad;
                 row["Fecha"] = log.fecha;
+                row["Tipo Operacion"] = log.tipoOp;
+                row["Usuario"] = log.usuario;
+                row["Activo"] = log.activo;
                 dataTable.Rows.Add(row);
             }
             return dataTable;
         }
 
         public DataTable traerTodaBitacoraEventos() {
-            List<Mensaje> list = manejaDbBitacora.traerTodaBitacoraEventos();
+            List<MensajeEvento> list = manejaDbBitacora.traerTodaBitacoraEventos();
             DataTable dataTable = cargarDataTableBitEventos(list);
+            return dataTable;
+        }
+        public DataTable traerTodaBitacoraCambios() {
+            List<MensajeCambio> list = manejaDbBitacora.traerTodaBitacoraCambios();
+            DataTable dataTable = cargarDataTableBitCambio(list);
             return dataTable;
         }
 
         public Usuario lookupUsuario(string username) {
             ManejaDbUsuarios manejaDbUsuarios = new ManejaDbUsuarios();
             return manejaDbUsuarios.devolverUsuarioNomUsu(username);
+        }
+        public void rollbackCambio(Producto producto, string keyOg) {
+            ManejaDbMaestro manejaDbMaestro = new ManejaDbMaestro();
+            manejaDbMaestro.modificarProducto(producto, keyOg);
+            persistirMensajeLogged("Se realizó un rollback de cambios con los siguientes parámetros: Producto modificado: " + producto.marcaProducto + " " + producto.nombreProducto + " .", Modulo.Bitacora, Criticidad.Uno);
         }
     }
 }

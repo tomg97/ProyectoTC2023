@@ -13,9 +13,11 @@ using DAL.Metodos;
 using Servicios.Interfaces;
 using CUL.Métodos;
 using Servicios.Idioma;
+using Servicios.Metodos;
 
 namespace ProyectoTC2023 {
     public partial class FormMain : Form, IObserver {
+        Mensajeria mensajeria = new Mensajeria();
         public FormMain() {
             InitializeComponent();
             ManejaPermisos maneja = new ManejaPermisos();
@@ -23,6 +25,15 @@ namespace ProyectoTC2023 {
             validarPermisos();
             LenguajeActual.Attach(this);
             actualizarIdioma();
+            ManejaDV manejaDV = new ManejaDV();
+            if (!manejaDV.loginStep()) {
+                if (SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup)) {
+                    invocarForm(new FormDV());
+                } else {
+                    MessageBox.Show("Se ha detectado un error de arranque. Por favor contacte al administrador.");
+                    Application.Exit();
+                }
+            }
         }
         void validarPermisos() {
             if (SingletonSesion.getInstance.estaLogged) {
@@ -57,8 +68,7 @@ namespace ProyectoTC2023 {
         }
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e) {
-            FrmUsuarios frmUsuarios = new FrmUsuarios();
-            invocarForm(frmUsuarios);
+            invocarForm(new FrmUsuarios());
         }
 
         private void tsmiLogin_Click(object sender, EventArgs e) {
@@ -73,70 +83,48 @@ namespace ProyectoTC2023 {
         }
 
         private void tmiSeleccionYCarrito_Click(object sender, EventArgs e) {
-            FrmVentas frmVentas = new FrmVentas();
-            invocarForm(frmVentas);
+            invocarForm(new FrmVentas());
         }
 
         private void tmiFacturar_Click(object sender, EventArgs e) {
-            FrmFacturas frmFacturas = new FrmFacturas();
-            invocarForm(frmFacturas);
+            invocarForm(new FrmFacturas());
         }
 
         private void tmiDespachar_Click(object sender, EventArgs e) {
-            FrmDespacho frmDespacho = new FrmDespacho(); 
-            invocarForm(frmDespacho);
+            invocarForm(new FrmDespacho());
         }
 
         private void FormMain_Load(object sender, EventArgs e) {
             foreach (Control control in this.Controls) {
                 if (control is MdiClient mdiClient) {
-                    mdiClient.BackColor = Color.LightBlue; // Set your desired color here
+                    mdiClient.BackColor = Color.LightBlue;
                 }
             }
         }
 
         private void perfilesToolStripMenuItem_Click(object sender, EventArgs e) {
-            FrmPerfiles frmPerfiles = new FrmPerfiles();
-            invocarForm(frmPerfiles);
+            invocarForm(new FrmPerfiles());
         }
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FormMain", typeof(FormMain), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            usuariosToolStripMenuItem.Text = Lang.usuariosToolStripMenuItem;
-            bitacoraToolStripMenuItem.Text = Lang.bitacoraToolStripMenuItem;
-            idiomasToolStripMenuItem.Text = Lang.idiomasToolStripMenuItem;
-            perfilesToolStripMenuItem.Text = Lang.perfilesToolStripMenuItem;
-            comprasToolStripMenuItem.Text = Lang.comprasToolStripMenuItem;
-            productosToolStripMenuItem.Text = Lang.productosToolStripMenuItem;
-            proveedoresToolStripMenuItem.Text = Lang.proveedoresToolStripMenuItem;
-            clientesToolStripMenuItem.Text = Lang.clientesToolStripMenuItem;
-            reportesToolStripMenuItem.Text = Lang.reportesToolStripMenuItem;
-            usuarioToolStripMenuItem.Text = Lang.usuarioToolStripMenuItem;
-            tmiFacturar.Text = Lang.tmiFacturar;
-            tmiSeleccionYCarrito.Text = Lang.tmiSeleccionYCarrito;
-            tmiDespachar.Text = Lang.tmiDespachar;
-            tsmiArchivo.Text = Lang.tsmiArchivo;
-            ayudaToolStripMenuItem.Text = Lang.ayudaToolStripMenuItem;
-            ventasToolStripMenuItem.Text = Lang.ventasToolStripMenuItem;
-            maestrosToolStripMenuItem.Text = Lang.maestrosToolStripMenuItem;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
         }
 
         private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e) {
-            FrmBitacora frmBitacora = new FrmBitacora();
-            invocarForm(frmBitacora);
+            invocarForm(new FrmBitacora());
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e) {
-            FrmReportes frm = new FrmReportes();
-            invocarForm(frm);
+            invocarForm(new FrmReportes());
         }
 
         private void backupToolStripMenuItem_Click(object sender, EventArgs e) {
-            FrmBR frm = new FrmBR();
-            invocarForm(frm);
+            invocarForm(new FrmBR());
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -157,6 +145,10 @@ namespace ProyectoTC2023 {
         private void tsmUsuMaestro_Click(object sender, EventArgs e) {
             FrmMaestro frm = new FrmMaestro("Usuarios");
             invocarForm(frm);
+        }
+
+        private void tsmiArchivo_Click(object sender, EventArgs e) {
+
         }
     }
 }
