@@ -25,37 +25,40 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblBackup = new System.Windows.Forms.Label();
+            this.lblRestore = new System.Windows.Forms.Label();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
-            // label1
+            // lblBackup
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(89, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Backup";
+            this.lblBackup.AutoSize = true;
+            this.lblBackup.Location = new System.Drawing.Point(119, 28);
+            this.lblBackup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBackup.Name = "lblBackup";
+            this.lblBackup.Size = new System.Drawing.Size(53, 16);
+            this.lblBackup.TabIndex = 0;
+            this.lblBackup.Text = "Backup";
             // 
-            // label2
+            // lblRestore
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Restore";
+            this.lblRestore.AutoSize = true;
+            this.lblRestore.Location = new System.Drawing.Point(119, 116);
+            this.lblRestore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRestore.Name = "lblRestore";
+            this.lblRestore.Size = new System.Drawing.Size(55, 16);
+            this.lblRestore.TabIndex = 1;
+            this.lblRestore.Text = "Restore";
             // 
             // btnBackup
             // 
-            this.btnBackup.Location = new System.Drawing.Point(69, 39);
+            this.btnBackup.Location = new System.Drawing.Point(92, 48);
+            this.btnBackup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(93, 23);
+            this.btnBackup.Size = new System.Drawing.Size(124, 28);
             this.btnBackup.TabIndex = 2;
             this.btnBackup.Text = "Realizar Backup";
             this.btnBackup.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(69, 110);
+            this.btnRestore.Location = new System.Drawing.Point(92, 135);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(93, 23);
+            this.btnRestore.Size = new System.Drawing.Size(124, 28);
             this.btnRestore.TabIndex = 3;
             this.btnRestore.Text = "Realizar Restore";
             this.btnRestore.UseVisualStyleBackColor = true;
@@ -73,13 +77,14 @@
             // 
             // FrmBR
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 148);
+            this.ClientSize = new System.Drawing.Size(309, 182);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnBackup);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRestore);
+            this.Controls.Add(this.lblBackup);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmBR";
             this.Text = "Backup Restore";
             this.Load += new System.EventHandler(this.FrmBR_Load);
@@ -90,8 +95,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblBackup;
+        private System.Windows.Forms.Label lblRestore;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnRestore;
     }

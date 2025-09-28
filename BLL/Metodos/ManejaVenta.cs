@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace BLL.Metodos {
     public class ManejaVenta {
         ManejaDbVenta manejaDbVenta = new ManejaDbVenta();
+        ManejaBR manejaBR = new ManejaBR();
         Guuido guidGenerator = new Guuido();
         Jsonifier jsonificador = new Jsonifier();
 
@@ -39,6 +40,7 @@ namespace BLL.Metodos {
             Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());
             mensaje = manejaDbVenta.actualizarStock(carrito, SingletonSesion.getInstance.getUsuarioActual().nomUsu);
             manejaDbVenta.crearVentaNoFacturada(venta);
+            manejaBR.realizarAutoBackup();
             return mensaje;
         }
         public decimal getSubtotalCarrito() {
@@ -60,6 +62,7 @@ namespace BLL.Metodos {
             Factura factura = new Factura(venta);
             jsonificador.guardarAJsonConLocación(factura, "Factura-" + venta.id);
             manejaDbVenta.facturarVenta(venta);
+            manejaBR.realizarAutoBackup();
         }
         public void devolverFacturaYCargarTreeView(TreeView control) {
             Factura factura = jsonificador.cargarFacturaYRellenarTreeView<Factura>(control);
@@ -68,6 +71,7 @@ namespace BLL.Metodos {
             string rutaArchivo = SingletonRutaArchivo.getInstance.getRutaArchivo();
             manejaDbVenta.despacharFactura(datos);
             jsonificador.moverArchivoDone(rutaArchivo, "Facturas despachadas");
+            manejaBR.realizarAutoBackup();
         }
     }
 }

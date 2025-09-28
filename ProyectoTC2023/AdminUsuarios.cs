@@ -106,15 +106,11 @@ namespace ProyectoTC2023 {
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+            Traductor traductor = new Traductor("AdminUsuarios", typeof(AdminUsuarios), codigoIdioma);
 
-            grpbxCMUsu.Text = Lang.grpbxCMUsu;
-            lblABMNUsu.Text = Lang.lblABMNUsu;
-            btnVerif.Text = Lang.btnVerif;
-            lblCrearPass.Text = Lang.lblABMPUsu;
-            btnEnterABM.Text = Lang.btnEnterABM;
-            gbDesbloquearUsuarios.Text = Lang.gbDesbloquearUsuarios;
-            btnDesbloquear.Text = Lang.btnDesbloquear;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
         }
 
         private void btnModUsu_Click(object sender, EventArgs e) {

@@ -117,4 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="grpbxCMUsu" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="lblABMNUsu" xml:space="preserve">
+    <value>Nombre Usuario:</value>
+  </data>
+  <data name="btnVerif" xml:space="preserve">
+    <value>Verificar</value>
+  </data>
+  <data name="btnEnterABM" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="gbDesbloquearUsuarios" xml:space="preserve">
+    <value>Desbloquear Usuarios</value>
+  </data>
+  <data name="btnDesbloquear" xml:space="preserve">
+    <value>Desbloquear</value>
+  </data>
+  <data name="gbModUsu" xml:space="preserve">
+    <value>Modificar Usuario</value>
+  </data>
+  <data name="lblABMPUsu" xml:space="preserve">
+    <value>Contraseña:</value>
+  </data>
+  <data name="btnModUsu" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="lblNomUsuM" xml:space="preserve">
+    <value>Nombre Usuario:</value>
+  </data>
+  <data name="lblEmailUsu" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="lblApeUsuC" xml:space="preserve">
+    <value>Apellido:</value>
+  </data>
+  <data name="lblTelefono" xml:space="preserve">
+    <value>Teléfono:</value>
+  </data>
 </root>

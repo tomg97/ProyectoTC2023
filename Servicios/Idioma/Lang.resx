@@ -116,16 +116,7 @@
   </resheader>
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="adminToolStripMenuItem" xml:space="preserve">
-    <value>Admin</value>
-  </data>
-  <data name="ayudaToolStripMenuItem" xml:space="preserve">
-    <value>Ayuda</value>
-  </data>
-  <data name="bitacoraToolStripMenuItem" xml:space="preserve">
-    <value>Bitacora</value>
-  </data>
+  </resheader>  
   <data name="btnAddPatente" xml:space="preserve">
     <value>Agregar &gt;&gt;</value>
   </data>
@@ -135,11 +126,17 @@
   <data name="btnAgregarPatente" xml:space="preserve">
     <value>Agregar &gt;&gt;</value>
   </data>
+  <data name="btnAplicar" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
   <data name="btnAplicarIdioma" xml:space="preserve">
     <value>Aplicar</value>
   </data>
   <data name="btnAsignarCliente" xml:space="preserve">
     <value>Datos Pago</value>
+  </data>
+  <data name="btnBackup" xml:space="preserve">
+    <value>Realizar Backup</value>
   </data>
   <data name="btnCambiar" xml:space="preserve">
     <value>Cambiar Clave</value>
@@ -147,14 +144,8 @@
   <data name="btnConfigurar" xml:space="preserve">
     <value>Configurar</value>
   </data>
-  <data name="btnDesbloquear" xml:space="preserve">
-    <value>Desbloquear</value>
-  </data>
   <data name="btnDespachar" xml:space="preserve">
     <value>Despachar</value>
-  </data>
-  <data name="btnEnterABM" xml:space="preserve">
-    <value>Modificar</value>
   </data>
   <data name="btnEnterABM2" xml:space="preserve">
     <value>Crear</value>
@@ -171,11 +162,26 @@
   <data name="btnGuardarNuevaF" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="btnImprimir" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="btnLimpiar" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="btnLookBit" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
   <data name="btnRegistrarCliente" xml:space="preserve">
     <value>Registro</value>
   </data>
   <data name="btnRemoverCarrito" xml:space="preserve">
     <value>Remover Selección</value>
+  </data>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Realizar Restore</value>
+  </data>
+  <data name="btnRollback" xml:space="preserve">
+    <value>Rollback</value>
   </data>
   <data name="btnSelect" xml:space="preserve">
     <value>Seleccionar</value>
@@ -192,15 +198,6 @@
   <data name="btnVenta" xml:space="preserve">
     <value>Venta</value>
   </data>
-  <data name="btnVerif" xml:space="preserve">
-    <value>Verificar</value>
-  </data>
-  <data name="clientesToolStripMenuItem" xml:space="preserve">
-    <value>Clientes</value>
-  </data>
-  <data name="comprasToolStripMenuItem" xml:space="preserve">
-    <value>Compras</value>
-  </data>
   <data name="Español" xml:space="preserve">
     <value>Español</value>
   </data>
@@ -212,9 +209,6 @@
   </data>
   <data name="gbDatosPago" xml:space="preserve">
     <value>Ingresar Datos Pago</value>
-  </data>
-  <data name="gbDesbloquearUsuarios" xml:space="preserve">
-    <value>Desbloquear Usuarios</value>
   </data>
   <data name="gbFamilias" xml:space="preserve">
     <value>Familias</value>
@@ -239,10 +233,7 @@
   </data>
   <data name="gbVisualizador" xml:space="preserve">
     <value>Visualizador facturas</value>
-  </data>
-  <data name="grpbxCMUsu" xml:space="preserve">
-    <value>Crear</value>
-  </data>
+  </data>  
   <data name="grpCarrito" xml:space="preserve">
     <value>Carrito</value>
   </data>
@@ -252,17 +243,8 @@
   <data name="grpStockVentas" xml:space="preserve">
     <value>Existencias</value>
   </data>
-  <data name="idiomasToolStripMenuItem" xml:space="preserve">
-    <value>Idiomas</value>
-  </data>
   <data name="Inglés" xml:space="preserve">
     <value>Inglés</value>
-  </data>
-  <data name="lblABMNUsu" xml:space="preserve">
-    <value>Nombre Usuario:</value>
-  </data>
-  <data name="lblABMPUsu" xml:space="preserve">
-    <value>Contraseña:</value>
   </data>
   <data name="lblAddFamilia" xml:space="preserve">
     <value>Agregar Familias</value>
@@ -270,11 +252,17 @@
   <data name="lblAddPatente" xml:space="preserve">
     <value>Agregar patentes</value>
   </data>
+  <data name="lblApellidoBit" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
   <data name="lblApellidoCliente" xml:space="preserve">
     <value>Apellido</value>
   </data>
   <data name="lblAsignarCliente" xml:space="preserve">
     <value>Asignar DNI de cliente a carrito:</value>
+  </data>
+  <data name="lblCABit" xml:space="preserve">
+    <value>Criticidad</value>
   </data>
   <data name="lblCantidadVentas" xml:space="preserve">
     <value>Cantidad:</value>
@@ -300,6 +288,12 @@
   <data name="lblFamilias" xml:space="preserve">
     <value>Todas las familias</value>
   </data>
+  <data name="lblFechaDesdeBit" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="lblFechaHastaBit" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
   <data name="lblIdCliente" xml:space="preserve">
     <value>DNI</value>
   </data>
@@ -309,14 +303,26 @@
   <data name="lblLang" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="lblMarcaProdBit" xml:space="preserve">
+    <value>Marca Producto</value>
+  </data>
+  <data name="lblMBit" xml:space="preserve">
+    <value>Módulo</value>
+  </data>
   <data name="lblMesYAñoVenc" xml:space="preserve">
     <value>Mes Y Año expiración</value>
   </data>
   <data name="lblNombre" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="lblNombreBit" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="lblNombreCliente" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="lblNomUsuBit" xml:space="preserve">
+    <value>Nombre de usuario</value>
   </data>
   <data name="lblNumTarjeta" xml:space="preserve">
     <value>Número Tarjeta</value>
@@ -333,6 +339,9 @@
   <data name="lblTelefonoCliente" xml:space="preserve">
     <value>Telefono</value>
   </data>
+  <data name="lblTipoBit" xml:space="preserve">
+    <value>Tipo de bitácora</value>
+  </data>
   <data name="lblTipoTarjeta" xml:space="preserve">
     <value>Tipo</value>
   </data>
@@ -342,43 +351,13 @@
   <data name="lblUsu" xml:space="preserve">
     <value>Nombre de Usuario</value>
   </data>
-  <data name="maestrosToolStripMenuItem" xml:space="preserve">
-    <value>Maestros</value>
-  </data>
-  <data name="perfilesToolStripMenuItem" xml:space="preserve">
-    <value>Perfiles</value>
-  </data>
-  <data name="productosToolStripMenuItem" xml:space="preserve">
-    <value>Productos</value>
-  </data>
-  <data name="proveedoresToolStripMenuItem" xml:space="preserve">
-    <value>Proveedores</value>
-  </data>
   <data name="reportesToolStripMenuItem" xml:space="preserve">
     <value>Reportes</value>
   </data>
   <data name="salirToolStripMenuItem" xml:space="preserve">
     <value>Salir</value>
   </data>
-  <data name="tmiDespachar" xml:space="preserve">
-    <value>Despachar</value>
-  </data>
-  <data name="tmiFacturar" xml:space="preserve">
-    <value>Facturar</value>
-  </data>
-  <data name="tmiSeleccionYCarrito" xml:space="preserve">
-    <value>Seleccion y Carrito</value>
-  </data>
-  <data name="tsmiArchivo" xml:space="preserve">
-    <value>Archivo</value>
-  </data>
   <data name="usuariosToolStripMenuItem" xml:space="preserve">
     <value>Usuarios</value>
-  </data>
-  <data name="usuarioToolStripMenuItem" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
-  <data name="ventasToolStripMenuItem" xml:space="preserve">
-    <value>Ventas</value>
   </data>
 </root>

@@ -37,6 +37,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.en-US.resx</DependentUpon>
     </Compile>
+    <Compile Include="Idioma\Traductor.cs" />
     <Compile Include="Interfaces\IObserver.cs" />
     <Compile Include="Metodos\BackupRestore.cs" />
     <Compile Include="Metodos\Encriptador.cs" />

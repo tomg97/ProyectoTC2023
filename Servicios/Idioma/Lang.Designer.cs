@@ -117,6 +117,15 @@ namespace Servicios.Idioma {
         /// <summary>
         ///   Looks up a localized string similar to Aplicar.
         /// </summary>
+        public static string btnAplicar {
+            get {
+                return ResourceManager.GetString("btnAplicar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicar.
+        /// </summary>
         public static string btnAplicarIdioma {
             get {
                 return ResourceManager.GetString("btnAplicarIdioma", resourceCulture);
@@ -129,6 +138,15 @@ namespace Servicios.Idioma {
         public static string btnAsignarCliente {
             get {
                 return ResourceManager.GetString("btnAsignarCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Realizar Backup.
+        /// </summary>
+        public static string btnBackup {
+            get {
+                return ResourceManager.GetString("btnBackup", resourceCulture);
             }
         }
         
@@ -223,6 +241,33 @@ namespace Servicios.Idioma {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imprimir.
+        /// </summary>
+        public static string btnImprimir {
+            get {
+                return ResourceManager.GetString("btnImprimir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limpiar.
+        /// </summary>
+        public static string btnLimpiar {
+            get {
+                return ResourceManager.GetString("btnLimpiar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar.
+        /// </summary>
+        public static string btnLookBit {
+            get {
+                return ResourceManager.GetString("btnLookBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registro.
         /// </summary>
         public static string btnRegistrarCliente {
@@ -237,6 +282,24 @@ namespace Servicios.Idioma {
         public static string btnRemoverCarrito {
             get {
                 return ResourceManager.GetString("btnRemoverCarrito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Realizar Restore.
+        /// </summary>
+        public static string btnRestore {
+            get {
+                return ResourceManager.GetString("btnRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rollback.
+        /// </summary>
+        public static string btnRollback {
+            get {
+                return ResourceManager.GetString("btnRollback", resourceCulture);
             }
         }
         
@@ -522,6 +585,15 @@ namespace Servicios.Idioma {
         /// <summary>
         ///   Looks up a localized string similar to Apellido.
         /// </summary>
+        public static string lblApellidoBit {
+            get {
+                return ResourceManager.GetString("lblApellidoBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido.
+        /// </summary>
         public static string lblApellidoCliente {
             get {
                 return ResourceManager.GetString("lblApellidoCliente", resourceCulture);
@@ -534,6 +606,15 @@ namespace Servicios.Idioma {
         public static string lblAsignarCliente {
             get {
                 return ResourceManager.GetString("lblAsignarCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Criticidad.
+        /// </summary>
+        public static string lblCABit {
+            get {
+                return ResourceManager.GetString("lblCABit", resourceCulture);
             }
         }
         
@@ -610,6 +691,24 @@ namespace Servicios.Idioma {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desde.
+        /// </summary>
+        public static string lblFechaDesdeBit {
+            get {
+                return ResourceManager.GetString("lblFechaDesdeBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasta.
+        /// </summary>
+        public static string lblFechaHastaBit {
+            get {
+                return ResourceManager.GetString("lblFechaHastaBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DNI.
         /// </summary>
         public static string lblIdCliente {
@@ -637,6 +736,24 @@ namespace Servicios.Idioma {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Marca Producto.
+        /// </summary>
+        public static string lblMarcaProdBit {
+            get {
+                return ResourceManager.GetString("lblMarcaProdBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Módulo.
+        /// </summary>
+        public static string lblMBit {
+            get {
+                return ResourceManager.GetString("lblMBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mes Y Año expiración.
         /// </summary>
         public static string lblMesYAñoVenc {
@@ -657,9 +774,27 @@ namespace Servicios.Idioma {
         /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
+        public static string lblNombreBit {
+            get {
+                return ResourceManager.GetString("lblNombreBit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
         public static string lblNombreCliente {
             get {
                 return ResourceManager.GetString("lblNombreCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre de usuario.
+        /// </summary>
+        public static string lblNomUsuBit {
+            get {
+                return ResourceManager.GetString("lblNomUsuBit", resourceCulture);
             }
         }
         
@@ -705,6 +840,15 @@ namespace Servicios.Idioma {
         public static string lblTelefonoCliente {
             get {
                 return ResourceManager.GetString("lblTelefonoCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipo de bitácora.
+        /// </summary>
+        public static string lblTipoBit {
+            get {
+                return ResourceManager.GetString("lblTipoBit", resourceCulture);
             }
         }
         

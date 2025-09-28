@@ -11,6 +11,7 @@ namespace DAL.Metodos {
     public class ManejaDbMaestro {
         string tipo;
         public ManejaDbMaestro(string tipo) { this.tipo = tipo; }
+        public ManejaDbMaestro() { }
         private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
         private StoredProcedureHelper storedProcedureHelper;
 
@@ -63,33 +64,33 @@ namespace DAL.Metodos {
                 return count == 0;
             }
         }
-        public bool esNomUsuUnico(string id) {
-            using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM {tipo} WHERE nomUsu = '{id}'", connection);
-                connection.Open();
-                int count = (int)command.ExecuteScalar();
-                return count == 0;
-            }
-        }
+        //public bool esNomUsuUnico(string id) {
+        //    using (SqlConnection connection = new SqlConnection(_connectionString)) {
+        //        SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM {tipo} WHERE nomUsu = '{id}'", connection);
+        //        connection.Open();
+        //        int count = (int)command.ExecuteScalar();
+        //        return count == 0;
+        //    }
+        //}
 
         public void modificarUsuario(Usuario usuario, string keyOg) {
-            if (esNomUsuUnico(usuario.nomUsu)) {
-                using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand cmd = new SqlCommand($"UPDATE Usuarios SET nombre = '{usuario.nombre}'," +
-                                                    $"apellido = '{usuario.apellido}'," +
-                                                    $"telefono = {usuario.telefono}," +
-                                                    $"dni = '{usuario.dni}'," +
-                                                    $"nomUsu = '{usuario.nomUsu}'," +
-                                                    $"email = '{usuario.email}' " +
-                                                    $"WHERE nomUsu = '{keyOg}' ", connection);
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                }
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                SqlCommand cmd = new SqlCommand(
+                    $"UPDATE Usuarios SET nombre = '{usuario.nombre}'," +
+                    $"apellido = '{usuario.apellido}'," +
+                    $"telefono = {usuario.telefono}," +
+                    $"dni = '{usuario.dni}'," +
+                    $"nomUsu = '{usuario.nomUsu}'," +
+                    $"email = '{usuario.email}' " +
+                    $"WHERE nomUsu = '{keyOg}' ", connection);
+                connection.Open();
+                cmd.ExecuteNonQuery();
             }
         }
+        
 
         public void modificarProducto(Producto producto, string keyOg) {
-            if (esIdUnico(producto.id)) {
+            if (!esIdUnico(producto.id)) {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand cmd = new SqlCommand($"UPDATE Producto SET nombreProducto='{producto.nombreProducto}'," +
                                                     $"marcaProducto = '{producto.marcaProducto}'," +
@@ -105,7 +106,7 @@ namespace DAL.Metodos {
         }
 
         public void modificarCliente(Cliente cliente, string keyOg) {
-            if (esIdUnico(cliente.id)) {
+            if (!esIdUnico(cliente.id)) {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand cmd = new SqlCommand($"UPDATE Cliente SET nombre ='{cliente.nombre}'," +
                                                     $"apellido = '{cliente.apellido}'," +

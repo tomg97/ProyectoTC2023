@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="adminToolStripMenuItem" xml:space="preserve">
-    <value>Admin</value>
-  </data>
-  <data name="ayudaToolStripMenuItem" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="bitacoraToolStripMenuItem" xml:space="preserve">
-    <value>Logs</value>
-  </data>
   <data name="btnAddPatente" xml:space="preserve">
     <value>Add &gt;&gt;</value>
   </data>
@@ -135,11 +126,17 @@
   <data name="btnAgregarPatente" xml:space="preserve">
     <value>Add &gt;&gt;</value>
   </data>
+  <data name="btnAplicar" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="btnAplicarIdioma" xml:space="preserve">
     <value>Apply</value>
   </data>
   <data name="btnAsignarCliente" xml:space="preserve">
     <value>Assign Payment Data</value>
+  </data>
+  <data name="btnBackup" xml:space="preserve">
+    <value>Start Backup</value>
   </data>
   <data name="btnCambiar" xml:space="preserve">
     <value>Change Password</value>
@@ -171,11 +168,26 @@
   <data name="btnGuardarNuevaF" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="btnImprimir" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="btnLimpiar" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="btnLookBit" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="btnRegistrarCliente" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="btnRemoverCarrito" xml:space="preserve">
     <value>Remove Selection</value>
+  </data>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Start Restore</value>
+  </data>
+  <data name="btnRollback" xml:space="preserve">
+    <value>Rollback</value>
   </data>
   <data name="btnSelect" xml:space="preserve">
     <value>Select</value>
@@ -206,6 +218,9 @@
   </data>
   <data name="gbCambiarClave" xml:space="preserve">
     <value>Change Password</value>
+  <data name="gbConfigFamilia" xml:space="preserve">
+    <value>Configure Family</value>
+  </data>							 
   </data>
   <data name="gbDatosPago" xml:space="preserve">
     <value>Enter Payment Data</value>
@@ -232,7 +247,10 @@
     <value>Invoice Selector</value>
   </data>
   <data name="gbVentasNoF" xml:space="preserve">
-    <value>Uninvoiced Sales</value>
+    <value>Uninvoiced Sales</value>								
+  </data>
+  <data name="gbVisualizador" xml:space="preserve">
+    <value>View invoices</value>
   </data>
   <data name="grpbxCMUsu" xml:space="preserve">
     <value>Create/Modify User</value>
@@ -262,13 +280,19 @@
     <value>Add Families</value>
   </data>
   <data name="lblAddPatente" xml:space="preserve">
-    <value>Add Patents</value>
+    <value>Add Patents</value>					   
+  </data>
+  <data name="lblApellidoBit" xml:space="preserve">
+    <value>Last Name</value>
   </data>
   <data name="lblApellidoCliente" xml:space="preserve">
     <value>Last Name</value>
   </data>
   <data name="lblAsignarCliente" xml:space="preserve">
-    <value>Assign Customer DNI to Cart:</value>
+    <value>Assign Customer DNI to Cart:</value>						  
+  </data>
+  <data name="lblCABit" xml:space="preserve">
+    <value>Severity</value>
   </data>
   <data name="lblCantidadVentas" xml:space="preserve">
     <value>Quantity:</value>
@@ -294,6 +318,12 @@
   <data name="lblFamilias" xml:space="preserve">
     <value>All Families</value>
   </data>
+  <data name="lblFechaDesdeBit" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="lblFechaHastaBit" xml:space="preserve">
+    <value>From</value>
+  </data>
   <data name="lblIdCliente" xml:space="preserve">
     <value>DNI</value>
   </data>
@@ -303,11 +333,26 @@
   <data name="lblLang" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="lblMarcaProdBit" xml:space="preserve">
+    <value>Product Brand</value>
+  </data>
+  <data name="lblMBit" xml:space="preserve">
+    <value>Module</value>
+  </data>
   <data name="lblMesYAñoVenc" xml:space="preserve">
     <value>Month and Year of Expiry</value>
   </data>
+  <data name="lblNombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblNombreBit" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="lblNombreCliente" xml:space="preserve">
     <value>First Name</value>
+  </data>
+  <data name="lblNomUsuBit" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="lblNumTarjeta" xml:space="preserve">
     <value>Card Number</value>
@@ -324,6 +369,9 @@
   <data name="lblTelefonoCliente" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="lblTipoBit" xml:space="preserve">
+    <value>Log Type</value>
+  </data>
   <data name="lblTipoTarjeta" xml:space="preserve">
     <value>Type</value>
   </data>
@@ -332,44 +380,5 @@
   </data>
   <data name="lblUsu" xml:space="preserve">
     <value>Username</value>
-  </data>
-  <data name="maestrosToolStripMenuItem" xml:space="preserve">
-    <value>Masters</value>
-  </data>
-  <data name="perfilesToolStripMenuItem" xml:space="preserve">
-    <value>Profiles</value>
-  </data>
-  <data name="productosToolStripMenuItem" xml:space="preserve">
-    <value>Products</value>
-  </data>
-  <data name="proveedoresToolStripMenuItem" xml:space="preserve">
-    <value>Suppliers</value>
-  </data>
-  <data name="reportesToolStripMenuItem" xml:space="preserve">
-    <value>Reports</value>
-  </data>
-  <data name="salirToolStripMenuItem" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="tmiDespachar" xml:space="preserve">
-    <value>Dispatch</value>
-  </data>
-  <data name="tmiFacturar" xml:space="preserve">
-    <value>Invoice</value>
-  </data>
-  <data name="tmiSeleccionYCarrito" xml:space="preserve">
-    <value>Select and Cart</value>
-  </data>
-  <data name="tsmiArchivo" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="usuariosToolStripMenuItem" xml:space="preserve">
-    <value>Users</value>
-  </data>
-  <data name="usuarioToolStripMenuItem" xml:space="preserve">
-    <value>User</value>
-  </data>
-  <data name="ventasToolStripMenuItem" xml:space="preserve">
-    <value>Sales</value>
   </data>
 </root>

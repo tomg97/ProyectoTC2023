@@ -53,6 +53,7 @@
     <Compile Include="Metodos\Guiido.cs" />
     <Compile Include="Metodos\ManejaBR.cs" />
     <Compile Include="Metodos\ManejaCliente.cs" />
+    <Compile Include="Metodos\ManejaDV.cs" />
     <Compile Include="Metodos\ManejaMaestro.cs" />
     <Compile Include="Metodos\ManejaPermisos.cs" />
     <Compile Include="Metodos\ManejaVenta.cs" />

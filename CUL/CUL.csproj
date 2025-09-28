@@ -51,10 +51,13 @@
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Criticidad.cs" />
+    <Compile Include="Entidades\DV.cs" />
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Componente.cs" />
     <Compile Include="Entidades\Familia.cs" />
-    <Compile Include="Entidades\Mensaje.cs" />
+    <Compile Include="Entidades\MarcaProducto.cs" />
+    <Compile Include="Entidades\MensajeCambio.cs" />
+    <Compile Include="Entidades\MensajeEvento.cs" />
     <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />

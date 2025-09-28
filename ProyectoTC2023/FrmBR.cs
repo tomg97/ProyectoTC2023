@@ -10,19 +10,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL.Metodos;
 using System.IO;
+using CUL.Métodos;
+using Servicios.Interfaces;
+using CUL.Entidades;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
-    public partial class FrmBR : Form {
+    public partial class FrmBR : Form, IObserver {
         ManejaBR manejaBR = new ManejaBR();
         Mensajeria mensajeria = new Mensajeria();
         BackupRestore backupRestore = new BackupRestore();
         public FrmBR() {
             InitializeComponent();
+            LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-                string filePath = backupRestore.Backup(saveFileDialog.SelectedPath);
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK) {
+                string filePath = backupRestore.Backup(dialog.SelectedPath);
                 string resultado = manejaBR.realizarBackup(filePath);
                 if (resultado == "Backup exitoso.") {
                     mensajeria.mostrarMensaje(resultado + " Guardado en la ubicación " + filePath);
@@ -47,6 +54,15 @@ namespace ProyectoTC2023 {
 
         private void FrmBR_Load(object sender, EventArgs e) {
 
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+
+            btnBackup.Text = Lang.btnBackup;
+            btnRestore.Text = Lang.btnRestore;
         }
     }
 }
