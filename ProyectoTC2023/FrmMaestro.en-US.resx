@@ -118,61 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddMaestro" xml:space="preserve">
-    <value>Añadir</value>
+    <value>Add</value>
   </data>
   <data name="btnAppMaestro" xml:space="preserve">
-    <value>Aplicar</value>
+    <value>Apply</value>
   </data>
   <data name="btnCancMaestro" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Cancel</value>
   </data>
   <data name="btnConfirm" xml:space="preserve">
-    <value>Confirmar</value>
+    <value>Confirm</value>
   </data>
   <data name="btnDeserialize" xml:space="preserve">
-    <value>Deserializar</value>
+    <value>Deserialize</value>
   </data>
   <data name="btnElimMaestro" xml:space="preserve">
-    <value>Eliminar</value>
+    <value>Delete</value>
   </data>
   <data name="btnLimpiar" xml:space="preserve">
-    <value>Limpiar</value>
+    <value>Clear</value>
   </data>
   <data name="btnModMaestro" xml:space="preserve">
-    <value>Modificar</value>
+    <value>Modify</value>
   </data>
   <data name="btnSalirMaestro" xml:space="preserve">
-    <value>Salir</value>
+    <value>Quit</value>
   </data>
   <data name="btnSerialize" xml:space="preserve">
-    <value>Serializar</value>
+    <value>Serialize</value>
   </data>
   <data name="grpCliente" xml:space="preserve">
-    <value>Cliente</value>
+    <value>Client</value>
   </data>
   <data name="grpEditMaestro" xml:space="preserve">
-    <value>Editar</value>
+    <value>Edit</value>
   </data>
   <data name="grpProducto" xml:space="preserve">
-    <value>Producto</value>
+    <value>Product</value>
   </data>
   <data name="grpUsuario" xml:space="preserve">
-    <value>Usuario</value>
+    <value>User</value>
   </data>
   <data name="lblApeC" xml:space="preserve">
-    <value>Apellido:</value>
+    <value>Last name:</value>
   </data>
   <data name="lblApeUsu" xml:space="preserve">
-    <value>Apellido:</value>
+    <value>Last name:</value>
   </data>
   <data name="lblCant" xml:space="preserve">
-    <value>Cantidad:</value>
+    <value>Quantity:</value>
   </data>
   <data name="lblDni" xml:space="preserve">
     <value>DNI:</value>
   </data>
   <data name="lblDomC" xml:space="preserve">
-    <value>Domicilio:</value>
+    <value>Address:</value>
   </data>
   <data name="lblEmail" xml:space="preserve">
     <value>Email:</value>
@@ -184,27 +184,27 @@
     <value>Id:</value>
   </data>
   <data name="lblMarProd" xml:space="preserve">
-    <value>Marca Producto:</value>
+    <value>Brand:</value>
   </data>
   <data name="lblNombUsu" xml:space="preserve">
-    <value>Nombre:</value>
+    <value>First name:</value>
   </data>
   <data name="lblNomC" xml:space="preserve">
-    <value>Nombre:</value>
+    <value>First name:</value>
   </data>
   <data name="lblNomProd" xml:space="preserve">
-    <value>Nombre Producto:</value>
+    <value>Product Name:</value>
   </data>
   <data name="lblNomUsu" xml:space="preserve">
-    <value>Nombre Usuario:</value>
+    <value>Username:</value>
   </data>
   <data name="lblPrecio" xml:space="preserve">
-    <value>Precio:</value>
+    <value>Price:</value>
   </data>
   <data name="lblTelC" xml:space="preserve">
-    <value>Teléfono:</value>
+    <value>Phone number:</value>
   </data>
   <data name="lblTelefono" xml:space="preserve">
-    <value>Teléfono:</value>
+    <value>Phone number:</value>
   </data>
 </root>

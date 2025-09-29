@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAplicarIdioma" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="btnSinSesion" xml:space="preserve">
+    <value>Continuar sin sesión</value>
+  </data>
+  <data name="lblLang" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="lblPass" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="lblUsu" xml:space="preserve">
+    <value>Nombre de Usuario</value>
+  </data>
 </root>

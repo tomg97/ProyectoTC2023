@@ -117,10 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>174, 17</value>
-  </metadata>
+  </data>
+  <data name="btnBackup" xml:space="preserve">
+    <value>Realizar Backup</value>
+  </data>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Realizar Restore</value>
+  </data>
+  <data name="lblBackup" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="lblRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
 </root>

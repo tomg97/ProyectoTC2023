@@ -117,94 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddMaestro" xml:space="preserve">
-    <value>Añadir</value>
+  <data name="btnAplicarIdioma" xml:space="preserve">
+    <value>Apply</value>
   </data>
-  <data name="btnAppMaestro" xml:space="preserve">
-    <value>Aplicar</value>
+  <data name="btnSinSesion" xml:space="preserve">
+    <value>Continue without login</value>
   </data>
-  <data name="btnCancMaestro" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="lblLang" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="btnConfirm" xml:space="preserve">
-    <value>Confirmar</value>
+  <data name="lblPass" xml:space="preserve">
+    <value>Password</value>
   </data>
-  <data name="btnDeserialize" xml:space="preserve">
-    <value>Deserializar</value>
-  </data>
-  <data name="btnElimMaestro" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="btnLimpiar" xml:space="preserve">
-    <value>Limpiar</value>
-  </data>
-  <data name="btnModMaestro" xml:space="preserve">
-    <value>Modificar</value>
-  </data>
-  <data name="btnSalirMaestro" xml:space="preserve">
-    <value>Salir</value>
-  </data>
-  <data name="btnSerialize" xml:space="preserve">
-    <value>Serializar</value>
-  </data>
-  <data name="grpCliente" xml:space="preserve">
-    <value>Cliente</value>
-  </data>
-  <data name="grpEditMaestro" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="grpProducto" xml:space="preserve">
-    <value>Producto</value>
-  </data>
-  <data name="grpUsuario" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
-  <data name="lblApeC" xml:space="preserve">
-    <value>Apellido:</value>
-  </data>
-  <data name="lblApeUsu" xml:space="preserve">
-    <value>Apellido:</value>
-  </data>
-  <data name="lblCant" xml:space="preserve">
-    <value>Cantidad:</value>
-  </data>
-  <data name="lblDni" xml:space="preserve">
-    <value>DNI:</value>
-  </data>
-  <data name="lblDomC" xml:space="preserve">
-    <value>Domicilio:</value>
-  </data>
-  <data name="lblEmail" xml:space="preserve">
-    <value>Email:</value>
-  </data>
-  <data name="lblId" xml:space="preserve">
-    <value>Id:</value>
-  </data>
-  <data name="lblIdC" xml:space="preserve">
-    <value>Id:</value>
-  </data>
-  <data name="lblMarProd" xml:space="preserve">
-    <value>Marca Producto:</value>
-  </data>
-  <data name="lblNombUsu" xml:space="preserve">
-    <value>Nombre:</value>
-  </data>
-  <data name="lblNomC" xml:space="preserve">
-    <value>Nombre:</value>
-  </data>
-  <data name="lblNomProd" xml:space="preserve">
-    <value>Nombre Producto:</value>
-  </data>
-  <data name="lblNomUsu" xml:space="preserve">
-    <value>Nombre Usuario:</value>
-  </data>
-  <data name="lblPrecio" xml:space="preserve">
-    <value>Precio:</value>
-  </data>
-  <data name="lblTelC" xml:space="preserve">
-    <value>Teléfono:</value>
-  </data>
-  <data name="lblTelefono" xml:space="preserve">
-    <value>Teléfono:</value>
+  <data name="lblUsu" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

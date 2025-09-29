@@ -14,9 +14,12 @@ using static ProyectoTC2023.DataSetProductos;
 using Microsoft.VisualBasic;
 using System.Xml.Serialization;
 using System.IO;
+using Servicios.Interfaces;
+using Servicios.Idioma;
+using CUL.Métodos;
 
 namespace ProyectoTC2023 {
-    public partial class FrmMaestro : Form {
+    public partial class FrmMaestro : Form, IObserver {
         ManejaMaestro manejaMaestro;
         DataTable dt = new DataTable();
         Mensajeria mensajeria = new Mensajeria();
@@ -32,6 +35,15 @@ namespace ProyectoTC2023 {
             this.tipo = tipo;
             manejaMaestro = new ManejaMaestro(tipo);
             settearSegunTipo();
+            actualizarIdioma();
+        }
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmMaestro", typeof(FrmMaestro), codigoIdioma);
+
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
         }
 
         private void settearSegunTipo() {
@@ -106,33 +118,36 @@ namespace ProyectoTC2023 {
         }
 
         private static Cliente crearCliente(DataRow dataRow) {
+            string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             return new Cliente {
-                nombre = dataRow["Nombre"].ToString(),
-                apellido = dataRow["Apellido"].ToString(),
-                domicilio = dataRow["Domicilio"].ToString(),
-                telefono = dataRow["Teléfono"].ToString(),
+                nombre = dataRow[(lenguajeActual == "es-AR" ? "Nombre" : "First name")].ToString(),
+                apellido = dataRow[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")].ToString(),
+                domicilio = dataRow[(lenguajeActual == "es-AR" ? "Domicilio" : "Address")].ToString(),
+                telefono = dataRow[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone Number")].ToString(),
                 id = dataRow["Id"].ToString()
             };
         }
 
         private static Usuario crearUsuario(DataRow dataRow) {
+            string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             return new Usuario {
-                nomUsu = dataRow["Nombre Usuario"].ToString(),
-                nombre = dataRow["Nombre"].ToString(),
-                apellido = dataRow["Apellido"].ToString(),
+                nomUsu = dataRow[(lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username")].ToString(),
+                nombre = dataRow[(lenguajeActual == "es-AR" ? "Nombre" : "First name")].ToString(),
+                apellido = dataRow[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")].ToString(),
                 dni = dataRow["DNI"].ToString(),
                 email = dataRow["Email"].ToString(),
-                telefono = dataRow["Teléfono"].ToString()
+                telefono = dataRow[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone number")].ToString()
             };
         }
 
         private static Producto crearProducto(DataRow dataRow) {
+            string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             return new Producto {
 
-                nombreProducto = dataRow["Nombre Producto"].ToString(),
-                marcaProducto = dataRow["Marca Producto"].ToString(),
-                cantidad = Int32.Parse(dataRow["Cantidad"].ToString()),
-                precio = dataRow["Precio"].ToString(),
+                nombreProducto = dataRow[(lenguajeActual == "es-AR" ? "Nombre Producto" : "Product Name")].ToString(),
+                marcaProducto = dataRow[(lenguajeActual == "es-AR" ? "Marca Producto" : "Brand")].ToString(),
+                cantidad = Int32.Parse(dataRow[(lenguajeActual == "es-AR" ? "Cantidad" : "Quantity")].ToString()),
+                precio = dataRow[(lenguajeActual == "es-AR" ? "Precio" : "Price")].ToString(),
                 id = dataRow["Id"].ToString()
             };
         }
@@ -226,6 +241,7 @@ namespace ProyectoTC2023 {
         }
 
         private void btnElimMaestro_Click(object sender, EventArgs e) {
+            string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             if (dgvMaestro.SelectedRows.Count == 1) {
                 
                 btnAddMaestro.Visible = false;
@@ -237,7 +253,7 @@ namespace ProyectoTC2023 {
                         key = selectedRow.Cells["Id"].Value.ToString();
                         break;
                     case "Usuarios":
-                        key = selectedRow.Cells["Nombre Usuario"].Value.ToString();
+                        key = selectedRow.Cells[(lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username")].Value.ToString();
                         break;
                     case "Cliente":
                         key = selectedRow.Cells["Id"].Value.ToString();
@@ -259,8 +275,9 @@ namespace ProyectoTC2023 {
             }
         }
         private DialogResult aceptarOCancelar(string key) {
+            string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             string modificado = string.Equals(tipo, "Usuarios") ? tipo.Substring(0, tipo.Length - 1).ToLower() : tipo.ToLower();
-            string id = string.Equals(tipo, "Usuarios") ? "Nombre de Usuario" : "Id";
+            string id = string.Equals(tipo, "Usuarios") ? (lenguajeActual == "es-AR" ? "Nombre de Usuario" : "Username") : "Id";
             DialogResult dialogResult = MessageBox.Show($"Desea eliminar el {modificado}, {id}: {key}?", "Confirma eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return dialogResult;
         }

@@ -117,94 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddMaestro" xml:space="preserve">
-    <value>Añadir</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
   </data>
-  <data name="btnAppMaestro" xml:space="preserve">
-    <value>Aplicar</value>
+  <data name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>174, 17</value>
   </data>
-  <data name="btnCancMaestro" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="btnBackup" xml:space="preserve">
+    <value>Start Backup</value>
   </data>
-  <data name="btnConfirm" xml:space="preserve">
-    <value>Confirmar</value>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Start Restore</value>
   </data>
-  <data name="btnDeserialize" xml:space="preserve">
-    <value>Deserializar</value>
+  <data name="lblBackup" xml:space="preserve">
+    <value>Backup</value>
   </data>
-  <data name="btnElimMaestro" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="btnLimpiar" xml:space="preserve">
-    <value>Limpiar</value>
-  </data>
-  <data name="btnModMaestro" xml:space="preserve">
-    <value>Modificar</value>
-  </data>
-  <data name="btnSalirMaestro" xml:space="preserve">
-    <value>Salir</value>
-  </data>
-  <data name="btnSerialize" xml:space="preserve">
-    <value>Serializar</value>
-  </data>
-  <data name="grpCliente" xml:space="preserve">
-    <value>Cliente</value>
-  </data>
-  <data name="grpEditMaestro" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="grpProducto" xml:space="preserve">
-    <value>Producto</value>
-  </data>
-  <data name="grpUsuario" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
-  <data name="lblApeC" xml:space="preserve">
-    <value>Apellido:</value>
-  </data>
-  <data name="lblApeUsu" xml:space="preserve">
-    <value>Apellido:</value>
-  </data>
-  <data name="lblCant" xml:space="preserve">
-    <value>Cantidad:</value>
-  </data>
-  <data name="lblDni" xml:space="preserve">
-    <value>DNI:</value>
-  </data>
-  <data name="lblDomC" xml:space="preserve">
-    <value>Domicilio:</value>
-  </data>
-  <data name="lblEmail" xml:space="preserve">
-    <value>Email:</value>
-  </data>
-  <data name="lblId" xml:space="preserve">
-    <value>Id:</value>
-  </data>
-  <data name="lblIdC" xml:space="preserve">
-    <value>Id:</value>
-  </data>
-  <data name="lblMarProd" xml:space="preserve">
-    <value>Marca Producto:</value>
-  </data>
-  <data name="lblNombUsu" xml:space="preserve">
-    <value>Nombre:</value>
-  </data>
-  <data name="lblNomC" xml:space="preserve">
-    <value>Nombre:</value>
-  </data>
-  <data name="lblNomProd" xml:space="preserve">
-    <value>Nombre Producto:</value>
-  </data>
-  <data name="lblNomUsu" xml:space="preserve">
-    <value>Nombre Usuario:</value>
-  </data>
-  <data name="lblPrecio" xml:space="preserve">
-    <value>Precio:</value>
-  </data>
-  <data name="lblTelC" xml:space="preserve">
-    <value>Teléfono:</value>
-  </data>
-  <data name="lblTelefono" xml:space="preserve">
-    <value>Teléfono:</value>
+  <data name="lblRestore" xml:space="preserve">
+    <value>Restore</value>
   </data>
 </root>

@@ -223,6 +223,9 @@
     <EmbeddedResource Include="FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBR.en-US.resx">
+      <DependentUpon>FrmBR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBR.resx">
       <DependentUpon>FrmBR.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,8 +238,14 @@
     <EmbeddedResource Include="FrmFacturas.resx">
       <DependentUpon>FrmFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaestro.en-US.resx">
+      <DependentUpon>FrmMaestro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMaestro.resx">
       <DependentUpon>FrmMaestro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerfiles.en-US.resx">
+      <DependentUpon>FrmPerfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfiles.resx">
       <DependentUpon>FrmPerfiles.cs</DependentUpon>
@@ -249,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.en-US.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
