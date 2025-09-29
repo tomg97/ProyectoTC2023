@@ -223,8 +223,14 @@
     <EmbeddedResource Include="FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBR.en-US.resx">
+      <DependentUpon>FrmBR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBR.resx">
       <DependentUpon>FrmBR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientes.en-US.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -232,11 +238,20 @@
     <EmbeddedResource Include="FrmDespacho.resx">
       <DependentUpon>FrmDespacho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFacturas.en-US.resx">
+      <DependentUpon>FrmFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturas.resx">
       <DependentUpon>FrmFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaestro.en-US.resx">
+      <DependentUpon>FrmMaestro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMaestro.resx">
       <DependentUpon>FrmMaestro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerfiles.en-US.resx">
+      <DependentUpon>FrmPerfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPerfiles.resx">
       <DependentUpon>FrmPerfiles.cs</DependentUpon>
@@ -244,11 +259,20 @@
     <EmbeddedResource Include="FrmReportes.resx">
       <DependentUpon>FrmReportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsuarios.en-US.resx">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmVentas.en-US.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.en-US.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

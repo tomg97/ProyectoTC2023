@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -123,21 +124,13 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmPerfiles", typeof(FrmPerfiles), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            gbPatentes.Text = Lang.gbPatentes;
-            lblTodasPatentes.Text = Lang.lblTodasPatentes;
-            btnAgregarPatente.Text = Lang.btnAgregarPatente;
-            gbFamilias.Text = Lang.gbFamilias;
-            lblFamilias.Text = Lang.lblFamilias;
-            btnConfigurar.Text = Lang.btnConfigurar;
-            btnAgregarFamilia.Text = Lang.btnAgregarFamilia;
-            gbNuevaFamilia.Text = Lang.gbNuevaFamilia;
-            lblNombre.Text = Lang.lblNombre;
-            btnGuardarNuevaF.Text = Lang.btnGuardarNuevaF;
-            btnGuardarFamilia2.Text = Lang.btnGuardarFamilia2;
-            gbConfigFamilia.Text = Lang.gbConfigFamilia;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmPerfiles", typeof(FrmPerfiles).Assembly);
+            this.Text = _resourceManager.GetString("FrmPerfiles");
         }
     }
 }

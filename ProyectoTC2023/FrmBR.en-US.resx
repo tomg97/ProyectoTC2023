@@ -117,43 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
   </data>
-  <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <data name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>174, 17</value>
   </data>
-  <data name="btnCambiar" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="btnBackup" xml:space="preserve">
+    <value>Start Backup</value>
   </data>
-  <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Start Restore</value>
   </data>
-  <data name="btnGuardarFamilia" xml:space="preserve">
-    <value>Guardar cambios</value>
+  <data name="lblBackup" xml:space="preserve">
+    <value>Backup</value>
   </data>
-  <data name="FrmUsuarios" xml:space="preserve">
-    <value>Módulo Usuarios</value>
-  </data>
-  <data name="gbCambiarClave" xml:space="preserve">
-    <value>Cambiar Clave</value>
-  </data>
-  <data name="grpPatentes" xml:space="preserve">
-    <value>Usuarios</value>
-  </data>
-  <data name="lblAddFamilia" xml:space="preserve">
-    <value>Agregar Familias</value>
-  </data>
-  <data name="lblAddPatente" xml:space="preserve">
-    <value>Agregar patentes</value>
-  </data>
-  <data name="lblCbUsuarios" xml:space="preserve">
-    <value>Todos los usuarios</value>
-  </data>
-  <data name="lblClaveActual" xml:space="preserve">
-    <value>Clave actual:</value>
-  </data>
-  <data name="lblClaveNueva" xml:space="preserve">
-    <value>Clave nueva:</value>
+  <data name="lblRestore" xml:space="preserve">
+    <value>Restore</value>
   </data>
 </root>

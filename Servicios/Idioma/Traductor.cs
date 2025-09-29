@@ -9,49 +9,34 @@ using System.Windows.Forms;
 
 namespace Servicios.Idioma {
     public class Traductor {
-            private readonly ResourceManager _resourceManager;
+        private readonly ResourceManager _resourceManager;
 
-            public Traductor(string resourceBaseName, Type resourceAssemblyType, string codigoIdioma) {
-                _resourceManager = new ResourceManager(resourceBaseName, resourceAssemblyType.Assembly);
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdioma);
-            }
+        public Traductor(string resourceBaseName, Type resourceAssemblyType, string codigoIdioma) {
+            _resourceManager = new ResourceManager(resourceBaseName, resourceAssemblyType.Assembly);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdioma);
+        }
 
-            public void ActualizarIdioma(Control parentControl) {                
-                TraducirControl(parentControl);
-            }
+        public void ActualizarIdioma(Control parentControl) {                
+            TraducirControl(parentControl);
+        }
 
-            private void TraducirControl(Control control) {
-                //control.Text = _resourceManager.GetString(control.Name) ?? control.Text;
-                if (control is MenuStrip menuStrip) {
-                    foreach (ToolStripMenuItem item in menuStrip.Items) {
-                        if (item.HasDropDownItems) {
-                            foreach(ToolStripMenuItem tsmi in item.DropDownItems) {
-                                tsmi.Text = _resourceManager.GetString(tsmi.Name) ?? tsmi.Text;
-                            }
+        private void TraducirControl(Control control) {
+            //control.Text = _resourceManager.GetString(control.Name) ?? control.Text;
+            if (control is MenuStrip menuStrip) {
+                foreach (ToolStripMenuItem item in menuStrip.Items) {
+                    if (item.HasDropDownItems) {
+                        foreach(ToolStripMenuItem tsmi in item.DropDownItems) {
+                            tsmi.Text = _resourceManager.GetString(tsmi.Name) ?? tsmi.Text;
                         }
-                        item.Text = _resourceManager.GetString(item.Name) ?? item.Text;
                     }
-                } else {
-                    control.Text = _resourceManager.GetString(control.Name) ?? control.Text;
-                    foreach (Control childControl in control.Controls) {
-                        TraducirControl(childControl);
-                    }
+                    item.Text = _resourceManager.GetString(item.Name) ?? item.Text;
+                }
+            } else {
+                control.Text = _resourceManager.GetString(control.Name) ?? control.Text;
+                foreach (Control childControl in control.Controls) {
+                    TraducirControl(childControl);
                 }
             }
-
-        /*
-         * grpbxCMUsu.Text = Lang.grpbxCMUsu;
-            lblABMNUsu.Text = Lang.lblABMNUsu;
-            btnVerif.Text = Lang.btnVerif;
-            lblCrearPass.Text = Lang.lblABMPUsu;
-            btnEnterABM.Text = Lang.btnEnterABM;
-            gbDesbloquearUsuarios.Text = Lang.gbDesbloquearUsuarios;
-            btnDesbloquear.Text = Lang.btnDesbloquear;
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
+        }
     }
 }

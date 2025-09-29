@@ -117,43 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
-  </data>
   <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+    <value>Add &gt;&gt;</value>
   </data>
-  <data name="btnCambiar" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="btnAgregarPatente" xml:space="preserve">
+    <value>Add &gt;&gt;</value>
   </data>
   <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
+    <value>Configure</value>
   </data>
-  <data name="btnGuardarFamilia" xml:space="preserve">
-    <value>Guardar cambios</value>
+  <data name="btnGuardarFamilia2" xml:space="preserve">
+    <value>Save family</value>
   </data>
-  <data name="FrmUsuarios" xml:space="preserve">
-    <value>Módulo Usuarios</value>
+  <data name="btnGuardarNuevaF" xml:space="preserve">
+    <value>Save</value>
   </data>
-  <data name="gbCambiarClave" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="FrmPerfiles" xml:space="preserve">
+    <value>Profiles module</value>
   </data>
-  <data name="grpPatentes" xml:space="preserve">
-    <value>Usuarios</value>
+  <data name="gbConfigFamilia" xml:space="preserve">
+    <value>Configure Family</value>
   </data>
-  <data name="lblAddFamilia" xml:space="preserve">
-    <value>Agregar Familias</value>
+  <data name="gbFamilias" xml:space="preserve">
+    <value>Families</value>
   </data>
-  <data name="lblAddPatente" xml:space="preserve">
-    <value>Agregar patentes</value>
+  <data name="gbNuevaFamilia" xml:space="preserve">
+    <value>New</value>
   </data>
-  <data name="lblCbUsuarios" xml:space="preserve">
-    <value>Todos los usuarios</value>
+  <data name="gbPatentes" xml:space="preserve">
+    <value>Patents</value>
   </data>
-  <data name="lblClaveActual" xml:space="preserve">
-    <value>Clave actual:</value>
+  <data name="lblFamilias" xml:space="preserve">
+    <value>All families</value>
   </data>
-  <data name="lblClaveNueva" xml:space="preserve">
-    <value>Clave nueva:</value>
+  <data name="lblNombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblTodasPatentes" xml:space="preserve">
+    <value>All Patents</value>
   </data>
 </root>

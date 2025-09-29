@@ -14,6 +14,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -126,6 +127,8 @@ namespace ProyectoTC2023 {
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);
             }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmBitacora", typeof(FrmBitacora).Assembly);
+            this.Text = _resourceManager.GetString("FrmBitacora");
         }
 
         private void FrmBitacora_Load(object sender, EventArgs e) {

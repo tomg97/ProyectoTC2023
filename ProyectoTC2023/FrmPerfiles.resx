@@ -117,4 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAgregarFamilia" xml:space="preserve">
+    <value>Agregar &gt;&gt;</value>
+  </data>
+  <data name="btnAgregarPatente" xml:space="preserve">
+    <value>Agregar &gt;&gt;</value>
+  </data>
+  <data name="btnConfigurar" xml:space="preserve">
+    <value>Configurar</value>
+  </data>
+  <data name="btnGuardarFamilia2" xml:space="preserve">
+    <value>Guardar familia</value>
+  </data>
+  <data name="btnGuardarNuevaF" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="FrmPerfiles" xml:space="preserve">
+    <value>Módulo Perfiles</value>
+  </data>
+  <data name="gbConfigFamilia" xml:space="preserve">
+    <value>Configurar Familia</value>
+  </data>
+  <data name="gbFamilias" xml:space="preserve">
+    <value>Familias</value>
+  </data>
+  <data name="gbNuevaFamilia" xml:space="preserve">
+    <value>Nueva</value>
+  </data>
+  <data name="gbPatentes" xml:space="preserve">
+    <value>Patentes</value>
+  </data>
+  <data name="lblFamilias" xml:space="preserve">
+    <value>Todas las familias</value>
+  </data>
+  <data name="lblNombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblTodasPatentes" xml:space="preserve">
+    <value>Todas las patentes</value>
+  </data>
 </root>

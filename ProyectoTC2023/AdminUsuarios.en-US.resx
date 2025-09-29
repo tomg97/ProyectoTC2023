@@ -118,42 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="grpbxCMUsu" xml:space="preserve">
-    <value>Crear</value>
+    <value>Create</value>
   </data>
   <data name="lblABMNUsu" xml:space="preserve">
-    <value>Nombre Usuario:</value>
+    <value>Username:</value>
   </data>
   <data name="btnVerif" xml:space="preserve">
-    <value>Verificar</value>
+    <value>Verify</value>
   </data>
   <data name="btnEnterABM" xml:space="preserve">
-    <value>Modificar</value>
+    <value>Modify</value>
   </data>
   <data name="gbDesbloquearUsuarios" xml:space="preserve">
-    <value>Desbloquear Usuarios</value>
+    <value>Unlock Users</value>
   </data>
   <data name="btnDesbloquear" xml:space="preserve">
-    <value>Desbloquear</value>
+    <value>Unlock</value>
   </data>
   <data name="gbModUsu" xml:space="preserve">
-    <value>Modificar Usuario</value>
+    <value>Modify User</value>
   </data>
   <data name="lblABMPUsu" xml:space="preserve">
-    <value>Contraseña:</value>
+    <value>Password:</value>
   </data>
   <data name="btnModUsu" xml:space="preserve">
-    <value>Modificar</value>
+    <value>Modify</value>
   </data>
   <data name="lblNomUsuM" xml:space="preserve">
-    <value>Nombre Usuario:</value>
+    <value>Username:</value>
   </data>
   <data name="lblEmailUsu" xml:space="preserve">
     <value>Email:</value>
   </data>
   <data name="lblApeUsuC" xml:space="preserve">
-    <value>Apellido:</value>
+    <value>Last name:</value>
   </data>
   <data name="lblTelefono" xml:space="preserve">
-    <value>Teléfono:</value>
+    <value>Phone number:</value>
+  </data>
+  <data name="AdminUsuarios" xml:space="preserve">
+    <value>User admin module</value>
   </data>
 </root>

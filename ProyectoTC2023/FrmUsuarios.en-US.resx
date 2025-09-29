@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+    <value>Add &gt;&gt;</value>
   </data>
   <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+    <value>Add &gt;&gt;</value>
   </data>
   <data name="btnCambiar" xml:space="preserve">
-    <value>Cambiar Clave</value>
+    <value>Change password</value>
   </data>
   <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
+    <value>Configure</value>
   </data>
   <data name="btnGuardarFamilia" xml:space="preserve">
-    <value>Guardar cambios</value>
+    <value>Save changes</value>
   </data>
   <data name="FrmUsuarios" xml:space="preserve">
-    <value>Módulo Usuarios</value>
+    <value>Users module</value>
   </data>
   <data name="gbCambiarClave" xml:space="preserve">
-    <value>Cambiar Clave</value>
+    <value>Change password</value>
   </data>
   <data name="grpPatentes" xml:space="preserve">
-    <value>Usuarios</value>
+    <value>Users</value>
   </data>
   <data name="lblAddFamilia" xml:space="preserve">
-    <value>Agregar Familias</value>
+    <value>Add families</value>
   </data>
   <data name="lblAddPatente" xml:space="preserve">
-    <value>Agregar patentes</value>
+    <value>Add patents</value>
   </data>
   <data name="lblCbUsuarios" xml:space="preserve">
-    <value>Todos los usuarios</value>
+    <value>All users</value>
   </data>
   <data name="lblClaveActual" xml:space="preserve">
-    <value>Clave actual:</value>
+    <value>Current password:</value>
   </data>
   <data name="lblClaveNueva" xml:space="preserve">
-    <value>Clave nueva:</value>
+    <value>New password:</value>
   </data>
 </root>

@@ -16,6 +16,7 @@ namespace BLL.Metodos {
         BitacoraBLL bitacora = new BitacoraBLL();
         Mensajeria mensajeria = new Mensajeria();
         Encriptador encriptador = new Encriptador();
+        string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
 
         string tipo;
         public ManejaMaestro(string tipo) { this.tipo = tipo; manejaDbMaestro = new ManejaDbMaestro(tipo); }
@@ -42,21 +43,21 @@ namespace BLL.Metodos {
 
         private DataTable cargarDataTableUsuarios(List<Usuario> list) {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Nombre Usuario", typeof(string));
-            dataTable.Columns.Add("Nombre", typeof(string));
-            dataTable.Columns.Add("Apellido", typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Nombre" : "First name"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Apellido" : "Last name"), typeof(string));
             dataTable.Columns.Add("DNI", typeof(string));
             dataTable.Columns.Add("Email", typeof(string));
-            dataTable.Columns.Add("Teléfono", typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Teléfono" : "Phone number"), typeof(string));
 
             foreach (var cliente in list) {
                 DataRow row = dataTable.NewRow();
-                row["Nombre Usuario"] = cliente.nomUsu;
-                row["Nombre"] = cliente.nombre;
-                row["Apellido"] = cliente.apellido;
+                row[(lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username")] = cliente.nomUsu;
+                row[(lenguajeActual == "es-AR" ? "Nombre" : "First name")] = cliente.nombre;
+                row[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")] = cliente.apellido;
                 row["DNI"] = cliente.dni;
                 row["Email"] = cliente.email;
-                row["Teléfono"] = cliente.telefono;                
+                row[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone number")] = cliente.telefono;                
                 dataTable.Rows.Add(row);
             }
             return dataTable;
@@ -64,39 +65,39 @@ namespace BLL.Metodos {
 
         private DataTable cargarDataTableProductos(List<Producto> list) {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Nombre Producto", typeof(string));
-            dataTable.Columns.Add("Marca Producto", typeof(string));
-            dataTable.Columns.Add("Cantidad", typeof(int));
-            dataTable.Columns.Add("Precio", typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Nombre Producto" : "Product Name"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Marca Producto" : "Brand"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Cantidad" : "Quantity"), typeof(int));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Precio" : "Price"), typeof(string));
             dataTable.Columns.Add("Id", typeof(string));
 
             foreach (var producto in list) {
                 DataRow row = dataTable.NewRow();
-                row["Nombre Producto"] = producto.nombreProducto;
-                row["Marca Producto"] = producto.marcaProducto;
-                row["Cantidad"] = producto.cantidad; ;
-                row["Precio"] = producto.precio;
+                row[(lenguajeActual == "es-AR" ? "Nombre Producto" : "Product Name")] = producto.nombreProducto;
+                row[(lenguajeActual == "es-AR" ? "Marca Producto" : "Brand")] = producto.marcaProducto;
+                row[(lenguajeActual == "es-AR" ? "Cantidad" : "Quantity")] = producto.cantidad;
+                row[(lenguajeActual == "es-AR" ? "Precio" : "Price")] = producto.precio;
                 row["Id"] = producto.id;
                 dataTable.Rows.Add(row);
             }
             return dataTable;
         }
 
-        private static DataTable cargarDataTableClientes(List<Cliente> list) {
+        private DataTable cargarDataTableClientes(List<Cliente> list) {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Nombre", typeof(string));
-            dataTable.Columns.Add("Apellido", typeof(string));
-            dataTable.Columns.Add("Domicilio", typeof(string));
-            dataTable.Columns.Add("Teléfono", typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Nombre" : "First name"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Apellido" : "Last name"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Domicilio" : "Address"), typeof(string));
+            dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Teléfono" : "Phone number"), typeof(string));
             dataTable.Columns.Add("Id", typeof(string));
             Encriptador encriptador = new Encriptador();
 
             foreach (var cliente in list) {
                 DataRow row = dataTable.NewRow();
-                row["Nombre"] = cliente.nombre;
-                row["Apellido"] = cliente.apellido;
-                row["Domicilio"] = encriptador.desencriptarReversible(cliente.domicilio);
-                row["Teléfono"] = encriptador.desencriptarReversible(cliente.telefono);
+                row[(lenguajeActual == "es-AR" ? "Nombre" : "First name")] = cliente.nombre;
+                row[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")] = cliente.apellido;
+                row[(lenguajeActual == "es-AR" ? "Domicilio" : "Address")] = encriptador.desencriptarReversible(cliente.domicilio);
+                row[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone number")] = encriptador.desencriptarReversible(cliente.telefono);
                 row["Id"] = encriptador.desencriptarReversible(cliente.id);
                 dataTable.Rows.Add(row);
             }
@@ -161,7 +162,7 @@ namespace BLL.Metodos {
         }
 
         public void eliminarEntrada(string key) {
-            string id = string.Equals(tipo, "Usuarios") ? "Nombre de Usuario" : "Id";
+            string id = string.Equals(tipo, "Usuarios") ? (lenguajeActual == "es-AR" ? "Nombre de Usuario" : "Username") : "Id";
             string modificado = string.Equals(tipo, "Usuarios") ? tipo.Substring(0, tipo.Length - 1).ToLower() : tipo.ToLower();
             try {
                 manejaDbMaestro.eliminarEntrada(key);
@@ -169,7 +170,7 @@ namespace BLL.Metodos {
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
                 bitacora.persistirMensajeLogged($"Se produjo un error al intentar eliminar un un {modificado}. Error: " + ex.Message + $". {id}: ", Modulo.Maestros, Criticidad.Uno);
-            }   
+            }
         }
     }
 }

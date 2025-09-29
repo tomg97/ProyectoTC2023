@@ -116,20 +116,8 @@
   </resheader>
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>  
-  <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
-  </data>
-  <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
-  </data>
-  <data name="btnAgregarPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
-  </data>
+  </resheader>
   <data name="btnAplicar" xml:space="preserve">
-    <value>Aplicar</value>
-  </data>
-  <data name="btnAplicarIdioma" xml:space="preserve">
     <value>Aplicar</value>
   </data>
   <data name="btnAsignarCliente" xml:space="preserve">
@@ -140,9 +128,6 @@
   </data>
   <data name="btnCambiar" xml:space="preserve">
     <value>Cambiar Clave</value>
-  </data>
-  <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
   </data>
   <data name="btnDespachar" xml:space="preserve">
     <value>Despachar</value>
@@ -155,12 +140,6 @@
   </data>
   <data name="btnGuardarFamilia" xml:space="preserve">
     <value>Guardar cambios</value>
-  </data>
-  <data name="btnGuardarFamilia2" xml:space="preserve">
-    <value>Guardar familia</value>
-  </data>
-  <data name="btnGuardarNuevaF" xml:space="preserve">
-    <value>Guardar</value>
   </data>
   <data name="btnImprimir" xml:space="preserve">
     <value>Imprimir</value>
@@ -189,9 +168,6 @@
   <data name="btnSelectVentas" xml:space="preserve">
     <value>Seleccionar</value>
   </data>
-  <data name="btnSinSesion" xml:space="preserve">
-    <value>Continuar sin sesión</value>
-  </data>
   <data name="btnVaciar" xml:space="preserve">
     <value>Vaciar</value>
   </data>
@@ -204,23 +180,11 @@
   <data name="gbCambiarClave" xml:space="preserve">
     <value>Cambiar Clave</value>
   </data>
-  <data name="gbConfigFamilia" xml:space="preserve">
-    <value>Configurar Familia</value>
-  </data>
   <data name="gbDatosPago" xml:space="preserve">
     <value>Ingresar Datos Pago</value>
   </data>
-  <data name="gbFamilias" xml:space="preserve">
-    <value>Familias</value>
-  </data>
   <data name="gbIdFacturas" xml:space="preserve">
     <value>Identificador Facturas</value>
-  </data>
-  <data name="gbNuevaFamilia" xml:space="preserve">
-    <value>Nueva</value>
-  </data>
-  <data name="gbPatentes" xml:space="preserve">
-    <value>Patentes</value>
   </data>
   <data name="gbRegistroCliente" xml:space="preserve">
     <value>Registrar Cliente</value>
@@ -285,9 +249,6 @@
   <data name="lblDomicilioCliente" xml:space="preserve">
     <value>Domicilio</value>
   </data>
-  <data name="lblFamilias" xml:space="preserve">
-    <value>Todas las familias</value>
-  </data>
   <data name="lblFechaDesdeBit" xml:space="preserve">
     <value>Desde</value>
   </data>
@@ -300,9 +261,6 @@
   <data name="lblIdFactura" xml:space="preserve">
     <value>Id Factura</value>
   </data>
-  <data name="lblLang" xml:space="preserve">
-    <value>Idioma</value>
-  </data>
   <data name="lblMarcaProdBit" xml:space="preserve">
     <value>Marca Producto</value>
   </data>
@@ -311,9 +269,6 @@
   </data>
   <data name="lblMesYAñoVenc" xml:space="preserve">
     <value>Mes Y Año expiración</value>
-  </data>
-  <data name="lblNombre" xml:space="preserve">
-    <value>Nombre</value>
   </data>
   <data name="lblNombreBit" xml:space="preserve">
     <value>Nombre</value>
@@ -326,9 +281,6 @@
   </data>
   <data name="lblNumTarjeta" xml:space="preserve">
     <value>Número Tarjeta</value>
-  </data>
-  <data name="lblPass" xml:space="preserve">
-    <value>Contraseña</value>
   </data>
   <data name="lblSubtotalCuotas" xml:space="preserve">
     <value>Cada cuota: </value>
@@ -344,20 +296,5 @@
   </data>
   <data name="lblTipoTarjeta" xml:space="preserve">
     <value>Tipo</value>
-  </data>
-  <data name="lblTodasPatentes" xml:space="preserve">
-    <value>Todas las patentes</value>
-  </data>
-  <data name="lblUsu" xml:space="preserve">
-    <value>Nombre de Usuario</value>
-  </data>
-  <data name="reportesToolStripMenuItem" xml:space="preserve">
-    <value>Reportes</value>
-  </data>
-  <data name="salirToolStripMenuItem" xml:space="preserve">
-    <value>Salir</value>
-  </data>
-  <data name="usuariosToolStripMenuItem" xml:space="preserve">
-    <value>Usuarios</value>
   </data>
 </root>
