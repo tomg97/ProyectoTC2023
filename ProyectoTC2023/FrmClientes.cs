@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -81,7 +82,8 @@ namespace ProyectoTC2023 {
             lblSubtotalVenta.Text = "Subtotal: ";
         }
         private void resetSubtotalCuotas() {
-            lblSubtotalCuotas.Text = "Cada cuota: ";
+
+            lblSubtotalCuotas.Text =  "Cada cuota: ";
         }
 
         private void btnVenta_Click(object sender, EventArgs e) {
@@ -112,31 +114,19 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmClientes", typeof(FrmClientes), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            gbRegistroCliente.Text = Lang.gbRegistroCliente;
-            lblIdCliente.Text = Lang.lblIdCliente;
-            lblNombreCliente.Text = Lang.lblNombreCliente;
-            lblApellidoCliente.Text = Lang.lblApellidoCliente;
-            lblDomicilioCliente.Text = Lang.lblDomicilioCliente;
-            lblTelefonoCliente.Text = Lang.lblTelefonoCliente;
-            btnRegistrarCliente.Text = Lang.btnRegistrarCliente;
-            gbDatosPago.Text = Lang.gbDatosPago;
-            lblNumTarjeta.Text = Lang.lblNumTarjeta;
-            lblMesYAñoVenc.Text = Lang.lblMesYAñoVenc;
-            lblTipoTarjeta.Text = Lang.lblTipoTarjeta;
-            lblCuotas.Text = Lang.lblCuotas;
-            lblSubtotalCuotas.Text = Lang.lblSubtotalCuotas;
-            lblSubtotalVenta.Text = Lang.lblSubtotalVenta + " $" + manejaVenta.getSubtotalCarrito();
-            btnVenta.Text = Lang.btnVenta;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            lblSubtotalVenta.Text = lblSubtotalVenta.Text + " $" + manejaVenta.getSubtotalCarrito();
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmClientes", typeof(FrmClientes).Assembly);
+            this.Text = _resourceManager.GetString("FrmClientes");
         }
         private void updateCuotas(string cuotas) {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            lblSubtotalCuotas.Text = Lang.lblSubtotalCuotas + " $" + manejaVenta.getSubtotalCuotas(cuotas);
+            lblSubtotalCuotas.Text = (codigoIdioma == "es-AR" ? "Cada cuota: " : "Each installment: ") + " $" + manejaVenta.getSubtotalCuotas(cuotas);
         }
     }
 }

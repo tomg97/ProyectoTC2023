@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -158,21 +159,13 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmUsuarios", typeof(FrmUsuarios), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            gbCambiarClave.Text = Lang.gbCambiarClave;
-            lblClaveActual.Text = Lang.lblClaveActual;
-            lblClaveNueva.Text = Lang.lblClaveNueva;
-            btnCambiar.Text = Lang.btnCambiar;
-            grpPatentes.Text = Lang.grpPatentes;
-            lblCbUsuarios.Text = Lang.lblCbUsuarios;
-            btnConfigurar.Text = Lang.btnConfigurar;
-            lblAddPatente.Text = Lang.lblAddPatente;
-            btnAddPatente.Text = Lang.btnAddPatente;
-            lblAddFamilia.Text = Lang.lblAddFamilia;
-            btnAgregarFamilia.Text = Lang.btnAgregarFamilia;
-            btnGuardarFamilia.Text = Lang.btnGuardarFamilia;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmUsuarios", typeof(FrmUsuarios).Assembly);
+            this.Text = _resourceManager.GetString("FrmUsuarios");
         }
     }
 }

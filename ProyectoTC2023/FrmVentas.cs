@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -132,17 +133,13 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmVentas", typeof(FrmVentas), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            grpStockVentas.Text = Lang.grpStockVentas;
-            lblCantidadVentas.Text = Lang.lblCantidadVentas;
-            btnSelectVentas.Text = Lang.btnSelectVentas;
-            grpCarrito.Text = Lang.grpCarrito;
-            btnRemoverCarrito.Text = Lang.btnRemoverCarrito;
-            btnVaciar.Text = Lang.btnVaciar;
-            lblAsignarCliente.Text = Lang.lblAsignarCliente;
-            btnAsignarCliente.Text = Lang.btnAsignarCliente;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmVentas", typeof(FrmVentas).Assembly);
+            this.Text = _resourceManager.GetString("FrmVentas");
         }
     }
 }

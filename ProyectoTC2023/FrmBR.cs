@@ -58,11 +58,11 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmBR", typeof(FrmBR), codigoIdioma);
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
-
-            btnBackup.Text = Lang.btnBackup;
-            btnRestore.Text = Lang.btnRestore;
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
         }
     }
 }

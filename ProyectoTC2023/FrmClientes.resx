@@ -117,4 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnRegistrarCliente" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="btnVenta" xml:space="preserve">
+    <value>Venta</value>
+  </data>
+  <data name="FrmClientes" xml:space="preserve">
+    <value>Módulo Clientes</value>
+  </data>
+  <data name="gbDatosPago" xml:space="preserve">
+    <value>Ingresar Datos Pago</value>
+  </data>
+  <data name="gbRegistroCliente" xml:space="preserve">
+    <value>Registrar Cliente</value>
+  </data>
+  <data name="lblApellidoCliente" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="lblCuotas" xml:space="preserve">
+    <value>Cuotas</value>
+  </data>
+  <data name="lblDomicilioCliente" xml:space="preserve">
+    <value>Domicilio</value>
+  </data>
+  <data name="lblMesYAñoVenc" xml:space="preserve">
+    <value>Mes Y Año expiración</value>
+  </data>
+  <data name="lblNombreCliente" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblNumTarjeta" xml:space="preserve">
+    <value>Número Tarjeta</value>
+  </data>
+  <data name="lblSubtotalCuotas" xml:space="preserve">
+    <value>Cada cuota:</value>
+  </data>
+  <data name="lblSubtotalVenta" xml:space="preserve">
+    <value>Subtotal:</value>
+  </data>
+  <data name="lblTelefonoCliente" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="lblTipoTarjeta" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
 </root>

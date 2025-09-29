@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -111,6 +112,8 @@ namespace ProyectoTC2023 {
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);
             }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.AdminUsuarios", typeof(FrmMaestro).Assembly);
+            this.Text = _resourceManager.GetString("AdminUsuarios");
         }
 
         private void btnModUsu_Click(object sender, EventArgs e) {

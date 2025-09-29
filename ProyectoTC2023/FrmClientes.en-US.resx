@@ -117,43 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <data name="btnRegistrarCliente" xml:space="preserve">
+    <value>Register</value>
   </data>
-  <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <data name="btnVenta" xml:space="preserve">
+    <value>Checkout</value>
   </data>
-  <data name="btnCambiar" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="FrmClientes" xml:space="preserve">
+    <value>Clients module</value>
   </data>
-  <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
+  <data name="gbDatosPago" xml:space="preserve">
+    <value>Input payment details</value>
   </data>
-  <data name="btnGuardarFamilia" xml:space="preserve">
-    <value>Guardar cambios</value>
+  <data name="gbRegistroCliente" xml:space="preserve">
+    <value>Register new client</value>
   </data>
-  <data name="FrmUsuarios" xml:space="preserve">
-    <value>Módulo Usuarios</value>
+  <data name="lblApellidoCliente" xml:space="preserve">
+    <value>Last name</value>
   </data>
-  <data name="gbCambiarClave" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="lblCuotas" xml:space="preserve">
+    <value>Installments</value>
   </data>
-  <data name="grpPatentes" xml:space="preserve">
-    <value>Usuarios</value>
+  <data name="lblDomicilioCliente" xml:space="preserve">
+    <value>Address</value>
   </data>
-  <data name="lblAddFamilia" xml:space="preserve">
-    <value>Agregar Familias</value>
+  <data name="lblMesYAñoVenc" xml:space="preserve">
+    <value>Month and Year expiration date</value>
   </data>
-  <data name="lblAddPatente" xml:space="preserve">
-    <value>Agregar patentes</value>
+  <data name="lblNombreCliente" xml:space="preserve">
+    <value>First name</value>
   </data>
-  <data name="lblCbUsuarios" xml:space="preserve">
-    <value>Todos los usuarios</value>
+  <data name="lblNumTarjeta" xml:space="preserve">
+    <value>Card number</value>
   </data>
-  <data name="lblClaveActual" xml:space="preserve">
-    <value>Clave actual:</value>
+  <data name="lblSubtotalCuotas" xml:space="preserve">
+    <value>Each installment:</value>
   </data>
-  <data name="lblClaveNueva" xml:space="preserve">
-    <value>Clave nueva:</value>
+  <data name="lblSubtotalVenta" xml:space="preserve">
+    <value>Subtotal:</value>
+  </data>
+  <data name="lblTelefonoCliente" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="lblTipoTarjeta" xml:space="preserve">
+    <value>Card Type</value>
   </data>
 </root>

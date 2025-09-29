@@ -17,6 +17,7 @@ using System.IO;
 using Servicios.Interfaces;
 using Servicios.Idioma;
 using CUL.Métodos;
+using System.Resources;
 
 namespace ProyectoTC2023 {
     public partial class FrmMaestro : Form, IObserver {
@@ -44,6 +45,8 @@ namespace ProyectoTC2023 {
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);
             }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmMaestro", typeof(FrmMaestro).Assembly);
+            this.Text = _resourceManager.GetString("FrmMaestro");
         }
 
         private void settearSegunTipo() {

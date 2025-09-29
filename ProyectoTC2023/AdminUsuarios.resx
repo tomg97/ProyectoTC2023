@@ -156,4 +156,7 @@
   <data name="lblTelefono" xml:space="preserve">
     <value>Teléfono:</value>
   </data>
+  <data name="AdminUsuarios" xml:space="preserve">
+    <value>Módulo Administración Usuarios</value>
+  </data>
 </root>

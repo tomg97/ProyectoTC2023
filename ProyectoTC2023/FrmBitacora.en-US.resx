@@ -150,4 +150,7 @@
   <data name="lblApellidoBit" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="FrmBitacora" xml:space="preserve">
+    <value>Logs Explorer</value>
+  </data>
 </root>

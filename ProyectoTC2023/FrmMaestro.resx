@@ -147,6 +147,9 @@
   <data name="btnSerialize" xml:space="preserve">
     <value>Serializar</value>
   </data>
+  <data name="FrmMaestro" xml:space="preserve">
+    <value>Módulo maestros</value>
+  </data>
   <data name="grpCliente" xml:space="preserve">
     <value>Cliente</value>
   </data>

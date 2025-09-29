@@ -132,6 +132,9 @@
   <data name="btnGuardarNuevaF" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="FrmPerfiles" xml:space="preserve">
+    <value>Módulo Perfiles</value>
+  </data>
   <data name="gbConfigFamilia" xml:space="preserve">
     <value>Configurar Familia</value>
   </data>

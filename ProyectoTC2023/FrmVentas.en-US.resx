@@ -117,43 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddPatente" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="productoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>109, 11</value>
   </data>
-  <data name="btnAgregarFamilia" xml:space="preserve">
-    <value>Agregar &gt;&gt;</value>
+  <data name="dataSetProductos.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>10, 11</value>
   </data>
-  <data name="btnCambiar" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="productoTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>231, 11</value>
   </data>
-  <data name="btnConfigurar" xml:space="preserve">
-    <value>Configurar</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+    <value>23</value>
   </data>
-  <data name="btnGuardarFamilia" xml:space="preserve">
-    <value>Guardar cambios</value>
+  <data name="btnAsignarCliente" xml:space="preserve">
+    <value>Payment details</value>
   </data>
-  <data name="FrmUsuarios" xml:space="preserve">
-    <value>Módulo Usuarios</value>
+  <data name="btnRemoverCarrito" xml:space="preserve">
+    <value>Remove Selected</value>
   </data>
-  <data name="gbCambiarClave" xml:space="preserve">
-    <value>Cambiar Clave</value>
+  <data name="btnSelectVentas" xml:space="preserve">
+    <value>Select</value>
   </data>
-  <data name="grpPatentes" xml:space="preserve">
-    <value>Usuarios</value>
+  <data name="btnVaciar" xml:space="preserve">
+    <value>Clear</value>
   </data>
-  <data name="lblAddFamilia" xml:space="preserve">
-    <value>Agregar Familias</value>
+  <data name="grpCarrito" xml:space="preserve">
+    <value>Cart</value>
   </data>
-  <data name="lblAddPatente" xml:space="preserve">
-    <value>Agregar patentes</value>
+  <data name="grpStockVentas" xml:space="preserve">
+    <value>Stock</value>
   </data>
-  <data name="lblCbUsuarios" xml:space="preserve">
-    <value>Todos los usuarios</value>
+  <data name="lblAsignarCliente" xml:space="preserve">
+    <value>Assign client's DNI to cart:</value>
   </data>
-  <data name="lblClaveActual" xml:space="preserve">
-    <value>Clave actual:</value>
+  <data name="lblCantidadVentas" xml:space="preserve">
+    <value>Amount:</value>
   </data>
-  <data name="lblClaveNueva" xml:space="preserve">
-    <value>Clave nueva:</value>
+  <data name="FrmVentas" xml:space="preserve">
+    <value>Sales module</value>
   </data>
 </root>
