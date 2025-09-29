@@ -239,8 +239,8 @@ namespace ProyectoTC2023 {
         private void btnCancMaestro_Click(object sender, EventArgs e) {
             mensajeria.mostrarMensaje("Se canceló la modificación. ");
             limpiarTextBoxes();
-            btnAppMaestro.Visible = false;
-            btnCancMaestro.Visible = false;
+            //btnAppMaestro.Visible = false;
+            //btnCancMaestro.Visible = false;
         }
 
         private void btnElimMaestro_Click(object sender, EventArgs e) {
