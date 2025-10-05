@@ -222,7 +222,7 @@ namespace ProyectoTC2023 {
         }
 
         private void btnImprimir_Click(object sender, EventArgs e) {
-            // Create a SaveFileDialog to allow the user to choose the storage location and name
+            // Create a SaveFileDialog to allow the user to choose the storage location and name  
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
             saveFileDialog.Title = "Save PDF Document";
@@ -230,40 +230,51 @@ namespace ProyectoTC2023 {
             if (saveFileDialog.ShowDialog() == DialogResult.OK) {
                 string filePath = saveFileDialog.FileName;
 
-                // Create a new PDF document
+                // Create a new PDF document  
                 Document document = new Document();
 
                 try {
-                    // Create a new PDF writer
+                    // Create a new PDF writer  
                     PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
 
-                    // Open the PDF document
+                    // Open the PDF document  
                     document.Open();
 
-                    // Create a new PDF table with the same number of columns as the DataGridView
+                    // Create a new PDF table with the same number of columns as the DataGridView  
                     PdfPTable table = new PdfPTable(dgvBitacora.Columns.Count);
 
-                    // Add the column headers to the table
+                    // Add the column headers to the table  
                     foreach (DataGridViewColumn column in dgvBitacora.Columns) {
                         PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
                         table.AddCell(cell);
                     }
 
-                    // Add the data rows to the table
+                    // Add the data rows to the table  
                     foreach (DataGridViewRow row in dgvBitacora.Rows) {
                         foreach (DataGridViewCell cell in row.Cells) {
-                            table.AddCell(cell.Value != null ? cell.Value.ToString() : "");
+                            if (cell.Value != null && cell.OwningColumn.Name == "Módulo" || cell.OwningColumn.Name == "Module") {
+                                // Convert the module number to its name  
+                                if (int.TryParse(cell.Value.ToString(), out int moduloValue)) {
+                                    Modulo modulo = (Modulo)moduloValue;
+                                    table.AddCell(modulo.ToString());
+                                } else {
+                                    table.AddCell(cell.Value.ToString());
+                                }
+                            } else {
+                                table.AddCell(cell.Value != null ? cell.Value.ToString() : "");
+                            }
                         }
                     }
 
-                    // Add the table to the document
+                    // Add the table to the document  
                     document.Add(table);
+
+                    // Close the PDF document  
+                    mensajeria.mostrarMensaje("El documento fue creado exitosamente en " + filePath);
                 } catch (Exception ex) {
-                    // Handle any exceptions that occur during PDF generation
+                    // Handle any exceptions that occur during PDF generation  
                     MessageBox.Show("Error al generar PDF: " + ex.Message);
                 } finally {
-                    // Close the PDF document
-                    mensajeria.mostrarMensaje("El documento fue creado exitosamente en " + filePath);
                     document.Close();
                 }
             }

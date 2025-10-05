@@ -49,6 +49,11 @@ namespace ProyectoTC2023 {
                 } else {
                     mensajeria.mostrarMensaje(resultado);
                 }
+
+                foreach (Form form in Application.OpenForms.Cast<Form>().ToList()) {
+                    if (form is FormMain || form is LoginForm) { }
+                        else form.Close();
+                }
             }
         }
 
