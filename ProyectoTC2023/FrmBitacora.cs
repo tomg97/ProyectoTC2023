@@ -60,25 +60,30 @@ namespace ProyectoTC2023 {
 
             DataTable dataTable;
 
+            var selectedItem = cbMarcaProductoBit.SelectedItem;
+            var enumContenido = selectedItem.GetType().GetProperty("Value").GetValue(selectedItem, null).ToString();
+
+
             if (tipoOperacion == "Eventos" || tipoOperacion == "Events") {
                 parameters = new Dictionary<string, string> {
-                    { "@usuario", cbNomUsuBit.Text },
-                    { "@modulo", cbModuloBit.Text },
-                    { "@criticidad", cbCriticidadBit.Text },
-                    { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
-                    { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") }
-                };
+                   { "@usuario", cbNomUsuBit.Text },
+                   { "@modulo", cbModuloBit.Text },
+                   { "@criticidad", cbCriticidadBit.Text },
+                   { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
+                   { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") },
+                   { "@evento", enumContenido }
+               };
                 dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
             } else {
                 var activo = cbCriticidadBit.Text == "Si" ? "1" : "0";
                 parameters = new Dictionary<string, string> {
-                    { "@usuMod", cbNomUsuBit.Text },
-                    { "@tipoOp", cbModuloBit.Text },
-                    { "@activo", activo },
-                    { "@marcaProducto", cbMarcaProductoBit.Text },
-                    { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
-                    { "@ToDate", dtpHasta.Value.ToString("yyyy-MM-dd") }
-                };
+                   { "@usuMod", cbNomUsuBit.Text },
+                   { "@tipoOp", cbModuloBit.Text },
+                   { "@activo", activo },
+                   { "@marcaProducto", cbMarcaProductoBit.Text },
+                   { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
+                   { "@ToDate", dtpHasta.Value.ToString("yyyy-MM-dd") }
+               };
                 dataTable = manejaBitacora.lookupBitacoraCambiosParametros(parameters);
             }
 
@@ -122,6 +127,7 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            lenguajeActual = codigoIdioma;
             Traductor traductor = new Traductor("ProyectoTC2023.FrmBitacora", typeof(FrmBitacora), codigoIdioma);
 
             foreach (Control control in this.Controls) {
@@ -136,8 +142,8 @@ namespace ProyectoTC2023 {
         }
 
         private void prepararParaEventos() {
-            cbMarcaProductoBit.Visible = false;
-            lblMarcaProdBit.Visible = false;
+            lblMarcaProdBit.Text = lenguajeActual == "es-AR" ? "Evento" : "Event";
+            lblMarcaProdBit.Visible = true;
 
             cbNomUsuBit.DataSource = resultadosDb.traerTodosUsuarios();
             cbNomUsuBit.DisplayMember = "nomUsu";
@@ -155,6 +161,17 @@ namespace ProyectoTC2023 {
             foreach (Criticidad criticidad in enumsCrit) {
                 cbCriticidadBit.Items.Add(criticidad.ToString());
             }
+            var enumEventos = Enum.GetValues(typeof(EventoEnum))
+                .Cast<EventoEnum>()
+                .Select(texto => new {
+                    Value = texto,
+                    Display = texto.GetDescripcionTraducida()
+                }).OrderBy(e => e.Display)
+                .ToList();
+            cbMarcaProductoBit.Items.Clear();
+            cbMarcaProductoBit.DataSource = enumEventos;
+            cbMarcaProductoBit.DisplayMember = "Display";
+            cbMarcaProductoBit.ValueMember = "Value";
         }
         private void prepararParaCambios() {
             cbMarcaProductoBit.Visible = false;
@@ -214,11 +231,13 @@ namespace ProyectoTC2023 {
             cbNomUsuBit.SelectedIndex = 0;
             cbModuloBit.SelectedIndex = -1;
             cbCriticidadBit.SelectedIndex = -1;
+            cbMarcaProductoBit.SelectedIndex = -1;
             dtpDesde.Value = DateTime.Now.AddDays(-1);
             dtpHasta.Value = DateTime.Now;
             dgvBitacora.DataSource = null;
             txtNombreBit.Clear();
             txtApellidoBit.Clear();
+            settearSegunTipo();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e) {

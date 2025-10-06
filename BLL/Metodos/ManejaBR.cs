@@ -13,20 +13,21 @@ namespace BLL.Metodos {
         public string realizarBackup(string filePath) {
             try {
                 manejaDb.realizarBackup(filePath);
-                bitacora.persistirMensajeLogged("Backup exitoso", Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
+                manejaDb.realizarBackup(filePath);
                 return "Backup exitoso.";
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged("Backup fallido", Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupNoOk, Modulo.BackupRestore, Criticidad.Uno);
                 return "El backup no pudo ser realizado. Razón: " + ex;
             }
         }
         public string realizarRestore(string filePath) {
             try {
                 manejaDb.realizarRestore(filePath);
-                bitacora.persistirMensajeLogged("Restore exitoso", Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.RestoreOk, Modulo.BackupRestore, Criticidad.Uno);
                 return "Restore exitoso.";
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged("Restore fallido", Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.RestoreNoOk, Modulo.BackupRestore, Criticidad.Uno);
                 return "El restore no pudo ser realizado. Razón: " + ex;
             }
         }
@@ -34,10 +35,11 @@ namespace BLL.Metodos {
             string folderPath = "C:\\Users\\Public\\Documents\\ComercializAR.bak";
             string filePath = new BackupRestore().Backup(folderPath);
             realizarBackup(filePath);
-            bitacora.persistirMensajeLogged("Backup automático exitoso", Modulo.BackupRestore, Criticidad.Uno);
+            bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
             ManejaDV manejaDV = new ManejaDV();
             manejaDV.almacenarDV();
-            bitacora.persistirMensajeLogged("Se almacenó el DV exitosamente", Modulo.BackupRestore, Criticidad.Uno);
+            realizarBackup(filePath);
+            bitacora.persistirMensajeLogged(EventoEnum.GenerarDVOk, Modulo.BackupRestore, Criticidad.Uno);
         }
     } 
 }

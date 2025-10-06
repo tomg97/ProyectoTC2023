@@ -51,7 +51,10 @@
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Criticidad.cs" />
+    <Compile Include="Entidades\DescripcionEventoTraduccion.cs" />
     <Compile Include="Entidades\DV.cs" />
+    <Compile Include="Entidades\EventoEnum.cs" />
+    <Compile Include="Entidades\EventoEnumExtension.cs" />
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Componente.cs" />
     <Compile Include="Entidades\Familia.cs" />
@@ -69,6 +72,9 @@
     <Compile Include="Métodos\LenguajeActual.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Entidades\DescripcionEventoTraduccion.resx">
+      <DependentUpon>DescripcionEventoTraduccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

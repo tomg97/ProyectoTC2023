@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CUL.Entidades {
@@ -13,9 +15,9 @@ namespace CUL.Entidades {
 			get { return _id; }
 			set { _id = value; }
 		}
-		private string _contenido;
+		private EventoEnum _contenido;
 
-		public string contenido {
+		public EventoEnum contenido {
 			get { return _contenido; }
 			set { _contenido = value; }
 		}
@@ -32,7 +34,7 @@ namespace CUL.Entidades {
 			set { _usuario = value; }
 		}
 		public MensajeEvento() { }
-		public MensajeEvento(string contenido, string usuario, Modulo tabla, Criticidad criticidad) {
+		public MensajeEvento(EventoEnum contenido, string usuario, Modulo tabla, Criticidad criticidad) {
 			_contenido = contenido;
 			_usuario = usuario;
 			_fecha = DateTime.Now;
@@ -51,6 +53,10 @@ namespace CUL.Entidades {
 			get { return _criticidad; }
 			set { _criticidad = value; }
 		}
-
-	}
+		public string getContenido() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+			Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoIdioma);
+            return _contenido.GetDescripcionTraducida();
+        }
+    }
 }

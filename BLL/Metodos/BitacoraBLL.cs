@@ -12,7 +12,7 @@ namespace BLL.Metodos {
     public class BitacoraBLL {
         public BitacoraBLL() { }
         ManejaDbBitacora manejaDbBitacora = new ManejaDbBitacora();
-        public void persistirMensajeLogged(string contenido, Modulo tabla, Criticidad criticidad) {
+        public void persistirMensajeLogged(EventoEnum contenido, Modulo tabla, Criticidad criticidad) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
@@ -24,7 +24,7 @@ namespace BLL.Metodos {
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
-        public void persistirMensajeNoLogged(string contenido, Modulo tabla, Criticidad criticidad, string nomUsu) {
+        public void persistirMensajeNoLogged(EventoEnum contenido, Modulo tabla, Criticidad criticidad, string nomUsu) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
@@ -43,13 +43,13 @@ namespace BLL.Metodos {
         }*/
         public DataTable lookupBitacoraEventosParametros(Dictionary<string, string> dic) {
             List<MensajeEvento> list = manejaDbBitacora.lookupMensajesBitacoraEventos(dic);
-            persistirMensajeLogged("Se realizó una búsqueda de eventos con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
+            persistirMensajeLogged(EventoEnum.LookupEventoOk, Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
         }
         public DataTable lookupBitacoraCambiosParametros(Dictionary<string, string> dic) {
             List<MensajeCambio> list = manejaDbBitacora.lookupMensajesBitacoraCambios(dic);
-            persistirMensajeLogged("Se realizó una búsqueda de cambios con los siguientes parámetros: " + armarMensajeDiccionario(dic) + " .", Modulo.Bitacora, Criticidad.Dos);
+            persistirMensajeLogged(EventoEnum.LookupCambioOk, Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitCambio(list);
             return dataTable;
         }
@@ -83,7 +83,7 @@ namespace BLL.Metodos {
             foreach (var log in list) {
                 DataRow row = dataTable.NewRow();
                 row[username] = log.usuario;
-                row[contents] = log.contenido;
+                row[contents] = log.contenido.GetDescripcionTraducida();
                 row[module] = log.modulo;
                 row[severity] = log.criticidad;
                 row[date] = log.fecha;
@@ -139,7 +139,7 @@ namespace BLL.Metodos {
         public void rollbackCambio(Producto producto, string keyOg) {
             ManejaDbMaestro manejaDbMaestro = new ManejaDbMaestro();
             manejaDbMaestro.modificarProducto(producto, keyOg);
-            persistirMensajeLogged("Se realizó un rollback de cambios con los siguientes parámetros: Producto modificado: " + producto.marcaProducto + " " + producto.nombreProducto + " .", Modulo.Bitacora, Criticidad.Uno);
+            persistirMensajeLogged(EventoEnum.RollbackCambioOk, Modulo.Bitacora, Criticidad.Uno);
         }
     }
 }

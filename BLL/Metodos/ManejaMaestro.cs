@@ -106,28 +106,28 @@ namespace BLL.Metodos {
         public void guardarProductoNuevo(Producto producto) {
             try {
                 manejaDbMaestro.guardarProductoNuevo(producto);
-                bitacora.persistirMensajeLogged("Se dio el alta de un producto nuevo. Id Producto: " + producto.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged("Se produjo un error durante el alta de un producto nuevo. Error: " + ex.Message + ". Id Producto: " + producto.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoNoOk, Modulo.Maestros, Criticidad.Uno);
             }            
         }
         public void guardarUsuario(Usuario usuario) {
             try {
                 usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
                 dbUsuarios.crearUsuario(usuario);
-                bitacora.persistirMensajeLogged("Se dio el alta de un usuario nuevo. Nombre usuario: " + usuario.nomUsu, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged("Se produjo un error durante el alta de un usuario nuevo. Error: " + ex.Message + ". Nombre Usuario: " + usuario.nomUsu, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioNoOk, Modulo.Maestros, Criticidad.Uno);
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
             }            
         }
         public void crearCliente(Cliente cliente) {
             try {
                 manejaCliente.crearCliente(cliente);
-                bitacora.persistirMensajeLogged("Se dio el alta de un cliente nuevo. Id Cliente: " + cliente.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged("Se produjo un error durante el alta de un cliente nuevo. Error: " + ex.Message + ". Id Cliente: " + cliente.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteNoOk, Modulo.Maestros, Criticidad.Uno);
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
             }            
         }
@@ -135,41 +135,63 @@ namespace BLL.Metodos {
         public void modificaUsuario(Usuario usuario, string keyOg) {
             try {
                 manejaDbMaestro.modificarUsuario(usuario, keyOg);
-                bitacora.persistirMensajeLogged("Se modificó un usuario. Nombre de Usuario modificado: " + keyOg, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged("Se produjo un error durante la modificación de un usuario. Error: " + ex.Message + ". Nombre de Usuario: " + usuario.nomUsu, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Maestros, Criticidad.Uno);
             }
             
         }
         public void modificaProducto(Producto producto, string keyOg) {
             try {
                 manejaDbMaestro.modificarProducto(producto, keyOg);
-                bitacora.persistirMensajeLogged("Se modificó un producto. Id de producto modificado: " + keyOg, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged("Se produjo un error durante la modificación de un producto. Error: " + ex.Message + ". Id de Producto: " + producto.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Maestros, Criticidad.Uno);
             }
         }
         public void modificaCliente(Cliente cliente, string keyOg) {
             try {
                 manejaDbMaestro.modificarCliente(cliente, keyOg);
-                bitacora.persistirMensajeLogged("Se modificó un cliente. Id de cliente modificado: " + keyOg, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged("Se produjo un error durante la modificación de un cliente. Error: " + ex.Message + ". Id de cliente: " + cliente.id, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteNoOk, Modulo.Maestros, Criticidad.Uno);
             }
         }
 
         public void eliminarEntrada(string key) {
             string id = string.Equals(tipo, "Usuarios") ? (lenguajeActual == "es-AR" ? "Nombre de Usuario" : "Username") : "Id";
-            string modificado = string.Equals(tipo, "Usuarios") ? tipo.Substring(0, tipo.Length - 1).ToLower() : tipo.ToLower();
+            var modificado = new EventoEnum();
             try {
                 manejaDbMaestro.eliminarEntrada(key);
-                bitacora.persistirMensajeLogged($"Se eliminó un {modificado}. {id}: ", Modulo.Maestros, Criticidad.Uno);
+                switch (tipo) {
+                    case "Usuarios":
+                        modificado = EventoEnum.EliminaUsuarioOk;
+                        break;
+                    case "Producto":
+                        modificado = EventoEnum.EliminaProductoOk;
+                        break;
+                    case "Cliente":
+                        modificado = EventoEnum.EliminaClienteOk;
+                        break;
+                }
+                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged($"Se produjo un error al intentar eliminar un un {modificado}. Error: " + ex.Message + $". {id}: ", Modulo.Maestros, Criticidad.Uno);
+                switch (tipo) {
+                    case "Usuarios":
+                        modificado = EventoEnum.EliminaUsuarioNoOk;
+                        break;
+                    case "Producto":
+                        modificado = EventoEnum.EliminaProductoNoOk;
+                        break;
+                    case "Cliente":
+                        modificado = EventoEnum.EliminaClienteNoOk;
+                        break;
+                }
+                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
             }
         }
     }
