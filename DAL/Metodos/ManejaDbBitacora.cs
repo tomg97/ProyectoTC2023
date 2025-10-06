@@ -35,7 +35,7 @@ namespace DAL.Metodos {
                         while (reader.Read()) {
                             MensajeEvento mensaje = new MensajeEvento();
                             mensaje.id = reader.GetInt32(reader.GetOrdinal("id")).ToString();
-                            mensaje.contenido = reader.GetString(reader.GetOrdinal("contenido"));
+                            mensaje.contenido = parsearEvento(reader.GetString(reader.GetOrdinal("contenido")));
                             mensaje.usuario = reader.GetString(reader.GetOrdinal("usuario"));
                             mensaje.fecha = reader.GetDateTime(reader.GetOrdinal("fecha"));
                             mensaje.modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo")));
@@ -115,7 +115,7 @@ namespace DAL.Metodos {
                 while (reader.Read()) {
                     MensajeEvento mensaje = new MensajeEvento {
                         id = reader.GetInt32(reader.GetOrdinal("id")).ToString(),
-                        contenido = reader.GetString(reader.GetOrdinal("contenido")),
+                        contenido = parsearEvento(reader.GetString(reader.GetOrdinal("contenido"))),
                         usuario = reader.GetString(reader.GetOrdinal("usuario")),
                         fecha = reader.GetDateTime(reader.GetOrdinal("fecha")),
                         modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo"))),
@@ -166,6 +166,13 @@ namespace DAL.Metodos {
                 return criticidadOut;
             } else {
                 throw new ArgumentException($"Valor de criticidad inválido: {criticidadIn}");
+            }
+        }
+        static private EventoEnum parsearEvento(string eventoIn) {
+            if (Enum.TryParse(eventoIn, true, out EventoEnum eventoOut)) {
+                return eventoOut;
+            } else {
+                throw new ArgumentException($"Valor de evento inválido: {eventoIn}");
             }
         }
         static private MensajeCambio.TipoOperacion parsearTipoOp(string tipoOpIn) {
