@@ -117,45 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="productoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="productoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 11</value>
-  </data>
-  <data name="dataSetProductos.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="productoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>109, 11</value>
+  </metadata>
+  <metadata name="dataSetProductos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>10, 11</value>
-  </data>
-  <data name="productoTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="dataSetProductos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 11</value>
+  </metadata>
+  <metadata name="productoTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>231, 11</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>23</value>
-  </data>
-  <data name="btnAsignarCliente" xml:space="preserve">
-    <value>Datos Pago</value>
-  </data>
-  <data name="btnRemoverCarrito" xml:space="preserve">
-    <value>Remover Selección</value>
-  </data>
-  <data name="btnSelectVentas" xml:space="preserve">
-    <value>Seleccionar</value>
-  </data>
-  <data name="btnVaciar" xml:space="preserve">
-    <value>Vaciar</value>
-  </data>
-  <data name="FrmVentas" xml:space="preserve">
-    <value>Módulo ventas</value>
-  </data>
-  <data name="grpCarrito" xml:space="preserve">
-    <value>Carrito</value>
-  </data>
-  <data name="grpStockVentas" xml:space="preserve">
-    <value>Existencias</value>
-  </data>
-  <data name="lblAsignarCliente" xml:space="preserve">
-    <value>Asignar DNI de cliente a carrito:</value>
-  </data>
-  <data name="lblCantidadVentas" xml:space="preserve">
-    <value>Cantidad:</value>
-  </data>
+  </metadata>
 </root>

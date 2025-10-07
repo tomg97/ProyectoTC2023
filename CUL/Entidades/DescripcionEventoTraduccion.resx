@@ -141,6 +141,15 @@
   <data name="CreaUsuarioOk" xml:space="preserve">
     <value>Creación de usuario exitosa</value>
   </data>
+  <data name="CreaVentaNoOk" xml:space="preserve">
+    <value>Creación venta no facturada no exitosa</value>
+  </data>
+  <data name="CreaVentaOk" xml:space="preserve">
+    <value>Creación venta no facturada exitosa</value>
+  </data>
+  <data name="DespachaFacturaOk" xml:space="preserve">
+    <value>Despacho de factura exitoso</value>
+  </data>
   <data name="EliminaClienteNoOk" xml:space="preserve">
     <value>Eliminacion de cliente no exitosa</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="EliminaUsuarioOk" xml:space="preserve">
     <value>Eliminacion de usuario exitosa</value>
+  </data>
+  <data name="FacturaVentaNoOk" xml:space="preserve">
+    <value>Intento de facturar venta fallido</value>
+  </data>
+  <data name="FacturaVentaOk" xml:space="preserve">
+    <value>Venta facturada correctamente</value>
   </data>
   <data name="GenerarDVOk" xml:space="preserve">
     <value>Generación de DV exitosa</value>
