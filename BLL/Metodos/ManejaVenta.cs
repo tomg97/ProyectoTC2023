@@ -15,7 +15,6 @@ namespace BLL.Metodos {
         ManejaBR manejaBR = new ManejaBR();
         Guuido guidGenerator = new Guuido();
         Jsonifier jsonificador = new Jsonifier();
-        BitacoraBLL bitacora = new BitacoraBLL();
 
         public void llenarCarrito(Producto producto) {
             SingletonCarrito.getInstance.agregarProducto(producto);
@@ -41,7 +40,6 @@ namespace BLL.Metodos {
             Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());
             mensaje = manejaDbVenta.actualizarStock(carrito, SingletonSesion.getInstance.getUsuarioActual().nomUsu);
             manejaDbVenta.crearVentaNoFacturada(venta);
-            bitacora.persistirMensajeLogged(EventoEnum.CreaVentaOk, Modulo.Ventas, Criticidad.Uno);
             manejaBR.realizarAutoBackup();
             return mensaje;
         }
@@ -64,7 +62,6 @@ namespace BLL.Metodos {
             Factura factura = new Factura(venta);
             jsonificador.guardarAJsonConLocación(factura, "Factura-" + venta.id);
             manejaDbVenta.facturarVenta(venta);
-            bitacora.persistirMensajeLogged(EventoEnum.FacturaVentaOk, Modulo.Ventas, Criticidad.Uno);
             manejaBR.realizarAutoBackup();
         }
         public void devolverFacturaYCargarTreeView(TreeView control) {
@@ -74,7 +71,6 @@ namespace BLL.Metodos {
             string rutaArchivo = SingletonRutaArchivo.getInstance.getRutaArchivo();
             manejaDbVenta.despacharFactura(datos);
             jsonificador.moverArchivoDone(rutaArchivo, "Facturas despachadas");
-            bitacora.persistirMensajeLogged(EventoEnum.DespachaFacturaOk, Modulo.Ventas, Criticidad.Uno);
             manejaBR.realizarAutoBackup();
         }
     }

@@ -43,13 +43,13 @@ namespace BLL.Metodos {
         }*/
         public DataTable lookupBitacoraEventosParametros(Dictionary<string, string> dic) {
             List<MensajeEvento> list = manejaDbBitacora.lookupMensajesBitacoraEventos(dic);
-            persistirMensajeLogged(EventoEnum.LookupEventoOk, Modulo.Bitacora, Criticidad.Tres);
+            persistirMensajeLogged(EventoEnum.LookupEventoOk, Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
         }
         public DataTable lookupBitacoraCambiosParametros(Dictionary<string, string> dic) {
             List<MensajeCambio> list = manejaDbBitacora.lookupMensajesBitacoraCambios(dic);
-            persistirMensajeLogged(EventoEnum.LookupCambioOk, Modulo.Bitacora, Criticidad.Tres);
+            persistirMensajeLogged(EventoEnum.LookupCambioOk, Modulo.Bitacora, Criticidad.Dos);
             DataTable dataTable = cargarDataTableBitCambio(list);
             return dataTable;
         }
