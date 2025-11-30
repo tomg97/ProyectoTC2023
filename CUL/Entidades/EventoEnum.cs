@@ -74,6 +74,15 @@ namespace CUL.Entidades {
         LookupCambioOk,
         [DescripcionEventoTraduccion("RollbackCambioOk", typeof(DescripcionEventoTraduccion))]
         RollbackCambioOk,
-
+        [DescripcionEventoTraduccion("CreaVentaOk", typeof(DescripcionEventoTraduccion))]
+        CreaVentaOk,
+        [DescripcionEventoTraduccion("CreaVentaNoOk", typeof(DescripcionEventoTraduccion))]
+        CreaVentaNoOk,
+        [DescripcionEventoTraduccion("FacturaVentaOk", typeof(DescripcionEventoTraduccion))]
+        FacturaVentaOk,
+        [DescripcionEventoTraduccion("FacturaVentaNoOk", typeof(DescripcionEventoTraduccion))]
+        FacturaVentaNoOk,
+        [DescripcionEventoTraduccion("DespachaFacturaOk", typeof(DescripcionEventoTraduccion))]
+        DespachaFacturaOk,
     }
 }

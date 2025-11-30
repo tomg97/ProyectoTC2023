@@ -13,11 +13,11 @@ namespace BLL.Metodos {
         public string realizarBackup(string filePath) {
             try {
                 manejaDb.realizarBackup(filePath);
-                bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Dos);
                 manejaDb.realizarBackup(filePath);
                 return "Backup exitoso.";
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.BackupNoOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupNoOk, Modulo.BackupRestore, Criticidad.Dos);
                 return "El backup no pudo ser realizado. Razón: " + ex;
             }
         }
@@ -35,11 +35,12 @@ namespace BLL.Metodos {
             string folderPath = "C:\\Users\\Public\\Documents\\ComercializAR.bak";
             string filePath = new BackupRestore().Backup(folderPath);
             realizarBackup(filePath);
-            bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
+            bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Cinco);
             ManejaDV manejaDV = new ManejaDV();
             manejaDV.almacenarDV();
             realizarBackup(filePath);
-            bitacora.persistirMensajeLogged(EventoEnum.GenerarDVOk, Modulo.BackupRestore, Criticidad.Uno);
+            bitacora.persistirMensajeLogged(EventoEnum.GenerarDVOk, Modulo.BackupRestore, Criticidad.Cinco);
+            manejaDV.almacenarDV();
         }
     } 
 }

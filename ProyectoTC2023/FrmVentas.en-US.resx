@@ -132,7 +132,7 @@
     <value>23</value>
   </data>
   <data name="btnAsignarCliente" xml:space="preserve">
-    <value>Payment details</value>
+    <value>Payment</value>
   </data>
   <data name="btnRemoverCarrito" xml:space="preserve">
     <value>Remove Selected</value>
