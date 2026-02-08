@@ -11,7 +11,7 @@ using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbVenta {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True"; 
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public List<Producto> getProductosEnStock() {
             List<Producto> listaProductos = new List<Producto>();

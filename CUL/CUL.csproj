@@ -61,11 +61,14 @@
     <Compile Include="Entidades\MarcaProducto.cs" />
     <Compile Include="Entidades\MensajeCambio.cs" />
     <Compile Include="Entidades\MensajeEvento.cs" />
+    <Compile Include="Entidades\OrdenCompra.cs" />
     <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\SingletonCarrito.cs" />
     <Compile Include="Entidades\SingletonSesion.cs" />
     <Compile Include="Entidades\Modulo.cs" />
+    <Compile Include="Entidades\SolicitudCotizacion.cs" />
     <Compile Include="Entidades\TipoPermiso.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Venta.cs" />

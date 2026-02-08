@@ -54,7 +54,7 @@
             // 
             this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBitacora.Location = new System.Drawing.Point(16, 144);
-            this.dgvBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBitacora.Name = "dgvBitacora";
             this.dgvBitacora.RowHeadersWidth = 51;
             this.dgvBitacora.Size = new System.Drawing.Size(1049, 395);
@@ -69,7 +69,7 @@
             "Cambios",
             "Eventos"});
             this.cbTipoBit.Location = new System.Drawing.Point(16, 36);
-            this.cbTipoBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTipoBit.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipoBit.Name = "cbTipoBit";
             this.cbTipoBit.Size = new System.Drawing.Size(160, 24);
             this.cbTipoBit.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             this.cbNomUsuBit.FormattingEnabled = true;
             this.cbNomUsuBit.Location = new System.Drawing.Point(16, 98);
-            this.cbNomUsuBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbNomUsuBit.Margin = new System.Windows.Forms.Padding(4);
             this.cbNomUsuBit.Name = "cbNomUsuBit";
             this.cbNomUsuBit.Size = new System.Drawing.Size(160, 24);
             this.cbNomUsuBit.TabIndex = 2;
@@ -91,7 +91,7 @@
             "2",
             "3"});
             this.cbCriticidadBit.Location = new System.Drawing.Point(487, 98);
-            this.cbCriticidadBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCriticidadBit.Margin = new System.Windows.Forms.Padding(4);
             this.cbCriticidadBit.Name = "cbCriticidadBit";
             this.cbCriticidadBit.Size = new System.Drawing.Size(113, 24);
             this.cbCriticidadBit.TabIndex = 3;
@@ -99,7 +99,7 @@
             // dtpHasta
             // 
             this.dtpHasta.Location = new System.Drawing.Point(841, 100);
-            this.dtpHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpHasta.Margin = new System.Windows.Forms.Padding(4);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(224, 22);
             this.dtpHasta.TabIndex = 5;
@@ -107,7 +107,7 @@
             // dtpDesde
             // 
             this.dtpDesde.Location = new System.Drawing.Point(608, 100);
-            this.dtpDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDesde.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(225, 22);
             this.dtpDesde.TabIndex = 6;
@@ -132,7 +132,7 @@
             "Usuarios",
             "Venta"});
             this.cbModuloBit.Location = new System.Drawing.Point(185, 98);
-            this.cbModuloBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbModuloBit.Margin = new System.Windows.Forms.Padding(4);
             this.cbModuloBit.Name = "cbModuloBit";
             this.cbModuloBit.Size = new System.Drawing.Size(133, 24);
             this.cbModuloBit.TabIndex = 3;
@@ -190,7 +190,7 @@
             // btnRollback
             // 
             this.btnRollback.Location = new System.Drawing.Point(1073, 511);
-            this.btnRollback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRollback.Margin = new System.Windows.Forms.Padding(4);
             this.btnRollback.Name = "btnRollback";
             this.btnRollback.Size = new System.Drawing.Size(100, 28);
             this.btnRollback.TabIndex = 13;
@@ -202,7 +202,7 @@
             // btnLookBit
             // 
             this.btnLookBit.Location = new System.Drawing.Point(1073, 96);
-            this.btnLookBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLookBit.Margin = new System.Windows.Forms.Padding(4);
             this.btnLookBit.Name = "btnLookBit";
             this.btnLookBit.Size = new System.Drawing.Size(100, 28);
             this.btnLookBit.TabIndex = 14;
@@ -212,13 +212,14 @@
             // 
             // btnAplicar
             // 
+            this.btnAplicar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnAplicar.Location = new System.Drawing.Point(185, 33);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(100, 28);
             this.btnAplicar.TabIndex = 15;
             this.btnAplicar.Text = "Aplicar";
-            this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.UseVisualStyleBackColor = false;
             this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
             // lblNombreBit
@@ -244,7 +245,7 @@
             // txtNombreBit
             // 
             this.txtNombreBit.Location = new System.Drawing.Point(1073, 164);
-            this.txtNombreBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreBit.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreBit.Name = "txtNombreBit";
             this.txtNombreBit.ReadOnly = true;
             this.txtNombreBit.Size = new System.Drawing.Size(249, 22);
@@ -253,7 +254,7 @@
             // txtApellidoBit
             // 
             this.txtApellidoBit.Location = new System.Drawing.Point(1072, 241);
-            this.txtApellidoBit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtApellidoBit.Margin = new System.Windows.Forms.Padding(4);
             this.txtApellidoBit.Name = "txtApellidoBit";
             this.txtApellidoBit.ReadOnly = true;
             this.txtApellidoBit.Size = new System.Drawing.Size(249, 22);
@@ -262,7 +263,7 @@
             // btnImprimir
             // 
             this.btnImprimir.Location = new System.Drawing.Point(1224, 511);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(100, 28);
             this.btnImprimir.TabIndex = 20;
@@ -273,7 +274,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Location = new System.Drawing.Point(1219, 96);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(100, 28);
             this.btnLimpiar.TabIndex = 21;
@@ -337,7 +338,7 @@
             this.Controls.Add(this.cbNomUsuBit);
             this.Controls.Add(this.cbTipoBit);
             this.Controls.Add(this.dgvBitacora);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBitacora";
             this.Text = "FrmBitacora";
             this.Load += new System.EventHandler(this.FrmBitacora_Load);

@@ -45,8 +45,13 @@
             this.tmiFacturar = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiDespachar = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSolicitudCotizacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOrdenCompra = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRegistroProveedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPagarOrdenCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRecepcionProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,14 +87,14 @@
             // tsmiLogin
             // 
             this.tsmiLogin.Name = "tsmiLogin";
-            this.tsmiLogin.Size = new System.Drawing.Size(224, 26);
+            this.tsmiLogin.Size = new System.Drawing.Size(129, 26);
             this.tsmiLogin.Text = "Login";
             this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -199,29 +204,63 @@
             // tmiSeleccionYCarrito
             // 
             this.tmiSeleccionYCarrito.Name = "tmiSeleccionYCarrito";
-            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(216, 26);
+            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(224, 26);
             this.tmiSeleccionYCarrito.Text = "Seleccion Y Carrito";
             this.tmiSeleccionYCarrito.Click += new System.EventHandler(this.tmiSeleccionYCarrito_Click);
             // 
             // tmiFacturar
             // 
             this.tmiFacturar.Name = "tmiFacturar";
-            this.tmiFacturar.Size = new System.Drawing.Size(216, 26);
+            this.tmiFacturar.Size = new System.Drawing.Size(224, 26);
             this.tmiFacturar.Text = "Facturar";
             this.tmiFacturar.Click += new System.EventHandler(this.tmiFacturar_Click);
             // 
             // tmiDespachar
             // 
             this.tmiDespachar.Name = "tmiDespachar";
-            this.tmiDespachar.Size = new System.Drawing.Size(216, 26);
+            this.tmiDespachar.Size = new System.Drawing.Size(224, 26);
             this.tmiDespachar.Text = "Despachar";
             this.tmiDespachar.Click += new System.EventHandler(this.tmiDespachar_Click);
             // 
             // comprasToolStripMenuItem
             // 
+            this.comprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSolicitudCotizacion,
+            this.tsmiOrdenCompra,
+            this.tsmiRegistroProveedor,
+            this.tsmiPagarOrdenCompra,
+            this.tsmiRecepcionProductos});
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
             this.comprasToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.comprasToolStripMenuItem.Text = "Compras";
+            // 
+            // tsmiSolicitudCotizacion
+            // 
+            this.tsmiSolicitudCotizacion.Name = "tsmiSolicitudCotizacion";
+            this.tsmiSolicitudCotizacion.Size = new System.Drawing.Size(231, 26);
+            this.tsmiSolicitudCotizacion.Text = "Solicitud Cotizacion";
+            this.tsmiSolicitudCotizacion.Click += new System.EventHandler(this.tsmiSolicitudCotizacion_Click);
+            // 
+            // tsmiOrdenCompra
+            // 
+            this.tsmiOrdenCompra.Name = "tsmiOrdenCompra";
+            this.tsmiOrdenCompra.Size = new System.Drawing.Size(231, 26);
+            this.tsmiOrdenCompra.Text = "Orden de Compra";
+            this.tsmiOrdenCompra.Click += new System.EventHandler(this.tsmiOrdenCompra_Click);
+            // 
+            // tsmiRegistroProveedor
+            // 
+            this.tsmiRegistroProveedor.Name = "tsmiRegistroProveedor";
+            this.tsmiRegistroProveedor.Size = new System.Drawing.Size(231, 26);
+            this.tsmiRegistroProveedor.Text = "Registro Proveedor";
+            this.tsmiRegistroProveedor.Click += new System.EventHandler(this.tsmiRegistroProveedor_Click);
+            // 
+            // tsmiPagarOrdenCompra
+            // 
+            this.tsmiPagarOrdenCompra.Name = "tsmiPagarOrdenCompra";
+            this.tsmiPagarOrdenCompra.Size = new System.Drawing.Size(231, 26);
+            this.tsmiPagarOrdenCompra.Text = "Pagar Orden Compra";
+            this.tsmiPagarOrdenCompra.Click += new System.EventHandler(this.tsmiPagarOrdenCompra_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -236,6 +275,13 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
+            // tsmiRecepcionProductos
+            // 
+            this.tsmiRecepcionProductos.Name = "tsmiRecepcionProductos";
+            this.tsmiRecepcionProductos.Size = new System.Drawing.Size(231, 26);
+            this.tsmiRecepcionProductos.Text = "Recepcion Productos";
+            this.tsmiRecepcionProductos.Click += new System.EventHandler(this.tsmiRecepcionProductos_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -246,7 +292,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "ComercializAR";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -282,6 +328,11 @@
         private System.Windows.Forms.ToolStripMenuItem tmiFacturar;
         private System.Windows.Forms.ToolStripMenuItem tmiDespachar;
         private System.Windows.Forms.ToolStripMenuItem tsmUsuMaestro;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSolicitudCotizacion;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOrdenCompra;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRegistroProveedor;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPagarOrdenCompra;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRecepcionProductos;
     }
 }
 
