@@ -150,5 +150,30 @@ namespace ProyectoTC2023 {
         private void tsmiArchivo_Click(object sender, EventArgs e) {
 
         }
+
+        private void tsmiRegistroProveedor_Click(object sender, EventArgs e) {
+            FrmRegistroProveedor frm = new FrmRegistroProveedor("Registro");
+            invocarForm(frm);
+        }
+
+        private void tsmiSolicitudCotizacion_Click(object sender, EventArgs e) {
+            FrmCotizacion frmCotizacion = new FrmCotizacion();
+            invocarForm(frmCotizacion);
+        }
+
+        private void tsmiOrdenCompra_Click(object sender, EventArgs e) {
+            FrmOrdenCompra frmOrdenCompra = new FrmOrdenCompra();
+            invocarForm(frmOrdenCompra);
+        }
+
+        private void tsmiPagarOrdenCompra_Click(object sender, EventArgs e) {
+            FrmPagoProveedor frmPagoProveedor = new FrmPagoProveedor();
+            invocarForm(frmPagoProveedor);
+        }
+
+        private void tsmiRecepcionProductos_Click(object sender, EventArgs e) {
+            FrmRecepcion frmRecepcion = new FrmRecepcion();
+            invocarForm(frmRecepcion);
+        }
     }
 }

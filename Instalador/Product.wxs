@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define GUI_TargetDir=$(var.GUI.TargetDir)?>
+	<Product Id="*" Name="Instalador" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="65ac1360-d3bf-43fd-8b89-997d065eaeee">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Instalador" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="en_US_files" />
+			<ComponentGroupRef Id="SqlServerTypes_x86_files" />
+			<ComponentGroupRef Id="SqlServerTypes_x64_files" />
+			<ComponentGroupRef Id="SqlServerTypes_files" />
+			<ComponentGroupRef Id="Icon_files" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Instalador">
+				  <Directory Id="en_US" Name="en-US" />
+				  <Directory Id="SqlServerTypes" Name="SqlServerTypes">
+				    <Directory Id="SqlServerTypes_x86" Name="x86" />
+				    <Directory Id="SqlServerTypes_x64" Name="x64" />
+				  </Directory>
+				  <Directory Id="Icon" Name="Icon" />
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="Microsoft.ReportViewer.ProcessingObjectModel.dll" Guid="751ee3bc-6821-4edf-a91c-c68ae792a8a4">
+			  <File Id="Microsoft.ReportViewer.ProcessingObjectModel.dll" Name="Microsoft.ReportViewer.ProcessingObjectModel.dll" Source="$(var.GUI_TargetDir)Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+			</Component>
+			<Component Id="Microsoft.ReportViewer.Common.dll" Guid="6302d032-5598-4290-8156-dc875671c66e">
+			  <File Id="Microsoft.ReportViewer.Common.dll" Name="Microsoft.ReportViewer.Common.dll" Source="$(var.GUI_TargetDir)Microsoft.ReportViewer.Common.dll" />
+			</Component>
+			<Component Id="BouncyCastle.Cryptography.dll" Guid="e2e968c5-2809-47f8-bedb-bc701c72063f">
+			  <File Id="BouncyCastle.Cryptography.dll" Name="BouncyCastle.Cryptography.dll" Source="$(var.GUI_TargetDir)BouncyCastle.Cryptography.dll" />
+			</Component>
+			<Component Id="Microsoft.ReportViewer.WinForms.dll" Guid="7e39075a-c9c8-45fb-93a3-3d31b3771d14">
+			  <File Id="Microsoft.ReportViewer.WinForms.dll" Name="Microsoft.ReportViewer.WinForms.dll" Source="$(var.GUI_TargetDir)Microsoft.ReportViewer.WinForms.dll" />
+			</Component>
+			<Component Id="itextsharp.dll" Guid="1b1ab3dc-4992-475c-b406-475e6e080e8f">
+			  <File Id="itextsharp.dll" Name="itextsharp.dll" Source="$(var.GUI_TargetDir)itextsharp.dll" />
+			</Component>
+			<Component Id="ProyectoTC2023.exe.config" Guid="4db62539-1021-4d7d-bc00-11ff487c7f13">
+			  <File Id="ProyectoTC2023.exe.config" Name="ProyectoTC2023.exe.config" Source="$(var.GUI_TargetDir)ProyectoTC2023.exe.config" />
+			</Component>
+			<Component Id="ProyectoTC2023.exe" Guid="53eef841-cb57-4ded-9f0c-c834bed5ae1a">
+			  <File Id="ProyectoTC2023.exe" Name="ProyectoTC2023.exe" Source="$(var.GUI_TargetDir)ProyectoTC2023.exe" />
+			</Component>
+			<Component Id="Microsoft.ReportViewer.DataVisualization.dll" Guid="2919547f-58c8-4045-adef-151557c8694d">
+			  <File Id="Microsoft.ReportViewer.DataVisualization.dll" Name="Microsoft.ReportViewer.DataVisualization.dll" Source="$(var.GUI_TargetDir)Microsoft.ReportViewer.DataVisualization.dll" />
+			</Component>
+			<Component Id="icon.ico" Guid="361b578e-fbd7-42e1-9b49-bf6cf43051e3">
+			  <File Id="icon.ico" Name="icon.ico" Source="$(var.GUI_TargetDir)icon.ico" />
+			</Component>
+			<Component Id="DAL.exe.config" Guid="8d8ea4ee-422c-4364-b82f-3e28b7f8dadd">
+			  <File Id="DAL.exe.config" Name="DAL.exe.config" Source="$(var.GUI_TargetDir)DAL.exe.config" />
+			</Component>
+			<Component Id="DAL.exe" Guid="fcd1497f-7158-454e-a9b0-a4a4f24f816b">
+			  <File Id="DAL.exe" Name="DAL.exe" Source="$(var.GUI_TargetDir)DAL.exe" />
+			</Component>
+			<Component Id="BLL.exe.config" Guid="00ae7f76-dc4d-4189-82e7-978abd1f8726">
+			  <File Id="BLL.exe.config" Name="BLL.exe.config" Source="$(var.GUI_TargetDir)BLL.exe.config" />
+			</Component>
+			<Component Id="BLL.exe" Guid="035f50f3-3aa3-4ba3-9f15-bb0a9cb4eaff">
+			  <File Id="BLL.exe" Name="BLL.exe" Source="$(var.GUI_TargetDir)BLL.exe" />
+			</Component>
+			<Component Id="CUL.exe.config" Guid="07f81bb2-ca57-40ba-a787-1199fa5a8354">
+			  <File Id="CUL.exe.config" Name="CUL.exe.config" Source="$(var.GUI_TargetDir)CUL.exe.config" />
+			</Component>
+			<Component Id="CUL.exe" Guid="d33a28a6-af60-48f0-8e49-65d0e0944348">
+			  <File Id="CUL.exe" Name="CUL.exe" Source="$(var.GUI_TargetDir)CUL.exe" />
+			</Component>
+			<Component Id="Newtonsoft.Json.dll" Guid="49a0b972-8bc3-4cff-a72a-1c9ea7ab2676">
+			  <File Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Source="$(var.GUI_TargetDir)Newtonsoft.Json.dll" />
+			</Component>
+			<Component Id="Servicios.exe.config" Guid="3a010e4d-b80e-4b6d-9518-57d579bbab53">
+			  <File Id="Servicios.exe.config" Name="Servicios.exe.config" Source="$(var.GUI_TargetDir)Servicios.exe.config" />
+			</Component>
+			<Component Id="Servicios.exe" Guid="20fb3fca-79f9-44cc-bfc2-f862abf9d541">
+			  <File Id="Servicios.exe" Name="Servicios.exe" Source="$(var.GUI_TargetDir)Servicios.exe" />
+			</Component>
+			<Component Id="Microsoft.SqlServer.Types.dll" Guid="2e09131e-5df3-4dcd-93e9-85e112cbeefa">
+			  <File Id="Microsoft.SqlServer.Types.dll" Name="Microsoft.SqlServer.Types.dll" Source="$(var.GUI_TargetDir)Microsoft.SqlServer.Types.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	<Fragment>
+	  <ComponentGroup Id="en_US_files" Directory="en_US">
+	    <Component Id="en_US_Servicios.resources.dll" Guid="ee26d65b-45e7-4b65-b628-5a6748fdf4fa">
+	      <File Id="en_US_Servicios.resources.dll" Name="Servicios.resources.dll" Source="$(var.GUI_TargetDir)en-US\Servicios.resources.dll" />
+	    </Component>
+	    <Component Id="en_US_ProyectoTC2023.resources.dll" Guid="e95691f4-ee04-412b-9d9b-a4f94c65aff4">
+	      <File Id="en_US_ProyectoTC2023.resources.dll" Name="ProyectoTC2023.resources.dll" Source="$(var.GUI_TargetDir)en-US\ProyectoTC2023.resources.dll" />
+	    </Component>
+	  </ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="SqlServerTypes_x86_files" Directory="SqlServerTypes_x86">
+      <Component Id="SqlServerTypes_x86_SqlServerSpatial140.dll" Guid="82b9a532-0930-44f7-a053-56c7bc1da656">
+        <File Id="SqlServerTypes_x86_SqlServerSpatial140.dll" Name="SqlServerSpatial140.dll" Source="$(var.GUI_TargetDir)SqlServerTypes\x86\SqlServerSpatial140.dll" />
+      </Component>
+      <Component Id="SqlServerTypes_x86_msvcr120.dll" Guid="a77dea97-4fc0-4c59-9d0e-3d9c6946445b">
+        <File Id="SqlServerTypes_x86_msvcr120.dll" Name="msvcr120.dll" Source="$(var.GUI_TargetDir)SqlServerTypes\x86\msvcr120.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="SqlServerTypes_x64_files" Directory="SqlServerTypes_x64">
+      <Component Id="SqlServerTypes_x64_SqlServerSpatial140.dll" Guid="9c542b28-9f03-459a-baf0-255a77a40c0e">
+        <File Id="SqlServerTypes_x64_SqlServerSpatial140.dll" Name="SqlServerSpatial140.dll" Source="$(var.GUI_TargetDir)SqlServerTypes\x64\SqlServerSpatial140.dll" />
+      </Component>
+      <Component Id="SqlServerTypes_x64_msvcr120.dll" Guid="a0d7e543-5eda-4a5c-a536-41c8dc99a540">
+        <File Id="SqlServerTypes_x64_msvcr120.dll" Name="msvcr120.dll" Source="$(var.GUI_TargetDir)SqlServerTypes\x64\msvcr120.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="SqlServerTypes_files" Directory="SqlServerTypes">
+      <Component Id="SqlServerTypes_readme.htm" Guid="31d005d1-7bb2-4113-a5fa-5b39a8f14071">
+        <File Id="SqlServerTypes_readme.htm" Name="readme.htm" Source="$(var.GUI_TargetDir)SqlServerTypes\readme.htm" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="Icon_files" Directory="Icon">
+      <Component Id="Icon_icon.ico" Guid="66484291-c977-458e-95d7-78b8f765256d">
+        <File Id="Icon_icon.ico" Name="icon.ico" Source="$(var.GUI_TargetDir)Icon\icon.ico" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
