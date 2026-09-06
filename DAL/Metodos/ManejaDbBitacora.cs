@@ -17,7 +17,7 @@ using System.Reflection;
 
 namespace DAL.Metodos {
     public class ManejaDbBitacora {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
 
         public List<MensajeEvento> lookupMensajesBitacoraEventos(Dictionary<string, string> parametros) {

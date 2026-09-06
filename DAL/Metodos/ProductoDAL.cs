@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Metodos {
     public class ProductoDAL {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
 
         public List<Producto> getProductosBajoStock() {
             List<Producto> listaProductos = new List<Producto>();

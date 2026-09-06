@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DAL.Metodos {
     public class ProveedorDAL {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         public List<Proveedor> getProveedores() {
             List<Proveedor> listaProveedores = new List<Proveedor>();
             try {

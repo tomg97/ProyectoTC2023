@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace CUL.Entidades {
     public enum EventoEnum {
         [DescripcionEventoTraduccion("LoginExitoso", typeof(DescripcionEventoTraduccion))]
-        LoginNoExitoso,
-        [DescripcionEventoTraduccion("LoginNoExitoso", typeof(DescripcionEventoTraduccion))]
         LoginExitoso,
+        [DescripcionEventoTraduccion("LoginNoExitoso", typeof(DescripcionEventoTraduccion))]
+        LoginNoExitoso,
         [DescripcionEventoTraduccion("LookupUsuarioOk", typeof(DescripcionEventoTraduccion))]
         LookupUsuarioOk,
         [DescripcionEventoTraduccion("LookupUsuarioNoOk", typeof(DescripcionEventoTraduccion))]

@@ -12,7 +12,7 @@ namespace DAL.Metodos {
         string tipo;
         public ManejaDbMaestro(string tipo) { this.tipo = tipo; }
         public ManejaDbMaestro() { }
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         private StoredProcedureHelper storedProcedureHelper;
 
         public void guardarProductoNuevo(Producto producto) {

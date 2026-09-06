@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Metodos {
     public class OrdenCompraDAL {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         public List<OrdenCompra> getOrdenesCompra() {
             List<OrdenCompra> listaOrdenesCompra = new List<OrdenCompra>();
             try {

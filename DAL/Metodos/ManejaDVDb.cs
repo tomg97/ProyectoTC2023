@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Metodos {
     public class ManejaDVDb {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         ManejaDbMaestro manejaDbMaestro = new ManejaDbMaestro();
         public DataTable traerDTNegocio() {
             return cargarDataTableProductos(manejaDbMaestro.traerTodosProductos());

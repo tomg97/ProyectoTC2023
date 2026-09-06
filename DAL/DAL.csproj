@@ -37,6 +37,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,20 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComercializARDataSet.cs">
+      <DependentUpon>ComercializARDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ComercializARDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ComercializARDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Metodos\ConnectionManager.cs" />
     <Compile Include="Metodos\ManejaDbBitacora.cs" />
     <Compile Include="Metodos\ManejaDbBR.cs" />
     <Compile Include="Metodos\ManejaDbMaestro.cs" />
-    <Compile Include="Metodos\ManejaDbPerfil.cs" />
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />
     <Compile Include="Metodos\ManejaDbVenta.cs" />
     <Compile Include="Metodos\ManejaDVDb.cs" />
     <Compile Include="Metodos\OrdenCompraDAL.cs" />
+    <Compile Include="Metodos\PerfilDAL.cs" />
     <Compile Include="Metodos\ProductoDAL.cs" />
     <Compile Include="Metodos\ProveedorDAL.cs" />
     <Compile Include="Metodos\SolicitudCotizacionDAL.cs" />

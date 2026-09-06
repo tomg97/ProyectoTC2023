@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Metodos {
     public class ManejaDbBR {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
 
         public void realizarBackup(string filePath) {
             using (SqlConnection connection = new SqlConnection(_connectionString)) {

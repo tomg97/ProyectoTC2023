@@ -38,7 +38,7 @@ namespace ProyectoTC2023 {
                     this.Hide();
                 }
             } else {
-                mensajeria.mostrarMensaje("Se debe proporcionar nomre de usuario y/o contraseña");
+                mensajeria.mostrarMensaje("Se debe proporcionar nombre de usuario y/o contraseña");
             }
         }
 

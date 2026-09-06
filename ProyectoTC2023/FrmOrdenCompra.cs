@@ -28,7 +28,7 @@ namespace ProyectoTC2023 {
         }
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
-            Traductor traductor = new Traductor("ProyectoTC2023.FrmOrdenCompra", typeof(FrmOrdenCompra), codigoIdioma);
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmOrdenCompra", typeof(FrmOrdenCompra));
 
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);

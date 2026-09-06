@@ -16,7 +16,9 @@ namespace CUL.Métodos {
             get { return _lenguajeActual; }
             set {
                 _lenguajeActual = value;
-                SingletonSesion.idiomaActual(value); 
+                SingletonSesion.idiomaActual(value);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = 
+                    new System.Globalization.CultureInfo(value);
                 NotifyObservers();
             }
         }

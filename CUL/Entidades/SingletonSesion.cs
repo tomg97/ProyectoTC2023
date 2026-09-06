@@ -4,21 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CUL.Entidades {
-    public sealed class SingletonSesion {
+namespace CUL.Entidades
+{
+    public sealed class SingletonSesion
+    {
         private static SingletonSesion instance = null;
         private static readonly object lockObject = new object();
         public bool estaLogged = false;
         private static string _codigoIdioma = "es-AR";
         private Usuario usuarioSesion;
-        private SingletonSesion() {
 
+        private SingletonSesion()
+        {
         }
-        public static SingletonSesion getInstance {
-            get {
-                if (instance == null) {
-                    lock (lockObject) {
-                        if (instance == null) {
+
+        public static SingletonSesion getInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (lockObject)
+                    {
+                        if (instance == null)
+                        {
                             instance = new SingletonSesion();
                         }
                     }
@@ -26,55 +35,62 @@ namespace CUL.Entidades {
                 return instance;
             }
         }
-        public void logIn(Usuario usuario) {
+
+        public void logIn(Usuario usuario)
+        {
             estaLogged = true;
             usuarioSesion = usuario;
         }
-        public void logOut() {
+
+        public void logOut()
+        {
             estaLogged = false;
             usuarioSesion = null;
         }
-        public Usuario getUsuarioActual() {
+
+        public Usuario getUsuarioActual()
+        {
             return usuarioSesion;
         }
-        public bool tienePermiso(TipoPermiso tipoPermiso) {
-            bool existe = false;
-            foreach (var item in usuarioSesion.permisos) {
-                if (item.tipoPermiso.Equals(tipoPermiso))
-                    return true;
-                else {
-                    existe = estaEnRol(item, tipoPermiso, existe);
-                    if (existe) return true;
-                }
-            }
-            return existe;
+
+        /// <summary>
+        /// Verifica si el usuario actual tiene un permiso específico
+        /// </summary>
+        public bool tienePermiso(TipoPermiso tipoPermiso)
+        {
+            if (usuarioSesion == null || usuarioSesion.permisos == null)
+                return false;
+
+            // Usar el método obtenerTodosLosPermisos del patrón Composite
+            return usuarioSesion.permisos
+                .SelectMany(componente => componente.obtenerTodosLosPermisos())
+                .Any(permiso => permiso.tipoPermiso.Equals(tipoPermiso));
         }
-        bool estaEnRol(Componente c, TipoPermiso tipoPermiso, bool existe) {
-            if (c.tipoPermiso.Equals(tipoPermiso))
-                existe = true;
-            else {
-                foreach (var item in c.hijos) {
-                    existe = estaEnRol(item, tipoPermiso, existe);
-                    if (existe) return true;
-                }
+
+        public static void idiomaActual(string codigoIdioma)
+        {
+            if (getInstance.usuarioSesion != null)
+            {
+                getInstance.usuarioSesion.idioma = codigoIdioma;
             }
-            return existe;
-        }
-        public static void idiomaActual(string codigoIdioma) {
-            if(getInstance.usuarioSesion != null) {
-                getInstance.usuarioSesion.idioma = codigoIdioma; 
-            } else {
+            else
+            {
                 _codigoIdioma = codigoIdioma;
             }
         }
-        public string getIdiomaActual() {
-            if (getInstance.usuarioSesion != null) {
+
+        public string getIdiomaActual()
+        {
+            if (getInstance.usuarioSesion != null)
+            {
                 if (getInstance.usuarioSesion.idioma != null)
                     return getInstance.usuarioSesion.idioma;
                 else
                     getInstance.usuarioSesion.idioma = _codigoIdioma;
                 return getInstance.usuarioSesion.idioma;
-            } else {
+            }
+            else
+            {
                 return _codigoIdioma;
             }
         }

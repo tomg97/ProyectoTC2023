@@ -10,7 +10,7 @@ using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbUsuarios {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private string _connectionString => ConnectionManager.GetConnectionString();
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public int authUsuario(Usuario usuario) {
             int resultado = -1;

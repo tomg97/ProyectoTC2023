@@ -55,10 +55,10 @@
     <Compile Include="Metodos\ManejaCliente.cs" />
     <Compile Include="Metodos\ManejaDV.cs" />
     <Compile Include="Metodos\ManejaMaestro.cs" />
-    <Compile Include="Metodos\ManejaPermisos.cs" />
     <Compile Include="Metodos\ManejaVenta.cs" />
     <Compile Include="Metodos\ManejaUsuarios.cs" />
     <Compile Include="Metodos\OrdenCompraBLL.cs" />
+    <Compile Include="Metodos\PerfilBLL.cs" />
     <Compile Include="Metodos\ProductoBLL.cs" />
     <Compile Include="Metodos\ProveedorBLL.cs" />
     <Compile Include="Metodos\SolicitudCotizacionBLL.cs" />

@@ -24,6 +24,7 @@ namespace ProyectoTC2023 {
             InitializeComponent();
             LenguajeActual.Attach(this);
             actualizarIdioma();
+            this.FormClosed += (s, e) => LenguajeActual.Detach(this);
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -63,7 +64,7 @@ namespace ProyectoTC2023 {
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
-            Traductor traductor = new Traductor("ProyectoTC2023.FrmBR", typeof(FrmBR), codigoIdioma);
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmBR", typeof(FrmBR));
 
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32804.467
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.12023.21 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "ProyectoTC2023\GUI.csproj", "{87BEA265-CE9C-4AD0-B17B-0B56909BD83E}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{B1170576-0E05-4B50-8F8B-ACC05FE02F56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInstaller", "DBInstaller\DBInstaller.csproj", "{682A9DE4-449E-47A1-BF63-E4F48F27046F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "skills", "skills", "{90C45B1C-D475-417A-8D42-840BC1C909A1}"
+	ProjectSection(SolutionItems) = preProject
+		Composite Pattern Management for Roles, Families, and Permissions.md = Composite Pattern Management for Roles, Families, and Permissions.md
+		Login-Time Database Integrity Verification.md = Login-Time Database Integrity Verification.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
