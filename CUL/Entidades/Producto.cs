@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace CUL.Entidades {
     [Serializable]
-    public class Producto {
+    public class Producto : IDVEntidades {
 		public Producto(string nombreProducto, string marcaProducto, string id, string cantidad, string precio) {
 			this.nombreProducto = nombreProducto;
 			this.marcaProducto = marcaProducto;
@@ -41,11 +42,13 @@ namespace CUL.Entidades {
 			set { _cantidad = value; }
 		}
 		private string _precio;
-        [XmlElement]
-        public string precio {
+		[XmlElement]
+		public string precio {
 			get { return _precio; }
 			set { _precio = value; }
 		}
+
+		public string dvh { get; set; }
 
 	}
 }

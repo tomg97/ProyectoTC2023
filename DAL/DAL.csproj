@@ -61,7 +61,6 @@
     <Compile Include="Metodos\ManejaDbUsuarios.cs" />
     <Compile Include="Metodos\ManejaDbClientes.cs" />
     <Compile Include="Metodos\ManejaDbVenta.cs" />
-    <Compile Include="Metodos\ManejaDVDb.cs" />
     <Compile Include="Metodos\OrdenCompraDAL.cs" />
     <Compile Include="Metodos\ProductoDAL.cs" />
     <Compile Include="Metodos\ProveedorDAL.cs" />

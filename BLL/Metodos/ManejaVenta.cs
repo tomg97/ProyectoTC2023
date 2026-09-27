@@ -1,6 +1,7 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
 using Newtonsoft.Json;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BLL.Metodos {
-    public class ManejaVenta {
+    public class ManejaVenta : IDVManejadores {
         ManejaDbVenta manejaDbVenta = new ManejaDbVenta();
         ManejaBR manejaBR = new ManejaBR();
         Guuido guidGenerator = new Guuido();
@@ -72,6 +73,26 @@ namespace BLL.Metodos {
             manejaDbVenta.despacharFactura(datos);
             jsonificador.moverArchivoDone(rutaArchivo, "Facturas despachadas");
             manejaBR.realizarAutoBackup();
+        }
+
+        public void recalcularDV() {
+            manejaDbVenta.actualizarTodosDV();
+            manejaDbVenta.actualizarDVV();
+        }
+
+        public List<string> chequearIntegridad() {
+            List<String> errores = new List<String>();
+            List<Venta> ventas = manejaDbVenta.traerTodos();
+
+            ventas.ForEach(v => {
+                if (!v.dvh.Equals(manejaDbVenta.calcularDVH(v))) {
+                    errores.Add($"En la tabla Ventas, la venta id : {v.id} fue modificada");
+                }
+            });
+            if (!manejaDbVenta.calcularDVV(ventas).Equals(manejaDbVenta.obtenerDVV())) {
+                errores.Add("En la tabla Ventas, el DVV es incorrecto");
+            }
+            return errores;
         }
     }
 }

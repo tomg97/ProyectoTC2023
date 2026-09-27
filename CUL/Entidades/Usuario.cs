@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace CUL.Entidades {
     [Serializable]
-    public class Usuario {
+    public class Usuario : IDVEntidades {
         private string _nomUsu;
         public Usuario() {
             _permisos = new List<Componente>();
@@ -65,5 +66,7 @@ namespace CUL.Entidades {
             get { return _dni; }
             set { _dni = value; }
         }
+
+        public string dvh { get; set; }
     }
 }

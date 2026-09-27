@@ -1,4 +1,5 @@
-﻿using Servicios.Metodos;
+﻿using Servicios.Interfaces;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace CUL.Entidades {
-    public class Venta {
+    public class Venta : IDVEntidades {
 		public Venta() {
 
 		}
@@ -62,7 +63,9 @@ namespace CUL.Entidades {
 			set { _monto = value; }
 		}
 		private bool facturada;
-		
+
+		public string dvh { get; set; }
+
 		public void calcularMontoYEncriptar(List<Producto> productosVendidos) {
 			Encriptador encriptador = new Encriptador();
             decimal subtotal = 0;

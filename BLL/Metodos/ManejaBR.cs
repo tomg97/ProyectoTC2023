@@ -36,10 +36,6 @@ namespace BLL.Metodos {
             string filePath = new BackupRestore().Backup(folderPath);
             realizarBackup(filePath);
             bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
-            ManejaDV manejaDV = new ManejaDV();
-            manejaDV.almacenarDV();
-            realizarBackup(filePath);
-            bitacora.persistirMensajeLogged(EventoEnum.GenerarDVOk, Modulo.BackupRestore, Criticidad.Uno);
         }
     } 
 }

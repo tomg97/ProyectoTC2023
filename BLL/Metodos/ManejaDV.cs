@@ -8,65 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Servicios.Metodos;
 using CUL.Entidades;
+using Servicios.Interfaces;
 
 namespace BLL.Metodos {
     public class ManejaDV {
-        ManejaDVDb manejaDb = new ManejaDVDb();
-        Encriptador encriptador = new Encriptador();
-        private DV calcularDV() {
-            DataTable dt = manejaDb.traerDTNegocio();
-            DV dV = new DV {
-                DVV = HashColumnValues(dt),
-                DVH = HashRowValues(dt)
-            };
-            return dV;
-        }
-        private string HashColumnValues(DataTable dt) {
-            StringBuilder sb = new StringBuilder();
-
-            List<string> valoresColumnas = new List<string>();
-
-            for (int i = 0; i < dt.Columns.Count; i++) {
-                for (int j = 0; j < dt.Rows.Count; j++) {
-                    sb.Append(dt.Rows[i][j].ToString());
-                }
-                valoresColumnas.Add(sb.ToString());
-            }
-
-            foreach (var item in valoresColumnas) {
-                sb.Append(item);
-            }
-
-            return encriptador.encriptarIrreversible(sb.ToString());
+        List<IDVManejadores> manejadores = new List<IDVManejadores>();
+        public ManejaDV() {
+            manejadores.Add(new ManejaUsuarios());
+            manejadores.Add(new ManejaVenta());
+            manejadores.Add(new ManejaMaestro("Productos")); 
         }
 
-        private string HashRowValues(DataTable dt) {
-            StringBuilder sb = new StringBuilder();
+        public List<String> check() {
+            List<String> resultados = new List<string>();
 
-            List<string> valoresColumnas = new List<string>();
-
-            for (int i = 0; i < dt.Rows.Count; i++) {
-                for (int j = 0; j < dt.Columns.Count; j++) {
-                    sb.Append(dt.Rows[j][i].ToString());
-                }
-                valoresColumnas.Add(sb.ToString());
-            }
-
-            foreach (var item in valoresColumnas) {
-                sb.Append(item);
-            }
-
-            return encriptador.encriptarIrreversible(sb.ToString());
+            resultados.AddRange(chequearDV());
+            return resultados;
         }
-
-        public bool loginStep() {
-            DV DVActual = calcularDV();
-            DV dvDB = manejaDb.traerDV();
-            return DVActual.DVH == dvDB.DVH && DVActual.DVV == dvDB.DVV;
+        public void recalcularDV() {
+            manejadores.ForEach(m => m.recalcularDV());
         }
-        public void almacenarDV() {
-            DV dV = calcularDV();
-            manejaDb.almacenarDV(dV);
+        private List<String> chequearDV() {
+            List<String> resultado = new List<string>();
+
+            try {
+                manejadores.ForEach(m => resultado.AddRange(m.chequearIntegridad()));
+            }
+            catch (Exception) {
+                resultado.Add("Errores al obtener información de la db");
+            }
+            return resultado;
         }
     }
 }

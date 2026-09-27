@@ -26,7 +26,7 @@ namespace ProyectoTC2023 {
             LenguajeActual.Attach(this);
             actualizarIdioma();
             ManejaDV manejaDV = new ManejaDV();
-            if (!manejaDV.loginStep()) {
+            if (manejaDV.check().Count() != 0) {
                 if (SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup)) {
                     invocarForm(new FormDV());
                 } else {

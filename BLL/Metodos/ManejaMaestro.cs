@@ -1,5 +1,6 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL.Metodos {
-    public class ManejaMaestro {
+    public class ManejaMaestro : IDVManejadores {
         ManejaDbClientes manejaCliente = new ManejaDbClientes();
         ManejaDbMaestro manejaDbMaestro; 
         ManejaDbUsuarios dbUsuarios = new ManejaDbUsuarios();
@@ -50,14 +51,14 @@ namespace BLL.Metodos {
             dataTable.Columns.Add("Email", typeof(string));
             dataTable.Columns.Add((lenguajeActual == "es-AR" ? "Teléfono" : "Phone number"), typeof(string));
 
-            foreach (var cliente in list) {
+            foreach (var usuario in list) {
                 DataRow row = dataTable.NewRow();
-                row[(lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username")] = cliente.nomUsu;
-                row[(lenguajeActual == "es-AR" ? "Nombre" : "First name")] = cliente.nombre;
-                row[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")] = cliente.apellido;
-                row["DNI"] = cliente.dni;
-                row["Email"] = cliente.email;
-                row[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone number")] = cliente.telefono;                
+                row[(lenguajeActual == "es-AR" ? "Nombre Usuario" : "Username")] = usuario.nomUsu;
+                row[(lenguajeActual == "es-AR" ? "Nombre" : "First name")] = usuario.nombre;
+                row[(lenguajeActual == "es-AR" ? "Apellido" : "Last name")] = usuario.apellido;
+                row["DNI"] = usuario.dni;
+                row["Email"] = usuario.email;
+                row[(lenguajeActual == "es-AR" ? "Teléfono" : "Phone number")] = usuario.telefono;                
                 dataTable.Rows.Add(row);
             }
             return dataTable;
@@ -140,7 +141,7 @@ namespace BLL.Metodos {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
                 bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Maestros, Criticidad.Uno);
             }
-            
+
         }
         public void modificaProducto(Producto producto, string keyOg) {
             try {
@@ -193,6 +194,27 @@ namespace BLL.Metodos {
                 }
                 bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
             }
+        }
+
+        public void recalcularDV() {
+            manejaDbMaestro.actualizarTodosDV();
+            manejaDbMaestro.actualizarDVV();
+        }
+
+        public List<String> chequearIntegridad() {
+            List<String> erroresProductos = new List<string>();
+            List<Producto> productos = manejaDbMaestro.traerTodosProductos();
+
+            productos.ForEach(p => {
+                if (!p.dvh.Equals(manejaDbMaestro.calcularDVH(p))) {
+                    erroresProductos.Add($"En la tabla Productos: El producto con id: {p.id}, fue modificado");
+                }
+            });
+
+            if (!manejaDbMaestro.calcularDVV(productos).Equals(manejaDbMaestro.obtenerDVV())) {
+                erroresProductos.Add("El dígito verificador vertical de la tabla Productos no es correcto");
+            }
+            return erroresProductos;
         }
     }
 }
