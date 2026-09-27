@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using static DAL.ComercializARDataSet;
 
 namespace BLL.Metodos {
-    public class ManejaUsuarios {
+    public class ManejaUsuarios : IDVManejadores {
         ManejaDbUsuarios manejaDb = new ManejaDbUsuarios();
         BitacoraBLL bitacora = new BitacoraBLL();
         ManejaPermisos manejaPerfil = new ManejaPermisos();
@@ -129,6 +130,26 @@ namespace BLL.Metodos {
         }
         public void guardarPermisos(Usuario u) {
             manejaDb.guardarPermisos(u);
+        }
+
+        public void recalcularDV() {
+            manejaDb.actualizarTodosDV();
+            manejaDb.actualizarDVV();
+        }
+
+        public List<String> chequearIntegridad() {
+            List<String> errores = new List<String>();
+            List<Usuario> usuarios = manejaDb.traerTodosUsuarios();
+
+            usuarios.ForEach( u => {
+                if (!u.dvh.Equals(manejaDb.calcularDVH(u))) {
+                    errores.Add($"En la tabla Usuarios, el Usuario id : {u.nomUsu} fue modificado");
+                }
+            }); 
+            if (!manejaDb.calcularDVV(usuarios).Equals(manejaDb.obtenerDVV())) {
+                errores.Add("En la tabla Usuarios, el DVV es incorrecto");
+            }
+            return errores;
         }
     }
 }

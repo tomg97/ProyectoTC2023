@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {
     public abstract class Componente {
+        // Composite padre
         private string _nombre;
 
         public string nombre {

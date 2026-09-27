@@ -14,49 +14,45 @@ using System.Windows.Forms;
 namespace ProyectoTC2023 {
     public partial class FormDV : Form {
         Mensajeria mensajeria = new Mensajeria();
-        ManejaDV manejaDV = new ManejaDV();
-        string resultado;
+        private ManejaDV manejaDv;
+        private List<string> resultados;
         public FormDV() {
             InitializeComponent();
             mensajeria.mostrarMensaje("Se ha detectado una inconsistencia en la base de datos. Por favor realice un restore.");
+
+            manejaDv = new ManejaDV();
+
+            dgvDVRestore.AllowUserToAddRows = false;
+            dgvDVRestore.AllowUserToDeleteRows = false;
+            dgvDVRestore.AllowUserToResizeRows = false;
+            dgvDVRestore.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvDVRestore.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvDVRestore.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDVRestore.ReadOnly = true;
+            dgvDVRestore.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dgvDVRestore.RowHeadersVisible = false;
+
+            resultados = manejaDv.check();
+            dgvDVRestore.DataSource = resultados.Select(x => new { error = x }).ToList();
+            if (dgvDVRestore.CurrentCell != null) dgvDVRestore.CurrentCell.Selected = false;
         }
 
-        private void btnRealizarRestore_Click(object sender, EventArgs e) {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Backup Files (*.bak)|*.bak";
-            if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                string filePath = new BackupRestore().Restore(openFileDialog.FileName);
-                string resultadoDb = new ManejaBR().realizarRestore(filePath);
-                if (resultadoDb == "Restore exitoso.") {
-                    mensajeria.mostrarMensaje(resultadoDb + " Importado de la ubicación " + filePath);
-                } else {
-                    mensajeria.mostrarMensaje(resultadoDb);
-                }
+        private void btnRecalcularDV_Click(object sender, EventArgs e) {
+            try {
+                manejaDv.recalcularDV();
+                resultados = manejaDv.check();
+                dgvDVRestore.DataSource = resultados.Select(x => new { error = x }).ToList();
+                if (dgvDVRestore.CurrentCell != null) dgvDVRestore.CurrentCell.Selected = false;
+                mensajeria.mostrarMensaje("Se han recalculado los DV's correctamente.");
+                this.Close();
+
+            } catch (Exception ex) {
+                mensajeria.mostrarMensaje("Error al recalcular los DV's: " + ex.Message);
             }
-            resultado = "Restore exitoso";
-            btnRecalcularDV.Visible = true;
         }
 
-        private void btnRecalcularDV_Click(object sender, EventArgs e) {            
-            if (resultado == "Restore exitoso")
-                manejaDV.almacenarDV();
-                resultado = "Recalculo exitoso";
-        }
+        private void FormDV_Load(object sender, EventArgs e) {
 
-        private void btnSalir_Click(object sender, EventArgs e) {
-            if (resultado == "Recalculo exitoso") {
-                mensajeria.mostrarMensaje("Se ha realizado Restore y Recalculo de DV exitosamente. Se reiniciará la aplicación.");
-                Application.Restart();
-            } else if (resultado == "Restore exitoso") {
-                mensajeria.mostrarMensaje("No se ha realizado recalculo de DV. Por favor, realice uno.");
-            } else {
-                DialogResult result = MessageBox.Show("No se ha realizado Restore. Desea salir de todos modos?", "Confirmacion", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.OK) {
-                    Application.Restart();
-                } else {
-                    return;
-                }
-            }
         }
     }
 }

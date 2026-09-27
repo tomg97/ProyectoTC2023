@@ -61,6 +61,9 @@
       <DependentUpon>Lang.en-US.resx</DependentUpon>
     </Compile>
     <Compile Include="Idioma\Traductor.cs" />
+    <Compile Include="Interfaces\IDVDAL.cs" />
+    <Compile Include="Interfaces\IDVEntidades.cs" />
+    <Compile Include="Interfaces\IDVManejadores.cs" />
     <Compile Include="Interfaces\IObserver.cs" />
     <Compile Include="Metodos\BackupRestore.cs" />
     <Compile Include="Metodos\Encriptador.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Metodos\Jsonifier.cs" />
     <Compile Include="Metodos\Mensajeria.cs" />
     <Compile Include="Metodos\SerializadorXML.cs" />
+    <Compile Include="Metodos\ServicioDV.cs" />
     <Compile Include="Metodos\SingletonRutaArchivo.cs" />
     <Compile Include="Metodos\StoredProcedureHelper.cs" />
     <Compile Include="Metodos\ValidarCampos.cs" />
