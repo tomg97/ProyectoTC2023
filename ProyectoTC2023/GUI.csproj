@@ -133,11 +133,11 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBitacora.cs">
+    <Compile Include="FrmBitacoraEventos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBitacora.Designer.cs">
-      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    <Compile Include="FrmBitacoraEventos.Designer.cs">
+      <DependentUpon>FrmBitacoraEventos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBR.cs">
       <SubType>Form</SubType>
@@ -150,6 +150,12 @@
     </Compile>
     <Compile Include="FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmControlCambios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmControlCambios.Designer.cs">
+      <DependentUpon>FrmControlCambios.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCotizacion.cs">
       <SubType>Form</SubType>
@@ -247,11 +253,11 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBitacora.en-US.resx">
-      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    <EmbeddedResource Include="FrmBitacoraEventos.en-US.resx">
+      <DependentUpon>FrmBitacoraEventos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmBitacora.resx">
-      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    <EmbeddedResource Include="FrmBitacoraEventos.resx">
+      <DependentUpon>FrmBitacoraEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBR.en-US.resx">
       <DependentUpon>FrmBR.cs</DependentUpon>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmControlCambios.resx">
+      <DependentUpon>FrmControlCambios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCotizacion.resx">
       <DependentUpon>FrmCotizacion.cs</DependentUpon>

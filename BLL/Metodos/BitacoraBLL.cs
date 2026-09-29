@@ -47,24 +47,6 @@ namespace BLL.Metodos {
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
         }
-        public DataTable lookupBitacoraCambiosParametros(Dictionary<string, string> dic) {
-            List<MensajeCambio> list = manejaDbBitacora.lookupMensajesBitacoraCambios(dic);
-            persistirMensajeLogged(EventoEnum.LookupCambioOk, Modulo.Bitacora, Criticidad.Dos);
-            DataTable dataTable = cargarDataTableBitCambio(list);
-            return dataTable;
-        }
-        private static string armarMensajeDiccionario(Dictionary<string, string> dic) {
-            StringBuilder sb = new StringBuilder();
-            foreach (var kvp in dic) {
-                if (!string.IsNullOrEmpty(kvp.Value)) {
-                    sb.Append($"\"{kvp.Key}\": \"{kvp.Value}\", ");
-                }
-            }
-            if (sb.Length > 0) {
-                sb.Length -= 2;
-            }
-            return sb.ToString();
-        }
 
         private static DataTable cargarDataTableBitEventos(List<MensajeEvento> list) {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
@@ -91,45 +73,15 @@ namespace BLL.Metodos {
             }
             return dataTable;
         }
-        private static DataTable cargarDataTableBitCambio(List<MensajeCambio> list) {
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Id Operacion", typeof(string));
-            dataTable.Columns.Add("Id Producto", typeof(string));
-            dataTable.Columns.Add("Marca Producto", typeof(MarcaProducto));
-            dataTable.Columns.Add("Nombre Producto", typeof(string));
-            dataTable.Columns.Add("Precio", typeof(string));
-            dataTable.Columns.Add("Cantidad", typeof(string));
-            dataTable.Columns.Add("Fecha", typeof(DateTime));
-            dataTable.Columns.Add("Usuario", typeof(string));
-            dataTable.Columns.Add("Activo", typeof(bool));
-            dataTable.Columns.Add("Tipo Operacion", typeof(MensajeCambio.TipoOperacion));
-
-            foreach (var log in list) {
-                DataRow row = dataTable.NewRow();
-                row["Id Operacion"] = log.idOperacion;
-                row["Id Producto"] = log.idProducto;
-                row["Marca Producto"] = log.marcaProducto;
-                row["Nombre Producto"] = log.nombreProducto;
-                row["Precio"] = log.precio;
-                row["Cantidad"] = log.cantidad;
-                row["Fecha"] = log.fecha;
-                row["Tipo Operacion"] = log.tipoOp;
-                row["Usuario"] = log.usuario;
-                row["Activo"] = log.activo;
-                dataTable.Rows.Add(row);
-            }
-            return dataTable;
-        }
-
+        
         public DataTable traerTodaBitacoraEventos() {
             List<MensajeEvento> list = manejaDbBitacora.traerTodaBitacoraEventos();
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
         }
         public DataTable traerTodaBitacoraCambios() {
-            List<MensajeCambio> list = manejaDbBitacora.traerTodaBitacoraCambios();
-            DataTable dataTable = cargarDataTableBitCambio(list);
-            return dataTable;
+            DataTable resultado = manejaDbBitacora.lookupMensajesBitacoraCambios();
+            return resultado;
         }
 
         public Usuario lookupUsuario(string username) {

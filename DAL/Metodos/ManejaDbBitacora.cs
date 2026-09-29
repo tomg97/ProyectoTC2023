@@ -51,35 +51,14 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
-        public List<MensajeCambio> lookupMensajesBitacoraCambios(Dictionary<string, string> parametros) {
-            List<MensajeCambio> resultado = new List<MensajeCambio>();
+        public DataTable lookupMensajesBitacoraCambios() {
+            DataTable resultado = new DataTable();
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("lookupMensajesBitacoraCambios", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    foreach (KeyValuePair<string, string> entry in parametros) {
-                        command.Parameters.AddWithValue(entry.Key, string.IsNullOrEmpty(entry.Value) ? (object)DBNull.Value : entry.Value);
-                    }
+                    SqlCommand command = new SqlCommand("Select * FROM CambiosUsuarios", connection);
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows) {
-                        while (reader.Read()) {
-                            MensajeCambio mensaje = new MensajeCambio();
-                            mensaje.idOperacion = reader.GetInt32(reader.GetOrdinal("idOp")).ToString();
-                            mensaje.idProducto = reader.GetInt32(reader.GetOrdinal("id")).ToString();
-                            mensaje.nombreProducto = reader.GetString(reader.GetOrdinal("nombreProducto"));
-                            mensaje.precio = reader.GetString(reader.GetOrdinal("precio"));
-                            mensaje.cantidad = reader.GetInt32(reader.GetOrdinal("cantidad")).ToString();
-                            mensaje.fecha = reader.GetDateTime(reader.GetOrdinal("fechaMod"));
-                            mensaje.tipoOp = parsearTipoOp(reader.GetString(reader.GetOrdinal("tipoOp")));
-                            mensaje.marcaProducto = parsearMarcaProducto(reader.GetString(reader.GetOrdinal("marcaProducto")));                            
-                            mensaje.activo = reader.GetInt32(reader.GetOrdinal("activo")) == 1;
-                            mensaje.usuario = reader.GetString(reader.GetOrdinal("usuMod"));
-
-                            resultado.Add(mensaje);
-                        }
-                    }
-                    reader.Close();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command, connection);
+                    adapter.Fill(resultado);
                 }
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
@@ -127,32 +106,6 @@ namespace DAL.Metodos {
             }            
             return list;
         }
-        public List<MensajeCambio> traerTodaBitacoraCambios() {
-            List<MensajeCambio> list = new List<MensajeCambio>();
-            using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                SqlCommand command = new SqlCommand("SELECT * FROM ProductoHistorico ORDER BY fechaMod DESC", connection);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read()) {
-                    MensajeCambio mensaje = new MensajeCambio {
-                        idOperacion = reader.GetInt32(reader.GetOrdinal("idOp")).ToString(),
-                        idProducto = reader.GetInt32(reader.GetOrdinal("id")).ToString(),
-                        nombreProducto = reader.GetString(reader.GetOrdinal("nombreProducto")),
-                        precio = reader.GetString(reader.GetOrdinal("precio")),
-                        cantidad = reader.GetInt32(reader.GetOrdinal("cantidad")).ToString(),
-                        fecha = reader.GetDateTime(reader.GetOrdinal("fechaMod")),
-                        tipoOp = parsearTipoOp(reader.GetString(reader.GetOrdinal("tipoOp"))),
-                        marcaProducto = parsearMarcaProducto(reader.GetString(reader.GetOrdinal("marcaProducto"))),
-                        activo = reader.GetInt32(reader.GetOrdinal("activo")) == 1,
-                        usuario = reader.GetString(reader.GetOrdinal("usuMod"))
-                    };
-                    list.Add(mensaje);
-               }
-                reader.Close();
-            }            
-            return list;
-        }
 
         static private Modulo parsearModulo(string moduloIn) {
             if(Enum.TryParse(moduloIn, true, out Modulo moduloOut)){
@@ -174,20 +127,6 @@ namespace DAL.Metodos {
             } else {
                 throw new ArgumentException($"Valor de evento inválido: {eventoIn}");
             }
-        }
-        static private MensajeCambio.TipoOperacion parsearTipoOp(string tipoOpIn) {
-            if(Enum.TryParse(tipoOpIn, true, out MensajeCambio.TipoOperacion tipoOpOut)){
-                return tipoOpOut;
-            } else {
-                throw new ArgumentException($"Valor de Tipo Operación inválido: {tipoOpIn}");
-            }
-        }
-        static private MarcaProducto parsearMarcaProducto(string marcaIn) {
-            if(Enum.TryParse(marcaIn, true, out MarcaProducto marcaOut)){
-                return marcaOut;
-            } else {
-                throw new ArgumentException($"Valor de Marca de Producto inválido: {marcaIn}");
-            }
-        }        
+        }    
     }
 }

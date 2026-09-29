@@ -20,13 +20,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
-    public partial class FrmBitacora : Form, IObserver {
+    public partial class FrmBitacoraEventos : Form, IObserver {
         BitacoraBLL manejaBitacora = new BitacoraBLL();
         Mensajeria mensajeria = new Mensajeria();
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
         string tipoOperacion;
         string lenguajeActual;
-        public FrmBitacora() {
+        public FrmBitacoraEventos() {
             InitializeComponent();
             dtpDesde.ValueChanged += DtpDesde_ValueChanged;
             dtpHasta.ValueChanged += DtpHasta_ValueChanged;
@@ -34,15 +34,8 @@ namespace ProyectoTC2023 {
             dtpDesde.MaxDate = dtpHasta.Value;
             dtpHasta.MinDate = dtpDesde.Value;
 
-            tipoOperacion = "Eventos";
-
             LenguajeActual.Attach(this);
             actualizarIdioma();
-
-            /* para entrega 1*/
-            lblTipoBit.Visible = false;
-            cbTipoBit.Visible = false;
-            btnAplicar.Visible = false;
         }
 
         private void DtpHasta_ValueChanged(object sender, EventArgs e) {
@@ -62,88 +55,38 @@ namespace ProyectoTC2023 {
 
             var selectedItem = cbMarcaProductoBit.SelectedItem;
             var enumContenido = selectedItem.GetType().GetProperty("Value").GetValue(selectedItem, null).ToString();
-
-
-            if (tipoOperacion == "Eventos" || tipoOperacion == "Events") {
-                parameters = new Dictionary<string, string> {
-                   { "@usuario", cbNomUsuBit.Text },
-                   { "@modulo", cbModuloBit.Text },
-                   { "@criticidad", cbCriticidadBit.Text },
-                   { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
-                   { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") },
-                   { "@evento", enumContenido }
-               };
-                dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
-            } else {
-                var activo = cbCriticidadBit.Text == "Si" ? "1" : "0";
-                parameters = new Dictionary<string, string> {
-                   { "@usuMod", cbNomUsuBit.Text },
-                   { "@tipoOp", cbModuloBit.Text },
-                   { "@activo", activo },
-                   { "@marcaProducto", cbMarcaProductoBit.Text },
-                   { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
-                   { "@ToDate", dtpHasta.Value.ToString("yyyy-MM-dd") }
-               };
-                dataTable = manejaBitacora.lookupBitacoraCambiosParametros(parameters);
-            }
+            parameters = new Dictionary<string, string> {
+                { "@usuario", cbNomUsuBit.Text },
+                { "@modulo", cbModuloBit.Text },
+                { "@criticidad", cbCriticidadBit.Text },
+                { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
+                { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") },
+                { "@evento", enumContenido }
+               
+            dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
 
             dgvBitacora.DataSource = dataTable;
-        }
-
-        private void btnAplicar_Click(object sender, EventArgs e) {
-            if (cbTipoBit.SelectedIndex != -1) {
-                if (cbTipoBit.Text == "Cambios")
-                    tipoOperacion = "Cambios";
-                else
-                    tipoOperacion = "Eventos";
-            } else
-                mensajeria.mostrarMensaje("Se debe seleccionar un tipo de bitácora");
-
-            settearSegunTipo();
-        }
-        private void settearSegunTipo() {
-            // cbModuloBit.Visible = !variable;
-            dgvBitacora.DataSource = null;
-            DataTable dataTable;
-            if (tipoOperacion == "Eventos" || tipoOperacion == "Events") {
-                prepararParaEventos();
-                dataTable = manejaBitacora.traerTodaBitacoraEventos();
-            } else {
-                prepararParaCambios();
-                dataTable = manejaBitacora.traerTodaBitacoraCambios();
-            }
-
-            dgvBitacora.DataSource = dataTable;
-
-            dgvBitacora.CurrentCell = null;
-
-            dgvBitacora.ReadOnly = true;
-
-            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
-            string date = codigoIdioma == "es-AR" ? "Fecha" : "Date";
-
-            dgvBitacora.Columns[date].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
         }
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
             lenguajeActual = codigoIdioma;
-            Traductor traductor = new Traductor("ProyectoTC2023.FrmBitacora", typeof(FrmBitacora), codigoIdioma);
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmBitacora", typeof(FrmBitacoraEventos), codigoIdioma);
 
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);
             }
-            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmBitacora", typeof(FrmBitacora).Assembly);
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmBitacora", typeof(FrmBitacoraEventos).Assembly);
             this.Text = _resourceManager.GetString("FrmBitacora");
         }
 
         private void FrmBitacora_Load(object sender, EventArgs e) {
-            settearSegunTipo();
+            prepararParaEventos();
         }
 
         private void prepararParaEventos() {
-            lblMarcaProdBit.Text = lenguajeActual == "es-AR" ? "Evento" : "Event";
-            lblMarcaProdBit.Visible = true;
+            lblEvento.Text = lenguajeActual == "es-AR" ? "Evento" : "Event";
+            lblEvento.Visible = true;
 
             cbNomUsuBit.DataSource = resultadosDb.traerTodosUsuarios();
             cbNomUsuBit.DisplayMember = "nomUsu";
@@ -172,35 +115,6 @@ namespace ProyectoTC2023 {
             cbMarcaProductoBit.DataSource = enumEventos;
             cbMarcaProductoBit.DisplayMember = "Display";
             cbMarcaProductoBit.ValueMember = "Value";
-        }
-        private void prepararParaCambios() {
-            cbMarcaProductoBit.Visible = false;
-            lblMarcaProdBit.Visible = false;
-            btnRollback.Visible = true;
-
-            cbNomUsuBit.DataSource = resultadosDb.traerTodosUsuarios();
-            cbNomUsuBit.DisplayMember = "nomUsu";
-            cbNomUsuBit.SelectedIndex = 0;
-
-            lblMBit.Text = "Tipo Operacion";
-            Array enums = Enum.GetValues(typeof(MensajeCambio.TipoOperacion));
-            cbModuloBit.Items.Clear();
-            foreach (MensajeCambio.TipoOperacion tipoOp in enums) {
-                cbModuloBit.Items.Add(tipoOp.ToString());
-            }
-
-            lblCABit.Text = "Activo";
-            cbCriticidadBit.Items.Clear();
-            cbCriticidadBit.Items.Add("Si");
-            cbCriticidadBit.Items.Add("No");
-
-            Array enumMarca = Enum.GetValues(typeof(MarcaProducto));
-            cbMarcaProductoBit.Visible = true;
-            cbMarcaProductoBit.Items.Clear();
-            lblMarcaProdBit.Visible = true;
-            foreach (MarcaProducto marca in enumMarca) {
-                cbMarcaProductoBit.Items.Add(marca.ToString());
-            }
         }
 
         private void dgvBitacora_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -237,7 +151,7 @@ namespace ProyectoTC2023 {
             dgvBitacora.DataSource = null;
             txtNombreBit.Clear();
             txtApellidoBit.Clear();
-            settearSegunTipo();
+            prepararParaEventos();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e) {
@@ -296,22 +210,6 @@ namespace ProyectoTC2023 {
                 } finally {
                     document.Close();
                 }
-            }
-        }
-
-        private void btnRollback_Click(object sender, EventArgs e) {
-            if (dgvBitacora.SelectedRows.Count == 1) {
-                DataRow dataRow = ((DataRowView)dgvBitacora.SelectedRows[0].DataBoundItem).Row;
-                if (dataRow != null) {
-                    Producto producto = new Producto();
-                    producto.id = dataRow["Id Producto"].ToString();
-                    producto.cantidad = (int)dataRow["Cantidad"];
-                    producto.marcaProducto = dataRow["Marca Producto"].ToString();
-                    producto.nombreProducto = dataRow["Nombre Producto"].ToString();
-                    producto.precio = dataRow["Precio"].ToString();
-                    manejaBitacora.rollbackCambio(producto, producto.id);
-                }
-                
             }
         }
     }
