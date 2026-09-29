@@ -59,7 +59,6 @@
     <Compile Include="Entidades\Componente.cs" />
     <Compile Include="Entidades\Familia.cs" />
     <Compile Include="Entidades\MarcaProducto.cs" />
-    <Compile Include="Entidades\MensajeCambio.cs" />
     <Compile Include="Entidades\MensajeEvento.cs" />
     <Compile Include="Entidades\OrdenCompra.cs" />
     <Compile Include="Entidades\Permiso.cs" />
