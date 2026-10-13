@@ -9,18 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
     public partial class FrmControlCambios : Form {
         BitacoraBLL bitacoraBLL;
         DataTable cambios;
-        ManejaMaestro usuarioSvc;
-        ManejaUsuarios usuariosSvc;
+        ManejaMaestro usuarioSvc = new ManejaMaestro();
         public FrmControlCambios() {
             InitializeComponent();
             bitacoraBLL = new BitacoraBLL();
             cambios = bitacoraBLL.traerTodaBitacoraCambios();
-            usuarioSvc = new ManejaUsuarios();
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -31,7 +31,7 @@ namespace ProyectoTC2023 {
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            foreach (DataRow dr in changesTable.Rows) // search whole table
+            foreach (DataRow dr in cambios.Rows) // search whole table
             {
                 dr["fecha"] = new DateTime(long.Parse(dr["fecha"].ToString()));
             }
@@ -46,10 +46,7 @@ namespace ProyectoTC2023 {
                 dataGridView1.Columns.Insert(columnIndex, restoreButton);
             }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-
+            actualizarIdioma();
         }
 
         private void btnBuscarCambios_Click(object sender, EventArgs e) {
@@ -73,9 +70,8 @@ namespace ProyectoTC2023 {
             if (e.ColumnIndex == dataGridView1.Columns["restaurar"].Index && DialogResult.OK == MessageBox.Show("Esta seguro que desea continuar", "", MessageBoxButtons.OKCancel)) {
                 //TODO restaurar usuario
                 //userService.UpdateUser();
-                int userID = ((int)dataGridView1.SelectedRows[0].Cells["nomUsu"]?.Value);
-                Usuario user = usuariosSvc.lookupUsuario(userID);
-                string keyOg = user.nomUsu;
+                string userID = ((string)dataGridView1.SelectedRows[0].Cells["nomUsu"]?.Value);
+                Usuario user = new Usuario();
 
                 user.nombre = (string)dataGridView1.SelectedRows[0].Cells["nombre"]?.Value;
                 user.nomUsu = (string)dataGridView1.SelectedRows[0].Cells["nomUsu"]?.Value;
@@ -84,9 +80,19 @@ namespace ProyectoTC2023 {
                 user.telefono = (string)dataGridView1.SelectedRows[0].Cells["telefono"]?.Value;
                 user.dni= (string)dataGridView1.SelectedRows[0].Cells["dni"]?.Value;
 
-                usuarioSvc.modificaUsuario(user, keyOg);
+                usuarioSvc.modificaUsuario(user, userID);
 
             }
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmControlCambios", typeof(FrmControlCambios), codigoIdioma);
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmControlCambios", typeof(FrmControlCambios).Assembly);
+            this.Text = _resourceManager.GetString("FrmControlCambios");
         }
     }
 }

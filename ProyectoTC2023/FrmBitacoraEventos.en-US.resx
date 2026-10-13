@@ -132,9 +132,6 @@
   <data name="lblFechaHastaBit" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="btnRollback" xml:space="preserve">
-    <value>Rollback</value>
-  </data>
   <data name="btnImprimir" xml:space="preserve">
     <value>Print</value>
   </data>

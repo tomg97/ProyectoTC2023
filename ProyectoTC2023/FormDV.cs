@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
     public partial class FormDV : Form {
@@ -35,6 +37,8 @@ namespace ProyectoTC2023 {
             resultados = manejaDv.check();
             dgvDVRestore.DataSource = resultados.Select(x => new { error = x }).ToList();
             if (dgvDVRestore.CurrentCell != null) dgvDVRestore.CurrentCell.Selected = false;
+
+            actualizarIdioma();
         }
 
         private void btnRecalcularDV_Click(object sender, EventArgs e) {
@@ -53,6 +57,16 @@ namespace ProyectoTC2023 {
 
         private void FormDV_Load(object sender, EventArgs e) {
 
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FormDV", typeof(FormDV), codigoIdioma);
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FormDV", typeof(FormDV).Assembly);
+            this.Text = _resourceManager.GetString("FormDV");
         }
     }
 }

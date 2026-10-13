@@ -55,7 +55,6 @@
             this.lblNomUsuCambios.Size = new System.Drawing.Size(106, 16);
             this.lblNomUsuCambios.TabIndex = 1;
             this.lblNomUsuCambios.Text = "Nombre Usuario";
-            this.lblNomUsuCambios.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblDNICambios
             // 

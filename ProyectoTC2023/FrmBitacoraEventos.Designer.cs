@@ -41,7 +41,7 @@
             this.txtApellidoBit = new System.Windows.Forms.TextBox();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.cbMarcaProductoBit = new System.Windows.Forms.ComboBox();
+            this.cbEventoEnum = new System.Windows.Forms.ComboBox();
             this.lblEvento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
@@ -194,7 +194,7 @@
             // 
             // txtNombreBit
             // 
-            this.txtNombreBit.Location = new System.Drawing.Point(1072, 404);
+            this.txtNombreBit.Location = new System.Drawing.Point(1070, 404);
             this.txtNombreBit.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreBit.Name = "txtNombreBit";
             this.txtNombreBit.ReadOnly = true;
@@ -212,7 +212,7 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(1224, 511);
+            this.btnImprimir.Location = new System.Drawing.Point(1220, 518);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(100, 28);
@@ -232,21 +232,21 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // cbMarcaProductoBit
+            // cbEventoEnum
             // 
-            this.cbMarcaProductoBit.FormattingEnabled = true;
-            this.cbMarcaProductoBit.Items.AddRange(new object[] {
+            this.cbEventoEnum.FormattingEnabled = true;
+            this.cbEventoEnum.Items.AddRange(new object[] {
             "Cliente",
             "Factura",
             "Producto",
             "Usuarios",
             "Venta"});
-            this.cbMarcaProductoBit.Location = new System.Drawing.Point(334, 29);
-            this.cbMarcaProductoBit.Margin = new System.Windows.Forms.Padding(4);
-            this.cbMarcaProductoBit.Name = "cbMarcaProductoBit";
-            this.cbMarcaProductoBit.Size = new System.Drawing.Size(133, 24);
-            this.cbMarcaProductoBit.TabIndex = 22;
-            this.cbMarcaProductoBit.TabStop = false;
+            this.cbEventoEnum.Location = new System.Drawing.Point(334, 29);
+            this.cbEventoEnum.Margin = new System.Windows.Forms.Padding(4);
+            this.cbEventoEnum.Name = "cbEventoEnum";
+            this.cbEventoEnum.Size = new System.Drawing.Size(133, 24);
+            this.cbEventoEnum.TabIndex = 22;
+            this.cbEventoEnum.TabStop = false;
             // 
             // lblEvento
             // 
@@ -265,7 +265,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1335, 554);
             this.Controls.Add(this.lblEvento);
-            this.Controls.Add(this.cbMarcaProductoBit);
+            this.Controls.Add(this.cbEventoEnum);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.txtApellidoBit);
@@ -314,7 +314,7 @@
         private System.Windows.Forms.TextBox txtApellidoBit;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.ComboBox cbMarcaProductoBit;
+        private System.Windows.Forms.ComboBox cbEventoEnum;
         private System.Windows.Forms.Label lblEvento;
     }
 }

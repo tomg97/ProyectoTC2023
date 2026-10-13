@@ -17,7 +17,7 @@ using System.Reflection;
 
 namespace DAL.Metodos {
     public class ManejaDbBitacora {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private readonly string _connectionString = DbConfig.Instance.ConnectionString;
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
 
         public List<MensajeEvento> lookupMensajesBitacoraEventos(Dictionary<string, string> parametros) {
@@ -55,9 +55,8 @@ namespace DAL.Metodos {
             DataTable resultado = new DataTable();
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("Select * FROM CambiosUsuarios", connection);
                     connection.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command, connection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("Select * FROM CambiosUsuarios", connection);
                     adapter.Fill(resultado);
                 }
             } catch (Exception ex) {

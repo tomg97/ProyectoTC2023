@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="gbIdFacturas" xml:space="preserve">
+    <value>Identificador Facturas</value>
+  </data>
+  <data name="lblDniFactura" xml:space="preserve">
+    <value>DNI Cliente</value>
+  </data>
+  <data name="lblIdFactura" xml:space="preserve">
+    <value>Id Factura</value>
+  </data>
+  <data name="btnDespachar" xml:space="preserve">
+    <value>Despachar</value>
+  </data>
+  <data name="gbVisualizador" xml:space="preserve">
+    <value>Visualizador facturas</value>
+  </data>
+  <data name="gbSeleccionFactura" xml:space="preserve">
+    <value>Seleccionador Facturas</value>
+  </data>
+  <data name="btnSelect" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
 </root>

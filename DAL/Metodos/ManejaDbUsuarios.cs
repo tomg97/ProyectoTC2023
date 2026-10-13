@@ -11,7 +11,7 @@ using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbUsuarios : IDVDAL<Usuario> {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private readonly string _connectionString = DbConfig.Instance.ConnectionString;
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public int authUsuario(Usuario usuario) {
             int resultado = -1;

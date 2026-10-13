@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button2" xml:space="preserve">
+    <value>❓</value>
+  </data>
+  <data name="btnRegistroProveedor" xml:space="preserve">
+    <value>Registrar proveedor</value>
+  </data>
+  <data name="btnGenerarOrden" xml:space="preserve">
+    <value>Generar Orden</value>
+  </data>
+  <data name="btnEliminar" xml:space="preserve">
+    <value>Eliminar producto</value>
+  </data>
+  <data name="labelCotizaciones" xml:space="preserve">
+    <value>Cotizaciones: </value>
+  </data>
+  <data name="labelTitulo" xml:space="preserve">
+    <value>Generar orden de compra</value>
+  </data>
+  <data name="lblSubtotal" xml:space="preserve">
+    <value>Subtotal:</value>
+  </data>
+  <data name="FrmOrdenCompra" xml:space="preserve">
+    <value>FrmOrdenCompra</value>
+  </data>
 </root>

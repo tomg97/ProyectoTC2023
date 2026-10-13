@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAMsAAAEAIACIRQMAFgAAACgAAAAAAQAAlgEAAAEAIAAAAAAAACwDAAAAAAAAAAAAAAAAAAAA
@@ -3698,5 +3698,65 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <data name="adminToolStripMenuItem" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="maestrosToolStripMenuItem" xml:space="preserve">
+    <value>Maestros</value>
+  </data>
+  <data name="usuarioToolStripMenuItem" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="usuariosToolStripMenuItem" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="ventasToolStripMenuItem" xml:space="preserve">
+    <value>Ventas</value>
+  </data>
+  <data name="comprasToolStripMenuItem" xml:space="preserve">
+    <value>Compras</value>
+  </data>
+  <data name="ayudaToolStripMenuItem" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="bitacoraToolStripMenuItem" xml:space="preserve">
+    <value>Bitácora</value>
+  </data>
+  <data name="perfilesToolStripMenuItem" xml:space="preserve">
+    <value>Perfiles</value>
+  </data>
+  <data name="idiomasToolStripMenuItem" xml:space="preserve">
+    <value>Idiomas</value>
+  </data>
+  <data name="productosToolStripMenuItem" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="clientesToolStripMenuItem" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="proveedoresToolStripMenuItem" xml:space="preserve">
+    <value>Proveedores</value>
+  </data>
+  <data name="tsmiArchivo" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="tmiSeleccionYCarrito" xml:space="preserve">
+    <value>Selección y Carrito</value>
+  </data>
+  <data name="tmiDespachar" xml:space="preserve">
+    <value>Despachar factura</value>
+  </data>
+  <data name="tmiFacturar" xml:space="preserve">
+    <value>Facturar</value>
+  </data>
+  <data name="tsmUsuMaestro" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="salirToolStripMenuItem" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="reportesToolStripMenuItem" xml:space="preserve">
+    <value>Reportes</value>
   </data>
 </root>
