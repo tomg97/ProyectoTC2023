@@ -43,5 +43,23 @@ namespace BLL.Metodos {
 
             return errores;
         }
+        public void llenarCarrito(Producto producto) {
+            SingletonCarrito.getInstance.agregarProducto(producto);
+        }
+        public List<Producto> getListaProductosEnStock() {
+            List<Producto> listaProductosEnStock = new List<Producto>();
+            listaProductosEnStock = productoDAL.getProductosEnStock();
+            SingletonCarrito.getInstance.cargarListaStock(listaProductosEnStock);
+            return listaProductosEnStock;
+        }
+        public void removerDelCarrito(Producto producto) {
+            SingletonCarrito.getInstance.removerDeCarrito(producto);
+        }
+        public List<Producto> devolverCarrito() {
+            return SingletonCarrito.getInstance.getCarrito();
+        }
+        public void vaciarCarrito() {
+            SingletonCarrito.getInstance.vaciarCarrito();
+        }
     }
 }
