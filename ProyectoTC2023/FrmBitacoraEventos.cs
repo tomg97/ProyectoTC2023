@@ -24,7 +24,6 @@ namespace ProyectoTC2023 {
         BitacoraBLL manejaBitacora = new BitacoraBLL();
         Mensajeria mensajeria = new Mensajeria();
         ManejaUsuarios resultadosDb = new ManejaUsuarios();
-        string tipoOperacion;
         string lenguajeActual;
         public FrmBitacoraEventos() {
             InitializeComponent();
@@ -53,7 +52,7 @@ namespace ProyectoTC2023 {
 
             DataTable dataTable;
 
-            var selectedItem = cbMarcaProductoBit.SelectedItem;
+            var selectedItem = cbEventoEnum.SelectedItem;
             var enumContenido = selectedItem.GetType().GetProperty("Value").GetValue(selectedItem, null).ToString();
             parameters = new Dictionary<string, string> {
                 { "@usuario", cbNomUsuBit.Text },
@@ -61,8 +60,8 @@ namespace ProyectoTC2023 {
                 { "@criticidad", cbCriticidadBit.Text },
                 { "@FromDate", dtpDesde.Value.ToString("yyyy-MM-dd") },
                 { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") },
-                { "@evento", enumContenido }
-               
+                { "@evento", enumContenido } };
+
             dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
 
             dgvBitacora.DataSource = dataTable;
@@ -85,20 +84,16 @@ namespace ProyectoTC2023 {
         }
 
         private void prepararParaEventos() {
-            lblEvento.Text = lenguajeActual == "es-AR" ? "Evento" : "Event";
-            lblEvento.Visible = true;
 
             cbNomUsuBit.DataSource = resultadosDb.traerTodosUsuarios();
             cbNomUsuBit.DisplayMember = "nomUsu";
             cbNomUsuBit.SelectedIndex = 0;
 
-            lblMBit.Text = lenguajeActual == "es-AR" ? "Modulo" : "Module";
             Array enums = Enum.GetValues(typeof(Modulo));
             cbModuloBit.Items.Clear();
             foreach (Modulo modulo in enums) {
                 cbModuloBit.Items.Add(modulo.ToString());
             }
-            lblCABit.Text = lenguajeActual == "es-AR" ? "Criticidad" : "Severity";
             Array enumsCrit = Enum.GetValues(typeof(Criticidad));
             cbCriticidadBit.Items.Clear();
             foreach (Criticidad criticidad in enumsCrit) {
@@ -111,10 +106,10 @@ namespace ProyectoTC2023 {
                     Display = texto.GetDescripcionTraducida()
                 }).OrderBy(e => e.Display)
                 .ToList();
-            cbMarcaProductoBit.Items.Clear();
-            cbMarcaProductoBit.DataSource = enumEventos;
-            cbMarcaProductoBit.DisplayMember = "Display";
-            cbMarcaProductoBit.ValueMember = "Value";
+            cbEventoEnum.Items.Clear();
+            cbEventoEnum.DataSource = enumEventos;
+            cbEventoEnum.DisplayMember = "Display";
+            cbEventoEnum.ValueMember = "Value";
         }
 
         private void dgvBitacora_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -145,7 +140,7 @@ namespace ProyectoTC2023 {
             cbNomUsuBit.SelectedIndex = 0;
             cbModuloBit.SelectedIndex = -1;
             cbCriticidadBit.SelectedIndex = -1;
-            cbMarcaProductoBit.SelectedIndex = -1;
+            cbEventoEnum.SelectedIndex = -1;
             dtpDesde.Value = DateTime.Now.AddDays(-1);
             dtpHasta.Value = DateTime.Now;
             dgvBitacora.DataSource = null;

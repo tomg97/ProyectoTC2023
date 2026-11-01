@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Metodos {
     public class SolicitudCotizacionDAL {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private readonly string _connectionString = DbConfig.Instance.ConnectionString;
 
         public void eliminarSolicitudCotizacion(string idSolicitud) {
             try {

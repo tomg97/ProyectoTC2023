@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
     public partial class FrmRegistroProveedor : Form {
@@ -19,11 +21,13 @@ namespace ProyectoTC2023 {
             InitializeComponent();
             etapaRegistro = etapa;
             cargarTextBoxes();
+            actualizarIdioma();
         }
         public FrmRegistroProveedor(Proveedor proveedor, string etapa) {
             InitializeComponent();
             etapaRegistro = etapa;
             cargarTextBoxes(proveedor);
+            actualizarIdioma();
         }
 
         private void cargarTextBoxes() {
@@ -128,6 +132,16 @@ namespace ProyectoTC2023 {
 
         private void btnCancelar_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmRegistroProveedor", typeof(FrmRegistroProveedor), codigoIdioma);
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmRegistroProveedor", typeof(FrmRegistroProveedor).Assembly);
+            this.Text = _resourceManager.GetString("FrmRegistroProveedor");
         }
     }
 }

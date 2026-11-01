@@ -12,7 +12,7 @@ using Servicios.Metodos;
 
 namespace DAL.Metodos {
     public class ManejaDbVenta : IDVDAL<Venta> {
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True"; 
+        private readonly string _connectionString = DbConfig.Instance.ConnectionString; 
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
         public List<Producto> getProductosEnStock() {
             List<Producto> listaProductos = new List<Producto>();
@@ -44,7 +44,7 @@ namespace DAL.Metodos {
             ManejaDbMaestro dbProducto = new ManejaDbMaestro("Producto");
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand sqlCommand = new SqlCommand();
+                    SqlCommand sqlCommand = new SqlCommand("RemoverDeStock", connection);
 
                     connection.Open();
                     foreach (Producto producto in productos) {

@@ -117,4 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button2" xml:space="preserve">
+    <value>❓</value>
+  </data>
+  <data name="gbProveedor" xml:space="preserve">
+    <value>Proveedor</value>
+  </data>
+  <data name="lblTelefono" xml:space="preserve">
+    <value>Teléfono:</value>
+  </data>
+  <data name="lblDomicilio" xml:space="preserve">
+    <value>Domicilio:</value>
+  </data>
+  <data name="lblBanco" xml:space="preserve">
+    <value>Banco: </value>
+  </data>
+  <data name="btnCancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="labelEmail" xml:space="preserve">
+    <value>Email: </value>
+  </data>
+  <data name="labelNombre" xml:space="preserve">
+    <value>Nombre: </value>
+  </data>
+  <data name="labelCuit" xml:space="preserve">
+    <value>CUIT:</value>
+  </data>
+  <data name="btnAgregar" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
+  <data name="labelTitulo" xml:space="preserve">
+    <value>Registrar proveedor</value>
+  </data>
 </root>

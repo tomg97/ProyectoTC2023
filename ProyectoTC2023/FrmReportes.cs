@@ -12,13 +12,16 @@ using CUL.Entidades;
 using Microsoft.Reporting.WinForms;
 using Newtonsoft.Json;
 using Servicios.Metodos;
+using System.Resources;
+using Servicios.Idioma;
 
 namespace ProyectoTC2023 {
     public partial class FrmReportes : Form {
         public FrmReportes() {
             InitializeComponent();
+            actualizarIdioma();
         }
-        private string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ComercializAR;Integrated Security=True";
+        private readonly string _connectionString = DAL.Metodos.DbConfig.Instance.ConnectionString;
         private void FrmReportes_Load(object sender, EventArgs e) {
 
             this.rvReportes.RefreshReport();
@@ -69,6 +72,16 @@ namespace ProyectoTC2023 {
 
         private void rvReportes_Load(object sender, EventArgs e) {
 
+        }
+
+        public void actualizarIdioma() {
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmReportes", typeof(FrmReportes), codigoIdioma);
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmReportes", typeof(FrmReportes).Assembly);
+            this.Text = _resourceManager.GetString("FrmReportes");
         }
     }
 }

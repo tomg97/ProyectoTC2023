@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblOrdenes" xml:space="preserve">
+    <value>Órdenes sin pagar</value>
+  </data>
+  <data name="btnRechazar" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="btnPago" xml:space="preserve">
+    <value>Realizar Pago</value>
+  </data>
 </root>

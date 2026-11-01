@@ -17,9 +17,9 @@ using System.Windows.Forms;
 
 namespace ProyectoTC2023 {
     public partial class FrmVentas : Form, IObserver {
-        ManejaVenta manejaVenta = new ManejaVenta();
         ValidarCampos validarCampos = new ValidarCampos();
         Mensajeria mensajeria = new Mensajeria();
+        ProductoBLL productoBLL = new ProductoBLL();
         public FrmVentas() {
             InitializeComponent();
             LenguajeActual.Attach(this);
@@ -42,7 +42,7 @@ namespace ProyectoTC2023 {
                         int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
                         if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
                             Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
-                            manejaVenta.llenarCarrito(productoCarrito);
+                            productoBLL.llenarCarrito(productoCarrito);
                             setDataGridViewCarrito();
                             txtCantidadVentas.Clear();
                         } else {
@@ -67,7 +67,7 @@ namespace ProyectoTC2023 {
                     try {
                         DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
                         Producto producto = (Producto)selectedRow.DataBoundItem;
-                        manejaVenta.removerDelCarrito(producto);
+                        productoBLL.removerDelCarrito(producto);
                         setDataGridViewCarrito();
                     } catch (ArgumentOutOfRangeException ex) {
                         mensajeria.mostrarMensaje("Se debe seleccionar una fila de la lista");
@@ -80,16 +80,16 @@ namespace ProyectoTC2023 {
         }
         private void setDataGridViewCarrito() {
             dgvCarrito.DataSource = null;
-            dgvCarrito.DataSource = manejaVenta.devolverCarrito();
+            dgvCarrito.DataSource = productoBLL.devolverCarrito();
         }
         private void setDataGridViewExistencias() {
             dgvExistencias.DataSource = null;
-            dgvExistencias.DataSource = manejaVenta.getListaProductosEnStock();
+            dgvExistencias.DataSource = productoBLL.getListaProductosEnStock();
         }
 
         private void btnVaciar_Click(object sender, EventArgs e) {
             if (SingletonSesion.getInstance.estaLogged) {
-                manejaVenta.vaciarCarrito();
+                productoBLL.vaciarCarrito();
                 setDataGridViewCarrito();
             } else {
                 mensajeria.mostrarErrorNoLogged();
