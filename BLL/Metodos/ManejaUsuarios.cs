@@ -151,5 +151,15 @@ namespace BLL.Metodos {
             }
             return errores;
         }
+        public void modificaUsuario(Usuario usuario, string keyOg) {
+            try {
+                manejaDb.modificarUsuario(usuario, keyOg);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Usuario, Criticidad.Uno);
+            } catch (Exception ex) {
+                mensajeria.mostrarMensaje("Error: " + ex.Message);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Usuario, Criticidad.Uno);
+            }
+
+        }
     }
 }

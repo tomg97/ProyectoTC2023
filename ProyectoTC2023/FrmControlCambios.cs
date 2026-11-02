@@ -16,7 +16,7 @@ namespace ProyectoTC2023 {
     public partial class FrmControlCambios : Form {
         BitacoraBLL bitacoraBLL;
         DataTable cambios;
-        ManejaMaestro usuarioSvc = new ManejaMaestro();
+        ManejaUsuarios usuarioSvc = new ManejaUsuarios();
         public FrmControlCambios() {
             InitializeComponent();
             bitacoraBLL = new BitacoraBLL();

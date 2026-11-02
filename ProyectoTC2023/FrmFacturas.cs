@@ -27,7 +27,9 @@ namespace ProyectoTC2023 {
         }
 
         private void FrmFacturas_Load(object sender, EventArgs e) {
-
+            resetDgvView();
+            LenguajeActual.Attach(this);
+            actualizarIdioma();
         }
         private void resetDgvView() {
             dgvVentasNoF.DataSource = null;

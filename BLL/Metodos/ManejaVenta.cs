@@ -20,14 +20,16 @@ namespace BLL.Metodos {
         public string commitCarrito(Cliente cliente) {
             string mensaje;
             List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
-            Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());
+            Encriptador encriptador = new Encriptador();
+            cliente.id = encriptador.encriptarReversible(cliente.id);
+            Venta venta = new Venta(guidGenerator.getUuidString(), carrito, cliente, DateTime.Now.ToString());            
             mensaje = manejaDbVenta.actualizarStock(carrito, SingletonSesion.getInstance.getUsuarioActual().nomUsu);
             manejaDbVenta.crearVentaNoFacturada(venta);
             manejaBR.realizarAutoBackup();
             return mensaje;
         }
         public decimal getSubtotalCarrito() {
-            List<Producto> carrito = devolverCarrito();
+            List<Producto> carrito = SingletonCarrito.getInstance.getCarrito();
             decimal subtotal = 0;
             foreach (Producto producto in carrito) {
                 subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
@@ -49,6 +51,10 @@ namespace BLL.Metodos {
         }
         public void devolverFacturaYCargarTreeView(TreeView control) {
             Factura factura = jsonificador.cargarFacturaYRellenarTreeView<Factura>(control);
+            if (factura != null) {
+                factura.desencriptarIdCliente();
+                jsonificador.rellenarTreeView(control, JsonConvert.SerializeObject(factura));
+            }
         }
         public void despacharFactura(params string[] datos) {
             string rutaArchivo = SingletonRutaArchivo.getInstance.getRutaArchivo();

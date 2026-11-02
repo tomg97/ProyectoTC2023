@@ -45,6 +45,7 @@ namespace DAL.Metodos {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand sqlCommand = new SqlCommand("RemoverDeStock", connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
 
                     connection.Open();
                     foreach (Producto producto in productos) {
@@ -56,6 +57,7 @@ namespace DAL.Metodos {
                         sqlCommand.ExecuteNonQuery();
                     }
                     mensaje = "éxito";
+                    actualizarDVVProducto();
                 }
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
@@ -72,7 +74,7 @@ namespace DAL.Metodos {
                     sqlCommand.Parameters.AddWithValue("@id", venta.id);
                     sqlCommand.Parameters.AddWithValue("@monto", venta.monto);
                     sqlCommand.Parameters.AddWithValue("@fecha", venta.fecha);
-                    sqlCommand.Parameters.AddWithValue("@cliente", venta.idCliente);
+                    sqlCommand.Parameters.AddWithValue("@idCliente", venta.idCliente);
                     sqlCommand.Parameters.AddWithValue("@dvh", calcularDVH(venta));
                     sqlCommand.Parameters.AddWithValue("@facturada", 0);
 
@@ -204,6 +206,18 @@ namespace DAL.Metodos {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand command = new SqlCommand("UPDATE DVV SET dvv = @dvv WHERE nombreTabla = 'Venta'", connection);
+                    command.Parameters.AddWithValue("@dvv", calcularDVV(traerTodos()));
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+        public void actualizarDVVProducto() {
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("UPDATE DVV SET dvv = @dvv WHERE nombreTabla = 'Producto'", connection);
                     command.Parameters.AddWithValue("@dvv", calcularDVV(traerTodos()));
                     connection.Open();
                     command.ExecuteNonQuery();
