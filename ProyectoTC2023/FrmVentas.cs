@@ -42,7 +42,7 @@ namespace ProyectoTC2023 {
                         int cantidadDeseada = Convert.ToInt32(txtCantidadVentas.Text);
                         if (validarCampos.validarMayor0(cantidadDeseada) && cantidadDeseada <= stockActual) {
                             Producto productoCarrito = new Producto(producto.nombreProducto, producto.marcaProducto, producto.id, txtCantidadVentas.Text, producto.precio);
-                            productoBLL.llenarCarrito(productoCarrito);
+                            SingletonCarrito.getInstance.agregarProducto(productoCarrito);
                             setDataGridViewCarrito();
                             txtCantidadVentas.Clear();
                         } else {
@@ -67,20 +67,21 @@ namespace ProyectoTC2023 {
                     try {
                         DataGridViewRow selectedRow = dgvCarrito.SelectedRows[0];
                         Producto producto = (Producto)selectedRow.DataBoundItem;
-                        productoBLL.removerDelCarrito(producto);
+                        SingletonCarrito.getInstance.removerDeCarrito(producto);
                         setDataGridViewCarrito();
                     } catch (ArgumentOutOfRangeException ex) {
                         mensajeria.mostrarMensaje("Se debe seleccionar una fila de la lista");
                     }
-                }
-                mensajeria.mostrarMensaje("No hay elementos en el carrito.");
+                } else {
+                    mensajeria.mostrarMensaje("No hay elementos en el carrito.");
+                }                
             } else {
                 mensajeria.mostrarErrorNoLogged();
             }            
         }
         private void setDataGridViewCarrito() {
             dgvCarrito.DataSource = null;
-            dgvCarrito.DataSource = productoBLL.devolverCarrito();
+            dgvCarrito.DataSource = SingletonCarrito.getInstance.getCarrito();
         }
         private void setDataGridViewExistencias() {
             dgvExistencias.DataSource = null;
@@ -89,7 +90,7 @@ namespace ProyectoTC2023 {
 
         private void btnVaciar_Click(object sender, EventArgs e) {
             if (SingletonSesion.getInstance.estaLogged) {
-                productoBLL.vaciarCarrito();
+                SingletonCarrito.getInstance.vaciarCarrito();
                 setDataGridViewCarrito();
             } else {
                 mensajeria.mostrarErrorNoLogged();

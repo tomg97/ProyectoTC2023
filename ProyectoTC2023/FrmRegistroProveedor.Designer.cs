@@ -244,7 +244,7 @@
             this.Controls.Add(this.gbProveedor);
             this.Controls.Add(this.labelTitulo);
             this.Name = "FrmRegistroProveedor";
-            this.Text = "FrmRegistroProveedor";
+            this.Text = "Registrar Proveedor";
             this.gbProveedor.ResumeLayout(false);
             this.gbProveedor.PerformLayout();
             this.ResumeLayout(false);

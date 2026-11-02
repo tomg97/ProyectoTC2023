@@ -27,9 +27,11 @@ namespace ProyectoTC2023 {
         }
 
         private void btnDespachar_Click(object sender, EventArgs e) {
+            Encriptador encriptador = new Encriptador();
             if (SingletonSesion.getInstance.estaLogged) {
                 ValidarCampos validarCampos = new ValidarCampos();
                 string idCliente = txtIdCliente.Text;
+                idCliente = encriptador.encriptarReversible(idCliente);
                 string idFactura = txtIdFactura.Text;
                 if (validarCampos.validarNoNuloNoVacio(idFactura, idCliente)) {
                     manejaVenta.despacharFactura(idFactura, idCliente, pathArchivo);

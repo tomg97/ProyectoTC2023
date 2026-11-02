@@ -27,6 +27,7 @@ namespace ProyectoTC2023 {
             gbRegistroCliente.Visible = false;
             lblCuotas.Visible = false;
             txtCuotas.Visible = false;
+            lblSubtotalCuotas.Visible = false;
             clienteVacio = cliente;
             actualizarIdioma();
         }
@@ -63,6 +64,11 @@ namespace ProyectoTC2023 {
             if(cbTipoTarjeta.SelectedItem.ToString() == "Crédito") {
                 lblCuotas.Visible = true;
                 txtCuotas.Visible = true;
+                lblSubtotalCuotas.Visible = true;
+            } else {
+                lblCuotas.Visible = false;
+                txtCuotas.Visible = false;
+                lblSubtotalCuotas.Visible = false;
             }
         }
         private void validacionTxtBoxCuotas(object sender, EventArgs e) {
