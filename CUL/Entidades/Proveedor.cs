@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Servicios.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CUL.Entidades {
-    public class Proveedor {
+    public class Proveedor : IDVEntidades {
         public Proveedor(string c, string e, string n, string t, string d, string b) {
 			_CUIT = c;
 			_email = e;
@@ -50,5 +51,6 @@ namespace CUL.Entidades {
 			get { return _banco; }
 			set { _banco = value; }
 		}
-	}
+        public string dvh { get; set; }
+    }
 }

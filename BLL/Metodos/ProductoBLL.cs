@@ -1,6 +1,7 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
 using Servicios.Interfaces;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace BLL.Metodos {
     public class ProductoBLL : IDVManejadores {
         ManejaBR manejaBR = new ManejaBR();
         ProductoDAL productoDAL = new ProductoDAL();
-        ManejaDbMaestro manejaDbMaestro = new ManejaDbMaestro("Producto");
+        BitacoraBLL bitacora = new BitacoraBLL();
+        Mensajeria mensajeria = new Mensajeria();
 
         public List<Producto> getProductosBajoStock() {
             List<Producto> listaProductosBajoStock = productoDAL.getProductosBajoStock().Where(p => p.cantidad <= 5).ToList();
@@ -23,21 +25,21 @@ namespace BLL.Metodos {
         }
 
         public void recalcularDV() {
-            manejaDbMaestro.actualizarTodosDV();
-            manejaDbMaestro.actualizarDVV();
+            productoDAL.actualizarTodosDV();
+            productoDAL.actualizarDVV();
         }
 
         public List<String> chequearIntegridad() {
             List<String> errores = new List<String>();
-            List<Producto> productos = manejaDbMaestro.traerTodosProductos();
+            List<Producto> productos = productoDAL.traerTodosProductos();
 
             productos.ForEach(p => {
-                if (!string.Equals(p.dvh, manejaDbMaestro.calcularDVH(p))) {
+                if (!string.Equals(p.dvh, productoDAL.calcularDVH(p))) {
                     errores.Add($"En la tabla Producto, el Producto id : {p.id} fue modificado");
                 }
             });
 
-            if (!manejaDbMaestro.calcularDVV(productos).Equals(manejaDbMaestro.obtenerDVV())) {
+            if (!productoDAL.calcularDVV(productos).Equals(productoDAL.obtenerDVV())) {
                 errores.Add("En la tabla Producto, el DVV es incorrecto");
             }
 
@@ -60,6 +62,15 @@ namespace BLL.Metodos {
         }
         public void vaciarCarrito() {
             SingletonCarrito.getInstance.vaciarCarrito();
+        }
+        public void modificaProducto(Producto producto, string keyOg) {
+            try {
+                productoDAL.modificarProducto(producto, keyOg);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Compras, Criticidad.Uno);
+            } catch (Exception ex) {
+                mensajeria.mostrarMensaje("Error: " + ex.Message);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Compras, Criticidad.Uno);
+            }
         }
     }
 }

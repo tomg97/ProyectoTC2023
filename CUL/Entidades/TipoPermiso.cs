@@ -18,7 +18,12 @@ namespace CUL.Entidades {
         ventas_select,
         ventas_facturar,
         ventas_despachar,
-        compras,
-        reportes
+        compras_pagar,
+        compras_solicitar,
+        compras_cotizar,
+        compras_almacenista,
+        compras_registroProveedor,
+        reportes,
+        compras
     }
 }

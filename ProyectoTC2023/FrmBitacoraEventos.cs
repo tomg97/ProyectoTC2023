@@ -53,8 +53,12 @@ namespace ProyectoTC2023 {
             DataTable dataTable;
 
             var selectedItem = cbEventoEnum.SelectedItem;
-            var enumContenido = selectedItem.GetType().GetProperty("Value").GetValue(selectedItem, null).ToString();
-            parameters = new Dictionary<string, string> {
+
+            if (selectedItem.GetType().GetProperty("Display").GetValue(selectedItem, null).ToString() == "Todos") {
+                dataTable = manejaBitacora.traerTodaBitacoraEventos();
+            } else {
+                var enumContenido = selectedItem.GetType().GetProperty("Value").GetValue(selectedItem, null).ToString();
+                parameters = new Dictionary<string, string> {
                 { "@usuario", cbNomUsuBit.Text },
                 { "@modulo", cbModuloBit.Text },
                 { "@criticidad", cbCriticidadBit.Text },
@@ -62,21 +66,21 @@ namespace ProyectoTC2023 {
                 { "@ToDate", dtpHasta.Value.AddDays(1).ToString("yyyy-MM-dd") },
                 { "@evento", enumContenido } };
 
-            dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
-
+                dataTable = manejaBitacora.lookupBitacoraEventosParametros(parameters);
+            }
             dgvBitacora.DataSource = dataTable;
         }
 
         public void actualizarIdioma() {
             string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
             lenguajeActual = codigoIdioma;
-            Traductor traductor = new Traductor("ProyectoTC2023.FrmBitacora", typeof(FrmBitacoraEventos), codigoIdioma);
+            Traductor traductor = new Traductor("ProyectoTC2023.FrmBitacoraEventos", typeof(FrmBitacoraEventos), codigoIdioma);
 
             foreach (Control control in this.Controls) {
                 traductor.ActualizarIdioma(control);
             }
-            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmBitacora", typeof(FrmBitacoraEventos).Assembly);
-            this.Text = _resourceManager.GetString("FrmBitacora");
+            var _resourceManager = new ResourceManager("ProyectoTC2023.FrmBitacoraEventos", typeof(FrmBitacoraEventos).Assembly);
+            this.Text = _resourceManager.GetString("FrmBitacoraEventos");
         }
 
         private void FrmBitacora_Load(object sender, EventArgs e) {
@@ -107,7 +111,8 @@ namespace ProyectoTC2023 {
                 }).OrderBy(e => e.Display)
                 .ToList();
             cbEventoEnum.Items.Clear();
-            cbEventoEnum.DataSource = enumEventos;
+            cbEventoEnum.Items.AddRange(enumEventos.ToArray());
+            cbEventoEnum.Items.Add(new { Value = (EventoEnum)(-1), Display = lenguajeActual == "es-AR" ? "Todos" : "All" });
             cbEventoEnum.DisplayMember = "Display";
             cbEventoEnum.ValueMember = "Value";
         }

@@ -55,9 +55,12 @@ namespace ProyectoTC2023 {
         }
 
         private void setComboProveedores() {
+            cmbProveedores.Items.Clear();
             ProveedorBLL proveedorBLL = new ProveedorBLL();
-            cmbProveedores.DataSource = proveedorBLL.getProveedores();
-            cmbProveedores.SelectedIndex = -1;
+            List<Proveedor> proveedores = proveedorBLL.getProveedores();
+            cmbProveedores.DataSource = proveedores;
+            cmbProveedores.DisplayMember = "nombre";
+            cmbProveedores.SelectedIndex = proveedores.Count >= 1 ? 0 : -1;
         }
 
         private void setDataGridViewExistencias() {
@@ -132,10 +135,10 @@ namespace ProyectoTC2023 {
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Debe seleccionar un proveedor." : "Please select a provider.");
                 return;
             }
-            solicitudCotizacion.proveedor = cmbProveedores.SelectedItem as Proveedor;
+            solicitudCotizacion.proveedor = (Proveedor)cmbProveedores.SelectedItem;
             cmbProveedores.Enabled = false;
-            btnAgregar.Enabled = false;
-            btnAgregar.Hide();
+            btnAñadirProveedor.Enabled = false;
+            btnAñadirProveedor.Hide();
             btnRemover.Show();
             btnRemover.Enabled = true;
         }
@@ -150,7 +153,7 @@ namespace ProyectoTC2023 {
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e) {
-            if (solicitudCotizacion.proveedor == null) {
+            if (solicitudCotizacion == null && solicitudCotizacion.proveedor == null) {
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Debe seleccionar un proveedor." : "Please select a provider.");
                 return;
             } else if (solicitudCotizacionAux.Count == 0) {
@@ -159,9 +162,11 @@ namespace ProyectoTC2023 {
             }
             solicitudCotizacion.productos = solicitudCotizacionAux;
             solicitudCotizacion.fecha = DateTime.Now;
+            solicitudCotizacion.subtotal = solicitudCotizacion.productos.Sum(p => Int32.Parse(p.precio) * p.cantidad).ToString();
             if (solicitudCotizacion.proveedor.telefono == "0") {
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "El proveedor seleccionado no cuenta con todos sus datos. Por favor, actualice su información a continuación." : "The selected provider's registration is not complete. Please update their information on the following screen.");
                 FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor(solicitudCotizacion.proveedor, "Completar Registro");
+                frmRegistroProveedor.ShowDialog();
                 ProveedorBLL proveedorBLL = new ProveedorBLL();
                 solicitudCotizacion.proveedor = proveedorBLL.getProveedor(solicitudCotizacion.proveedor.CUIT);
             }

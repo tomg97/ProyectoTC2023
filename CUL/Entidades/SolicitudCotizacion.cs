@@ -1,19 +1,19 @@
 ﻿using Newtonsoft.Json;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CUL.Entidades {
-    public class SolicitudCotizacion {
-		public SolicitudCotizacion(string i, string p, string f, string c, string t, string e) {
+namespace CUL.Entidades {  
+    public class SolicitudCotizacion : IDVEntidades {
+		public SolicitudCotizacion(string i, string p, string f, string c, string t) {
 			_id = i;
 			_proveedor = new Proveedor(c,"","","","","");
 			_productos = JsonConvert.DeserializeObject<List<Producto>>(p);
 			_fecha = DateTime.Parse(f);
 			_subtotal = t;
-			_estado = e;
         }
         public SolicitudCotizacion() {
             
@@ -48,13 +48,6 @@ namespace CUL.Entidades {
 			get { return _subtotal; }
 			set { _subtotal = value; }
 		}
-		private string _estado;
-
-		public string estado {
-			get { return _estado; }
-			set { _estado = value; }
-		}
-
-
+		public string dvh { get; set; }	
 	}
 }

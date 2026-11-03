@@ -10,13 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL.Metodos {
-    public class ManejaMaestro : IDVManejadores {
+    public class ManejaMaestro {
         ManejaDbClientes manejaCliente = new ManejaDbClientes();
         ManejaDbMaestro manejaDbMaestro; 
         ManejaDbUsuarios dbUsuarios = new ManejaDbUsuarios();
         BitacoraBLL bitacora = new BitacoraBLL();
         Mensajeria mensajeria = new Mensajeria();
         Encriptador encriptador = new Encriptador();
+        ProductoDAL productoDAL = new ProductoDAL();
         string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
 
         string tipo;
@@ -30,7 +31,7 @@ namespace BLL.Metodos {
                         dt = cargarDataTableClientes(manejaCliente.traerTodosClientes());
                         break;
                     case "Producto":
-                        dt = cargarDataTableProductos(manejaDbMaestro.traerTodosProductos());
+                        dt = cargarDataTableProductos(productoDAL.traerTodosProductos());
                         break;
                     case "Usuarios":
                         dt = cargarDataTableUsuarios(dbUsuarios.traerTodosUsuarios());
@@ -106,7 +107,7 @@ namespace BLL.Metodos {
         }
         public void guardarProductoNuevo(Producto producto) {
             try {
-                manejaDbMaestro.guardarProductoNuevo(producto);
+                productoDAL.guardarProductoNuevo(producto);
                 bitacora.persistirMensajeLogged(EventoEnum.CreaProductoOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
@@ -145,7 +146,7 @@ namespace BLL.Metodos {
         }
         public void modificaProducto(Producto producto, string keyOg) {
             try {
-                manejaDbMaestro.modificarProducto(producto, keyOg);
+                productoDAL.modificarProducto(producto, keyOg);
                 bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Maestros, Criticidad.Uno);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
@@ -194,27 +195,6 @@ namespace BLL.Metodos {
                 }
                 bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
             }
-        }
-
-        public void recalcularDV() {
-            manejaDbMaestro.actualizarTodosDV();
-            manejaDbMaestro.actualizarDVV();
-        }
-
-        public List<String> chequearIntegridad() {
-            List<String> erroresProductos = new List<string>();
-            List<Producto> productos = manejaDbMaestro.traerTodosProductos();
-
-            productos.ForEach(p => {
-                if (!p.dvh.Equals(manejaDbMaestro.calcularDVH(p))) {
-                    erroresProductos.Add($"En la tabla Productos: El producto con id: {p.id}, fue modificado");
-                }
-            });
-
-            if (!manejaDbMaestro.calcularDVV(productos).Equals(manejaDbMaestro.obtenerDVV())) {
-                erroresProductos.Add("El dígito verificador vertical de la tabla Productos no es correcto");
-            }
-            return erroresProductos;
         }
     }
 }
