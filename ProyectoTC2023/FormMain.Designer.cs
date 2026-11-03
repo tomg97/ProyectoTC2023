@@ -49,9 +49,10 @@
             this.tsmiOrdenCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRegistroProveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPagarOrdenCompra = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRecepcionProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRecepcionProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,6 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(2085, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -78,6 +78,7 @@
             // 
             this.tsmiArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiLogin,
+            this.tsmiLogout,
             this.salirToolStripMenuItem});
             this.tsmiArchivo.Name = "tsmiArchivo";
             this.tsmiArchivo.Size = new System.Drawing.Size(73, 24);
@@ -87,14 +88,14 @@
             // tsmiLogin
             // 
             this.tsmiLogin.Name = "tsmiLogin";
-            this.tsmiLogin.Size = new System.Drawing.Size(129, 26);
+            this.tsmiLogin.Size = new System.Drawing.Size(224, 26);
             this.tsmiLogin.Text = "Login";
             this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -204,21 +205,21 @@
             // tmiSeleccionYCarrito
             // 
             this.tmiSeleccionYCarrito.Name = "tmiSeleccionYCarrito";
-            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(224, 26);
+            this.tmiSeleccionYCarrito.Size = new System.Drawing.Size(216, 26);
             this.tmiSeleccionYCarrito.Text = "Seleccion Y Carrito";
             this.tmiSeleccionYCarrito.Click += new System.EventHandler(this.tmiSeleccionYCarrito_Click);
             // 
             // tmiFacturar
             // 
             this.tmiFacturar.Name = "tmiFacturar";
-            this.tmiFacturar.Size = new System.Drawing.Size(224, 26);
+            this.tmiFacturar.Size = new System.Drawing.Size(216, 26);
             this.tmiFacturar.Text = "Facturar";
             this.tmiFacturar.Click += new System.EventHandler(this.tmiFacturar_Click);
             // 
             // tmiDespachar
             // 
             this.tmiDespachar.Name = "tmiDespachar";
-            this.tmiDespachar.Size = new System.Drawing.Size(224, 26);
+            this.tmiDespachar.Size = new System.Drawing.Size(216, 26);
             this.tmiDespachar.Text = "Despachar";
             this.tmiDespachar.Click += new System.EventHandler(this.tmiDespachar_Click);
             // 
@@ -262,6 +263,13 @@
             this.tsmiPagarOrdenCompra.Text = "Pagar Orden Compra";
             this.tsmiPagarOrdenCompra.Click += new System.EventHandler(this.tsmiPagarOrdenCompra_Click);
             // 
+            // tsmiRecepcionProductos
+            // 
+            this.tsmiRecepcionProductos.Name = "tsmiRecepcionProductos";
+            this.tsmiRecepcionProductos.Size = new System.Drawing.Size(231, 26);
+            this.tsmiRecepcionProductos.Text = "Recepcion Productos";
+            this.tsmiRecepcionProductos.Click += new System.EventHandler(this.tsmiRecepcionProductos_Click);
+            // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
@@ -275,12 +283,12 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // tsmiRecepcionProductos
+            // tsmiLogout
             // 
-            this.tsmiRecepcionProductos.Name = "tsmiRecepcionProductos";
-            this.tsmiRecepcionProductos.Size = new System.Drawing.Size(231, 26);
-            this.tsmiRecepcionProductos.Text = "Recepcion Productos";
-            this.tsmiRecepcionProductos.Click += new System.EventHandler(this.tsmiRecepcionProductos_Click);
+            this.tsmiLogout.Name = "tsmiLogout";
+            this.tsmiLogout.Size = new System.Drawing.Size(224, 26);
+            this.tsmiLogout.Text = "Logout";
+            this.tsmiLogout.Click += new System.EventHandler(this.tsmiLogout_Click);
             // 
             // FormMain
             // 
@@ -333,6 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiRegistroProveedor;
         private System.Windows.Forms.ToolStripMenuItem tsmiPagarOrdenCompra;
         private System.Windows.Forms.ToolStripMenuItem tsmiRecepcionProductos;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLogout;
     }
 }
 

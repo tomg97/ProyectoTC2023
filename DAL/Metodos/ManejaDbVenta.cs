@@ -14,6 +14,7 @@ namespace DAL.Metodos {
     public class ManejaDbVenta : IDVDAL<Venta> {
         private readonly string _connectionString = DbConfig.Instance.ConnectionString; 
         private StoredProcedureHelper storedProcedureHelper = new StoredProcedureHelper();
+        ProductoDAL dbProducto = new ProductoDAL();
         public List<Producto> getProductosEnStock() {
             List<Producto> listaProductos = new List<Producto>();
             try {
@@ -41,7 +42,6 @@ namespace DAL.Metodos {
         }
         public string actualizarStock(List<Producto> productos, string nomUsu) {
             string mensaje = "0";
-            ManejaDbMaestro dbProducto = new ManejaDbMaestro("Producto");
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand sqlCommand = new SqlCommand("RemoverDeStock", connection);

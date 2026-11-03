@@ -150,4 +150,7 @@
   <data name="FrmBitacora" xml:space="preserve">
     <value>Logs Explorer</value>
   </data>
+  <data name="lblEvento" xml:space="preserve">
+    <value>Event</value>
+  </data>
 </root>

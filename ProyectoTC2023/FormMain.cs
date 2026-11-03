@@ -42,7 +42,10 @@ namespace ProyectoTC2023 {
                 idiomasToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_idiomas);
                 perfilesToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_perfiles);
                 backupToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup);
-                comprasToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras);
+                tsmiSolicitudCotizacion.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_solicitar);
+                tsmiPagarOrdenCompra.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_pagar);
+                tsmiRegistroProveedor.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_proveedores);
+                tsmiOrdenCompra.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_cotizar);
                 productosToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_productos);
                 proveedoresToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_proveedores);
                 clientesToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_clientes);
@@ -51,11 +54,24 @@ namespace ProyectoTC2023 {
                 tmiFacturar.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_facturar);
                 tmiSeleccionYCarrito.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_select);
                 tmiDespachar.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_despachar);
+                tsmiRecepcionProductos.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_almacenista);
+                maestrosToolStripMenuItem.Visible = validarMaestros();
+                adminToolStripMenuItem.Visible = validarAdmin();
+                ventasToolStripMenuItem.Visible = validarVentas();
             }
         }
         void invocarForm(Form form) {
             form.MdiParent = this;
             form.Show();
+        }
+        bool validarMaestros() {
+            return SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_productos) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_clientes) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_proveedores);
+        }
+        bool validarAdmin() {
+            return SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_usuarios) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_perfiles) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_idiomas) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_bitacora);
+        }
+        bool validarVentas() {
+            return SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_select) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_facturar) || SingletonSesion.getInstance.tienePermiso(TipoPermiso.ventas_despachar);
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -174,6 +190,16 @@ namespace ProyectoTC2023 {
         private void tsmiRecepcionProductos_Click(object sender, EventArgs e) {
             FrmRecepcion frmRecepcion = new FrmRecepcion();
             invocarForm(frmRecepcion);
+        }
+
+        private void tsmiLogout_Click(object sender, EventArgs e) {
+            if (SingletonSesion.getInstance.estaLogged) {
+                SingletonSesion.getInstance.logOut();
+                mensajeria.mostrarMensaje("Logout exitoso");
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                this.Close();
+            }
         }
     }
 }

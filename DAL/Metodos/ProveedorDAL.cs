@@ -1,4 +1,6 @@
 ﻿using CUL.Entidades;
+using Servicios.Interfaces;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DAL.Metodos {
-    public class ProveedorDAL {
+    public class ProveedorDAL : IDVDAL<Proveedor> {
         private readonly string _connectionString = DbConfig.Instance.ConnectionString;
         public List<Proveedor> getProveedores() {
             List<Proveedor> listaProveedores = new List<Proveedor>();
@@ -37,7 +39,7 @@ namespace DAL.Metodos {
             }
             return listaProveedores;
         }
-        public void guardarProveeorNuevo(Proveedor proveedor) {
+        public void guardarProveedorNuevo(Proveedor proveedor) {
             if (esIdUnico(proveedor.CUIT)) {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand cmd = new SqlCommand("INSERT INTO Proveedor " +
@@ -59,7 +61,7 @@ namespace DAL.Metodos {
         }
         public bool esIdUnico(string id) {
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Proveedor WHERE id = '{id}'", connection);
+                SqlCommand command = new SqlCommand($"SELECT COUNT(*) FROM Proveedor WHERE CUIT = '{id}'", connection);
                 connection.Open();
                 int count = (int)command.ExecuteScalar();
                 return count == 0;
@@ -107,6 +109,67 @@ namespace DAL.Metodos {
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
+        }
+        public string calcularDVH(Proveedor proveedor) {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(proveedor.CUIT);
+            sb.Append(proveedor.nombre);
+            sb.Append(proveedor.email);
+            sb.Append(proveedor.domicilio);
+            sb.Append(proveedor.telefono);
+            sb.Append(proveedor.banco);
+
+            return ServicioDV.obtenerDV(sb.ToString());
+        }
+
+        public string calcularDVV(List<Proveedor> lista) {
+            return lista.Aggregate<Proveedor, String>("", (a, b) => ServicioDV.obtenerDV(a + b.dvh));
+        }
+
+        public void actualizarTodosDV() {
+            List<Proveedor> proveedores = getProveedores();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                SqlCommand command = new SqlCommand("UPDATE Proveedor SET dvh = @dvh WHERE CUIT = @CUIT", connection);
+                command.Parameters.Add("@dvh", SqlDbType.VarChar);
+                command.Parameters.Add("@CUIT", SqlDbType.VarChar);
+
+                connection.Open();
+
+                foreach (var p in proveedores) {
+                    p.dvh = calcularDVH(p);
+                    command.Parameters["@dvh"].Value = p.dvh;
+                    command.Parameters["@CUIT"].Value = p.CUIT;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void actualizarDVV() {
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("UPDATE DVV SET dvv = @dvv WHERE nombreTabla = Proveedor", connection);
+                    command.Parameters.AddWithValue("@dvv", calcularDVV(getProveedores()));
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+
+        public string obtenerDVV() {
+            string dvv = "";
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("SELECT dvv FROM DVV WHERE nombreTabla = Proveedor", connection);
+                    connection.Open();
+                    dvv = command.ExecuteScalar().ToString();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            return dvv;
         }
     }
 }

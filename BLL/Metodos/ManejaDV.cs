@@ -16,7 +16,7 @@ namespace BLL.Metodos {
         public ManejaDV() {
             manejadores.Add(new ManejaUsuarios());
             manejadores.Add(new ManejaVenta());
-            manejadores.Add(new ManejaMaestro("Productos")); 
+            manejadores.Add(new ProductoBLL());
         }
 
         public List<String> check() {

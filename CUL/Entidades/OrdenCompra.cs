@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CUL.Entidades {
-    public class OrdenCompra {
+    public class OrdenCompra : IDVEntidades {
         public OrdenCompra() {
             
         }
-        public OrdenCompra(string i, string ic, string fc, string e, string t, string p, string c, string fr) {
+        public OrdenCompra(string i, string ic, string e, string t, string p, string c) {
 			_id = i;
 			_idCotizacion = ic;
-			_fechaCreacion = DateTime.Parse(fc);
 			_estado = e;
 			_total = t; 
 			_productos = JsonConvert.DeserializeObject<List<Producto>>(p);
             _cuitProveedor = c;
-			_fechaRecepcion = DateTime.Parse(fr);
-			_motivo = "";
+			_comentario = "";
         }
         private string _id;
 
@@ -33,18 +32,6 @@ namespace CUL.Entidades {
 			get { return _idCotizacion; }
 			set { _idCotizacion = value; }
 		}
-		private DateTime _fechaCreacion;
-
-		public DateTime fechaCreacion {
-			get { return _fechaCreacion; }
-			set { _fechaCreacion = value; }
-		}
-        private DateTime _fechaRecepcion;
-
-        public DateTime fechaRecepcion {
-            get { return _fechaRecepcion; }
-            set { _fechaRecepcion = value; }
-        }
 
         private string _estado;
 
@@ -70,12 +57,17 @@ namespace CUL.Entidades {
 			get { return _productos; }
 			set { _productos = value; }
 		}
-		private string _motivo;
+		private string _comentario;
 
-		public string motivo {
-			get { return _motivo; }
-			set { _motivo = value; }
+		public string comentario {
+			get { return _comentario; }
+			set { _comentario = value; }
 		}
+		private string _dvh;
 
+		public string dvh {
+			get { return _dvh; }
+			set { _dvh = value; }
+		}
 	}
 }

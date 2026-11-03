@@ -1,4 +1,5 @@
-﻿using Servicios.Metodos;
+﻿using Servicios.Interfaces;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace CUL.Entidades {
     [Serializable]
-    public class Cliente {
+    public class Cliente : IDVEntidades {
         public Cliente() { }
         public Cliente(string id) {
             this.id = id;
@@ -62,5 +63,6 @@ namespace CUL.Entidades {
             Encriptador encriptador = new Encriptador();
             telefono = encriptador.encriptarReversible(telefonoAEncriptar);
         }
+        public string dvh { get; set; }
     }
 }

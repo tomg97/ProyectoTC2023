@@ -26,7 +26,6 @@
             this.cbOrdenesCompra = new System.Windows.Forms.ComboBox();
             this.lblOrdenes = new System.Windows.Forms.Label();
             this.dgvOrdenCompra = new System.Windows.Forms.DataGridView();
-            this.btnRechazar = new System.Windows.Forms.Button();
             this.btnPago = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenCompra)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +39,7 @@
             this.cbOrdenesCompra.Name = "cbOrdenesCompra";
             this.cbOrdenesCompra.Size = new System.Drawing.Size(399, 33);
             this.cbOrdenesCompra.TabIndex = 0;
+            this.cbOrdenesCompra.SelectedIndexChanged += new System.EventHandler(this.cbOrdenesCompra_SelectedIndexChanged);
             // 
             // lblOrdenes
             // 
@@ -60,15 +60,6 @@
             this.dgvOrdenCompra.Size = new System.Drawing.Size(750, 430);
             this.dgvOrdenCompra.TabIndex = 2;
             // 
-            // btnRechazar
-            // 
-            this.btnRechazar.Location = new System.Drawing.Point(768, 387);
-            this.btnRechazar.Name = "btnRechazar";
-            this.btnRechazar.Size = new System.Drawing.Size(98, 51);
-            this.btnRechazar.TabIndex = 3;
-            this.btnRechazar.Text = "Rechazar";
-            this.btnRechazar.UseVisualStyleBackColor = true;
-            // 
             // btnPago
             // 
             this.btnPago.Location = new System.Drawing.Point(768, 451);
@@ -77,6 +68,7 @@
             this.btnPago.TabIndex = 4;
             this.btnPago.Text = "Realizar Pago";
             this.btnPago.UseVisualStyleBackColor = true;
+            this.btnPago.Click += new System.EventHandler(this.btnPago_Click);
             // 
             // FrmPagoProveedor
             // 
@@ -84,12 +76,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 518);
             this.Controls.Add(this.btnPago);
-            this.Controls.Add(this.btnRechazar);
             this.Controls.Add(this.dgvOrdenCompra);
             this.Controls.Add(this.lblOrdenes);
             this.Controls.Add(this.cbOrdenesCompra);
             this.Name = "FrmPagoProveedor";
             this.Text = "FrmPagoProveedor";
+            this.Load += new System.EventHandler(this.FrmPagoProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenCompra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,7 +93,6 @@
         private System.Windows.Forms.ComboBox cbOrdenesCompra;
         private System.Windows.Forms.Label lblOrdenes;
         private System.Windows.Forms.DataGridView dgvOrdenCompra;
-        private System.Windows.Forms.Button btnRechazar;
         private System.Windows.Forms.Button btnPago;
     }
 }

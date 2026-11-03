@@ -45,16 +45,17 @@ namespace ProyectoTC2023 {
             cbCotizaciones.DataSource = null;
             cbCotizaciones.DataSource = solicitudCotizacionBLL.traerTodasSolicitudesCotizacion();
             cbCotizaciones.DisplayMember = "id"; // Asegura que se muestre solo el Id
-            cbCotizaciones.SelectedIndex = -1;
+            cbCotizaciones.SelectedIndex = 0;
         }
 
         private void cbCotizaciones_SelectedIndexChanged(object sender, EventArgs e) {
             try {
                 SolicitudCotizacion solicitud = cbCotizaciones.SelectedItem as SolicitudCotizacion;
-                orden.productos.Clear();
+                if (orden.productos != null && orden.productos.Count > 0) orden.productos.Clear(); else orden.productos = new List<Producto>();
                 lblMonto.Text = "$0";
                 orden.cuitProveedor = solicitud.proveedor.CUIT;
-                                
+                orden.idCotizacion = solicitud.id;
+
                 foreach (Producto p in solicitud.productos) {
                     Random r = new Random();
                     var p_inicial = Int32.Parse(p.precio);
@@ -156,6 +157,7 @@ namespace ProyectoTC2023 {
         private void btnGenerarOrden_Click(object sender, EventArgs e) {
             try {
                 ordenCompraBLL.generarOrden(orden);
+                mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Orden de compra generada con éxito." : "Purchase order generated successfully.");
             } catch (ConstraintException ex) {
                 var result = MessageBox.Show(
                         lenguajeActual == "es-AR"

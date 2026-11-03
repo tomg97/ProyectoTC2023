@@ -1,5 +1,6 @@
 ﻿using CUL.Entidades;
 using DAL.Metodos;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL.Metodos {
-    public class ManejaCliente {
+    public class ManejaCliente : IDVManejadores {
         ManejaDbClientes manejaDbClientes = new ManejaDbClientes();
         BitacoraBLL bitacora = new BitacoraBLL();
         public string crearCliente(Cliente cliente) {
@@ -51,6 +52,25 @@ namespace BLL.Metodos {
                 cliente.telefono = encriptador.desencriptarReversible(cliente.telefono);
             }
             return clientes;
+        }
+        public void recalcularDV() {
+            manejaDbClientes.actualizarTodosDV();
+            manejaDbClientes.actualizarDVV();
+        }
+
+        public List<string> chequearIntegridad() {
+            List<String> errores = new List<String>();
+            List<Cliente> clientes = manejaDbClientes.traerTodosClientes();
+
+            clientes.ForEach(c => {
+                if (!c.dvh.Equals(manejaDbClientes.calcularDVH(c))) {
+                    errores.Add($"En la tabla Clientes, el cliente id : {c.id} fue modificada");
+                }
+            });
+            if (!manejaDbClientes.calcularDVV(clientes).Equals(manejaDbClientes.obtenerDVV())) {
+                errores.Add("En la tabla Clientes, el DVV es incorrecto");
+            }
+            return errores;
         }
     }
 }
