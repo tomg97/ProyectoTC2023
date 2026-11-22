@@ -48,7 +48,7 @@ namespace ProyectoTC2023 {
         private void cargarComboOrdenes() {
             cbOrdenesCompra.DataSource = null;
             cbOrdenesCompra.DataSource = ordenCompraBLL.traerOrdenesCompraPendientes();
-            cbOrdenesCompra.DisplayMember = "id"; // Asegura que se muestre solo el Id
+            cbOrdenesCompra.DisplayMember = "fecha"; // Asegura que se muestre la fecha de creación de la orden de compra, así se entiende mejor cuál es cuál
             //cbOrdenesCompra.SelectedIndex = 0;
         }
 
@@ -57,6 +57,7 @@ namespace ProyectoTC2023 {
                 OrdenCompra orden = cbOrdenesCompra.SelectedItem as OrdenCompra;
                 List<Producto> productos = orden.productos;
                 dgvOrdenCompra.DataSource = null;
+                dgvOrdenCompra.Columns["dvh"].Visible = false;
                 dgvOrdenCompra.DataSource = productos;
             }
         }

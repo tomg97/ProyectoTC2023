@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
-    <Compile Include="Entidades\Criticidad.cs" />
     <Compile Include="Entidades\DescripcionEventoTraduccion.cs" />
     <Compile Include="Entidades\DV.cs" />
     <Compile Include="Entidades\EventoEnum.cs" />

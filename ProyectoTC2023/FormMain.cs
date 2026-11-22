@@ -39,6 +39,7 @@ namespace ProyectoTC2023 {
             if (SingletonSesion.getInstance.estaLogged) {
                 usuariosToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_usuarios);
                 bitacoraToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_bitacora);
+                tsmiControlCambios.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_bitacora);
                 idiomasToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_idiomas);
                 perfilesToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_perfiles);
                 backupToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup);
@@ -200,6 +201,11 @@ namespace ProyectoTC2023 {
                 loginForm.Show();
                 this.Close();
             }
+        }
+
+        private void tsmiControlCambios_Click(object sender, EventArgs e) {
+            FrmControlCambios frmControlCambios = new FrmControlCambios();
+            invocarForm(frmControlCambios);
         }
     }
 }

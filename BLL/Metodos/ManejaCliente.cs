@@ -16,10 +16,10 @@ namespace BLL.Metodos {
             string resultado;
             try {
                 resultado = manejaDbClientes.crearCliente(cliente);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteOk, Modulo.Clientes, Criticidad.Dos);                
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteOk, Modulo.Clientes, 2);                
             } catch (Exception e) {
                 resultado = "Error al crear cliente. " + e.ToString();
-                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteNoOk, Modulo.Clientes, Criticidad.Dos);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteNoOk, Modulo.Clientes, 2);
             }
             return resultado;
         }
@@ -30,15 +30,15 @@ namespace BLL.Metodos {
             switch (resultado) {
                 case 1:
                     mensaje = "Cliente encontrado";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteOk, Modulo.Clientes, Criticidad.Cuatro);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteOk, Modulo.Clientes, 4);
                     break;
                 case 0:
                     mensaje = "Cliente no encontrado";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteNoOk, Modulo.Clientes, Criticidad.Cuatro);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteNoOk, Modulo.Clientes, 4);
                     break;
                 default:
                     mensaje = "Desconocido";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteNoOk, Modulo.Clientes, Criticidad.Dos);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupClienteNoOk, Modulo.Clientes, 2);
                     break;
             }
             return mensaje;

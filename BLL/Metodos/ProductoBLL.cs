@@ -66,10 +66,10 @@ namespace BLL.Metodos {
         public void modificaProducto(Producto producto, string keyOg) {
             try {
                 productoDAL.modificarProducto(producto, keyOg);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Compras, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Compras, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Compras, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Compras, 1);
             }
         }
     }

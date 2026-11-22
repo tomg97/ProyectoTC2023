@@ -65,6 +65,7 @@ namespace ProyectoTC2023 {
 
         private void setDataGridViewExistencias() {
             dgvProductos.DataSource = null;
+            dgvProductos.MultiSelect = false;
             dgvProductos.DataSource = productoBLL.getProductosBajoStock();
         }
 

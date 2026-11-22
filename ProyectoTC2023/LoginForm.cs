@@ -31,11 +31,12 @@ namespace ProyectoTC2023 {
                 Usuario usuario = new Usuario() { nomUsu = nomUsu, pass = pass };
                 ManejaUsuarios stepAuth = new ManejaUsuarios();
                 string message = stepAuth.loginProcedimiento(usuario);
-                mensajeria.mostrarMensaje(message);
                 if(message == "Exito") {
                     FormMain formMain = new FormMain();
                     formMain.Show();
                     this.Hide();
+                } else {
+                    mensajeria.mostrarMensaje(message);
                 }
             } else {
                 mensajeria.mostrarMensaje("Se debe proporcionar nomre de usuario y/o contraseña");

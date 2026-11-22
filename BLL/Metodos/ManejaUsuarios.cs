@@ -27,33 +27,33 @@ namespace BLL.Metodos {
                         case 3:
                             mensaje = "Exito";
                             SingletonSesion.getInstance.logIn(usuario);
-                            bitacora.persistirMensajeLogged(EventoEnum.LoginExitoso, Modulo.Login, Criticidad.Uno);
+                            bitacora.persistirMensajeLogged(EventoEnum.LoginExitoso, Modulo.Login, 1);
                             break;
                         case 2:
                             mensaje = "Contraseña";
-                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, Criticidad.Uno, usuario.nomUsu);
+                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, 1, usuario.nomUsu);
                             break;
                         case 1:
                             mensaje = "Usuario";
-                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, Criticidad.Uno, usuario.nomUsu);
+                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, 1, usuario.nomUsu);
                             break;
                         case 0:
                             mensaje = "Bloqueado";
-                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, Criticidad.Uno, usuario.nomUsu);
+                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, 1, usuario.nomUsu);
                             break;
                         default:
                             mensaje = "Desconocido";
-                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, Criticidad.Uno, usuario.nomUsu);
+                            bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso, Modulo.Login, 1, usuario.nomUsu);
                             break;
                     }
                 } else {
                     mensaje = "Sesion previamente iniciada.";
-                    bitacora.persistirMensajeLogged(EventoEnum.LoginNoExitoso, Modulo.Login, Criticidad.Uno);
+                    bitacora.persistirMensajeLogged(EventoEnum.LoginNoExitoso, Modulo.Login, 1);
                 }
                 return mensaje;
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje(ex.Message);
-                bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso , Modulo.Login, Criticidad.Uno, usuario.nomUsu);
+                bitacora.persistirMensajeNoLogged(EventoEnum.LoginNoExitoso , Modulo.Login, 1, usuario.nomUsu);
                 return "Sesion no iniciada";
             }
         }
@@ -63,15 +63,15 @@ namespace BLL.Metodos {
             switch (resultado) {
                 case 1:
                     mensaje = "Usuario Encontrado";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioOk, Modulo.AdminUsuarios, Criticidad.Tres);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioOk, Modulo.AdminUsuarios, 3);
                     break;
                 case 0:
                     mensaje = "Usuario No Encontrado";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Tres);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioNoOk, Modulo.AdminUsuarios, 3);
                     break;
                 default:
                     mensaje = "Desconocido";
-                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Tres);
+                    bitacora.persistirMensajeLogged(EventoEnum.LookupUsuarioNoOk, Modulo.AdminUsuarios, 3);
                     break;
             }
             return mensaje;
@@ -80,10 +80,10 @@ namespace BLL.Metodos {
             string mensaje; 
             try {
                 usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioOk, Modulo.AdminUsuarios, 1);
                 mensaje = manejaDb.crearUsuario(usuario);
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioNoOk, Modulo.AdminUsuarios, 1);
                 mensajeria.mostrarMensaje("Intento de creacion de usuario fallido. Motivo: " + ex.Message);
                 mensaje = "Error";
             }
@@ -92,20 +92,23 @@ namespace BLL.Metodos {
         public string modificarNombreUsuario(string usuViejo, string usuNuevo) {
             string mensaje;
             try {
-                int resultado = manejaDb.modificarNombreUsuario(usuViejo, usuNuevo);
+                Usuario usuarioViejo = new Usuario();
+                usuarioViejo = manejaDb.devolverUsuarioNomUsu(usuViejo);
+                manejaPerfil.FillUserComponents(usuarioViejo);
+				int resultado = manejaDb.modificarNombreUsuario(usuNuevo, usuarioViejo);
                 if (resultado == 1) {
                     mensaje = "Exito";
-                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.AdminUsuarios, 1);
                 } else if (resultado == 0) {
                     mensaje = "Usuario Existente";
-                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, 1);
                 } else {
-                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                    bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, 1);
                     throw new Exception("Error inesperado.");
                 }
             } catch (Exception ex) {
                 mensaje = "Error inesperado. " + ex.Message;
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.AdminUsuarios, 1);
             }
             return mensaje;
         }
@@ -142,6 +145,7 @@ namespace BLL.Metodos {
             List<Usuario> usuarios = manejaDb.traerTodosUsuarios();
 
             usuarios.ForEach( u => {
+                string dvh = manejaDb.calcularDVH(u);
                 if (!u.dvh.Equals(manejaDb.calcularDVH(u))) {
                     errores.Add($"En la tabla Usuarios, el Usuario id : {u.nomUsu} fue modificado");
                 }
@@ -151,13 +155,14 @@ namespace BLL.Metodos {
             }
             return errores;
         }
-        public void modificaUsuario(Usuario usuario, string keyOg) {
+        public void modificaUsuario(Usuario usuario) {
             try {
-                manejaDb.modificarUsuario(usuario, keyOg);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Usuario, Criticidad.Uno);
+                manejaPerfil.FillUserComponents(usuario);
+                manejaDb.modificarUsuario(usuario, usuario.dni);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Usuario, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Usuario, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Usuario, 1);
             }
 
         }

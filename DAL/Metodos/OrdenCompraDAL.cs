@@ -29,7 +29,8 @@ namespace DAL.Metodos {
                             reader["estado"].ToString(),
                             reader["total"].ToString(),
                             reader["productos"].ToString(),
-                            reader["cuitProveedor"].ToString());
+                            reader["cuitProveedor"].ToString(),
+                            Convert.ToDateTime(reader["fecha"]));
                         ordenCompra.comentario = reader["comentario"].ToString();
                         ordenCompra.dvh = reader["dvh"].ToString();
                         listaOrdenesCompra.Add(ordenCompra);
@@ -57,7 +58,8 @@ namespace DAL.Metodos {
                             reader["estado"].ToString(),
                             reader["total"].ToString(),
                             reader["productos"].ToString(),
-                            reader["cuitProveedor"].ToString());
+                            reader["cuitProveedor"].ToString(),
+                            Convert.ToDateTime(reader["fecha"]));
                     }
                     reader.Close();
                 }
@@ -74,6 +76,7 @@ namespace DAL.Metodos {
                         "VALUES (@fechaCreacion, @estado, @productos, @total, @cuitProveedor, @idCotizacion, @dvh)";
 
                     SqlCommand cmd = new SqlCommand(insertQuery, connection);
+                    cmd.Parameters.AddWithValue("@fechaCreacion", DateTime.Now);
                     cmd.Parameters.AddWithValue("@estado", "Pendiente");
                     cmd.Parameters.AddWithValue("@productos", JsonConvert.SerializeObject(ordenCompra.productos));
                     cmd.Parameters.AddWithValue("@total", ordenCompra.total);
@@ -118,6 +121,7 @@ namespace DAL.Metodos {
         public string calcularDVH(OrdenCompra orden) {
             StringBuilder sb = new StringBuilder();
             sb.Append(orden.id);
+            sb.Append(orden.fecha);
             sb.Append(orden.idCotizacion);
             sb.Append(orden.estado);
             sb.Append(orden.total);

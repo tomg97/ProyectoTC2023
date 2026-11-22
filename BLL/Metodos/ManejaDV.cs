@@ -15,8 +15,12 @@ namespace BLL.Metodos {
         List<IDVManejadores> manejadores = new List<IDVManejadores>();
         public ManejaDV() {
             manejadores.Add(new ManejaUsuarios());
+            manejadores.Add(new ManejaCliente());
+            manejadores.Add(new ProveedorBLL());
             manejadores.Add(new ManejaVenta());
             manejadores.Add(new ProductoBLL());
+            manejadores.Add(new OrdenCompraBLL());
+            manejadores.Add(new SolicitudCotizacionBLL());
         }
 
         public List<String> check() {

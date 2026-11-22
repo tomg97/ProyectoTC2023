@@ -198,7 +198,6 @@ namespace ProyectoTC2023 {
             txtNomUsu.Text = usuarioOg.nomUsu;
             txtNombUsu.Text = usuarioOg.nombre;
             txtApeUsu.Text = usuarioOg.apellido;
-            txtDni.Text = usuarioOg.dni;
             txtTelefono.Text = usuarioOg.telefono;
             txtEmail.Text = usuarioOg.email;
         }
@@ -302,11 +301,11 @@ namespace ProyectoTC2023 {
                         nomUsu = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nomUsu, txtNomUsuN.Text),
                         nombre = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nombre, txtNombUsuN.Text),
                         apellido = devolverStringOriginalIfNullOrEmpty(usuarioOgg.apellido, txtApeUsuN.Text),
-                        dni = devolverStringOriginalIfNullOrEmpty(usuarioOgg.dni, txtDniN.Text),
+                        dni = usuarioOgg.dni,
                         email = devolverStringOriginalIfNullOrEmpty(usuarioOgg.email, txtEmailN.Text),
                         telefono = devolverStringOriginalIfNullOrEmpty(usuarioOgg.telefono, txtTelefonoN.Text)
                     };
-                    manejaMaestro.modificaUsuario(usuarioN, usuarioOgg.nomUsu);
+                    manejaMaestro.modificaUsuario(usuarioN, usuarioOgg.dni);
                     break;
                 case "Cliente":
                     Cliente clienteN = new Cliente {

@@ -98,10 +98,10 @@ namespace ProyectoTC2023 {
             foreach (Modulo modulo in enums) {
                 cbModuloBit.Items.Add(modulo.ToString());
             }
-            Array enumsCrit = Enum.GetValues(typeof(Criticidad));
+            
             cbCriticidadBit.Items.Clear();
-            foreach (Criticidad criticidad in enumsCrit) {
-                cbCriticidadBit.Items.Add(criticidad.ToString());
+            for (int i = 0; i < 6; i++) {
+                cbCriticidadBit.Items.Add(i.ToString());
             }
             var enumEventos = Enum.GetValues(typeof(EventoEnum))
                 .Cast<EventoEnum>()
@@ -115,6 +115,7 @@ namespace ProyectoTC2023 {
             cbEventoEnum.Items.Add(new { Value = (EventoEnum)(-1), Display = lenguajeActual == "es-AR" ? "Todos" : "All" });
             cbEventoEnum.DisplayMember = "Display";
             cbEventoEnum.ValueMember = "Value";
+            dgvBitacora.DataSource = manejaBitacora.traerTodaBitacoraEventos();
         }
 
         private void dgvBitacora_CellContentClick(object sender, DataGridViewCellEventArgs e) {

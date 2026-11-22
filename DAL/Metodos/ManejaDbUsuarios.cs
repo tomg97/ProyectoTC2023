@@ -68,6 +68,27 @@ namespace DAL.Metodos {
             }
             return resultado;
         }
+        private Usuario devolverUsuarioDni(string dni) {
+            // int resultado = -1;
+            Usuario resultado = new Usuario();
+            try {
+                using (SqlConnection connection = new SqlConnection(_connectionString)) {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Usuarios WHERE dni = @dni", connection);
+
+                    command.Parameters.AddWithValue("@dni", dni);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) {
+                        resultado = storedProcedureHelper.crearObjetoDeDataReader<Usuario>(reader);
+                    }
+                    reader.Close();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+            return resultado;
+        }
         public string crearUsuario(Usuario usuario) {
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
                 SqlCommand command = new SqlCommand("CrearUsuario", connection);
@@ -86,24 +107,24 @@ namespace DAL.Metodos {
             actualizarDVV();
             return "Usuario ha sido creado.";
         }
-        public int modificarNombreUsuario(string usuNuevo, string usuViejo) {
+        public int modificarNombreUsuario(string usuNuevo, Usuario usuViejo) {
             int resultado = -1;
-            Usuario usuario = devolverUsuarioNomUsu(usuViejo);
-            usuario.nomUsu = usuNuevo;
+            string usuViejoString = usuViejo.nomUsu;
+            usuViejo.nomUsu = usuNuevo;
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
 
                 SqlCommand command = new SqlCommand("ModificarNombreUsuario", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@usuNuevo", usuNuevo);
-                command.Parameters.AddWithValue("@usuViejo", usuViejo);
-                command.Parameters.AddWithValue("@dvh", calcularDVH(usuario));
+                command.Parameters.AddWithValue("@usuViejo", usuViejoString);
+                command.Parameters.AddWithValue("@dvh", calcularDVH(usuViejo));
                 command.Parameters.Add("@Result", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                 connection.Open();
                 command.ExecuteNonQuery();
                 resultado = Convert.ToInt32(command.Parameters["@Result"].Value);
             }
-            guardarPermisos(usuario);
+            guardarPermisos(usuViejo);
             actualizarDVV();
             return resultado;
         }
@@ -156,11 +177,12 @@ namespace DAL.Metodos {
                     connection.Open();
                     command.ExecuteNonQuery();
                     resultado = Convert.ToInt32(command.Parameters["@Result"].Value);
+                    actualizarDVV();
                 }
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
-            actualizarDVV();
+            
             return resultado;
         }
         public List<Usuario> traerTodosUsuarios() {
@@ -182,21 +204,28 @@ namespace DAL.Metodos {
             }
             return usuarios;
         }
-        public void modificarUsuario(Usuario usuario, string keyOg) {
+        public void modificarUsuario(Usuario usuarioAModificar, string dni) {
+            Usuario usuarioActual = new Usuario();
+            usuarioActual = devolverUsuarioDni(dni);
+            ManejaDbPerfil manejaPerfil = new ManejaDbPerfil();
+            manejaPerfil.FillUserComponents(usuarioAModificar);
+            usuarioAModificar.pass = usuarioActual.pass;
             using (SqlConnection connection = new SqlConnection(_connectionString)) {
                 SqlCommand cmd = new SqlCommand(
-                    $"UPDATE Usuarios SET nombre = '{usuario.nombre}'," +
-                    $"apellido = '{usuario.apellido}'," +
-                    $"telefono = {usuario.telefono}," +
-                    $"dni = '{usuario.dni}'," +
-                    $"nomUsu = '{usuario.nomUsu}'," +
-                    $"email = '{usuario.email}', " +
-                    $"dvh = '{calcularDVH(usuario)}' " + 
-                    $"WHERE nomUsu = '{keyOg}' ", connection);
+                    $"UPDATE Usuarios SET nombre = '{usuarioAModificar.nombre}'," +
+                    $"apellido = '{usuarioAModificar.apellido}'," +
+                    $"telefono = {usuarioAModificar.telefono}," +
+                    $"dni = '{usuarioAModificar.dni}'," +
+                    $"nomUsu = '{usuarioAModificar.nomUsu}'," +
+                    $"email = '{usuarioAModificar.email}', " +
+                    $"dvh = '{calcularDVH(usuarioAModificar)}' " + 
+                    $"WHERE dni = '{dni}' ", connection);
                 connection.Open();
                 cmd.ExecuteNonQuery();
             }
-            guardarPermisos(usuario);   
+            string dvh = calcularDVH(usuarioAModificar);
+            usuarioAModificar.permisos = usuarioActual.permisos;
+            guardarPermisos(usuarioAModificar);   
             actualizarDVV(); 
         }
         public void guardarPermisos(Usuario usuario) {
@@ -215,6 +244,7 @@ namespace DAL.Metodos {
                         command.ExecuteNonQuery();
                     }
                 }
+                actualizarDVV();
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }

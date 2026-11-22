@@ -62,6 +62,7 @@ namespace DAL.Metodos {
                             reader["fecha"].ToString(),
                             reader["idProveedor"].ToString(),
                             reader["total"].ToString());
+                        solicitudCotizacion.dvh = reader["dvh"].ToString();
                         solicitudes.Add(solicitudCotizacion);
                     }
                     reader.Close();

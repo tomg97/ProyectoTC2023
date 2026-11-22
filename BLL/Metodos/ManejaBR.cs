@@ -13,21 +13,21 @@ namespace BLL.Metodos {
         public string realizarBackup(string filePath) {
             try {
                 manejaDb.realizarBackup(filePath);
-                bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, 1);
                 manejaDb.realizarBackup(filePath);
                 return "Backup exitoso.";
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.BackupNoOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.BackupNoOk, Modulo.BackupRestore, 1);
                 return "El backup no pudo ser realizado. Razón: " + ex;
             }
         }
         public string realizarRestore(string filePath) {
             try {
                 manejaDb.realizarRestore(filePath);
-                bitacora.persistirMensajeLogged(EventoEnum.RestoreOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.RestoreOk, Modulo.BackupRestore, 1);
                 return "Restore exitoso.";
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.RestoreNoOk, Modulo.BackupRestore, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.RestoreNoOk, Modulo.BackupRestore, 1);
                 return "El restore no pudo ser realizado. Razón: " + ex;
             }
         }
@@ -35,7 +35,7 @@ namespace BLL.Metodos {
             string folderPath = "C:\\Users\\Public\\Documents\\ComercializAR.bak";
             string filePath = new BackupRestore().Backup(folderPath);
             realizarBackup(filePath);
-            bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, Criticidad.Uno);
+            bitacora.persistirMensajeLogged(EventoEnum.BackupOk, Modulo.BackupRestore, 1);
         }
     } 
 }

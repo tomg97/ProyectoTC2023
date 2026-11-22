@@ -44,7 +44,7 @@ namespace ProyectoTC2023 {
         private void cargarCotizaciones() {
             cbCotizaciones.DataSource = null;
             cbCotizaciones.DataSource = solicitudCotizacionBLL.traerTodasSolicitudesCotizacion();
-            cbCotizaciones.DisplayMember = "id"; // Asegura que se muestre solo el Id
+            cbCotizaciones.DisplayMember = "fecha"; // Asegura que se muestre la fecha de creación de la solicitud de cotización, así se entiende mejor cuál es cuál
             cbCotizaciones.SelectedIndex = 0;
         }
 
@@ -96,6 +96,7 @@ namespace ProyectoTC2023 {
             if(orden.productos != null || orden.productos.Count == 0) {
                 dgvOrdenCompra.DataSource = orden.productos;
                 foreach (DataGridViewColumn co in dgvOrdenCompra.Columns) { co.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; }
+                dgvOrdenCompra.Columns["dvh"].Visible = false;
             }            
         }
 
