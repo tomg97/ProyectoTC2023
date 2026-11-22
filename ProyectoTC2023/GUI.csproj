@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -342,6 +342,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Reporte1.rdlc" />
+    <EmbeddedResource Include="Reporte2.rdlc" />
     <None Include="ClassDiagram1.cd" />
     <None Include="DataSetProductos.xsc">
       <DependentUpon>DataSetProductos.xsd</DependentUpon>
@@ -375,6 +376,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="ReporteInteligente.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
