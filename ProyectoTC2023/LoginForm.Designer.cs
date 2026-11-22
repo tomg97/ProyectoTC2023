@@ -36,62 +36,78 @@
             // 
             // cbIdioma
             // 
+            this.cbIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIdioma.FormattingEnabled = true;
             this.cbIdioma.Items.AddRange(new object[] {
             "Español",
             "Inglés"});
-            this.cbIdioma.Location = new System.Drawing.Point(191, 25);
+            this.cbIdioma.Location = new System.Drawing.Point(400, 40);
+            this.cbIdioma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbIdioma.Name = "cbIdioma";
-            this.cbIdioma.Size = new System.Drawing.Size(121, 21);
-            this.cbIdioma.TabIndex = 7;
+            this.cbIdioma.Size = new System.Drawing.Size(191, 33);
+            this.cbIdioma.TabIndex = 4;
             this.cbIdioma.SelectedIndexChanged += new System.EventHandler(this.cbIdioma_SelectedIndexChanged);
             // 
             // lblLang
             // 
             this.lblLang.AutoSize = true;
-            this.lblLang.Location = new System.Drawing.Point(188, 9);
+            this.lblLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLang.Location = new System.Drawing.Point(400, 11);
+            this.lblLang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLang.Name = "lblLang";
-            this.lblLang.Size = new System.Drawing.Size(38, 13);
-            this.lblLang.TabIndex = 8;
+            this.lblLang.Size = new System.Drawing.Size(70, 25);
+            this.lblLang.TabIndex = 12;
             this.lblLang.Text = "Idioma";
             // 
             // lblPass
             // 
             this.lblPass.AutoSize = true;
-            this.lblPass.Location = new System.Drawing.Point(15, 88);
+            this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPass.Location = new System.Drawing.Point(8, 83);
+            this.lblPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(61, 13);
-            this.lblPass.TabIndex = 5;
+            this.lblPass.Size = new System.Drawing.Size(114, 25);
+            this.lblPass.TabIndex = 11;
             this.lblPass.Text = "Contraseña";
             // 
             // lblUsu
             // 
             this.lblUsu.AutoSize = true;
-            this.lblUsu.Location = new System.Drawing.Point(12, 9);
+            this.lblUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsu.Location = new System.Drawing.Point(8, 11);
+            this.lblUsu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsu.Name = "lblUsu";
-            this.lblUsu.Size = new System.Drawing.Size(98, 13);
-            this.lblUsu.TabIndex = 4;
+            this.lblUsu.Size = new System.Drawing.Size(180, 25);
+            this.lblUsu.TabIndex = 10;
             this.lblUsu.Text = "Nombre de Usuario";
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(15, 104);
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(13, 112);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(170, 20);
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(225, 30);
             this.txtPass.TabIndex = 2;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // txtUsu
             // 
-            this.txtUsu.Location = new System.Drawing.Point(15, 25);
+            this.txtUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsu.Location = new System.Drawing.Point(13, 40);
+            this.txtUsu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsu.Name = "txtUsu";
-            this.txtUsu.Size = new System.Drawing.Size(170, 20);
+            this.txtUsu.Size = new System.Drawing.Size(225, 30);
             this.txtUsu.TabIndex = 1;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(191, 76);
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(243, 40);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(112, 48);
+            this.btnLogin.Size = new System.Drawing.Size(149, 102);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -99,9 +115,11 @@
             // 
             // btnSinSesion
             // 
-            this.btnSinSesion.Location = new System.Drawing.Point(311, 76);
+            this.btnSinSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSinSesion.Location = new System.Drawing.Point(13, 161);
+            this.btnSinSesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSinSesion.Name = "btnSinSesion";
-            this.btnSinSesion.Size = new System.Drawing.Size(112, 48);
+            this.btnSinSesion.Size = new System.Drawing.Size(225, 59);
             this.btnSinSesion.TabIndex = 6;
             this.btnSinSesion.Text = "Continuar sin sesión";
             this.btnSinSesion.UseVisualStyleBackColor = true;
@@ -109,19 +127,21 @@
             // 
             // btnAplicarIdioma
             // 
-            this.btnAplicarIdioma.Location = new System.Drawing.Point(318, 25);
+            this.btnAplicarIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAplicarIdioma.Location = new System.Drawing.Point(400, 83);
+            this.btnAplicarIdioma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAplicarIdioma.Name = "btnAplicarIdioma";
-            this.btnAplicarIdioma.Size = new System.Drawing.Size(105, 21);
-            this.btnAplicarIdioma.TabIndex = 9;
+            this.btnAplicarIdioma.Size = new System.Drawing.Size(191, 59);
+            this.btnAplicarIdioma.TabIndex = 5;
             this.btnAplicarIdioma.Text = "Aplicar";
             this.btnAplicarIdioma.UseVisualStyleBackColor = true;
             this.btnAplicarIdioma.Click += new System.EventHandler(this.btnAplicarIdioma_Click);
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 150);
+            this.ClientSize = new System.Drawing.Size(600, 232);
             this.Controls.Add(this.btnAplicarIdioma);
             this.Controls.Add(this.btnSinSesion);
             this.Controls.Add(this.cbIdioma);
@@ -131,8 +151,10 @@
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUsu);
             this.Controls.Add(this.btnLogin);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LoginForm";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

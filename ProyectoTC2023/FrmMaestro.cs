@@ -280,7 +280,7 @@ namespace ProyectoTC2023 {
             string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             string modificado = string.Equals(tipo, "Usuarios") ? tipo.Substring(0, tipo.Length - 1).ToLower() : tipo.ToLower();
             string id = string.Equals(tipo, "Usuarios") ? (lenguajeActual == "es-AR" ? "Nombre de Usuario" : "Username") : "Id";
-            DialogResult dialogResult = MessageBox.Show($"Desea eliminar el {modificado}, {id}: {key}?", "Confirma eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = new Mensajeria().mostrarConfirmacion($"Desea eliminar el {modificado}, {id}: {key}?", "Confirma eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return dialogResult;
         }
 

@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
             this.gbProveedor = new System.Windows.Forms.GroupBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTelefono = new System.Windows.Forms.Label();
@@ -42,19 +41,6 @@
             this.labelTitulo = new System.Windows.Forms.Label();
             this.gbProveedor.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(789, 4);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 58);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "❓";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // gbProveedor
             // 
@@ -240,7 +226,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(894, 339);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.gbProveedor);
             this.Controls.Add(this.labelTitulo);
             this.Name = "FrmRegistroProveedor";
@@ -253,8 +238,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbProveedor;
         private System.Windows.Forms.TextBox txtBanco;
         private System.Windows.Forms.Label lblBanco;

@@ -48,7 +48,7 @@ namespace ProyectoTC2023 {
             string telefono = txtTelefonoCliente.Text;
             if (validarCampos.validarNoNuloNoVacio(nombre, apellido, domicilio, telefono)) {
                 Cliente nuevoCliente = new Cliente(id, nombre, apellido, domicilio, telefono);
-                MessageBox.Show(manejaCliente.crearCliente(nuevoCliente));
+                new Mensajeria().mostrarMensaje(manejaCliente.crearCliente(nuevoCliente));
                 Close();
             }
         }
@@ -79,7 +79,7 @@ namespace ProyectoTC2023 {
                 resetSubtotalCuotas();
                 txtCuotas.Clear();
             } else {
-                MessageBox.Show("El valor de las cuotas debe ser sólo numérico, múltiplo de 3, entre 1 y 12 cuotas");
+                new Mensajeria().mostrarMensaje("El valor de las cuotas debe ser sólo numérico, múltiplo de 3, entre 1 y 12 cuotas");
                 resetSubtotalCuotas();
                 txtCuotas.Clear();
             }
@@ -100,20 +100,20 @@ namespace ProyectoTC2023 {
             string CCV = txtCCV.Text;
             if(validar.validarNoNuloNoVacio(numertoTarjeta, mesYAño, CCV)) {
                 if(manejaVenta.commitCarrito(clienteVacio) == "éxito") {
-                    MessageBox.Show("La transacción fue exitosa y será guardada");
-                    Close();
+                    new Mensajeria().mostrarMensaje("La transacción fue exitosa y será guardada");
+                    this.Close();
                 }
             } else if (!validar.validarNoNuloNoVacio(numertoTarjeta)) {
-                MessageBox.Show("Se debe ingresar un número de tarjeta.");
+                new Mensajeria().mostrarMensaje("Se debe ingresar un número de tarjeta.");
             } else if (!validar.validarNoNuloNoVacio(mesYAño) || !validar.validarSoloMes(mes) || validar.validarFechaNoVencida(mesYAño)) {
-                MessageBox.Show("Se debe ingresar un mes y año válidos.");
+                new Mensajeria().mostrarMensaje("Se debe ingresar un mes y año válidos.");
             } else if (!validar.validarNoNuloNoVacio(CCV) || !validar.validarCCV(CCV)) {
-                MessageBox.Show("El CCV es inválido. Deben ser sólo 3 números.");
+                new Mensajeria().mostrarMensaje("El CCV es inválido. Deben ser sólo 3 números.");
             }
         }
         private void validarTxtFecha(object sender, EventArgs e) {
             if(txtMesTarjeta.Text.Length > 2 || txtAñoTarjeta.Text.Length > 2) {
-                MessageBox.Show("Se deben ingresar solo dos dígitos para el mes/año.");
+                new Mensajeria().mostrarMensaje("Se deben ingresar solo dos dígitos para el mes/año.");
                 txtMesTarjeta.Clear();
             }
         }

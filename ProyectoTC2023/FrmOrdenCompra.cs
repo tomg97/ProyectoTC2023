@@ -73,7 +73,7 @@ namespace ProyectoTC2023 {
                 }
 
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -108,7 +108,7 @@ namespace ProyectoTC2023 {
                     actualizarSubtotal();
                     refrescarDgv();
                 } else {
-                    var result = MessageBox.Show(
+                    var result = new Mensajeria().mostrarConfirmacion(
                         lenguajeActual == "es-AR" 
                             ? "¿Desea eliminar la solicitud de cotización completa?" 
                             : "Do you want to delete the entire quotation request?",
@@ -160,7 +160,7 @@ namespace ProyectoTC2023 {
                 ordenCompraBLL.generarOrden(orden);
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Orden de compra generada con éxito." : "Purchase order generated successfully.");
             } catch (ConstraintException ex) {
-                var result = MessageBox.Show(
+                var result = new Mensajeria().mostrarConfirmacion(
                         lenguajeActual == "es-AR"
                             ? "Ya existe una orden de compra asociada a esta solicitud de cotización. ¿Desea reemplazar la orden existente?"
                             : "There is already a purchase order associated to that quote request. Do you want to replace the existing purchase order?",
@@ -181,6 +181,10 @@ namespace ProyectoTC2023 {
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+
         }
     }
 }

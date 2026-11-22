@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.btnAñadirProveedor = new System.Windows.Forms.Button();
@@ -41,18 +40,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(13, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 58);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "❓";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
@@ -234,7 +221,6 @@
             this.ClientSize = new System.Drawing.Size(1587, 682);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.btnAñadirProveedor);
@@ -258,8 +244,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnAñadirProveedor;

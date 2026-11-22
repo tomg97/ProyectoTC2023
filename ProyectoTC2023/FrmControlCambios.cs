@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
 using Servicios.Idioma;
+using Servicios.Metodos;
 
 namespace ProyectoTC2023 {
     public partial class FrmControlCambios : Form {
@@ -72,7 +73,7 @@ namespace ProyectoTC2023 {
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == dataGridView1.Columns["restaurar"].Index && DialogResult.OK == MessageBox.Show("Esta seguro que desea continuar", "", MessageBoxButtons.OKCancel)) {
+            if (e.ColumnIndex == dataGridView1.Columns["restaurar"].Index && DialogResult.OK == new Mensajeria().mostrarConfirmacion("Esta seguro que desea continuar", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)) {
                 //TODO restaurar usuario
                 //userService.UpdateUser();
                 Usuario user = new Usuario();

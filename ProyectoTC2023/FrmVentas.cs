@@ -82,10 +82,15 @@ namespace ProyectoTC2023 {
         private void setDataGridViewCarrito() {
             dgvCarrito.DataSource = null;
             dgvCarrito.DataSource = SingletonCarrito.getInstance.getCarrito();
+            dgvCarrito.Columns["dvh"].Visible = false;
+            dgvCarrito.Columns["id"].Visible = false;
+            dgvCarrito.MultiSelect = false;
         }
         private void setDataGridViewExistencias() {
             dgvExistencias.DataSource = null;
             dgvExistencias.DataSource = productoBLL.getListaProductosEnStock();
+            dgvExistencias.MultiSelect = false;
+            dgvExistencias.Columns["idDataGridViewTextBoxColumn"].Visible = false;
         }
 
         private void btnVaciar_Click(object sender, EventArgs e) {
@@ -98,11 +103,22 @@ namespace ProyectoTC2023 {
         }
         private void mostrarFrmClientes(string proposito) {
             FrmClientes frmClientes = new FrmClientes(proposito);
+            frmClientes.MdiParent = this.MdiParent;
+            frmClientes.FormClosed += FrmClientes_FormClosed;
             frmClientes.Show();
         }
         private void mostrarFrmClientes(Cliente cliente) {
             FrmClientes frmClientes = new FrmClientes(cliente);
+            frmClientes.MdiParent = this.MdiParent;
+            frmClientes.FormClosed += FrmClientes_FormClosed;
             frmClientes.Show();
+        }
+
+        private void FrmClientes_FormClosed(object sender, FormClosedEventArgs e) {
+            setDataGridViewExistencias();
+            SingletonCarrito.getInstance.vaciarCarrito();
+            dgvCarrito.DataSource = null;
+            txtClienteVenta.Clear();
         }
 
         private void btnAsignarCliente_Click(object sender, EventArgs e) {
@@ -114,9 +130,6 @@ namespace ProyectoTC2023 {
                     if (mensajeVuelta == "Cliente encontrado") {
                         mensajeria.mostrarMensaje(mensajeVuelta + ", se procederá a introducir los datos de pago.");
                         mostrarFrmClientes(new Cliente(idCliente));
-                        setDataGridViewExistencias();
-                        setDataGridViewCarrito();
-                        txtClienteVenta.Clear();
                     } else {
                         mensajeria.mostrarMensaje("No se ha encontrado el cliente. Se procederá a la pantalla de alta de cliente.");
                         mostrarFrmClientes(idCliente);

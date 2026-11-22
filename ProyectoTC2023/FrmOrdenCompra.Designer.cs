@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
             this.btnRegistroProveedor = new System.Windows.Forms.Button();
             this.btnGenerarOrden = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -35,19 +34,6 @@
             this.lblMonto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenCompra)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(667, 8);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 58);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "❓";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnRegistroProveedor
             // 
@@ -162,7 +148,6 @@
             this.ClientSize = new System.Drawing.Size(870, 547);
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.lblSubtotal);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnRegistroProveedor);
             this.Controls.Add(this.btnGenerarOrden);
             this.Controls.Add(this.btnEliminar);
@@ -180,8 +165,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnRegistroProveedor;
         private System.Windows.Forms.Button btnGenerarOrden;
         private System.Windows.Forms.Button btnEliminar;

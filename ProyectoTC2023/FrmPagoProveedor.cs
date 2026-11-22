@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
 using Servicios.Idioma;
+using Servicios.Metodos;
 using CUL.Entidades;
 using BLL.Metodos;
 
@@ -35,10 +36,10 @@ namespace ProyectoTC2023 {
                 OrdenCompra orden = cbOrdenesCompra.SelectedItem as OrdenCompra;
                 orden.estado = "Pagado";
                 ordenCompraBLL.modificarOrdenCompra(orden);
-                MessageBox.Show("El pago de la orden de compra se ha registrado correctamente.");
+                new Mensajeria().mostrarMensaje("El pago de la orden de compra se ha registrado correctamente.");
                 cargarComboOrdenes();
             } else {
-                MessageBox.Show("Seleccione una orden de compra para realizar el pago.");
+                new Mensajeria().mostrarMensaje("Seleccione una orden de compra para realizar el pago.");
             }
         }
 

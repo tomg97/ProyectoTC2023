@@ -207,7 +207,7 @@ namespace ProyectoTC2023 {
                     mensajeria.mostrarMensaje("El documento fue creado exitosamente en " + filePath);
                 } catch (Exception ex) {
                     // Handle any exceptions that occur during PDF generation  
-                    MessageBox.Show("Error al generar PDF: " + ex.Message);
+                    new Mensajeria().mostrarMensaje("Error al generar PDF: " + ex.Message);
                 } finally {
                     document.Close();
                 }

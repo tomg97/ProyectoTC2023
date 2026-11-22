@@ -19,7 +19,7 @@ namespace Servicios.Metodos {
                 using (TextWriter writer = new StreamWriter(saveFileDialog.FileName)) {
                     serializer.Serialize(writer, obj);
                 }
-                MessageBox.Show("El objeto fue serializado exitosamente.");
+                new Mensajeria().mostrarMensaje("El objeto fue serializado exitosamente.");
             }
         }
 

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +32,7 @@ namespace ProyectoTC2023 {
                 if (SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup)) {
                     invocarForm(new FormDV());
                 } else {
-                    MessageBox.Show("Se ha detectado un error de arranque. Por favor contacte al administrador.");
+                    new Mensajeria().mostrarMensaje("Se ha detectado un error de arranque. Por favor contacte al administrador.");
                     Application.Exit();
                 }
             }
@@ -206,6 +208,26 @@ namespace ProyectoTC2023 {
         private void tsmiControlCambios_Click(object sender, EventArgs e) {
             FrmControlCambios frmControlCambios = new FrmControlCambios();
             invocarForm(frmControlCambios);
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e) {
+            string rutaManual = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Manual_de_ayuda_ComercializAR.pdf");
+
+            if (!File.Exists(rutaManual)) {
+                mensajeria.mostrarMensaje("No se encontró el manual de ayuda: " + rutaManual);
+                return;
+            }
+
+            try {
+                ProcessStartInfo startInfo = new ProcessStartInfo {
+                    FileName = "explorer.exe",
+                    Arguments = "\"" + rutaManual + "\"",
+                    UseShellExecute = false
+                };
+                Process.Start(startInfo);
+            } catch (Exception ex) {
+                mensajeria.mostrarMensaje("No se pudo abrir el manual de ayuda: " + ex.Message);
+            }
         }
     }
 }

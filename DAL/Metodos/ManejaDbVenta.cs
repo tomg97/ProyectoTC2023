@@ -53,11 +53,13 @@ namespace DAL.Metodos {
                         sqlCommand.Parameters.AddWithValue("@Id", producto.id);
                         sqlCommand.Parameters.AddWithValue("@Cantidad", producto.cantidad);
                         sqlCommand.Parameters.AddWithValue("@Usuario", nomUsu);
+                        //parche porque si no la cantidad como va al stored procedure no restada, sino que resta en sql, acá se hace la resta y se actualiza el dvh del producto
+                        producto.cantidad = dbProducto.getProducto(producto.id).cantidad - producto.cantidad;
                         sqlCommand.Parameters.AddWithValue("@dvh", dbProducto.calcularDVH(producto));
                         sqlCommand.ExecuteNonQuery();
                     }
                     mensaje = "éxito";
-                    actualizarDVVProducto();
+                    dbProducto.actualizarDVV();
                 }
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
@@ -100,7 +102,8 @@ namespace DAL.Metodos {
                             reader["id"].ToString(),
                             reader["productosVendidos"].ToString(),
                             reader["clienteId"].ToString(),
-                            reader["fecha"].ToString());
+                            reader["fecha"].ToString(),
+                            reader["monto"].ToString());
                         ventas.Add(venta);
                     }
                     reader.Close();
@@ -156,7 +159,8 @@ namespace DAL.Metodos {
                             reader["id"].ToString(),
                             reader["productosVendidos"].ToString(),
                             reader["clienteId"].ToString(),
-                            reader["fecha"].ToString());
+                            reader["fecha"].ToString(),
+                            reader["monto"].ToString());
                         venta.monto = reader["monto"].ToString();
                         venta.dvh = reader["dvh"].ToString();
                         ventas.Add(venta);

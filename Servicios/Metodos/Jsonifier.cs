@@ -62,6 +62,9 @@ namespace Servicios.Metodos {
             } else if (token is JObject) {
                 JObject obj = (JObject)token;
                 foreach (var property in obj.Properties()) {
+                    if (string.Equals(property.Name, "dvh", StringComparison.OrdinalIgnoreCase)) {
+                        continue;
+                    }
                     TreeNode nodoPropiedad = new TreeNode(property.Name);
                     root.Nodes.Add(nodoPropiedad);
                     poblarTree(nodoPropiedad, property.Value);

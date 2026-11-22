@@ -31,9 +31,11 @@ namespace ProyectoTC2023 {
 
         private void button1_Click(object sender, EventArgs e) {
             if (cbReportes.SelectedItem == null) {
-                MessageBox.Show("Seleccione un reporte.", "Reporte", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new Mensajeria().mostrarConfirmacion("Seleccione un reporte.", "Reporte", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            LimpiarVistaReporte();
 
             if (cbReportes.SelectedItem.ToString() == "Reporte 2") {
                 GenerarReporteProveedores();
@@ -287,6 +289,19 @@ namespace ProyectoTC2023 {
 
         private void rvReportes_Load(object sender, EventArgs e) {
 
+        }
+
+        private void cbReportes_SelectedIndexChanged(object sender, EventArgs e) {
+            LimpiarVistaReporte();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e) {
+            cbReportes.SelectedIndex = -1;
+            LimpiarVistaReporte();
+        }
+
+        private void LimpiarVistaReporte() {
+            rvReportes.Reset();
         }
 
         public void actualizarIdioma() {

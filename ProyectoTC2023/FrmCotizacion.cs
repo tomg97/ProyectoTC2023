@@ -67,6 +67,7 @@ namespace ProyectoTC2023 {
             dgvProductos.DataSource = null;
             dgvProductos.MultiSelect = false;
             dgvProductos.DataSource = productoBLL.getProductosBajoStock();
+            dgvProductos.Columns["dvh"].Visible = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e) {
@@ -101,7 +102,7 @@ namespace ProyectoTC2023 {
                     actualizarDgvSolicitud();
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -116,7 +117,7 @@ namespace ProyectoTC2023 {
                     actualizarDgvSolicitud();
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -127,7 +128,7 @@ namespace ProyectoTC2023 {
                 solicitudCotizacion = null;
                 cmbProveedores.Enabled = true;
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 

@@ -37,15 +37,16 @@
             "Reporte 2",
             "Reporte Inteligente"});
             this.cbReportes.Location = new System.Drawing.Point(17, 16);
-            this.cbReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbReportes.Margin = new System.Windows.Forms.Padding(4);
             this.cbReportes.Name = "cbReportes";
             this.cbReportes.Size = new System.Drawing.Size(267, 24);
             this.cbReportes.TabIndex = 0;
+            this.cbReportes.SelectedIndexChanged += new System.EventHandler(this.cbReportes_SelectedIndexChanged);
             // 
             // rvReportes
             // 
             this.rvReportes.Location = new System.Drawing.Point(17, 50);
-            this.rvReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rvReportes.Margin = new System.Windows.Forms.Padding(4);
             this.rvReportes.Name = "rvReportes";
             this.rvReportes.ServerReport.BearerToken = null;
             this.rvReportes.Size = new System.Drawing.Size(1033, 488);
@@ -55,7 +56,7 @@
             // btnEnter
             // 
             this.btnEnter.Location = new System.Drawing.Point(295, 16);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(136, 28);
             this.btnEnter.TabIndex = 2;
@@ -66,12 +67,13 @@
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(439, 16);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(136, 28);
             this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // FrmReportes
             // 
@@ -82,7 +84,7 @@
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.rvReportes);
             this.Controls.Add(this.cbReportes);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReportes";
             this.Text = "FrmReportes";
             this.Load += new System.EventHandler(this.FrmReportes_Load);
