@@ -56,6 +56,7 @@ namespace DAL.Metodos {
 
                     connection.Open();
                     cmd.ExecuteNonQuery();
+                    actualizarDVV();
                 }
             } else {
                 throw new Exception("El CUIT de Proveedor no es único. Ingrese uno nuevo.");
@@ -94,24 +95,6 @@ namespace DAL.Metodos {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
             return proveedor;
-        }
-
-        public void completarRegistroProveedor(Proveedor proveedorAlmacenar) {
-            try {
-                using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand cmd = new SqlCommand(
-                        $"UPDATE Proveedor SET telefono = '{proveedorAlmacenar.telefono}'," +
-                        $"domicilio = '{proveedorAlmacenar.domicilio}'," +
-                        $"banco = '{proveedorAlmacenar.banco}'," +
-                        $"nombre = '{proveedorAlmacenar.nombre}'," +
-                        $"email = '{proveedorAlmacenar.email}' " +
-                        $"WHERE CUIT = '{proveedorAlmacenar.CUIT}' ", connection);
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            } catch (Exception ex) {
-                Console.WriteLine("An error occurred: " + ex.Message);
-            }
         }
         public string calcularDVH(Proveedor proveedor) {
             StringBuilder sb = new StringBuilder();

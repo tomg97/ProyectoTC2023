@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace CUL.Entidades {  
     public class SolicitudCotizacion : IDVEntidades {
-		public SolicitudCotizacion(string i, string p, string f, string c, string t) {
+
+		public SolicitudCotizacion(string i, string p, DateTime f, string c, string t) {
 			_id = i;
 			_proveedor = new Proveedor(c,"","","","","");
 			_productos = JsonConvert.DeserializeObject<List<Producto>>(p);
-			_fecha = DateTime.Parse(f);
+			_fecha = f;
 			_subtotal = t;
-        }
+		}
         public SolicitudCotizacion() {
             
         }

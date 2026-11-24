@@ -47,7 +47,7 @@ namespace ProyectoTC2023 {
                 backupToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.admin_backup);
                 tsmiSolicitudCotizacion.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_solicitar);
                 tsmiPagarOrdenCompra.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_pagar);
-                tsmiRegistroProveedor.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_proveedores);
+                tsmiRegistroProveedor.Visible = false;
                 tsmiOrdenCompra.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.compras_cotizar);
                 productosToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_productos);
                 proveedoresToolStripMenuItem.Visible = SingletonSesion.getInstance.tienePermiso(TipoPermiso.maestros_proveedores);
@@ -171,7 +171,7 @@ namespace ProyectoTC2023 {
         }
 
         private void tsmiRegistroProveedor_Click(object sender, EventArgs e) {
-            FrmRegistroProveedor frm = new FrmRegistroProveedor("Registro");
+            FrmRegistroProveedor frm = new FrmRegistroProveedor();
             invocarForm(frm);
         }
 

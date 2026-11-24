@@ -1,0 +1,74 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>6c2f89cb-02f0-4ae5-a83b-e72832486a75</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>ProjectInstaller.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>ProjectInstaller</AssemblyName>
+    <Name>ProjectInstaller</Name>
+    <RootNamespace>ProjectInstaller</RootNamespace>
+    <LoadFromTemplate>
+    </LoadFromTemplate>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="ProjectInstaller.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Name>BLL</Name>
+      <Project>{2e0c5af6-dc1c-43be-8f00-5025b222bd06}</Project>
+      <Private>True</Private>
+      <OutputsToImport>References;ContentOutput;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\CUL\CUL.csproj">
+      <Name>CUL</Name>
+      <Project>{d421a581-dc0f-41d4-84de-889cde3b143a}</Project>
+      <Private>True</Private>
+      <OutputsToImport>References;ContentOutput;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Name>DAL</Name>
+      <Project>{53aaf044-349c-4bb9-aa09-20fce8d20a47}</Project>
+      <Private>True</Private>
+      <OutputsToImport>References;ContentOutput;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoTC2023\GUI.csproj">
+      <Name>GUI</Name>
+      <Project>{87bea265-ce9c-4ad0-b17b-0b56909bd83e}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References;ContentOutput;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Name>Servicios</Name>
+      <Project>{b1170576-0e05-4b50-8f8b-acc05fe02f56}</Project>
+      <Private>True</Private>
+      <OutputsToImport>References;ContentOutput;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InstallDatabase.ps1">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Target Name="Build">
+    <Exec Command="&quot;C:\Program Files (x86)\Caphyon\Advanced Installer 24.2.1\bin\x86\advinst.exe&quot; /build &quot;$(MSBuildProjectDirectory)\ProjectInstaller.aip&quot;"
+          WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+  <Target Name="Rebuild">
+    <Exec Command="&quot;C:\Program Files (x86)\Caphyon\Advanced Installer 24.2.1\bin\x86\advinst.exe&quot; /build &quot;$(MSBuildProjectDirectory)\ProjectInstaller.aip&quot;"
+          WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+  <Target Name="Clean">
+  </Target>
+  <Target Name="ResolveAssemblyReferences">
+  </Target>
+</Project>

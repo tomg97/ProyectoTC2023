@@ -116,6 +116,7 @@ namespace ProyectoTC2023 {
             cbEventoEnum.DisplayMember = "Display";
             cbEventoEnum.ValueMember = "Value";
             dgvBitacora.DataSource = manejaBitacora.traerTodaBitacoraEventos();
+            dgvBitacora.ReadOnly = true;
         }
 
         private void dgvBitacora_CellContentClick(object sender, DataGridViewCellEventArgs e) {

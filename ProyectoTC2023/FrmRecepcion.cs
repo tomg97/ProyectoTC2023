@@ -22,7 +22,6 @@ namespace ProyectoTC2023 {
         OrdenCompraBLL compraBLL = new OrdenCompraBLL();
         ProductoBLL productoBLL = new ProductoBLL();
         Mensajeria mensajeria = new Mensajeria();
-        string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
         public FrmRecepcion() {
             InitializeComponent();
         }
@@ -65,7 +64,11 @@ namespace ProyectoTC2023 {
 
         private void recargarDgvPagas() {
             dgvOrdenesCompra.DataSource = null;
+            dgvOrdenesCompra.ReadOnly = true;
+            dgvOrdenesCompra.MultiSelect = false;
+            dgvOrdenesCompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrdenesCompra.DataSource = compraBLL.traerOrdenesCompraPagas();
+            dgvOrdenesCompra.Columns["idCotizacion"].Visible = false;
             foreach (DataGridViewColumn column in dgvOrdenesCompra.Columns) {
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -88,7 +91,7 @@ namespace ProyectoTC2023 {
         private void dgvOrdenesCompra_CellClick(object sender, DataGridViewCellEventArgs e) {
             //dgvProductos.DataSource = null;
             if (e.RowIndex >= 0) {
-                OrdenCompra orden = dgvOrdenesCompra.SelectedRows[e.RowIndex].DataBoundItem as OrdenCompra;
+                OrdenCompra orden = dgvOrdenesCompra.Rows[e.RowIndex].DataBoundItem as OrdenCompra;
                 //dgvProductos.DataSource = orden.productos;
 
             }

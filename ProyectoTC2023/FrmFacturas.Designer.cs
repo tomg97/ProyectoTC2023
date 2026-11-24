@@ -33,27 +33,33 @@
             // dgvVentasNoF
             // 
             this.dgvVentasNoF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentasNoF.Location = new System.Drawing.Point(6, 19);
+            this.dgvVentasNoF.Location = new System.Drawing.Point(8, 39);
+            this.dgvVentasNoF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvVentasNoF.Name = "dgvVentasNoF";
-            this.dgvVentasNoF.Size = new System.Drawing.Size(451, 150);
+            this.dgvVentasNoF.RowHeadersWidth = 51;
+            this.dgvVentasNoF.Size = new System.Drawing.Size(717, 467);
             this.dgvVentasNoF.TabIndex = 0;
             // 
             // gbVentasNoF
             // 
             this.gbVentasNoF.Controls.Add(this.btnFacturar);
             this.gbVentasNoF.Controls.Add(this.dgvVentasNoF);
-            this.gbVentasNoF.Location = new System.Drawing.Point(12, 12);
+            this.gbVentasNoF.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbVentasNoF.Location = new System.Drawing.Point(16, 15);
+            this.gbVentasNoF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbVentasNoF.Name = "gbVentasNoF";
-            this.gbVentasNoF.Size = new System.Drawing.Size(599, 179);
+            this.gbVentasNoF.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbVentasNoF.Size = new System.Drawing.Size(914, 514);
             this.gbVentasNoF.TabIndex = 1;
             this.gbVentasNoF.TabStop = false;
             this.gbVentasNoF.Text = "Ventas no facturadas";
             // 
             // btnFacturar
             // 
-            this.btnFacturar.Location = new System.Drawing.Point(463, 146);
+            this.btnFacturar.Location = new System.Drawing.Point(733, 453);
+            this.btnFacturar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(130, 23);
+            this.btnFacturar.Size = new System.Drawing.Size(173, 53);
             this.btnFacturar.TabIndex = 11;
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.UseVisualStyleBackColor = true;
@@ -61,10 +67,11 @@
             // 
             // FrmFacturas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(939, 535);
             this.Controls.Add(this.gbVentasNoF);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmFacturas";
             this.Text = "FrmFacturas";
             this.Load += new System.EventHandler(this.FrmFacturas_Load);

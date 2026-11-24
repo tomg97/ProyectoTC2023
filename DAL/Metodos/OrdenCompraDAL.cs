@@ -76,8 +76,10 @@ namespace DAL.Metodos {
                         "VALUES (@fechaCreacion, @estado, @productos, @total, @cuitProveedor, @idCotizacion, @dvh)";
 
                     SqlCommand cmd = new SqlCommand(insertQuery, connection);
-                    cmd.Parameters.AddWithValue("@fechaCreacion", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@estado", "Pendiente");
+                    SqlParameter fechaParameter = cmd.Parameters.Add("@fechaCreacion", SqlDbType.DateTime, 7);
+                    fechaParameter.Scale = 7;
+                    fechaParameter.Value = ordenCompra.fecha;
+                    cmd.Parameters.AddWithValue("@estado", ordenCompra.estado);
                     cmd.Parameters.AddWithValue("@productos", JsonConvert.SerializeObject(ordenCompra.productos));
                     cmd.Parameters.AddWithValue("@total", ordenCompra.total);
                     cmd.Parameters.AddWithValue("@cuitProveedor", ordenCompra.cuitProveedor);
@@ -109,19 +111,43 @@ namespace DAL.Metodos {
                         $"UPDATE OrdenCompra SET estado = '{ordenCompra.estado}'," +
                         $"comentario = '{ordenCompra.comentario}' ," +
                         $"dvh = '{calcularDVH(ordenCompra)}' " +
-                        $"WHERE idCotizacion = '{ordenCompra.idCotizacion}'",connection);
+                        $"WHERE id = '{ordenCompra.id}'",connection);
                     connection.Open();
                     cmd.ExecuteNonQuery();
+                    if (ordenCompra.estado == "Pagado") {
+                        SqlCommand command = new SqlCommand("pagarOrdenCompra", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@idOrdenCompra", ordenCompra.id);
+                        ordenCompra.idCotizacion = null; // Establece idCotizacion como null antes de calcular el DVH debido a como funciona el sp
+                        command.Parameters.AddWithValue("@dvh", calcularDVH(ordenCompra));
+                        command.ExecuteNonQuery();
+                    }
                 }
                 actualizarDVV();
+                SolicitudCotizacionDAL solicitudCotizacionDAL = new SolicitudCotizacionDAL();
+                solicitudCotizacionDAL.actualizarDVV();
             } catch (Exception ex) {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
+        public void eliminarOrdenCompra(string idCotizacion) {
+            try {
+                using (SqlConnection conn = new SqlConnection(_connectionString)) {
+                    SqlCommand cmd = new SqlCommand("eliminarOrdenCompra", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idCotizacion", idCotizacion);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                actualizarDVV(); // Actualiza el DVV después de eliminar la solicitud
+            } catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public string calcularDVH(OrdenCompra orden) {
             StringBuilder sb = new StringBuilder();
-            sb.Append(orden.id);
-            sb.Append(orden.fecha);
+            //sb.Append(orden.id);
+            sb.Append(orden.fecha.ToString("yyyy-MM-dd HH:mm", System.Globalization.CultureInfo.InvariantCulture));
             sb.Append(orden.idCotizacion);
             sb.Append(orden.estado);
             sb.Append(orden.total);

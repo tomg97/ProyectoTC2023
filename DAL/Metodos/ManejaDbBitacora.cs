@@ -39,7 +39,7 @@ namespace DAL.Metodos {
                             mensaje.usuario = reader.GetString(reader.GetOrdinal("usuario"));
                             mensaje.fecha = reader.GetDateTime(reader.GetOrdinal("fecha"));
                             mensaje.modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo")));
-                            mensaje.criticidad = reader.GetInt32(reader.GetOrdinal("criticidad"));
+                            mensaje.criticidad = Convert.ToInt32(reader.GetValue(reader.GetOrdinal("criticidad")));
 
                             resultado.Add(mensaje);
                         }
@@ -97,7 +97,7 @@ namespace DAL.Metodos {
                         usuario = reader.GetString(reader.GetOrdinal("usuario")),
                         fecha = reader.GetDateTime(reader.GetOrdinal("fecha")),
                         modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo"))),
-                        criticidad = reader.GetInt32(reader.GetOrdinal("criticidad"))
+                        criticidad = Convert.ToInt32(reader.GetValue(reader.GetOrdinal("criticidad")))
                     };
                     list.Add(mensaje);
                }

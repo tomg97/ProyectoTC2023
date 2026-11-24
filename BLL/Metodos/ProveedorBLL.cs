@@ -21,15 +21,6 @@ namespace BLL.Metodos {
             Proveedor proveedor = new Proveedor(cuit, email, nombre, telefono, domicilio, banco);
             proveedorDAL.guardarProveedorNuevo(proveedor);
         }
-        public void agregarProveedorBasico(string cuit, string email, string nombre) {
-            Proveedor proveedor = new Proveedor(cuit, email, nombre, "0", "", "");
-            proveedorDAL.guardarProveedorNuevo(proveedor);
-        }
-
-        public void completarRegistroProveedor(string cuit, string email, string nombre, string telefono, string domicilio, string banco) {
-            Proveedor proveedorAlmacenar = new Proveedor(cuit, email, nombre, telefono, domicilio, banco);
-            proveedorDAL.completarRegistroProveedor(proveedorAlmacenar);
-        }
         public void recalcularDV() {
             proveedorDAL.actualizarTodosDV();
             proveedorDAL.actualizarDVV();

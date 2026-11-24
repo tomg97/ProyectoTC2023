@@ -85,11 +85,18 @@ namespace ProyectoTC2023 {
             dgvCarrito.Columns["dvh"].Visible = false;
             dgvCarrito.Columns["id"].Visible = false;
             dgvCarrito.MultiSelect = false;
+            dgvCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCarrito.ReadOnly = true;
+            dgvCarrito.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCarrito.ReadOnly = true;
         }
         private void setDataGridViewExistencias() {
             dgvExistencias.DataSource = null;
             dgvExistencias.DataSource = productoBLL.getListaProductosEnStock();
             dgvExistencias.MultiSelect = false;
+            dgvExistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvExistencias.ReadOnly = true;
+            dgvExistencias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvExistencias.Columns["idDataGridViewTextBoxColumn"].Visible = false;
         }
 

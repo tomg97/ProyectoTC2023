@@ -70,6 +70,8 @@ namespace ProyectoTC2023 {
                     break;
             }
             dgvMaestro.DataSource = dt;
+            dgvMaestro.MultiSelect = false;
+            dgvMaestro.ReadOnly = true;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e) {
@@ -87,6 +89,7 @@ namespace ProyectoTC2023 {
             int indiceNuevo = dgvMaestro.Rows.Count - 1;
             dgvMaestro.CurrentCell = dgvMaestro.Rows[indiceNuevo].Cells[0];
             dgvMaestro.BeginEdit(true);
+            dgvMaestro.ReadOnly = false;
 
             btnConfirm.Visible = true;
             btnModMaestro.Visible = false;
@@ -238,6 +241,7 @@ namespace ProyectoTC2023 {
         private void btnCancMaestro_Click(object sender, EventArgs e) {
             mensajeria.mostrarMensaje("Se canceló la modificación. ");
             limpiarTextBoxes();
+            resettearBotones();
             //btnAppMaestro.Visible = false;
             //btnCancMaestro.Visible = false;
         }

@@ -29,13 +29,6 @@ namespace BLL.Metodos {
                 throw new ConstraintException();
             }            
         }
-
-        public bool registroCompleto(Proveedor proveedor) {
-            if (proveedor.telefono != "0") {
-                return true;
-            }
-            return false;
-        }
         public void modificarOrdenCompra(OrdenCompra ordenCompra) {
             ordenCompraDAL.modificarOrdenCompra(ordenCompra);
         }
@@ -59,6 +52,9 @@ namespace BLL.Metodos {
         }
         public List<OrdenCompra> traerOrdenesCompra() {
             return ordenCompraDAL.getOrdenesCompra();
+        }
+        public void eliminarOrdenCompra(string idCotizacion) {
+            ordenCompraDAL.eliminarOrdenCompra(idCotizacion);
         }
         public void recalcularDV() {
             ordenCompraDAL.actualizarTodosDV();
