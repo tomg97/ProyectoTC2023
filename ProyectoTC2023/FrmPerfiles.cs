@@ -3,6 +3,7 @@ using CUL.Entidades;
 using CUL.Métodos;
 using Servicios.Idioma;
 using Servicios.Interfaces;
+using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,7 +70,7 @@ namespace ProyectoTC2023 {
                 if (patente != null) {
                     var esta = manejaPermisos.Existe(seleccion, patente.id);
                     if (esta)
-                        MessageBox.Show("ya exsite la patente indicada");
+                        new Mensajeria().mostrarMensaje("ya exsite la patente indicada");
                     else {
                         seleccion.agregar(patente);
                         mostrarFamilia(false);
@@ -94,7 +95,7 @@ namespace ProyectoTC2023 {
 
                     var esta = manejaPermisos.Existe(seleccion, familia.id);
                     if (esta)
-                        MessageBox.Show("ya exsite la familia indicada");
+                        new Mensajeria().mostrarMensaje("ya exsite la familia indicada");
                     else {
                         manejaPermisos.FillFamilyComponents(familia);
                         seleccion.agregar(familia);
@@ -110,16 +111,15 @@ namespace ProyectoTC2023 {
             };
             manejaPermisos.GuardarComponente(p, true);
             llenarPatentesFamilias();
-            MessageBox.Show("Familia guardada correctamente");
+            new Mensajeria().mostrarMensaje("Familia guardada correctamente");
         }
 
         private void btnGuardarFamilia_Click(object sender, EventArgs e) {
             try {
                 manejaPermisos.GuardarFamilia(seleccion);
-                MessageBox.Show("Familia guardada correctamente");
+                new Mensajeria().mostrarMensaje("Familia guardada correctamente");
             } catch (Exception) {
-                MessageBox.Show("Error al guardar la familia");
-            }
+                new Mensajeria().mostrarMensaje("Error al guardar la familia");            }
         }
 
         public void actualizarIdioma() {

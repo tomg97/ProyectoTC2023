@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
             this.btnComentar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnRecibido = new System.Windows.Forms.Button();
@@ -31,18 +30,6 @@
             this.labelTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenesCompra)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(840, 9);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 58);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "❓";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnComentar
             // 
@@ -111,7 +98,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 439);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnComentar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnRecibido);
@@ -127,8 +113,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnComentar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnRecibido;

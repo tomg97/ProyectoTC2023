@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 
 namespace DAL.Metodos {
     public sealed class DbConfig {
@@ -7,11 +8,30 @@ namespace DAL.Metodos {
         public string ConnectionString { get; }
 
         private DbConfig() {
-            // Read from the DAL project's Settings default (generated settings). This avoids adding a System.Configuration reference.
+            ConnectionString = GetConnectionString();
+        }
+
+        private static string GetConnectionString() {
+            string configured = Environment.GetEnvironmentVariable("COMERCIALIZAR_CONNECTION_STRING");
+            if (!string.IsNullOrWhiteSpace(configured)) {
+                return configured;
+            }
+
+            ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+            if (settings != null) {
+                ConnectionStringSettings connection = settings["ComercializAR"]
+                    ?? settings["DAL.Properties.Settings.ComercializARConnectionString"]
+                    ?? settings["ProyectoTC2023.Properties.Settings.ComercializARConnectionString"];
+
+                if (connection != null && !string.IsNullOrWhiteSpace(connection.ConnectionString)) {
+                    return connection.ConnectionString;
+                }
+            }
+
             try {
-                ConnectionString = DAL.Properties.Settings.Default.ComercializARConnectionString;
+                return DAL.Properties.Settings.Default.ComercializARConnectionString;
             } catch {
-                ConnectionString = string.Empty;
+                return string.Empty;
             }
         }
     }

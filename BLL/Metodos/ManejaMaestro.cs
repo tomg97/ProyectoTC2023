@@ -108,28 +108,28 @@ namespace BLL.Metodos {
         public void guardarProductoNuevo(Producto producto) {
             try {
                 productoDAL.guardarProductoNuevo(producto);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaProductoNoOk, Modulo.Maestros, 1);
             }            
         }
         public void guardarUsuario(Usuario usuario) {
             try {
                 usuario.pass = encriptador.encriptarIrreversible(usuario.pass);
                 dbUsuarios.crearUsuario(usuario);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaUsuarioNoOk, Modulo.Maestros, 1);
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
             }            
         }
         public void crearCliente(Cliente cliente) {
             try {
                 manejaCliente.crearCliente(cliente);
-                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
-                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.CreaClienteNoOk, Modulo.Maestros, 1);
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
             }            
         }
@@ -137,29 +137,29 @@ namespace BLL.Metodos {
         public void modificaUsuario(Usuario usuario, string keyOg) {
             try {
                 manejaDbMaestro.modificarUsuario(usuario, keyOg);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionUsuarioNoOk, Modulo.Maestros, 1);
             }
 
         }
         public void modificaProducto(Producto producto, string keyOg) {
             try {
                 productoDAL.modificarProducto(producto, keyOg);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionProductoNoOk, Modulo.Maestros, 1);
             }
         }
         public void modificaCliente(Cliente cliente, string keyOg) {
             try {
                 manejaDbMaestro.modificarCliente(cliente, keyOg);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteOk, Modulo.Maestros, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
-                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteNoOk, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(EventoEnum.ModificacionClienteNoOk, Modulo.Maestros, 1);
             }
         }
 
@@ -179,7 +179,7 @@ namespace BLL.Metodos {
                         modificado = EventoEnum.EliminaClienteOk;
                         break;
                 }
-                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, 1);
             } catch (Exception ex) {
                 mensajeria.mostrarMensaje("Error: " + ex.Message);
                 switch (tipo) {
@@ -193,7 +193,7 @@ namespace BLL.Metodos {
                         modificado = EventoEnum.EliminaClienteNoOk;
                         break;
                 }
-                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, Criticidad.Uno);
+                bitacora.persistirMensajeLogged(modificado, Modulo.Maestros, 1);
             }
         }
     }

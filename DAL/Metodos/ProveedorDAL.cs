@@ -30,6 +30,7 @@ namespace DAL.Metodos {
                             reader["telefono"].ToString(),
                             reader["domicilio"].ToString(),
                             reader["banco"].ToString());
+                        proveedor.dvh = reader["dvh"].ToString();
                         listaProveedores.Add(proveedor);
                     }
                     reader.Close();
@@ -43,17 +44,19 @@ namespace DAL.Metodos {
             if (esIdUnico(proveedor.CUIT)) {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand cmd = new SqlCommand("INSERT INTO Proveedor " +
-                        "(CUIT, email, nombre, banco, domicilio, telefono) " +
-                        "VALUES (@CUIT, @email, @nombre, @banco, @domicilio, @telefono)", connection);
+                        "(CUIT, email, nombre, banco, domicilio, telefono, dvh) " +
+                        "VALUES (@CUIT, @email, @nombre, @banco, @domicilio, @telefono, @dvh)", connection);
                     cmd.Parameters.AddWithValue("@CUIT", proveedor.CUIT);
                     cmd.Parameters.AddWithValue("@email", proveedor.email);
                     cmd.Parameters.AddWithValue("@nombre", proveedor.nombre);
                     cmd.Parameters.AddWithValue("@banco", proveedor.banco);
                     cmd.Parameters.AddWithValue("@domicilio", proveedor.domicilio);
                     cmd.Parameters.AddWithValue("@telefono", proveedor.telefono);
+                    cmd.Parameters.AddWithValue("@dvh", calcularDVH(proveedor));
 
                     connection.Open();
                     cmd.ExecuteNonQuery();
+                    actualizarDVV();
                 }
             } else {
                 throw new Exception("El CUIT de Proveedor no es único. Ingrese uno nuevo.");
@@ -84,6 +87,7 @@ namespace DAL.Metodos {
                             reader["telefono"].ToString(),
                             reader["domicilio"].ToString(),
                             reader["banco"].ToString());
+                        proveedor.dvh = reader["dvh"].ToString();
                     }
                     reader.Close();
                 }
@@ -91,24 +95,6 @@ namespace DAL.Metodos {
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
             return proveedor;
-        }
-
-        public void completarRegistroProveedor(Proveedor proveedorAlmacenar) {
-            try {
-                using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand cmd = new SqlCommand(
-                        $"UPDATE Proveedor SET telefono = '{proveedorAlmacenar.telefono}'," +
-                        $"domicilio = '{proveedorAlmacenar.domicilio}'," +
-                        $"banco = '{proveedorAlmacenar.banco}'," +
-                        $"nombre = '{proveedorAlmacenar.nombre}'," +
-                        $"email = '{proveedorAlmacenar.email}' " +
-                        $"WHERE CUIT = '{proveedorAlmacenar.CUIT}' ", connection);
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            } catch (Exception ex) {
-                Console.WriteLine("An error occurred: " + ex.Message);
-            }
         }
         public string calcularDVH(Proveedor proveedor) {
             StringBuilder sb = new StringBuilder();
@@ -148,7 +134,7 @@ namespace DAL.Metodos {
         public void actualizarDVV() {
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("UPDATE DVV SET dvv = @dvv WHERE nombreTabla = Proveedor", connection);
+                    SqlCommand command = new SqlCommand("UPDATE DVV SET dvv = @dvv WHERE nombreTabla = 'Proveedor'", connection);
                     command.Parameters.AddWithValue("@dvv", calcularDVV(getProveedores()));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -162,7 +148,7 @@ namespace DAL.Metodos {
             string dvv = "";
             try {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
-                    SqlCommand command = new SqlCommand("SELECT dvv FROM DVV WHERE nombreTabla = Proveedor", connection);
+                    SqlCommand command = new SqlCommand("SELECT dvv FROM DVV WHERE nombreTabla = 'Proveedor'", connection);
                     connection.Open();
                     dvv = command.ExecuteScalar().ToString();
                 }

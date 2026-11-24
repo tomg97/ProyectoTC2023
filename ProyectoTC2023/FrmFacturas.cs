@@ -34,6 +34,13 @@ namespace ProyectoTC2023 {
         private void resetDgvView() {
             dgvVentasNoF.DataSource = null;
             dgvVentasNoF.DataSource = manejaVenta.getVentasNoFacturadas();
+            dgvVentasNoF.MultiSelect = false;
+            dgvVentasNoF.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentasNoF.ReadOnly = true;
+            dgvVentasNoF.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVentasNoF.Columns["dvh"].Visible = false;
+            dgvVentasNoF.Columns["id"].Visible = false;
+            dgvVentasNoF.Columns["fecha"].DisplayIndex = 0;
         }
 
         private void btnFacturar_Click(object sender, EventArgs e) {

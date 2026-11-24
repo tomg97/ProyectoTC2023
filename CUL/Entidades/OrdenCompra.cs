@@ -11,14 +11,15 @@ namespace CUL.Entidades {
         public OrdenCompra() {
             
         }
-        public OrdenCompra(string i, string ic, string e, string t, string p, string c) {
+        public OrdenCompra(string i, string ic, string e, string t, string p, string c, DateTime fecha) {
 			_id = i;
 			_idCotizacion = ic;
 			_estado = e;
 			_total = t; 
 			_productos = JsonConvert.DeserializeObject<List<Producto>>(p);
             _cuitProveedor = c;
-			_comentario = "";
+            _fecha = fecha;
+            _comentario = "";
         }
         private string _id;
 
@@ -63,6 +64,13 @@ namespace CUL.Entidades {
 			get { return _comentario; }
 			set { _comentario = value; }
 		}
+		private DateTime _fecha;
+
+		public DateTime fecha {
+			get { return _fecha; }
+			set { _fecha = value; }
+		}
+
 		private string _dvh;
 
 		public string dvh {

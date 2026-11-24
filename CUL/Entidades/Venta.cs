@@ -20,13 +20,14 @@ namespace CUL.Entidades {
 			facturada = false;
 			calcularMontoYEncriptar(productosVendidos);
 		}
-		public Venta(string id, string productosVendidos, string idCliente, string fecha) {
+		public Venta(string id, string productosVendidos, string idCliente, string fecha, string monto) {
 			_id = id;
 			_productosVendidos = productosVendidos;
 			_listaProductosVendidos = JsonConvert.DeserializeObject<List<Producto>>(productosVendidos);
-            _idCliente = idCliente;
+			_idCliente = idCliente;
 			_fecha = fecha;
 			facturada = true;
+			_monto = new Encriptador().desencriptarReversible(monto);
 		}
 		[JsonProperty(PropertyName = "_listaProductosVendidos")]
 		private List<Producto> _listaProductosVendidos;
@@ -68,12 +69,21 @@ namespace CUL.Entidades {
 
 		public void calcularMontoYEncriptar(List<Producto> productosVendidos) {
 			Encriptador encriptador = new Encriptador();
-            decimal subtotal = 0;
-            foreach (Producto producto in productosVendidos) {
-                subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
-            }
+			decimal subtotal = 0;
+			foreach (Producto producto in productosVendidos) {
+				subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
+			}
 			string montoNoEncriptado = subtotal.ToString();
 			_monto = encriptador.encriptarReversible(montoNoEncriptado);
+		}
+
+		public void calcularYDesencriptarMonto(List<Producto> productosVendidos) {
+			Encriptador encriptador = new Encriptador();
+			decimal subtotal = 0;
+			foreach (Producto producto in productosVendidos) {
+				subtotal += producto.cantidad * Convert.ToInt32(producto.precio);
+			}
+                _monto = encriptador.desencriptarReversible(subtotal.ToString());
 		}
 	}
 }

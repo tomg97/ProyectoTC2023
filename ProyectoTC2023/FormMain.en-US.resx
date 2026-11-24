@@ -3759,5 +3759,22 @@
   <data name="reportesToolStripMenuItem" xml:space="preserve">
     <value>Reports</value>
   </data>
-  
+  <data name="tsmiControlCambios" xml:space="preserve">
+    <value>Change control</value>
+  </data>
+  <data name="tsmiSolicitudCotizacion" xml:space="preserve">
+    <value>Quote request</value>
+  </data>
+  <data name="tsmiOrdenCompra" xml:space="preserve">
+    <value>Purchase Orders</value>
+  </data>
+  <data name="tsmiRegistroProveedor" xml:space="preserve">
+    <value>Provider Onboarding</value>
+  </data>
+  <data name="tsmiPagarOrdenCompra" xml:space="preserve">
+    <value>Pay Purchase Order</value>
+  </data>
+  <data name="tsmiRecepcionProductos" xml:space="preserve">
+    <value>Merchandise Intake</value>
+  </data>
 </root>

@@ -12,7 +12,7 @@ namespace BLL.Metodos {
     public class BitacoraBLL {
         public BitacoraBLL() { }
         ManejaDbBitacora manejaDbBitacora = new ManejaDbBitacora();
-        public void persistirMensajeLogged(EventoEnum contenido, Modulo tabla, Criticidad criticidad) {
+        public void persistirMensajeLogged(EventoEnum contenido, Modulo tabla, int criticidad) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
@@ -24,7 +24,7 @@ namespace BLL.Metodos {
                 manejaDbBitacora.crearEntradaBitacora(mensaje);
             }            
         }
-        public void persistirMensajeNoLogged(EventoEnum contenido, Modulo tabla, Criticidad criticidad, string nomUsu) {
+        public void persistirMensajeNoLogged(EventoEnum contenido, Modulo tabla, int criticidad, string nomUsu) {
             // TODO: reworkear. no necesitas un mensaje.
             // necesitás una string para el contenido del mensaje,
             // enum del tipo
@@ -43,7 +43,7 @@ namespace BLL.Metodos {
         }*/
         public DataTable lookupBitacoraEventosParametros(Dictionary<string, string> dic) {
             List<MensajeEvento> list = manejaDbBitacora.lookupMensajesBitacoraEventos(dic);
-            persistirMensajeLogged(EventoEnum.LookupEventoOk, Modulo.Bitacora, Criticidad.Dos);
+            persistirMensajeLogged(EventoEnum.LookupEventoOk, Modulo.Bitacora, 2);
             DataTable dataTable = cargarDataTableBitEventos(list);
             return dataTable;
         }
@@ -59,7 +59,7 @@ namespace BLL.Metodos {
             dataTable.Columns.Add(username, typeof(string));
             dataTable.Columns.Add(contents, typeof(string));
             dataTable.Columns.Add(module, typeof(Modulo));
-            dataTable.Columns.Add(severity, typeof(Criticidad));            
+            dataTable.Columns.Add(severity, typeof(int));            
             dataTable.Columns.Add(date, typeof(DateTime));
         
             foreach (var log in list) {
@@ -91,7 +91,7 @@ namespace BLL.Metodos {
         public void rollbackCambio(Producto producto, string keyOg) {
             ManejaDbMaestro manejaDbMaestro = new ManejaDbMaestro();
             manejaDbMaestro.modificarProducto(producto, keyOg);
-            persistirMensajeLogged(EventoEnum.RollbackCambioOk, Modulo.Bitacora, Criticidad.Uno);
+            persistirMensajeLogged(EventoEnum.RollbackCambioOk, Modulo.Bitacora, 1);
         }
     }
 }

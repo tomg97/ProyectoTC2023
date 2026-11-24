@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
 using Servicios.Idioma;
+using Servicios.Metodos;
 
 namespace ProyectoTC2023 {
     public partial class FrmControlCambios : Form {
@@ -31,10 +32,10 @@ namespace ProyectoTC2023 {
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            foreach (DataRow dr in cambios.Rows) // search whole table
+            /*foreach (DataRow dr in cambios.Rows) // search whole table
             {
                 dr["fecha"] = new DateTime(long.Parse(dr["fecha"].ToString()));
-            }
+            }*/
 
             DataGridViewButtonColumn restoreButton = new DataGridViewButtonColumn();
             restoreButton.Name = "restaurar";
@@ -52,25 +53,29 @@ namespace ProyectoTC2023 {
         private void btnBuscarCambios_Click(object sender, EventArgs e) {
             StringBuilder sb = new StringBuilder();
             StringBuilder builder = new StringBuilder();
-            if (txtNomUsu.Text.Length > 0) builder.Append($@"nomUsu = {txtNomUsu.Text}");
+            if (txtNomUsu.Text.Length > 0) builder.Append($@"nomUsu = '{txtNomUsu.Text}'");
             if (txtDNI.Text.Length > 0) builder.Append($@"{(txtNomUsu.Text.Length > 0 ? " AND " : " ")} dni LIKE  '{txtDNI.Text}*' ");
             if (txtNombre.Text.Length > 0) builder.Append($@"{(txtDNI.Text.Length > 0 ? " AND " : " ")} nombre LIKE  '{txtNombre.Text}*' ");
             if (txtApellido.Text.Length > 0) builder.Append($@"{(txtNombre.Text.Length > 0 ? " AND " : " ")} apellido LIKE  '{txtApellido.Text}*' ");
 
             DataRow[] rows = cambios.Select(builder.ToString());
             dataGridView1.DataSource = (rows.Length > 0) ? rows.CopyToDataTable() : null;
-
+            FrmControlCambios_Load(sender, e);
         }
 
         private void FrmControlCambios_Load(object sender, EventArgs e) {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
             dataGridView1.DataSource = cambios;
+            dataGridView1.Columns["dvh"].Visible = false;
+            dataGridView1.Columns["id"].Visible = false;
+            dataGridView1.Columns["dni"].DisplayIndex = 1;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == dataGridView1.Columns["restaurar"].Index && DialogResult.OK == MessageBox.Show("Esta seguro que desea continuar", "", MessageBoxButtons.OKCancel)) {
+            if (e.ColumnIndex == dataGridView1.Columns["restaurar"].Index && DialogResult.OK == new Mensajeria().mostrarConfirmacion("Esta seguro que desea continuar", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)) {
                 //TODO restaurar usuario
                 //userService.UpdateUser();
-                string userID = ((string)dataGridView1.SelectedRows[0].Cells["nomUsu"]?.Value);
                 Usuario user = new Usuario();
 
                 user.nombre = (string)dataGridView1.SelectedRows[0].Cells["nombre"]?.Value;
@@ -78,9 +83,9 @@ namespace ProyectoTC2023 {
                 user.email = (string)dataGridView1.SelectedRows[0].Cells["email"]?.Value;
                 user.apellido = (string)dataGridView1.SelectedRows[0].Cells["apellido"]?.Value;
                 user.telefono = (string)dataGridView1.SelectedRows[0].Cells["telefono"]?.Value;
-                user.dni= (string)dataGridView1.SelectedRows[0].Cells["dni"]?.Value;
+                user.dni = (string)dataGridView1.SelectedRows[0].Cells["dni"]?.Value;
 
-                usuarioSvc.modificaUsuario(user, userID);
+                usuarioSvc.modificaUsuario(user);
 
             }
         }

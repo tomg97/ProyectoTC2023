@@ -70,6 +70,8 @@ namespace ProyectoTC2023 {
                     break;
             }
             dgvMaestro.DataSource = dt;
+            dgvMaestro.MultiSelect = false;
+            dgvMaestro.ReadOnly = true;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e) {
@@ -87,6 +89,7 @@ namespace ProyectoTC2023 {
             int indiceNuevo = dgvMaestro.Rows.Count - 1;
             dgvMaestro.CurrentCell = dgvMaestro.Rows[indiceNuevo].Cells[0];
             dgvMaestro.BeginEdit(true);
+            dgvMaestro.ReadOnly = false;
 
             btnConfirm.Visible = true;
             btnModMaestro.Visible = false;
@@ -198,7 +201,6 @@ namespace ProyectoTC2023 {
             txtNomUsu.Text = usuarioOg.nomUsu;
             txtNombUsu.Text = usuarioOg.nombre;
             txtApeUsu.Text = usuarioOg.apellido;
-            txtDni.Text = usuarioOg.dni;
             txtTelefono.Text = usuarioOg.telefono;
             txtEmail.Text = usuarioOg.email;
         }
@@ -239,6 +241,7 @@ namespace ProyectoTC2023 {
         private void btnCancMaestro_Click(object sender, EventArgs e) {
             mensajeria.mostrarMensaje("Se canceló la modificación. ");
             limpiarTextBoxes();
+            resettearBotones();
             //btnAppMaestro.Visible = false;
             //btnCancMaestro.Visible = false;
         }
@@ -281,7 +284,7 @@ namespace ProyectoTC2023 {
             string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
             string modificado = string.Equals(tipo, "Usuarios") ? tipo.Substring(0, tipo.Length - 1).ToLower() : tipo.ToLower();
             string id = string.Equals(tipo, "Usuarios") ? (lenguajeActual == "es-AR" ? "Nombre de Usuario" : "Username") : "Id";
-            DialogResult dialogResult = MessageBox.Show($"Desea eliminar el {modificado}, {id}: {key}?", "Confirma eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = new Mensajeria().mostrarConfirmacion($"Desea eliminar el {modificado}, {id}: {key}?", "Confirma eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return dialogResult;
         }
 
@@ -302,11 +305,11 @@ namespace ProyectoTC2023 {
                         nomUsu = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nomUsu, txtNomUsuN.Text),
                         nombre = devolverStringOriginalIfNullOrEmpty(usuarioOgg.nombre, txtNombUsuN.Text),
                         apellido = devolverStringOriginalIfNullOrEmpty(usuarioOgg.apellido, txtApeUsuN.Text),
-                        dni = devolverStringOriginalIfNullOrEmpty(usuarioOgg.dni, txtDniN.Text),
+                        dni = usuarioOgg.dni,
                         email = devolverStringOriginalIfNullOrEmpty(usuarioOgg.email, txtEmailN.Text),
                         telefono = devolverStringOriginalIfNullOrEmpty(usuarioOgg.telefono, txtTelefonoN.Text)
                     };
-                    manejaMaestro.modificaUsuario(usuarioN, usuarioOgg.nomUsu);
+                    manejaMaestro.modificaUsuario(usuarioN, usuarioOgg.dni);
                     break;
                 case "Cliente":
                     Cliente clienteN = new Cliente {

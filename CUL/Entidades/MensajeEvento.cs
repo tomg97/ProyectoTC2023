@@ -34,7 +34,7 @@ namespace CUL.Entidades {
 			set { _usuario = value; }
 		}
 		public MensajeEvento() { }
-		public MensajeEvento(EventoEnum contenido, string usuario, Modulo tabla, Criticidad criticidad) {
+		public MensajeEvento(EventoEnum contenido, string usuario, Modulo tabla, int criticidad) {
 			_contenido = contenido;
 			_usuario = usuario;
 			_fecha = DateTime.Now;
@@ -47,9 +47,9 @@ namespace CUL.Entidades {
 			get { return _modulo; }
 			set { _modulo = value; }
 		}
-		private Criticidad _criticidad;
+		private int _criticidad;
 
-		public Criticidad criticidad {
+		public int criticidad {
 			get { return _criticidad; }
 			set { _criticidad = value; }
 		}

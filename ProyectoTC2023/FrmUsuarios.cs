@@ -82,10 +82,7 @@ namespace ProyectoTC2023 {
         }
 
         private void FrmUsuarios_Load(object sender, EventArgs e) {
-            grpbLogout.Visible = false;
-            if (SingletonSesion.getInstance.estaLogged) {
-                grpbLogout.Visible = true;
-            }
+            
         }
 
         private void grpbLogout_Enter(object sender, EventArgs e) {
@@ -113,7 +110,7 @@ namespace ProyectoTC2023 {
                         }
                     }
                     if (esta)
-                        MessageBox.Show("El usuario ya tiene la patente indicada");
+                        new Mensajeria().mostrarMensaje("El usuario ya tiene la patente indicada");
                     else {
                         {
                             temp.permisos.Add(patente);
@@ -122,7 +119,7 @@ namespace ProyectoTC2023 {
                     }
                 }
             } else
-                MessageBox.Show("Seleccione un usuario");
+                new Mensajeria().mostrarMensaje("Seleccione un usuario");
         }
 
         private void btnAgregarFamilia_Click(object sender, EventArgs e) {
@@ -137,7 +134,7 @@ namespace ProyectoTC2023 {
                         }
                     }
                     if (esta)
-                        MessageBox.Show("El usuario ya tiene la familia indicada");
+                        new Mensajeria().mostrarMensaje("El usuario ya tiene la familia indicada");
                     else {
                         manejaPerfil.FillFamilyComponents(flia);
                         temp.permisos.Add(flia);
@@ -145,16 +142,15 @@ namespace ProyectoTC2023 {
                     }
                 }
             } else
-                MessageBox.Show("Seleccione un usuario");
+                new Mensajeria().mostrarMensaje("Seleccione un usuario");
         }
 
         private void btnGuardarFamilia_Click(object sender, EventArgs e) {
             try {
                 resultadosDb.guardarPermisos(temp);
-                MessageBox.Show("Usuario guardado correctamente");
+                new Mensajeria().mostrarMensaje("Usuario guardado correctamente");
             } catch (Exception) {
-                MessageBox.Show("Error al guardar el usuario");
-            }
+                new Mensajeria().mostrarMensaje("Error al guardar el usuario");            }
         }
 
         public void actualizarIdioma() {

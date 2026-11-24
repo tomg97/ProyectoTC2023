@@ -44,9 +44,10 @@
             // lblOrdenes
             // 
             this.lblOrdenes.AutoSize = true;
-            this.lblOrdenes.Location = new System.Drawing.Point(9, 14);
+            this.lblOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrdenes.Location = new System.Drawing.Point(12, 1);
             this.lblOrdenes.Name = "lblOrdenes";
-            this.lblOrdenes.Size = new System.Drawing.Size(118, 16);
+            this.lblOrdenes.Size = new System.Drawing.Size(212, 29);
             this.lblOrdenes.TabIndex = 1;
             this.lblOrdenes.Text = "Órdenes sin pagar";
             // 
@@ -62,9 +63,10 @@
             // 
             // btnPago
             // 
-            this.btnPago.Location = new System.Drawing.Point(768, 451);
+            this.btnPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPago.Location = new System.Drawing.Point(768, 421);
             this.btnPago.Name = "btnPago";
-            this.btnPago.Size = new System.Drawing.Size(98, 51);
+            this.btnPago.Size = new System.Drawing.Size(110, 81);
             this.btnPago.TabIndex = 4;
             this.btnPago.Text = "Realizar Pago";
             this.btnPago.UseVisualStyleBackColor = true;

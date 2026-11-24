@@ -1,6 +1,9 @@
 ﻿using BLL.Metodos;
 using CUL.Entidades;
+using CUL.Métodos;
 using DAL.Metodos;
+using Servicios.Idioma;
+using Servicios.Interfaces;
 using Servicios.Metodos;
 using System;
 using System.Collections.Generic;
@@ -8,12 +11,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Servicios.Idioma;
-using Servicios.Interfaces;
-using CUL.Métodos;
 
 namespace ProyectoTC2023 {
     public partial class LoginForm : Form, IObserver {
@@ -31,11 +32,12 @@ namespace ProyectoTC2023 {
                 Usuario usuario = new Usuario() { nomUsu = nomUsu, pass = pass };
                 ManejaUsuarios stepAuth = new ManejaUsuarios();
                 string message = stepAuth.loginProcedimiento(usuario);
-                mensajeria.mostrarMensaje(message);
                 if(message == "Exito") {
                     FormMain formMain = new FormMain();
                     formMain.Show();
                     this.Hide();
+                } else {
+                    mensajeria.mostrarMensaje(message);
                 }
             } else {
                 mensajeria.mostrarMensaje("Se debe proporcionar nomre de usuario y/o contraseña");
@@ -48,19 +50,28 @@ namespace ProyectoTC2023 {
             this.Hide();
         }
         public void actualizarIdioma() {
-            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();            
-            
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(codigoIdioma);
+            string codigoIdioma = SingletonSesion.getInstance.getIdiomaActual();
+            Traductor traductor = new Traductor("ProyectoTC2023.LoginForm", typeof(LoginForm), codigoIdioma);
+            foreach (Control control in this.Controls) {
+                traductor.ActualizarIdioma(control);
+            }
 
-            //cbIdioma.Items[0] = Lang.Español;
-            //cbIdioma.Items[1] = Lang.Inglés;
+            int selectedIndex = cbIdioma.SelectedIndex;
+            actualizandoIdioma = true;
+            try {
+                cbIdioma.Items.Clear();
+                cbIdioma.Items.Add(Lang.Español);
+                cbIdioma.Items.Add(Lang.Inglés);
 
-            lblUsu.Text = Lang.lblUsu;
-            lblLang.Text = Lang.lblLang;
-            lblPass.Text = Lang.lblPass;
-            btnAplicarIdioma.Text = Lang.btnAplicarIdioma;
+                if (selectedIndex >= 0 && selectedIndex < cbIdioma.Items.Count) {
+                    cbIdioma.SelectedIndex = selectedIndex;
+                }
+            } finally {
+                actualizandoIdioma = false;
+            }
 
-            btnSinSesion.Text = Lang.btnSinSesion;
+            var _resourceManager = new ResourceManager("ProyectoTC2023.LoginForm", typeof(LoginForm).Assembly);
+            this.Text = _resourceManager.GetString("LoginForm");
         }
 
         private void btnAplicarIdioma_Click(object sender, EventArgs e) {
@@ -76,8 +87,14 @@ namespace ProyectoTC2023 {
             }
         }
         public Idiomas miIdioma = new Idiomas();
+        private bool formLoaded;
+        private bool actualizandoIdioma;
 
         private void cbIdioma_SelectedIndexChanged(object sender, EventArgs e) {
+            if (!formLoaded || actualizandoIdioma) {
+                return;
+            }
+
             int selectedIndex = cbIdioma.SelectedIndex;
 
             if (Enum.IsDefined(typeof(Idiomas), selectedIndex)) {
@@ -86,6 +103,16 @@ namespace ProyectoTC2023 {
                 // Por ejemplo, imprimir el idioma seleccionado:
                 mensajeria.mostrarMensaje("Idioma seleccionado: " + miIdioma);
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e) {
+            actualizarIdioma();
+
+            if (cbIdioma.SelectedIndex < 0) {
+                cbIdioma.SelectedIndex = 0; // Selecciona el primer idioma (Español) por defecto
+            }
+
+            formLoaded = true;
         }
     }
     public enum Idiomas {

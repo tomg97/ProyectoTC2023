@@ -23,7 +23,6 @@ namespace ProyectoTC2023 {
         string lenguajeActual = SingletonSesion.getInstance.getIdiomaActual();
         public FrmOrdenCompra() {
             InitializeComponent();
-            btnRegistroProveedor.Hide();
             actualizarIdioma();
         }
         public void actualizarIdioma() {
@@ -44,36 +43,34 @@ namespace ProyectoTC2023 {
         private void cargarCotizaciones() {
             cbCotizaciones.DataSource = null;
             cbCotizaciones.DataSource = solicitudCotizacionBLL.traerTodasSolicitudesCotizacion();
-            cbCotizaciones.DisplayMember = "id"; // Asegura que se muestre solo el Id
-            cbCotizaciones.SelectedIndex = 0;
+            cbCotizaciones.DisplayMember = "fecha"; // Asegura que se muestre la fecha de creación de la solicitud de cotización, así se entiende mejor cuál es cuál
+            if(cbCotizaciones.Items.Count > 0) cbCotizaciones.SelectedIndex = 0;
         }
 
         private void cbCotizaciones_SelectedIndexChanged(object sender, EventArgs e) {
             try {
                 SolicitudCotizacion solicitud = cbCotizaciones.SelectedItem as SolicitudCotizacion;
-                if (orden.productos != null && orden.productos.Count > 0) orden.productos.Clear(); else orden.productos = new List<Producto>();
-                lblMonto.Text = "$0";
-                orden.cuitProveedor = solicitud.proveedor.CUIT;
-                orden.idCotizacion = solicitud.id;
+                if(solicitud != null) {
+                    if (orden.productos != null && orden.productos.Count > 0) orden.productos.Clear(); else orden.productos = new List<Producto>();
+                    lblMonto.Text = "$0";
+                    orden.cuitProveedor = solicitud.proveedor.CUIT;
+                    orden.idCotizacion = solicitud.id;
 
-                foreach (Producto p in solicitud.productos) {
-                    Random r = new Random();
-                    var p_inicial = Int32.Parse(p.precio);
-                    var p_modificado = p_inicial * r.Next(95, 120) / 100; // Simula variación de precios entre 95% y 120%
-                    var p_final = p_modificado * p.cantidad;
-                    p.precio = p_final.ToString();
-                    orden.productos.Add(p);
-                }
-                refrescarDgv();
-                actualizarSubtotal();
-                var proveedor = proveedorBLL.getProveedor(orden.cuitProveedor);
-                if (!ordenCompraBLL.registroCompleto(proveedor)) {
-                    btnRegistroProveedor.Enabled = true;
-                    btnRegistroProveedor.Show();
-                }
-
+                    foreach (Producto p in solicitud.productos) {
+                        Random r = new Random();
+                        var p_inicial = Int32.Parse(p.precio);
+                        var p_modificado = p_inicial * r.Next(95, 120) / 100; // Simula variación de precios entre 95% y 120%
+                        var p_final = p_modificado * p.cantidad;
+                        p.precio = p_final.ToString();
+                        orden.productos.Add(p);
+                    }
+                    refrescarDgv();
+                    actualizarSubtotal();
+                } else {
+                    cargarCotizaciones();
+                }                
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -93,9 +90,11 @@ namespace ProyectoTC2023 {
 
         private void refrescarDgv() {
             dgvOrdenCompra.DataSource = null;
-            if(orden.productos != null || orden.productos.Count == 0) {
+            dgvOrdenCompra.ReadOnly = true;
+            if (orden.productos != null || orden.productos.Count == 0) {
                 dgvOrdenCompra.DataSource = orden.productos;
                 foreach (DataGridViewColumn co in dgvOrdenCompra.Columns) { co.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; }
+                dgvOrdenCompra.Columns["dvh"].Visible = false;
             }            
         }
 
@@ -107,7 +106,7 @@ namespace ProyectoTC2023 {
                     actualizarSubtotal();
                     refrescarDgv();
                 } else {
-                    var result = MessageBox.Show(
+                    var result = new Mensajeria().mostrarConfirmacion(
                         lenguajeActual == "es-AR" 
                             ? "¿Desea eliminar la solicitud de cotización completa?" 
                             : "Do you want to delete the entire quotation request?",
@@ -134,32 +133,15 @@ namespace ProyectoTC2023 {
             }
         }
 
-        private void btnRegistroProveedor_Click(object sender, EventArgs e) {
-            var proveedor = proveedorBLL.getProveedor(orden.cuitProveedor);
-            if (proveedor != null && ordenCompraBLL.estaRegistradoProveedor(orden.cuitProveedor)) {
-                if (ordenCompraBLL.registroCompleto(proveedor)) {
-                    mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "El proveedor seleccionado ya se encuentra registrado. Prosiga con la generacion de la orden." : "The selected provider's registration is already complete. Please move on with the order creation.");
-                    btnRegistroProveedor.Enabled = false;
-                    btnRegistroProveedor.Hide();    
-                } else {
-                    FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor(proveedor, "Completar Registro");
-                    frmRegistroProveedor.ShowDialog();
-                    mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Registro de proveedor completado con éxito." : "Provider registration completed successfully.");
-                }
-            } else {
-                mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "El proveedor seleccionado no se encuentra registrado. Por favor, complete su registro a continuación." : "The selected provider is not registered. Please complete their registration on the following screen.");
-                FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor(proveedor, "Registro");
-                frmRegistroProveedor.ShowDialog();
-                mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Registro de proveedor completado con éxito." : "Provider registration completed successfully.");
-            }
-        }
-
         private void btnGenerarOrden_Click(object sender, EventArgs e) {
             try {
+                orden.fecha = DateTime.Now;
+                orden.estado = "Pendiente";
+                orden.comentario = "";
                 ordenCompraBLL.generarOrden(orden);
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Orden de compra generada con éxito." : "Purchase order generated successfully.");
             } catch (ConstraintException ex) {
-                var result = MessageBox.Show(
+                var result = new Mensajeria().mostrarConfirmacion(
                         lenguajeActual == "es-AR"
                             ? "Ya existe una orden de compra asociada a esta solicitud de cotización. ¿Desea reemplazar la orden existente?"
                             : "There is already a purchase order associated to that quote request. Do you want to replace the existing purchase order?",
@@ -172,14 +154,20 @@ namespace ProyectoTC2023 {
                 if (result == DialogResult.Yes) {
                     SolicitudCotizacion solicitud = cbCotizaciones.SelectedItem as SolicitudCotizacion;
                     if (solicitud != null) {
-                        solicitudCotizacionBLL.eliminarSolicitudCotizacion(solicitud.id);
+                        ordenCompraBLL.eliminarOrdenCompra(solicitud.id);
                         cargarCotizaciones();
+                        ordenCompraBLL.generarOrden(orden);
                         orden.productos.Clear();
                         refrescarDgv();
-                        actualizarSubtotal();
+                        actualizarSubtotal();                        
+                        mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Orden de compra generada con éxito." : "Purchase order generated successfully.");
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+
         }
     }
 }

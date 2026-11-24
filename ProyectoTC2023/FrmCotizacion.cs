@@ -55,7 +55,7 @@ namespace ProyectoTC2023 {
         }
 
         private void setComboProveedores() {
-            cmbProveedores.Items.Clear();
+            cmbProveedores.DataSource = null;
             ProveedorBLL proveedorBLL = new ProveedorBLL();
             List<Proveedor> proveedores = proveedorBLL.getProveedores();
             cmbProveedores.DataSource = proveedores;
@@ -65,7 +65,10 @@ namespace ProyectoTC2023 {
 
         private void setDataGridViewExistencias() {
             dgvProductos.DataSource = null;
+            dgvProductos.MultiSelect = false;
+            dgvProductos.ReadOnly = true;
             dgvProductos.DataSource = productoBLL.getProductosBajoStock();
+            dgvProductos.Columns["dvh"].Visible = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e) {
@@ -87,6 +90,8 @@ namespace ProyectoTC2023 {
         private void actualizarDgvSolicitud() {
             dgvSolicitud.DataSource = null;
             dgvSolicitud.DataSource = solicitudCotizacionAux;
+            dgvSolicitud.ReadOnly = true;
+            dgvSolicitud.Columns["dvh"].Visible = false;
             foreach (DataGridViewColumn columna in dgvSolicitud.Columns) {
                 columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -100,7 +105,7 @@ namespace ProyectoTC2023 {
                     actualizarDgvSolicitud();
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -115,7 +120,7 @@ namespace ProyectoTC2023 {
                     actualizarDgvSolicitud();
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -126,7 +131,7 @@ namespace ProyectoTC2023 {
                 solicitudCotizacion = null;
                 cmbProveedores.Enabled = true;
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                new Mensajeria().mostrarMensaje(ex.Message);
             }
         }
 
@@ -147,13 +152,13 @@ namespace ProyectoTC2023 {
             solicitudCotizacion.proveedor = null;
             cmbProveedores.Enabled = true;
             btnAgregar.Enabled = true;
-            btnAgregar.Show();
+            btnAñadirProveedor.Show();
             btnRemover.Hide();
             btnRemover.Enabled = false;
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e) {
-            if (solicitudCotizacion == null && solicitudCotizacion.proveedor == null) {
+            if (solicitudCotizacion == null || solicitudCotizacion.proveedor == null) {
                 mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Debe seleccionar un proveedor." : "Please select a provider.");
                 return;
             } else if (solicitudCotizacionAux.Count == 0) {
@@ -163,20 +168,15 @@ namespace ProyectoTC2023 {
             solicitudCotizacion.productos = solicitudCotizacionAux;
             solicitudCotizacion.fecha = DateTime.Now;
             solicitudCotizacion.subtotal = solicitudCotizacion.productos.Sum(p => Int32.Parse(p.precio) * p.cantidad).ToString();
-            if (solicitudCotizacion.proveedor.telefono == "0") {
-                mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "El proveedor seleccionado no cuenta con todos sus datos. Por favor, actualice su información a continuación." : "The selected provider's registration is not complete. Please update their information on the following screen.");
-                FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor(solicitudCotizacion.proveedor, "Completar Registro");
-                frmRegistroProveedor.ShowDialog();
-                ProveedorBLL proveedorBLL = new ProveedorBLL();
-                solicitudCotizacion.proveedor = proveedorBLL.getProveedor(solicitudCotizacion.proveedor.CUIT);
-            }
             solicitudCotizacionBLL.guardarSolicitudCotizacion(solicitudCotizacion);
             mensajeria.mostrarMensaje(lenguajeActual == "es-AR" ? "Solicitud de cotización guardada con éxito." : "Quote request saved successfully.");
+            dgvSolicitud.DataSource = null;
+            solicitudCotizacionAux.Clear();
         }
 
         private void btnPreRegistroProveedor_Click(object sender, EventArgs e) {
             try {
-                FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor("Pre Registro");
+                FrmRegistroProveedor frmRegistroProveedor = new FrmRegistroProveedor();
                 frmRegistroProveedor.ShowDialog();
                 setComboProveedores();
             } catch (Exception ex) {

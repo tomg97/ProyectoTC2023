@@ -23,12 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.btnAñadirProveedor = new System.Windows.Forms.Button();
             this.labelProveedores = new System.Windows.Forms.Label();
-            this.btnPreRegistroProveedor = new System.Windows.Forms.Button();
+            this.btnRegistroProveedor = new System.Windows.Forms.Button();
             this.cmbProveedores = new System.Windows.Forms.ComboBox();
             this.labelDetalleSolicitud = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -42,23 +41,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(13, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 58);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "❓";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnCancelar.Location = new System.Drawing.Point(1425, 539);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnCancelar.Location = new System.Drawing.Point(1547, 165);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(150, 52);
@@ -70,8 +57,8 @@
             // btnFinalizar
             // 
             this.btnFinalizar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnFinalizar.Location = new System.Drawing.Point(1425, 599);
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnFinalizar.Location = new System.Drawing.Point(1548, 225);
             this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(150, 52);
@@ -83,11 +70,11 @@
             // btnAñadirProveedor
             // 
             this.btnAñadirProveedor.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAñadirProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnAñadirProveedor.Location = new System.Drawing.Point(1425, 119);
+            this.btnAñadirProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAñadirProveedor.Location = new System.Drawing.Point(1183, 593);
             this.btnAñadirProveedor.Margin = new System.Windows.Forms.Padding(4);
             this.btnAñadirProveedor.Name = "btnAñadirProveedor";
-            this.btnAñadirProveedor.Size = new System.Drawing.Size(150, 53);
+            this.btnAñadirProveedor.Size = new System.Drawing.Size(150, 65);
             this.btnAñadirProveedor.TabIndex = 49;
             this.btnAñadirProveedor.Text = "Añadir proveedor";
             this.btnAñadirProveedor.UseVisualStyleBackColor = false;
@@ -97,56 +84,56 @@
             // 
             this.labelProveedores.AutoSize = true;
             this.labelProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProveedores.Location = new System.Drawing.Point(1226, 41);
+            this.labelProveedores.Location = new System.Drawing.Point(818, 577);
             this.labelProveedores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelProveedores.Name = "labelProveedores";
             this.labelProveedores.Size = new System.Drawing.Size(164, 29);
             this.labelProveedores.TabIndex = 48;
             this.labelProveedores.Text = "Proveedores: ";
             // 
-            // btnPreRegistroProveedor
+            // btnRegistroProveedor
             // 
-            this.btnPreRegistroProveedor.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnPreRegistroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnPreRegistroProveedor.Location = new System.Drawing.Point(1425, 241);
-            this.btnPreRegistroProveedor.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPreRegistroProveedor.Name = "btnPreRegistroProveedor";
-            this.btnPreRegistroProveedor.Size = new System.Drawing.Size(150, 52);
-            this.btnPreRegistroProveedor.TabIndex = 47;
-            this.btnPreRegistroProveedor.Text = "Pre-registro proveedor";
-            this.btnPreRegistroProveedor.UseVisualStyleBackColor = false;
-            this.btnPreRegistroProveedor.Click += new System.EventHandler(this.btnPreRegistroProveedor_Click);
+            this.btnRegistroProveedor.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnRegistroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnRegistroProveedor.Location = new System.Drawing.Point(1499, 593);
+            this.btnRegistroProveedor.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegistroProveedor.Name = "btnRegistroProveedor";
+            this.btnRegistroProveedor.Size = new System.Drawing.Size(198, 65);
+            this.btnRegistroProveedor.TabIndex = 47;
+            this.btnRegistroProveedor.Text = "Registro proveedor";
+            this.btnRegistroProveedor.UseVisualStyleBackColor = false;
+            this.btnRegistroProveedor.Click += new System.EventHandler(this.btnPreRegistroProveedor_Click);
             // 
             // cmbProveedores
             // 
             this.cmbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProveedores.FormattingEnabled = true;
-            this.cmbProveedores.Location = new System.Drawing.Point(1231, 74);
+            this.cmbProveedores.Location = new System.Drawing.Point(823, 618);
             this.cmbProveedores.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProveedores.Name = "cmbProveedores";
-            this.cmbProveedores.Size = new System.Drawing.Size(352, 28);
+            this.cmbProveedores.Size = new System.Drawing.Size(352, 33);
             this.cmbProveedores.TabIndex = 46;
             // 
             // labelDetalleSolicitud
             // 
             this.labelDetalleSolicitud.AutoSize = true;
-            this.labelDetalleSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDetalleSolicitud.Location = new System.Drawing.Point(818, 87);
+            this.labelDetalleSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDetalleSolicitud.Location = new System.Drawing.Point(818, 7);
             this.labelDetalleSolicitud.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDetalleSolicitud.Name = "labelDetalleSolicitud";
-            this.labelDetalleSolicitud.Size = new System.Drawing.Size(230, 29);
+            this.labelDetalleSolicitud.Size = new System.Drawing.Size(257, 31);
             this.labelDetalleSolicitud.TabIndex = 45;
             this.labelDetalleSolicitud.Text = "Detalle de solicitud: ";
             // 
             // btnModificar
             // 
             this.btnModificar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnModificar.Location = new System.Drawing.Point(1425, 422);
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnModificar.Location = new System.Drawing.Point(1547, 40);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(150, 52);
+            this.btnModificar.Size = new System.Drawing.Size(150, 59);
             this.btnModificar.TabIndex = 44;
             this.btnModificar.Text = "Modificar cantidad";
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -155,8 +142,8 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnEliminar.Location = new System.Drawing.Point(1425, 482);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnEliminar.Location = new System.Drawing.Point(1547, 107);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(150, 50);
@@ -168,8 +155,8 @@
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnAgregar.Location = new System.Drawing.Point(700, 120);
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAgregar.Location = new System.Drawing.Point(700, 40);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(115, 52);
@@ -182,46 +169,46 @@
             // 
             this.dgvSolicitud.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSolicitud.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvSolicitud.Location = new System.Drawing.Point(823, 120);
+            this.dgvSolicitud.Location = new System.Drawing.Point(823, 42);
             this.dgvSolicitud.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSolicitud.Name = "dgvSolicitud";
             this.dgvSolicitud.RowHeadersWidth = 51;
             this.dgvSolicitud.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSolicitud.Size = new System.Drawing.Size(594, 531);
+            this.dgvSolicitud.Size = new System.Drawing.Size(716, 531);
             this.dgvSolicitud.TabIndex = 41;
             // 
             // dgvProductos
             // 
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProductos.Location = new System.Drawing.Point(13, 121);
+            this.dgvProductos.Location = new System.Drawing.Point(13, 41);
             this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(679, 530);
+            this.dgvProductos.Size = new System.Drawing.Size(679, 628);
             this.dgvProductos.TabIndex = 38;
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 88);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(351, 29);
+            this.label1.Size = new System.Drawing.Size(396, 31);
             this.label1.TabIndex = 53;
             this.label1.Text = "Productos bajos en existencias:";
             // 
             // btnRemover
             // 
             this.btnRemover.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnRemover.Location = new System.Drawing.Point(1425, 180);
+            this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnRemover.Location = new System.Drawing.Point(1341, 593);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(150, 53);
+            this.btnRemover.Size = new System.Drawing.Size(150, 65);
             this.btnRemover.TabIndex = 54;
             this.btnRemover.Text = "Remover proveedor";
             this.btnRemover.UseVisualStyleBackColor = false;
@@ -231,15 +218,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1587, 682);
+            this.ClientSize = new System.Drawing.Size(1710, 682);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.btnAñadirProveedor);
             this.Controls.Add(this.labelProveedores);
-            this.Controls.Add(this.btnPreRegistroProveedor);
+            this.Controls.Add(this.btnRegistroProveedor);
             this.Controls.Add(this.cmbProveedores);
             this.Controls.Add(this.labelDetalleSolicitud);
             this.Controls.Add(this.btnModificar);
@@ -258,13 +244,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnAñadirProveedor;
         private System.Windows.Forms.Label labelProveedores;
-        private System.Windows.Forms.Button btnPreRegistroProveedor;
+        private System.Windows.Forms.Button btnRegistroProveedor;
         private System.Windows.Forms.ComboBox cmbProveedores;
         private System.Windows.Forms.Label labelDetalleSolicitud;
         private System.Windows.Forms.Button btnModificar;

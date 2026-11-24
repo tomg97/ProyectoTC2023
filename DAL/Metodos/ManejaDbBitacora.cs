@@ -39,7 +39,7 @@ namespace DAL.Metodos {
                             mensaje.usuario = reader.GetString(reader.GetOrdinal("usuario"));
                             mensaje.fecha = reader.GetDateTime(reader.GetOrdinal("fecha"));
                             mensaje.modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo")));
-                            mensaje.criticidad = parsearCriticidad(reader.GetString(reader.GetOrdinal("criticidad")));
+                            mensaje.criticidad = Convert.ToInt32(reader.GetValue(reader.GetOrdinal("criticidad")));
 
                             resultado.Add(mensaje);
                         }
@@ -97,7 +97,7 @@ namespace DAL.Metodos {
                         usuario = reader.GetString(reader.GetOrdinal("usuario")),
                         fecha = reader.GetDateTime(reader.GetOrdinal("fecha")),
                         modulo = parsearModulo(reader.GetString(reader.GetOrdinal("modulo"))),
-                        criticidad = parsearCriticidad(reader.GetString(reader.GetOrdinal("criticidad")))
+                        criticidad = Convert.ToInt32(reader.GetValue(reader.GetOrdinal("criticidad")))
                     };
                     list.Add(mensaje);
                }
@@ -111,13 +111,6 @@ namespace DAL.Metodos {
                 return moduloOut;
             } else {
                 throw new ArgumentException($"Valor de módulo inválido: {moduloIn}");
-            }
-        }
-        static private Criticidad parsearCriticidad(string criticidadIn) {
-            if (Enum.TryParse(criticidadIn, true, out Criticidad criticidadOut)) {
-                return criticidadOut;
-            } else {
-                throw new ArgumentException($"Valor de criticidad inválido: {criticidadIn}");
             }
         }
         static private EventoEnum parsearEvento(string eventoIn) {

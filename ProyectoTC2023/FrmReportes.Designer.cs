@@ -36,25 +36,29 @@
             "Reporte 1",
             "Reporte 2",
             "Reporte Inteligente"});
-            this.cbReportes.Location = new System.Drawing.Point(13, 13);
+            this.cbReportes.Location = new System.Drawing.Point(17, 16);
+            this.cbReportes.Margin = new System.Windows.Forms.Padding(4);
             this.cbReportes.Name = "cbReportes";
-            this.cbReportes.Size = new System.Drawing.Size(201, 21);
+            this.cbReportes.Size = new System.Drawing.Size(267, 24);
             this.cbReportes.TabIndex = 0;
+            this.cbReportes.SelectedIndexChanged += new System.EventHandler(this.cbReportes_SelectedIndexChanged);
             // 
             // rvReportes
             // 
-            this.rvReportes.Location = new System.Drawing.Point(13, 41);
+            this.rvReportes.Location = new System.Drawing.Point(17, 50);
+            this.rvReportes.Margin = new System.Windows.Forms.Padding(4);
             this.rvReportes.Name = "rvReportes";
             this.rvReportes.ServerReport.BearerToken = null;
-            this.rvReportes.Size = new System.Drawing.Size(775, 397);
+            this.rvReportes.Size = new System.Drawing.Size(1033, 488);
             this.rvReportes.TabIndex = 1;
             this.rvReportes.Load += new System.EventHandler(this.rvReportes_Load);
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(221, 13);
+            this.btnEnter.Location = new System.Drawing.Point(295, 16);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(102, 23);
+            this.btnEnter.Size = new System.Drawing.Size(136, 28);
             this.btnEnter.TabIndex = 2;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
@@ -62,22 +66,25 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(329, 13);
+            this.btnReset.Location = new System.Drawing.Point(439, 16);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(102, 23);
+            this.btnReset.Size = new System.Drawing.Size(136, 28);
             this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // FrmReportes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.rvReportes);
             this.Controls.Add(this.cbReportes);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReportes";
             this.Text = "FrmReportes";
             this.Load += new System.EventHandler(this.FrmReportes_Load);

@@ -28,10 +28,23 @@ namespace DBInstaller
         }
         private void ExecuteSqlScript(string connectionString, string scriptPath) {
             string script = File.ReadAllText(scriptPath);
+            int useDatabase = script.IndexOf("USE [ComercializAR]", StringComparison.OrdinalIgnoreCase);
+            if (useDatabase >= 0) {
+                script = script.Substring(useDatabase);
+            }
+
             using (SqlConnection connection = new SqlConnection(connectionString)) {
                 connection.Open();
-                SqlCommand command = new SqlCommand(script, connection);
-                command.ExecuteNonQuery();
+                foreach (string batch in System.Text.RegularExpressions.Regex.Split(script, @"(?im)^\s*GO\s*$")) {
+                    if (string.IsNullOrWhiteSpace(batch)) {
+                        continue;
+                    }
+
+                    using (SqlCommand command = new SqlCommand(batch, connection)) {
+                        command.CommandTimeout = 300;
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
         }
     }

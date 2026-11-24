@@ -17,10 +17,13 @@ namespace DAL.Metodos {
         public void eliminarSolicitudCotizacion(string idSolicitud) {
             try {
                 using (SqlConnection conn = new SqlConnection(_connectionString)) {
-                    SqlCommand cmd = new SqlCommand($"DELETE FROM Cotizacion WHERE {idSolicitud} = 'id'");
+                    SqlCommand cmd = new SqlCommand("eliminarSolicitudCotizacion", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idCotizacion", idSolicitud);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+                actualizarDVV(); // Actualiza el DVV después de eliminar la solicitud
             } catch (Exception ex) {
                 Console.WriteLine(ex.ToString());
             }
@@ -31,7 +34,9 @@ namespace DAL.Metodos {
                 using (SqlConnection connection = new SqlConnection(_connectionString)) {
                     SqlCommand cmd = new SqlCommand("guardarSolicitudCotizacion", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Fecha", solicitud.fecha);
+                    SqlParameter fechaParameter = cmd.Parameters.Add("@Fecha", SqlDbType.DateTime2);
+                    fechaParameter.Scale = 7;
+                    fechaParameter.Value = solicitud.fecha;
                     cmd.Parameters.AddWithValue("@IdProveedor", solicitud.proveedor.CUIT); // Asumiendo que Proveedor tiene propiedad CUIT
                     cmd.Parameters.AddWithValue("@Productos", JsonConvert.SerializeObject(solicitud.productos)); // Serializa si es necesario
                     cmd.Parameters.AddWithValue("@Total", solicitud.subtotal);
@@ -59,9 +64,10 @@ namespace DAL.Metodos {
                         SolicitudCotizacion solicitudCotizacion = new SolicitudCotizacion(
                             reader["id"].ToString(),
                             reader["productos"].ToString(),
-                            reader["fecha"].ToString(),
+                            reader.GetDateTime(reader.GetOrdinal("fecha")),
                             reader["idProveedor"].ToString(),
                             reader["total"].ToString());
+                        solicitudCotizacion.dvh = reader["dvh"].ToString();
                         solicitudes.Add(solicitudCotizacion);
                     }
                     reader.Close();
@@ -73,8 +79,8 @@ namespace DAL.Metodos {
         }
         public string calcularDVH(SolicitudCotizacion solicitud) {
             StringBuilder sb = new StringBuilder();
-            sb.Append(solicitud.id);
-            sb.Append(solicitud.fecha);
+            //sb.Append(solicitud.id);
+            sb.Append(solicitud.fecha.ToString("yyyy-MM-dd HH:mm", System.Globalization.CultureInfo.InvariantCulture));
             sb.Append(solicitud.proveedor.CUIT);
             sb.Append(solicitud.productos.ToString());
             sb.Append(solicitud.subtotal);
